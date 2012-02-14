@@ -94,7 +94,10 @@
     <Compile Include="Classes\Class-Tag\ValidateSongTags.cs" />
     <Compile Include="Classes\Class-Tag\TagRecordState.cs" />
     <Compile Include="Classes\Class-Tag\Mp3TagWriter.cs" />
-    <Compile Include="Classes\Class-Paths\ValidateUserMusicDirectory.cs" />
+    <Compile Include="Classes\Class-Write-To-File\WriteTagDataToFile.cs" />
+    <Compile Include="Classes\Class-BasicMusicStructure\ValidateUserMusicDirectory.cs" />
+    <Compile Include="Sources\MusicPathWindow.cs" />
+    <Compile Include="gtk-gui\MusicManager.MusicPathWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

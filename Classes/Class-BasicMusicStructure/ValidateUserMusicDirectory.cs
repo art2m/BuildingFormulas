@@ -64,7 +64,7 @@ namespace MusicManager
 				errMsg = "Encountered error while checking directory for .mp3 file. ";
 	 			 	
 				foreach (string strDir in Directory.GetDirectories (strMDir)) {
-					//Do not loop no more already found .mp3 music file.
+					//Do notloop no more already found .mp3 music file.
 					if (!UserEnviormentInfo.ToplevelMusicDirectoryFound) {
 						retVal = CheckForMusicFile (strDir);
 	 			 			

@@ -5,6 +5,7 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/Music-Manager.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="802 830">
@@ -97,7 +98,7 @@
         <property name="Label" translatable="yes">Select Music Path</property>
         <property name="ShortLabel" translatable="yes">Select Music Path</property>
       </action>
-      <action id="MusicDirectoryStructureAction">
+      <action id="mnuMusicDirectoryStructure">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Music Directory Structure</property>
         <property name="ShortLabel" translatable="yes">Music Directory Structure</property>
@@ -136,7 +137,7 @@
               <node type="Menu" action="TagActionsAction">
                 <node type="Menuitem" action="mnuShowSngTagWin" />
               </node>
-              <node type="Menu" action="MusicDirectoryStructureAction">
+              <node type="Menu" action="mnuMusicDirectoryStructure">
                 <node type="Menuitem" action="mnuMusicPath1" />
               </node>
             </node>
@@ -526,10 +527,10 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="MusicManager.SongTagWindow" design-size="1022 555">
+  <widget class="Gtk.Window" id="MusicManager.SongTagWindow" design-size="1022 630">
     <property name="MemberName" />
     <property name="WidthRequest">1020</property>
-    <property name="HeightRequest">525</property>
+    <property name="HeightRequest">600</property>
     <property name="Title" translatable="yes">SongTagWindow</property>
     <property name="WindowPosition">Center</property>
     <property name="BorderWidth">6</property>
@@ -804,7 +805,8 @@
                 <property name="MemberName" />
                 <property name="WidthRequest">240</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtAlbum</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -826,7 +828,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtAlbumArt</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -850,7 +853,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtArtist</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -872,7 +876,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtDiscCount</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -896,7 +901,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtDiscNum</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -920,7 +926,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtGenre</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -944,7 +951,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">tstSong</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -968,7 +976,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtTrackCount</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -992,7 +1001,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtTrackNum</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -1016,7 +1026,8 @@
                 <property name="WidthRequest">240</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtYear</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -1049,12 +1060,10 @@
             <child>
               <widget class="Gtk.HButtonBox" id="hbuttonbox1">
                 <property name="MemberName" />
-                <property name="HeightRequest">45</property>
                 <property name="Size">4</property>
                 <child>
                   <widget class="Gtk.Button" id="btnEditTag">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-edit Menu</property>
@@ -1068,9 +1077,8 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Button" id="btnEditCancel">
+                  <widget class="Gtk.Button" id="Cancel">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-cancel Menu</property>
@@ -1086,16 +1094,15 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Button" id="btnEditUpdate">
+                  <widget class="Gtk.Button" id="UpdateButton">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-save Menu</property>
                     <property name="Label" translatable="yes">Update</property>
                     <property name="UseUnderline">True</property>
                     <property name="BorderWidth">2</property>
-                    <signal name="Clicked" handler="UpdateTagFileButton" />
+                    <signal name="Entered" handler="UpdateTagFileButton" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -1104,9 +1111,8 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Button" id="btnEditOpen">
+                  <widget class="Gtk.Button" id="btnOpen">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-open Menu</property>
@@ -1145,13 +1151,12 @@
             <child>
               <widget class="Gtk.HButtonBox" id="hbtnMoveBox">
                 <property name="MemberName" />
-                <property name="HeightRequest">45</property>
+                <property name="HeightRequest">35</property>
                 <property name="Size">4</property>
                 <property name="LayoutStyle">Spread</property>
                 <child>
                   <widget class="Gtk.Button" id="btnFirst">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-goto-first Menu</property>
@@ -1168,7 +1173,6 @@
                 <child>
                   <widget class="Gtk.Button" id="btnPrevious">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-go-back Menu</property>
@@ -1186,7 +1190,6 @@
                 <child>
                   <widget class="Gtk.Button" id="btnNext">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-go-forward Menu</property>
@@ -1204,7 +1207,6 @@
                 <child>
                   <widget class="Gtk.Button" id="btnLast">
                     <property name="MemberName" />
-                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-goto-last Menu</property>
@@ -1234,69 +1236,18 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.HButtonBox" id="hbuttonbox3">
+          <widget class="Gtk.Alignment" id="aliBetweenTablelblArtistPath">
             <property name="MemberName" />
-            <property name="HeightRequest">50</property>
-            <property name="Size">3</property>
-            <property name="LayoutStyle">Spread</property>
+            <property name="HeightRequest">20</property>
+            <property name="Visible">False</property>
             <child>
-              <widget class="Gtk.Button" id="btnLoadTags">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-find Menu</property>
-                <property name="Label" translatable="yes">Load Song Tags</property>
-                <property name="UseUnderline">True</property>
-                <property name="BorderWidth">2</property>
-                <signal name="Clicked" handler="LoadAllSongTagsButton" />
-              </widget>
-              <packing>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="btnErrorTags">
-                <property name="MemberName" />
-                <property name="Sensitive">False</property>
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-no Menu</property>
-                <property name="Label" translatable="yes">Show Error Tags</property>
-                <property name="UseUnderline">True</property>
-                <property name="BorderWidth">2</property>
-                <signal name="Clicked" handler="ShowSongTagsWithErrorsButton" />
-              </widget>
-              <packing>
-                <property name="Position">1</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="btnValidTags">
-                <property name="MemberName" />
-                <property name="Sensitive">False</property>
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-ok Menu</property>
-                <property name="Label" translatable="yes">Show Valid Tags</property>
-                <property name="UseUnderline">True</property>
-                <property name="BorderWidth">2</property>
-                <signal name="Clicked" handler="ShowValidSongTagsButton" />
-              </widget>
-              <packing>
-                <property name="Position">2</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
+              <placeholder />
             </child>
           </widget>
           <packing>
             <property name="Position">4</property>
-            <property name="AutoSize">True</property>
+            <property name="AutoSize">False</property>
             <property name="Expand">False</property>
-            <property name="Fill">False</property>
           </packing>
         </child>
         <child>
@@ -1340,7 +1291,8 @@
                 <property name="WidthRequest">801</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtArtistPath</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -1397,7 +1349,8 @@
                 <property name="MemberName" />
                 <property name="WidthRequest">801</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtAlbumPath</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -1455,7 +1408,8 @@
                 <property name="WidthRequest">801</property>
                 <property name="HeightRequest">24</property>
                 <property name="CanFocus">True</property>
-                <property name="IsEditable">False</property>
+                <property name="Text" translatable="yes">txtSongPath</property>
+                <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -1473,6 +1427,103 @@
           </packing>
         </child>
         <child>
+          <widget class="Gtk.HButtonBox" id="hbtnFileBox">
+            <property name="MemberName" />
+            <property name="WidthRequest">805</property>
+            <property name="HeightRequest">35</property>
+            <property name="Size">5</property>
+            <property name="LayoutStyle">Spread</property>
+            <child>
+              <widget class="Gtk.Button" id="btnEditArtistPath">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-edit Menu</property>
+                <property name="Label" translatable="yes">Edit Artist Path</property>
+                <property name="UseUnderline">True</property>
+                <property name="BorderWidth">2</property>
+                <signal name="Clicked" handler="EditArtistDirectoryPathButton" />
+              </widget>
+              <packing>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btnEditAlbum">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-edit Menu</property>
+                <property name="Label" translatable="yes">Edit Album Path</property>
+                <property name="UseUnderline">True</property>
+                <property name="BorderWidth">2</property>
+                <signal name="Clicked" handler="EditAlbumDirectoryPathButton" />
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btnEditSongPath">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-edit Menu</property>
+                <property name="Label" translatable="yes">Edit Song Path:</property>
+                <property name="UseUnderline">True</property>
+                <property name="BorderWidth">2</property>
+                <signal name="Clicked" handler="EditSongFilePathButton" />
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btnCancelPathEdit">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-cancel Menu</property>
+                <property name="Label" translatable="yes">Cancel Path Edit:</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="CancelPathOperationButton" />
+              </widget>
+              <packing>
+                <property name="Position">3</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btnUpdateFilePath">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-save Menu</property>
+                <property name="Label" translatable="yes">Update File Path:</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="UpdatePathChangesButton" />
+              </widget>
+              <packing>
+                <property name="Position">4</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">8</property>
+            <property name="AutoSize">False</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
           <widget class="Gtk.HButtonBox" id="hbtnWindowBox">
             <property name="MemberName" />
             <property name="WidthRequest">805</property>
@@ -1484,14 +1535,11 @@
             <child>
               <widget class="Gtk.Button" id="btnQuit">
                 <property name="MemberName" />
-                <property name="WidthRequest">100</property>
-                <property name="HeightRequest">30</property>
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
                 <property name="Icon">stock:gtk-quit Menu</property>
                 <property name="Label" translatable="yes">_Quit</property>
                 <property name="UseUnderline">True</property>
-                <property name="BorderWidth">2</property>
                 <signal name="Clicked" handler="QuitSongTagWindowButton" />
               </widget>
               <packing>
@@ -1502,168 +1550,28 @@
           </widget>
           <packing>
             <property name="PackType">End</property>
-            <property name="Position">8</property>
-            <property name="AutoSize">False</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-      </widget>
-    </child>
-  </widget>
-  <widget class="Gtk.Window" id="MusicManager.MusicPathWindow" design-size="1022 341">
-    <property name="MemberName" />
-    <property name="WidthRequest">1020</property>
-    <property name="HeightRequest">311</property>
-    <property name="Title" translatable="yes">Change Music Path Structure</property>
-    <property name="WindowPosition">CenterAlways</property>
-    <property name="BorderWidth">6</property>
-    <child>
-      <widget class="Gtk.VBox" id="vbox1">
-        <property name="MemberName" />
-        <property name="Spacing">6</property>
-        <child>
-          <widget class="Gtk.Alignment" id="alignment1">
-            <property name="MemberName" />
-            <property name="HeightRequest">19</property>
-            <child>
-              <placeholder />
-            </child>
-          </widget>
-          <packing>
-            <property name="Position">0</property>
+            <property name="Position">9</property>
             <property name="AutoSize">False</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Label" id="lblInfo">
-            <property name="MemberName" />
-            <property name="HeightRequest">24</property>
-            <property name="LabelProp" translatable="yes">label1</property>
-          </widget>
-          <packing>
-            <property name="Position">1</property>
-            <property name="AutoSize">False</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Table" id="tblPathChanges">
-            <property name="MemberName" />
-            <property name="NRows">2</property>
-            <property name="NColumns">2</property>
-            <property name="RowSpacing">10</property>
-            <property name="ColumnSpacing">10</property>
-            <property name="BorderWidth">3</property>
-            <child>
-              <widget class="Gtk.Label" id="lblInsert">
-                <property name="MemberName" />
-                <property name="WidthRequest">525</property>
-                <property name="HeightRequest">24</property>
-                <property name="LabelProp" translatable="yes">If you choose to insert underscore into the path name. The result will be:</property>
-              </widget>
-              <packing>
-                <property name="AutoSize">True</property>
-                <property name="XOptions">Fill</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">False</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="lblRemove">
-                <property name="MemberName" />
-                <property name="HeightRequest">24</property>
-                <property name="LabelProp" translatable="yes">If you choose to remove Underscore from the path name. The result will be:</property>
-              </widget>
-              <packing>
-                <property name="TopAttach">1</property>
-                <property name="BottomAttach">2</property>
-                <property name="AutoSize">True</property>
-                <property name="XOptions">Fill</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">False</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="lblRemUnderscore">
-                <property name="MemberName" />
-                <property name="HeightRequest">24</property>
-                <property name="LabelProp" translatable="yes">Music/Artist Name/ Album Name/Song Name</property>
-              </widget>
-              <packing>
-                <property name="TopAttach">1</property>
-                <property name="BottomAttach">2</property>
-                <property name="LeftAttach">1</property>
-                <property name="RightAttach">2</property>
-                <property name="AutoSize">True</property>
-                <property name="XOptions">Fill</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">False</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="lblUnderscore">
-                <property name="MemberName" />
-                <property name="WidthRequest">465</property>
-                <property name="HeightRequest">24</property>
-                <property name="LabelProp" translatable="yes">Music/Artist_Name/Album_Name/Song_Name</property>
-              </widget>
-              <packing>
-                <property name="LeftAttach">1</property>
-                <property name="RightAttach">2</property>
-                <property name="AutoSize">True</property>
-                <property name="XOptions">Fill</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">False</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-          </widget>
-          <packing>
-            <property name="Position">2</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.HButtonBox" id="hbtnSetPathStructureBox">
+          <widget class="Gtk.HButtonBox" id="hbuttonbox3">
             <property name="MemberName" />
             <property name="HeightRequest">50</property>
-            <property name="BorderWidth">4</property>
-            <property name="Size">2</property>
+            <property name="Size">5</property>
             <property name="LayoutStyle">Spread</property>
             <child>
-              <widget class="Gtk.Button" id="btnInsert">
+              <widget class="Gtk.Button" id="btnLoadTags">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-apply Menu</property>
-                <property name="Label" translatable="yes">Insert-Underscore</property>
+                <property name="Icon">stock:gtk-find Menu</property>
+                <property name="Label" translatable="yes">Load Song Tags</property>
                 <property name="UseUnderline">True</property>
                 <property name="BorderWidth">2</property>
+                <signal name="Clicked" handler="LoadAllSongTagsButton" />
               </widget>
               <packing>
                 <property name="Expand">False</property>
@@ -1671,12 +1579,12 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="btnRemove">
+              <widget class="Gtk.Button" id="btnErrorTags">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-remove Menu</property>
-                <property name="Label" translatable="yes">Remove-Underscore</property>
+                <property name="Icon">stock:gtk-no Menu</property>
+                <property name="Label" translatable="yes">Show Error Tags</property>
                 <property name="UseUnderline">True</property>
                 <property name="BorderWidth">2</property>
               </widget>
@@ -1686,42 +1594,56 @@
                 <property name="Fill">False</property>
               </packing>
             </child>
-          </widget>
-          <packing>
-            <property name="Position">3</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.HButtonBox" id="hbtnQuitBox">
-            <property name="MemberName" />
-            <property name="HeightRequest">52</property>
-            <property name="BorderWidth">12</property>
-            <property name="Size">1</property>
-            <property name="LayoutStyle">End</property>
             <child>
-              <widget class="Gtk.Button" id="btnQuit">
+              <widget class="Gtk.Button" id="btnValidTags">
                 <property name="MemberName" />
-                <property name="WidthRequest">100</property>
-                <property name="HeightRequest">30</property>
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-quit Menu</property>
-                <property name="Label" translatable="yes">Quit</property>
+                <property name="Icon">stock:gtk-ok Menu</property>
+                <property name="Label" translatable="yes">Show Valid Tags</property>
                 <property name="UseUnderline">True</property>
                 <property name="BorderWidth">2</property>
-                <signal name="Clicked" handler="QuitChangeMusicPathStructureWindowButton" />
               </widget>
               <packing>
+                <property name="Position">2</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btnWrite">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-file Menu</property>
+                <property name="Label" translatable="yes">Write Tags To File</property>
+                <property name="UseUnderline">True</property>
+              </widget>
+              <packing>
+                <property name="Position">3</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btnReadTags">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-file Menu</property>
+                <property name="Label" translatable="yes">Read Tags From File</property>
+                <property name="UseUnderline">True</property>
+              </widget>
+              <packing>
+                <property name="Position">4</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
             </child>
           </widget>
           <packing>
-            <property name="Position">4</property>
+            <property name="PackType">End</property>
+            <property name="Position">10</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>

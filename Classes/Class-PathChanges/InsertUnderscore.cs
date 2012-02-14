@@ -32,7 +32,6 @@
 using System;
 using System.IO;
 using System.Text;
-using System.Diagnostics;
 
 namespace MusicManager
 {
@@ -77,9 +76,15 @@ namespace MusicManager
                   "  Directory does not exist:  " + 
                                     UserEnviormentInfo.UserMusicDirectoryPath);
 				} else {
+					//doesn't matter true or false just checking to see if there
+					//are files in toplevel music directory.
+					retVal = CheckForMp3FilesInDirectory (
+                        UserEnviormentInfo.UserMusicDirectoryPath);
+                    
+                    
 					retVal = IterateMusicDirectories_Files (
                                     UserEnviormentInfo.UserMusicDirectoryPath);
-					retVal = true;
+					//retVal = true;
 					return retVal;
 				}
 			} catch (DirectoryNotFoundException ex) {
@@ -98,14 +103,34 @@ namespace MusicManager
 		} //End Method public bool BeginIterateMusicDirectories()
 		
 		
-		private bool IterateMusicDirectories_Files (string strMusicPath)
+		private bool IterateMusicDirectories_Files (string musicPath)
 		{
 			
-			return true;		
+			bool retVal = false;
+            
+			return retVal;
 			
 		}
 		
-		
+		private bool CheckForMp3FilesInDirectory (string dirPath)
+		{            
+			bool retVal = false;
+            
+			string[] sngFiles = null;
+            
+			sngFiles = Directory.GetFiles (dirPath);
+            
+			if (sngFiles.Length < 1) {
+				return retVal;
+			}
+            
+            
+			return retVal;
+            
+		} //End Method
+        
+        
+        
 		/// <summary>
 		/// Method -- public string RemoveSpaces(strig strPath)
 		/// 
@@ -128,9 +153,9 @@ namespace MusicManager
 				errMsg = "Encountered error while removing " +
                                                  "spaces from path name.";
 				
-				//string[] strTemp = strPath.Split(' ');
+				string[] strTemp = strPath.Split (' ');
 				
-				//retVal = InsertUnderscore(strTemp);
+				ReplaceSpaceWithUnderscore (strTemp);
 				
 				retVal = true;
 				return retVal;
@@ -147,7 +172,7 @@ namespace MusicManager
 		
 		
 		/// <summary>
-		/// Method -- private string InsertUnderscore(string[] strPath)
+		/// Method -- private string ReplaceSpaceWithUnderscore
 		/// 
 		/// This inserts Underscore characters into the path name of the 
 		/// directoy, song name or song path replacing the spaces.
@@ -180,7 +205,7 @@ namespace MusicManager
 				
 				//Verify string to be returned 
 				//now has no spaces and has underscore instead.
-				Trace.Write (retVal);
+				
 				
 				return retVal;
 			} catch (IndexOutOfRangeException ex) {

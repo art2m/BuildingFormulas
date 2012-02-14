@@ -567,12 +567,7 @@ namespace MusicManager
 			if (!retVal) {
 				return retVal;
 			}    
-            
-			retVal = mp3Write.SaveSongTagData (sngTagRecord);
-			if (!retVal) {
-				return retVal;
-			}
-            
+                     
                
              
 			sngTagRecord.ArtistName = txtArtist.Text;           
@@ -585,6 +580,11 @@ namespace MusicManager
 			sngTagRecord.TotalTrackCount = txtTrackCount.Text;
 			sngTagRecord.ThisDiscNumber = txtDiscNum.Text;
 			sngTagRecord.TotalDiscCount = txtDiscCount.Text;
+            
+			retVal = mp3Write.SaveSongTagData (sngTagRecord);
+			if (!retVal) {
+				return retVal;
+			}
             
 			//All ok
 			retVal = true;

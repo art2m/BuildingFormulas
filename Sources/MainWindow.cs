@@ -182,9 +182,10 @@ public partial class MainWindow: Gtk.Window
 	protected void ReplaceSpaceInFileWithUnderscoreMenu (object sender, 
                                                          System.EventArgs e)
 	{
-		//MusicManager.clsInsertUnderscore clsIu = new MusicManager.
-		//clsInsertUnderscore();
-		throw new System.NotImplementedException ();
+		MusicManager.MusicPathWindow musicPath = 
+                                        new MusicManager.MusicPathWindow ();
+		musicPath.ShowAll ();
+        
 	} //End Event
  
     
@@ -205,7 +206,9 @@ public partial class MainWindow: Gtk.Window
 	protected void ReplaceUndersoreInFileWithSpaceMenu (object sender, 
                                                             System.EventArgs e)
 	{
-		throw new System.NotImplementedException ();
+		MusicManager.MusicPathWindow musicPath = 
+                                        new MusicManager.MusicPathWindow ();
+		musicPath.ShowAll ();
 	} //End Event
     
 	/// <summary>
