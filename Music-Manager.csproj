@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77377C02-0C39-409C-A22F-0DAA82BE9514}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MusicManager</RootNamespace>
+    <AssemblyName>Music-Manager</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="taglib-sharp">
+      <HintPath>bin\Debug\taglib-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Sources\Main.cs" />
+    <Compile Include="Sources\MainWindow.cs" />
+    <Compile Include="Sources\SongTagWindow.cs" />
+    <Compile Include="gtk-gui\MusicManager.SongTagWindow.cs" />
+    <Compile Include="Classes\Class-Collection\InvalidSongTagCollection.cs" />
+    <Compile Include="Classes\Class-Collection\SongPathsCollection.cs" />
+    <Compile Include="Classes\Class-Collection\ValidSongTagCollection.cs" />
+    <Compile Include="Classes\Class-Collection\UserEnviormentInfo.cs" />
+    <Compile Include="Classes\Class-Paths\SongFilePaths.cs" />
+    <Compile Include="Classes\Class-Properties\AlbumRecord.cs" />
+    <Compile Include="Classes\Class-Properties\ArtistRecord.cs" />
+    <Compile Include="Classes\Class-Properties\SongRecord.cs" />
+    <Compile Include="Classes\Class-Tag\SongTagRecord.cs" />
+    <Compile Include="Classes\Class-Tag\Mp3TagReader.cs" />
+    <Compile Include="Classes\Class-Tag\CreateTagDirectoryAndFiles.cs" />
+    <Compile Include="Classes\Class-Read-From-File\GetPlaylist.cs" />
+    <Compile Include="Classes\Class-PlayMusic\PlayMusic.cs" />
+    <Compile Include="Classes\Class-PathChanges\CreateVariousArtist.cs" />
+    <Compile Include="Classes\Class-PathChanges\RemoveUnderscore.cs" />
+    <Compile Include="Classes\Class-PathChanges\InsertUnderscore.cs" />
+    <Compile Include="Classes\Class-Messages\MyMessages.cs" />
+    <Compile Include="Classes\Class-Browser\DisplayFileBrowser.cs" />
+    <Compile Include="Classes\Class-Tag\ValidateSongTags.cs" />
+    <Compile Include="Classes\Class-Tag\TagRecordState.cs" />
+    <Compile Include="Classes\Class-Tag\Mp3TagWriter.cs" />
+    <Compile Include="Classes\Class-Paths\ValidateUserMusicDirectory.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Classes\Class-PlayMusic\" />
+    <Folder Include="Classes\Class-Browser\" />
+    <Folder Include="Classes\Class-Messages\" />
+    <Folder Include="Sources\" />
+    <Folder Include="Classes\Class-PathChanges\" />
+    <Folder Include="Classes\Class-Properties\" />
+    <Folder Include="Classes\Class-Collection\" />
+    <Folder Include="Classes\Class-Paths\" />
+    <Folder Include="Classes\Class-Write-To-File\" />
+  </ItemGroup>
+</Project>
