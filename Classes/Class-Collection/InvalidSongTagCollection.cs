@@ -75,7 +75,7 @@ namespace MusicManager
                                         " collection has not been initalized.");
 				}
 				sngTagInv.Add (sngTagRecord);
-             
+                 
 				//All ok 
 				retVal = true;
 				return retVal;
@@ -92,6 +92,39 @@ namespace MusicManager
                     ex.Message.ToString ());
 				return retVal;    
 			}
+		} //End Method
+        
+		public static bool InsertItemAt (int index, SongTagRecord sngTagRecord)
+		{
+			bool retVal = false;
+            
+			try {
+				if (sngTagRecord == null) {
+					throw new ArgumentNullException ("sngTagRecord record " +
+                                                " has not been initialized.");
+				} else if (sngTagInv == null) {
+					throw new NullReferenceException ("sngTagRecords " +
+                                        " collection has not been initalized.");  
+				}
+				sngTagInv.Insert (index, sngTagRecord);
+                
+				//all ok
+				retVal = true;
+				return retVal;
+			} catch (ArgumentNullException ex) {
+				errMsg = "Encountered error while adding item to collection.";
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;
+			} catch (NullReferenceException ex) {
+				errMsg = "Encountered error while adding item to collection.";
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;     
+			}
+            
 		} //End Method
 		
 		/// <summary>

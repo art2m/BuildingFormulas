@@ -33,143 +33,143 @@ using System;
 namespace MusicManager
 {
 	
-    //[Serializable()]
-    public class SongTagRecord
-    {
+	//[Serializable()]
+	public class SongTagRecord
+	{
 		
        
-        public SongTagRecord ()
-        {
-        } //End Constructor
+		public SongTagRecord ()
+		{
+		} //End Constructor
 		
 #region Properties
 		
-        private string strSngTitle = "";
+		private string sngTitle = "";
 
-        public string SongTitle {
-            get {
-                return strSngTitle;
-            } 
-            set {
-                strSngTitle = value;
-            }
-        }
+		public string SongTitle {
+			get {
+				return sngTitle;
+			} 
+			set {
+				sngTitle = value;
+			}
+		}
 		
-        private string strArtist = "";
+		private string nameArtist = "";
 
-        public string ArtistName {
-            get {
-                return strArtist;
-            }
-            set {
-                strArtist = value;
-            }
-        }
+		public string ArtistName {
+			get {
+				return nameArtist;
+			}
+			set {
+				nameArtist = value;
+			}
+		}
 		
-        private string strAlbum = "";
+		private string nameAlbum = "";
 
-        public string AlbumName {
-            get {
-                return strAlbum;
-            }
-            set {
-                strAlbum = value;
-            }	
-        }
+		public string AlbumName {
+			get {
+				return nameAlbum;
+			}
+			set {
+				nameAlbum = value;
+			}	
+		}
 		
-        private string strGenre = "";
+		private string nameGenre = "";
 
-        public string GenreType {
-            get {
-                return strGenre;
-            }
-            set {
-                strGenre = value;
-            }
-        }
+		public string GenreType {
+			get {
+				return nameGenre;
+			}
+			set {
+				nameGenre = value;
+			}
+		}
 		
-        private string strYear = "";
+		private string sngYear = "";
 
-        public string YearCreated {
-            get {
-                return strYear;
-            }
-            set {
-                strYear = value;
-            }
-        }
+		public string YearCreated {
+			get {
+				return sngYear;
+			}
+			set {
+				sngYear = value;
+			}
+		}
 		
-        private string strDiscNum = "";
+		private string numDisc = "";
 
-        public string ThisDiscNumber {
-            get {
-                return strDiscNum;
-            }
-            set {
-                strDiscNum = value;
-            }
-        }
+		public string ThisDiscNumber {
+			get {
+				return numDisc;
+			}
+			set {
+				numDisc = value;
+			}
+		}
 		
-        private string strDiscCnt = "";
+		private string cntTotalDisc = "";
 
-        public string TotalDiscCount {
-            get {
-                return strDiscCnt;
-            }
-            set {
-                strDiscCnt = value;
-            }
-        }
+		public string TotalDiscCount {
+			get {
+				return cntTotalDisc;
+			}
+			set {
+				cntTotalDisc = value;
+			}
+		}
 		
-        private string strTrackNum = "";
+		private string numTrack = "";
 
-        public string ThisTrackNumber {
-            get {
-                return strTrackNum;
-            }
-            set {
-                strTrackNum = value;
-            }
-        }
+		public string ThisTrackNumber {
+			get {
+				return numTrack;
+			}
+			set {
+				numTrack = value;
+			}
+		}
 				
-        private string strTrackCnt = "";
+		private string cntTotalTracks = "";
 
-        public string TotalTrackCount {
-            get {
-                return strTrackCnt;
-            }
-            set {
-                strTrackCnt = value;
-            }
-        }
+		public string TotalTrackCount {
+			get {
+				return cntTotalTracks;
+			}
+			set {
+				cntTotalTracks = value;
+			}
+		}
 		
-        private string strAlbArt = "";
+		private string albumArt = "";
 
-        public string AlbumArt {
-            get {
-                return strAlbArt;
-            }
-            set {
-                strAlbArt = value;
-            }
-        }
+		public string AlbumArt {
+			get {
+				return albumArt;
+			}
+			set {
+				albumArt = value;
+			}
+		}
 		
-        private string strSngPath = "";
+		private string sngPath = "";
 
-        public string SongPath {
-            get {
-                return strSngPath;
-            }
-            set {
-                strSngPath = value;
-            }
-        }
+		public string SongPath {
+			get {
+				return sngPath;
+			}
+			set {
+				sngPath = value;
+			}
+		}
         
        
 		
 #endregion Properties
 		
-        /*
+		/*
 		
 		/// <summary>
 		/// Method -- public bool GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -272,7 +272,7 @@ namespace MusicManager
 	    */    
 	
 		
-    } //End class clsSongTagRecord
+	} //End class clsSongTagRecord
 	
 	
 	

@@ -173,9 +173,10 @@ namespace MusicManager
 				tagRecState.TagEditUpdateState = true;
 				tagRecState.EditingTagRecordState = false;            
 				SetTagRecordTextBoxesState (false);
+				tagRecState.TagEditUpdateState = false; 
 				SetTagEditButtonState ();
 				SetMoveButtonsState ();
-				tagRecState.TagEditUpdateState = false; 
+				
 			}			
 			
 		}  //End Event
@@ -515,12 +516,13 @@ namespace MusicManager
 
 		protected void LoadAllSongTagsButton (object sender, System.EventArgs e)
 		{
-			LoadSongTags ();			
-			tagRecState.LoadedTagsState = true;	
+			tagRecState.LoadedTagsState = true; 
 			if (SongPathsCollection.ItemsCount () > 0) {
 				btnErrorTags.Sensitive = true;
 				btnValidTags.Sensitive = true;
 			}
+			LoadSongTags ();			
+			
 		} //End Event
         
       
@@ -582,6 +584,37 @@ namespace MusicManager
 			sngTagRecord.TotalDiscCount = txtDiscCount.Text;
             
 			retVal = mp3Write.SaveSongTagData (sngTagRecord);
+			if (!retVal) {
+				return retVal;
+			}
+            
+			//Updating invalid tag data.
+			//Remove tag from collection that user has changed data in.
+			//insert new tag with changed data into this record.
+			//This is done after user has updated tag changes to the
+			//Song tag. this gets the corrected tag into the collection.
+			if (!validTags) {
+				retVal = InvalidSongTagCollection.RemoveItemAt (
+                                                tagRecState.CurrentTagIndex);  
+				if (retVal) { 
+					retVal = InvalidSongTagCollection.InsertItemAt (
+                                    tagRecState.CurrentTagIndex, sngTagRecord);
+				} else { //Encountered error.
+					return retVal;
+				}
+			} else { //vaildTags = true. Editing ValidTags data
+				retVal = ValidSongTagCollection.RemoveItemAt (
+                                                tagRecState.CurrentTagIndex);
+                
+				if (retVal) {
+					retVal = ValidSongTagCollection.InsertItemAt (
+                        tagRecState.CurrentTagIndex, sngTagRecord);
+				} else { //Encountered error
+					return retVal;
+				}
+			}           
+            
+			//if false was errors return false else return true.
 			if (!retVal) {
 				return retVal;
 			}
@@ -1150,7 +1183,7 @@ namespace MusicManager
 				btnLast.Sensitive = false;
 			} else if (tagRecState.CancelTagEditState) {
 				//True or false based on count of items loaded
-                   
+				SetMoveButtonStateByRecordCount ();   
 			} else if (tagRecState.LoadedTagsState) {
 				SetMoveButtonStateByRecordCount ();
 			}    

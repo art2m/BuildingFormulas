@@ -59,6 +59,13 @@
     <Reference Include="taglib-sharp">
       <HintPath>bin\Debug\taglib-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>bin\Debug\System.Data.SQLite.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -98,6 +105,7 @@
     <Compile Include="Classes\Class-BasicMusicStructure\ValidateUserMusicDirectory.cs" />
     <Compile Include="Sources\MusicPathWindow.cs" />
     <Compile Include="gtk-gui\MusicManager.MusicPathWindow.cs" />
+    <Compile Include="Classes\Class-Database\Artist-Db-Table.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -111,5 +119,6 @@
     <Folder Include="Classes\Class-Collection\" />
     <Folder Include="Classes\Class-Paths\" />
     <Folder Include="Classes\Class-Write-To-File\" />
+    <Folder Include="Classes\Class-Database\" />
   </ItemGroup>
 </Project>

@@ -94,6 +94,40 @@ namespace MusicManager
 			}
 		} //End Method 
 	
+        
+        
+		public static bool InsertItemAt (int index, SongTagRecord sngTagRecord)
+		{
+			bool retVal = false;
+            
+			try {
+				if (sngTagRecord == null) {
+					throw new ArgumentNullException ("sngTagRecord record " +
+                                                " has not been initialized.");
+				} else if (lstTag == null) {
+					throw new NullReferenceException ("sngTagRecords " +
+                                        " collection has not been initalized.");  
+				}
+				lstTag.Insert (index, sngTagRecord);
+                
+				//All ok
+				retVal = true;
+				return retVal;
+			} catch (ArgumentNullException ex) {
+				errMsg = "Encountered error while adding item to collection.";
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;
+			} catch (NullReferenceException ex) {
+				errMsg = "Encountered error while adding item to collection.";
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;     
+			}
+            
+		} //End Method
 		
 		/// <summary>
 		/// Method -- public static void clearArray

@@ -61,14 +61,13 @@ namespace MusicManager
              
 				tgLib = TagLib.File.Create (sngTagRecord.SongPath);
 				tgLib.Tag.Clear ();
-             
-				tgLib.Tag.AlbumArtists [0] = sngTagRecord.ArtistName;
-				tgLib.Tag.Album = sngTagRecord.AlbumName;
+                
+				
+				
+				tgLib.Tag.AlbumArtists = new string[] {sngTagRecord.ArtistName};
 				tgLib.Tag.Album = sngTagRecord.AlbumName;
 				tgLib.Tag.Title = sngTagRecord.SongTitle;
-				tgLib.Tag.Genres [0] = sngTagRecord.GenreType;
-				tgLib.Tag.Track = Convert.ToUInt32 (
-                                                sngTagRecord.ThisTrackNumber);
+				tgLib.Tag.Genres = new string[] {sngTagRecord.GenreType};
 				tgLib.Tag.Track = Convert.ToUInt32 (
                                                 sngTagRecord.ThisTrackNumber);
 				tgLib.Tag.TrackCount = Convert.ToUInt32 (
