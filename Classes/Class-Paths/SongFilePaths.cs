@@ -29,7 +29,7 @@ namespace MusicManager
 		
 		private string methodName = "";
 		private string errMsg = "";
-		private string className = "clsSongPaths";
+		private const string className = "clsSongPaths";
        
 		public SongFilePaths ()
 		{

@@ -65,14 +65,7 @@ namespace MusicManager
 			try {
 				methodName = "private static bool AddNewItem(clsSongTagRecord " +
               "objSongTag";
-				if (objSongTag == null) {
-					throw new ArgumentNullException ("objSongTag record has " +
-                                                       "not been initialized.");
-				} else if (lstTag == null) {
-					throw new NullReferenceException ("lstTag collection " +
-                                                      "has not been " +
-                                                       "initalized.");
-				}
+				
 				lstTag.Add (objSongTag);                
 				//All ok
 				retVal = true;
@@ -101,13 +94,7 @@ namespace MusicManager
 			bool retVal = false;
             
 			try {
-				if (sngTagRecord == null) {
-					throw new ArgumentNullException ("sngTagRecord record " +
-                                                " has not been initialized.");
-				} else if (lstTag == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");  
-				}
+				
 				lstTag.Insert (index, sngTagRecord);
                 
 				//All ok
@@ -137,11 +124,7 @@ namespace MusicManager
 		{
 			try {
 				methodName = "public static void ClearArray()";
-				if (lstTag == null) {
-					throw new NullReferenceException ("lstTag collection " +
-                                                       "has not been " +
-                                                        "initalized.");
-				}
+				
 				lstTag.Clear ();
 			} catch (NullReferenceException ex) {
 				errMsg = "Encountered error while clearing the collection.";
@@ -169,11 +152,7 @@ namespace MusicManager
             
 			try {
 				methodName = "public static int ItemsCount()";
-				if (lstTag == null) {
-					throw new NullReferenceException ("lstTag collection " +
-                                                       "has not been " +
-                                                        "initalized.");
-				}            
+				        
 				intCnt = lstTag.Count;            
 				//All ok            
 				return intCnt;
@@ -194,19 +173,7 @@ namespace MusicManager
             
 			try {
 				methodName = "public static bool RemoveItemAt(int intIndex)";
-				if (intIndex < 1) {
-					throw new IndexOutOfRangeException ("intIndex is less " +
-                                                         "then zero.");
-				} else if (intIndex > (lstTag.Count - 1)) {
-					throw new IndexOutOfRangeException ("intIndex is greater " +
-                                                         "then the number of " +
-                                                         "items in the " +
-                                                         "collection");
-				} else if (lstTag == null) {
-					throw new NullReferenceException ("lstTag collection " +
-                                                      "has not been " +
-                                                       "initalized.");
-				}
+				
 				lstTag.RemoveAt (intIndex);
 				//All ok
 				retVal = true;
@@ -250,20 +217,7 @@ namespace MusicManager
             
 			try {
 				methodName = "Public static clsSongTagRecord GetItemAt(intIndex)";
-				if (intIndex < 0) {
-					throw new IndexOutOfRangeException ("intIndex is less " +
-                                                        "then zero.");  
-				} else if (intIndex > (lstTag.Count - 1)) {
-					throw new IndexOutOfRangeException ("intIndex is greater " +
-                                                        "then the number of " +
-                                                        "items in the " +
-                                                        "collection");  
-				} else if (lstTag == null) {
-					throw new NullReferenceException ("lstTag collection " +
-                                                     "has not been " +
-                                                      "initalized.");
-				}
-             
+				             
 				clsStr = new SongTagRecord ();
 				clsStr = lstTag [intIndex];
              
@@ -299,11 +253,7 @@ namespace MusicManager
             
 			try {
 				methodName = "public static clsSongTagRecord GetAllItems()";
-				if (lstTag == null) {
-					throw new NullReferenceException ("lstTag collection " +
-                                                     "has not been " +
-                                                      "initalized.");
-				}
+							
 				int intCnt = lstTag.Count;
              
 				for (int i  = 0; i < intCnt; i++) {

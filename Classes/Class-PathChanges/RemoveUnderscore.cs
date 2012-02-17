@@ -38,7 +38,7 @@ namespace MusicManager
 		
 		private string methodName = "";
 		private string errMsg = "";
-		private string className = "clsRemoveUnderscore";
+		private const string className = "clsRemoveUnderscore";
 		
 		//Constructor
 		public RemoveUnderscore ()

@@ -39,7 +39,7 @@ namespace MusicManager
        
 		private string methodName = null;
 		private string errMsg = null;
-		private string className = "clsFileBrowser";
+		private const string className = "clsFileBrowser";
 		
 		public DisplayFileBrowser ()
 		{

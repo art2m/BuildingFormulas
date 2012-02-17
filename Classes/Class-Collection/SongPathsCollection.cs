@@ -57,17 +57,11 @@ namespace MusicManager
             
 			try {
 				strMethod = "public static bool AddNewItem(string strPath)";
-				if (String.IsNullOrEmpty (strPath)) {
-					throw new ArgumentNullException ("String strPath can " +
-                     "   not be null empty.");
-				} else if (lstPaths == null) {
-					throw new NullReferenceException ("lstPath collection " +
-                                                     "has not been " +
-                                                      "initalized.");
-				}            
+				   
 				lstPaths.Add (strPath); 
 				//All ok
 				bolRetVal = true;
+                
 				return bolRetVal;
 			} catch (ArgumentNullException ex) {
 				strErrMsg = "Encountered error while adding new song path " +
@@ -103,16 +97,8 @@ namespace MusicManager
 			bool bolRetVal = false;
             
 			try {
-				strMethod = "public static bool ContainsItem(string strPath";
-                
-				if (String.IsNullOrEmpty (strPath)) {
-					throw new ArgumentException ("String lstPaths  can " +
-                     "   not be null empty.");
-				} else if (lstPaths == null) {
-					throw new NullReferenceException ("lstPaths collection " +
-                                                     "has not been " +
-                                                      "initalized.");
-				}
+				strMethod = "public static bool ContainsItem(string strPath";      
+                				
 				bolRetVal = lstPaths.Contains (strPath);
              
 				//All ok
@@ -145,11 +131,7 @@ namespace MusicManager
 		{   
 			try {
 				strMethod = "public static void ClearArray()";
-				if (lstPaths == null) {
-					throw new NullReferenceException ("lstPath collection " +
-                                                      "has not been " +
-                                                       "initalized.");
-				}
+				
 				lstPaths.Clear ();
 			} catch (NullReferenceException ex) {
 				strErrMsg = "Encountered error while clearing the collection.";
@@ -177,11 +159,7 @@ namespace MusicManager
             
 			try {
 				strMethod = "public static int ItemsCount()";
-				if (lstPaths == null) {
-					throw new NullReferenceException ("lstPaths collection " +
-                                                      "has not been " +
-                                                       "initalized.");
-				}
+				
 				intCnt = lstPaths.Count;
 				//All ok
 				return intCnt;
@@ -212,14 +190,7 @@ namespace MusicManager
             
 			try {
 				strMethod = "public static int GetItemIndex(string strPath)";
-				if (String.IsNullOrEmpty (strPath)) {
-					throw new ArgumentException ("String strPath can " +
-                     "   not be null empty.");
-				} else if (lstPaths == null) {
-					throw new NullReferenceException ("lstPaths collection " +
-                                                     "has not been " +
-                                                      "initalized.");
-				}                
+				            
 				intRetVal = lstPaths.IndexOf (strPath);             
 				//All ok              
 				return intRetVal;
@@ -257,14 +228,7 @@ namespace MusicManager
          
 			try {
 				strMethod = "public static bool RemoveItem(string strPath)";
-				if (String.IsNullOrEmpty (strPath)) {
-					throw new ArgumentException ("String strPath can " +
-                     "   not be null empty.");              
-				} else if (lstPaths == null) {
-					throw new NullReferenceException ("lstPaths collection " +
-                                                     "has not been " +
-                                                      "initalized.");
-				}
+				
 				lstPaths.Remove (strPath);
              
 				//All ok
@@ -294,19 +258,7 @@ namespace MusicManager
             
 			try {
 				strMethod = "public static bool RemoveItemAt(int intIndex)";
-				if (intIndex < 0) {
-					throw new IndexOutOfRangeException ("intIndex is less " +
-                                                         "then zero.");
-				} else if (intIndex > (lstPaths.Count - 1)) {
-					throw new IndexOutOfRangeException ("intIndex is greater " +
-                                                         "then the number of " +
-                                                         "items in the " +
-                                                         "collection");
-				} else if (lstPaths == null) {
-					throw new NullReferenceException ("lstPahs collection " +
-                                                      "has not been " +
-                                                       "initalized.");
-				}
+				
 				lstPaths.RemoveAt (intIndex);            
 				//All ok
 				bolRetVal = true;

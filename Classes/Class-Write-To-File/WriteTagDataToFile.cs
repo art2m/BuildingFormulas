@@ -38,7 +38,7 @@ namespace MusicManager
 		
 		private static string methodName = "";
 		private static string errMsg = "";
-		private static readonly string className = "clsWriteInTagData";
+		private static string className = "clsWriteInTagData";
 		
 				
 		

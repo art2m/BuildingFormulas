@@ -57,17 +57,21 @@ namespace MusicManager
 			}
 		} //End Property
         
-		private string strArtistGenre = null;
-
-		public string ArtistGenre {
+		private string primaryKey = null;
+        
+		public string ArtistPrimaryKey {
 			get {
-				return strArtistGenre;
+				return primaryKey;
 			}
 			set {
-				strArtistGenre = value;
+				primaryKey = value;
 			}
-		} //End Property		
+		} //End Property
+
+		
         
 	} //End class clsArtistRecord
+    
+    
 } //End namespace MusicManager
 

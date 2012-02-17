@@ -39,7 +39,7 @@ namespace MusicManager
 		private SongTagRecord sngRec = null;
 		private string methodName = "";
 		private string errMsg = "";
-		private string className = "clsCheckSongTagInfo";
+		private const string className = "clsCheckSongTagInfo";
 		//private int intIndex = 0;
 
 		public ValidateSongTags ()

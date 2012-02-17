@@ -40,7 +40,7 @@ namespace MusicManager
 		
 		private string methodName = "";
 		private string errMsg = "";
-		private string className = "clsInsertUnderscore";
+		private const string className = "clsInsertUnderscore";
 		
 		
 		//Constructor

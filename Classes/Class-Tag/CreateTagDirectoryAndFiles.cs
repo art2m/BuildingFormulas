@@ -28,7 +28,7 @@ namespace MusicManager
 		
 		private  string methodName = "";
 		private  string errMsg = "";
-		private  string className = "";
+		private const string className = "";
 		//private  bool bolInCorrectTag = false;
 		//private  bool bolCorrectTag = false;
 		

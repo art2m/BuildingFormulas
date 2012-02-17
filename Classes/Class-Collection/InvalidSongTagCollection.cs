@@ -66,27 +66,25 @@ namespace MusicManager
 			try {
 				methodName = "public static bool AddNewItem(clsSongTagRecord " +
               "sngTagRecord)";
+                
+				errMsg = "Encountered error while adding item to collection.";                
              
-				if (sngTagRecord == null) {
-					throw new ArgumentNullException ("sngTagRecord record " +
-                                                " has not been initialized.");
-				} else if (sngTagInv == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");
-				}
 				sngTagInv.Add (sngTagRecord);
                  
 				//All ok 
 				retVal = true;
 				return retVal;
-			} catch (ArgumentNullException ex) {
-				errMsg = "Encountered error while adding item to collection.";
+			} catch (ArgumentNullException ex) {				
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                     ex.Message.ToString ());
 				return retVal;
 			} catch (NullReferenceException ex) {
-				errMsg = "Encountered error while adding item to collection.";
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;    
+			} catch (InvalidOperationException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                     ex.Message.ToString ());
@@ -99,33 +97,35 @@ namespace MusicManager
 			bool retVal = false;
             
 			try {
-				if (sngTagRecord == null) {
-					throw new ArgumentNullException ("sngTagRecord record " +
-                                                " has not been initialized.");
-				} else if (sngTagInv == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");  
-				}
+				methodName = "public static bool InsertItemAt(int index," +
+                                                " SongTagRecord sngTagRecord)";
+                
+				errMsg = "Encountered error while adding item to collection.";               
+				
 				sngTagInv.Insert (index, sngTagRecord);
                 
 				//all ok
 				retVal = true;
 				return retVal;
-			} catch (ArgumentNullException ex) {
-				errMsg = "Encountered error while adding item to collection.";
+			} catch (ArgumentNullException ex) {				
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                     ex.Message.ToString ());
 				return retVal;
 			} catch (NullReferenceException ex) {
-				errMsg = "Encountered error while adding item to collection.";
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                     ex.Message.ToString ());
 				return retVal;     
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;    
 			}
             
 		} //End Method
+        
 		
 		/// <summary>
 		/// Method -- public static int ClearArray
@@ -137,14 +137,16 @@ namespace MusicManager
 		public static void ClearArray ()
 		{    
 			try {
-				methodName = "public static void ClearArray";             
-				if (sngTagInv == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");
-				}
-				sngTagInv.Clear ();
-			} catch (NullReferenceException ex) {
+				methodName = "public static void ClearArray";      
 				errMsg = "Encountered error while clearing the collection.";
+               
+				sngTagInv.Clear ();
+                
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+			} catch (NullReferenceException ex) {				
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                         ex.Message.ToString ());
@@ -165,23 +167,27 @@ namespace MusicManager
             
 			try {
 				methodName = "public static int ItemsCount()";
-				if (sngTagInv == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");
-				}
+                
+				errMsg = "Encountered error while getting count of items " +
+                                                "contained in the collection.";
+               
              
 				//All ok
 				recCnt = sngTagInv.Count;
 				return recCnt;
-			} catch (NullReferenceException ex) {
-				errMsg = "Encountered error while getting count of items " +
-                                                "contained in the collection.";
+			} catch (NullReferenceException ex) {				
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                        ex.Message.ToString ());
+				return recCnt;
+			} catch (InvalidOperationException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                         ex.Message.ToString ());
 				return recCnt;
 			}
 		} //End Method 
+        
         
 		/// <summary>
 		/// Method -- public static bool RemoveItemAt
@@ -204,23 +210,14 @@ namespace MusicManager
 			bool retVal = false;
             
 			try {
-				methodName = "public static bool RemoveItemAt(int index)";
-				if (index < 1) {
-					throw new IndexOutOfRangeException ("index is less " +
-                                                        "then zero.");
-				} else if (index > (sngTagInv.Count - 1)) {
-					throw new IndexOutOfRangeException ("index is greater " +
-                                 "then the number of items in the collection");
-				} else if (sngTagInv == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");
-				}
+				methodName = "public static bool RemoveItemAt(int index)";                
+               
 				sngTagInv.RemoveAt (index);
              
 				//All ok
 				retVal = true;
 				return retVal;
-			} catch (IndexOutOfRangeException ex) {
+			} catch (IndexOutOfRangeException ex) {		
 				errMsg = "Encountered error while removing items at this " +
                     "index:  " + index.ToString ();
 				MyMessages myMsg = new MyMessages ();
@@ -234,6 +231,22 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg,
                     ex.Message.ToString ());
 				return retVal;   
+			} catch (ArgumentNullException ex) {
+				errMsg = "Encountered error while removing items at this " +
+                    "index:  " + index.ToString ();
+                
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;       
+			} catch (InvalidOperationException ex) {
+				errMsg = "Encountered error while removing items at this " +
+                    "index:  " + index.ToString ();
+                
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                    ex.Message.ToString ());
+				return retVal;     
 			}
 		} //End Method
 		
@@ -259,21 +272,11 @@ namespace MusicManager
 			
             
 			try {
-				methodName = "Public static clsSongTagRecord GetItemAt(index)";
-				if (index < 0) {
-					throw new IndexOutOfRangeException ("index is less " +
-                                                        "then zero.");  
-				} else if (index > (sngTagInv.Count - 1)) {
-					throw new IndexOutOfRangeException ("index is greater " +
-                                " then the number of items in the collection");  
-				} else if (sngTagInv == null) {
-					throw new NullReferenceException ("sngTagRecords " +
-                                        " collection has not been initalized.");
-				}         
-				
+				methodName = "Public static clsSongTagRecord GetItemAt(index)";                
+						
 			
 				//All Ok
-				Console.WriteLine (sngTagInv [index].SongTitle);
+				//Console.WriteLine (sngTagInv [index].SongTitle);
 				return sngTagInv [index];
 			} catch (IndexOutOfRangeException ex) {
 				errMsg = "Encountered error while gettin item at this " +
@@ -289,7 +292,7 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg,
                     ex.Message.ToString ());
 				return null;  
-			}
+			} 
 		} //End Method	
 		
         
@@ -305,10 +308,12 @@ namespace MusicManager
 		public static void GetAllItems ()
 		{
 		
-		
+			SongTagRecord recSongTag = null;
             
 			try {
 				methodName = "public static clsSongTagRecord GetAllItems()";
+                
+                
 				if (sngTagInv == null) {
 					throw new NullReferenceException ("sngTagRecords " +
                                         " collection has not been initalized.");
@@ -317,8 +322,11 @@ namespace MusicManager
 			
                 
 				for (int i  = 0; i < recCnt; i++) {
-				
-					Console.WriteLine (sngTagInv [i].SongTitle);
+				    
+					recSongTag = new SongTagRecord ();
+                    
+					//recSongTag = sngTagInv [i].SongTitle;                   
+                    
 				}
 				//All ok
 				

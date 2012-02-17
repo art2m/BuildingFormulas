@@ -36,7 +36,7 @@ namespace MusicManager
 		public SongRecord ()
 		{
 		} //End Constructor
-		
+            
 		private  string strArtistName;
 
 		public string ArtistName { 
@@ -57,18 +57,7 @@ namespace MusicManager
 			set {
 				strAlbumName = value;
 			}
-		} //End Property
-        
-		private  string strAlbumPath;
-
-		public string AlbumPath {
-			get {
-				return strAlbumPath;
-			}
-			set {
-				strAlbumPath = value;
-			}
-		} //End Property
+		} //End Property	
         
 		private  string strSongName;
 
@@ -93,6 +82,41 @@ namespace MusicManager
 		} //End Property
 		
 		
+		private string sngTrack = null;
+        
+		public string SongTrackNumber {
+			get {
+				return sngTrack;
+			}
+			set {
+				sngTrack = value;
+			}
+		} //End Property
+        
+		private string sngYear = null;
+        
+		public string YearSongCreated {
+			get {
+				return sngYear;
+			}
+			set {
+				sngYear = value;
+			}
+		} //End Property
+        
+        
+		private string primaryKey = null;
+        
+		public string SongPrimaryKey {
+			get {
+				return primaryKey;
+			}
+			set {
+				primaryKey = value;
+			}
+		} //End Property
+        
+        
 	} //End class clsSongInfo
 	
 } //End namespace MusicManager

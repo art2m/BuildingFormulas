@@ -31,7 +31,7 @@ public partial class MainWindow: Gtk.Window
 	
 	private string methodName = "";
 	private string errMsg = "";
-	private string className = "MainWindow";
+	private const string className = "MainWindow";
 	private Thread sngPath = null;
 	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)

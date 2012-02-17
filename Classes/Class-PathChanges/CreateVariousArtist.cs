@@ -37,7 +37,7 @@ namespace MusicManager
 				 
 		private string methodName = "";
 		private string errMsg = "";
-		private string className = "clsCreateVariousArtist";
+		private const string className = "clsCreateVariousArtist";
 		
 		public CreateVariousArtist ()
 		{

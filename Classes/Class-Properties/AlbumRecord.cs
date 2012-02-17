@@ -35,8 +35,7 @@ namespace MusicManager
 		
 		public AlbumRecord ()
 		{
-		} //End Constructor
-		
+		} //End Constructor		                   
         
 		private string strArtistName = null;
 
@@ -70,18 +69,76 @@ namespace MusicManager
 				strAlbumPath = value;
 			}
 		} //End Property
-  
-		private string strAlbumArtName = null;
-
-		public string AlbumArtName {
+             
+        
+		private string trackCount = null;
+        
+		public string SongTracksTotalCount {
 			get {
-				return strAlbumArtName;
+				return trackCount;
 			}
 			set {
-				strAlbumArtName = value;
+				trackCount = value;
 			}
 		} //End Property
-		
+        
+		private string discCount = null;
+        
+		public string TotalDiscCount {
+			get {
+				return discCount;
+			}
+			set {
+				discCount = value;
+			}
+		} //End Property
+        
+		private string discNumber = null;
+        
+		public string DiscNumber {
+			get {
+				return discNumber;
+			}
+			set {
+				discNumber = value;
+			}
+		} //End Property
+        
+		private string albumYear = null;
+        
+		public string YearOfAlbum {
+			get {
+				return albumYear;
+			}
+			set {
+				albumYear = value;
+			}
+		} //End Property
+        
+        
+		private string albumGenre = null;
+        
+		public string AlbumGenre {
+			get {
+				return albumGenre;
+			}
+			set {
+				albumGenre = value;
+			}
+		} //End Property
+        
+        
+		private string primaryKey = null;
+        
+		public string AblumPrimaryKey {
+			get {
+				return primaryKey;
+			}
+			set {
+				primaryKey = value;
+			}
+		} //End Property
+        
 	} //End class clsAlbumInfo
 	
 } //End namespace MusicManager

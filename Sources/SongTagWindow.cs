@@ -50,7 +50,7 @@ namespace MusicManager
         
 		private string methodName = null;
 		private string errMsg = null;
-		private string className = "SongTagWindow";
+		private const string className = "SongTagWindow";
         
 #endregion Error Strings                            
         

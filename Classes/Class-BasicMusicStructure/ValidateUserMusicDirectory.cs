@@ -29,9 +29,9 @@ namespace MusicManager
 	{
 		
 		private MyMessages clsMsg = new MyMessages ();
-		string methodName = "";
-		string errMsg = "";
-		string className = "clsToplevelMusicDirectory";
+		private string methodName = "";
+		private string errMsg = "";
+		private const string className = "ValidateUserMusicDirectory";
 		//Get the number of folder levels to the
 		//music files. set to one to account for 
 		//the toplevel music directory.
