@@ -308,7 +308,7 @@ namespace MusicManager
 		public static void GetAllItems ()
 		{
 		
-			SongTagRecord recSongTag = null;
+			
             
 			try {
 				methodName = "public static clsSongTagRecord GetAllItems()";
@@ -323,7 +323,7 @@ namespace MusicManager
                 
 				for (int i  = 0; i < recCnt; i++) {
 				    
-					recSongTag = new SongTagRecord ();
+					SongTagRecord recSongTag = new SongTagRecord ();
                     
 					//recSongTag = sngTagInv [i].SongTitle;                   
                     

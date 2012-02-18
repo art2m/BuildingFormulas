@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text;
 using Mono.Data.Sqlite;
 using System.Data;
 
@@ -125,9 +124,8 @@ namespace MusicManager
 		
 		} //End Method
         
-#endregion Open Close database
-		
-		
+#endregion Open Close database		
+          
 				
 #region Update Add New Records
         
@@ -433,6 +431,9 @@ namespace MusicManager
 		
 		
 #endregion Read Tables Artist
+        
+        
+        
         
 	} // End clsDatabase
 	

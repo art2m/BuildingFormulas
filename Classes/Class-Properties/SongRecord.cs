@@ -105,6 +105,19 @@ namespace MusicManager
 		} //End Property
         
         
+      
+		private string tagValid = null;
+        
+		//If Valid tag equals true if tag invalid = false.
+		public string SongTagValid {
+			get {
+				return tagValid;
+			}
+			set {
+				tagValid = value;
+			}
+		} //End Property
+        
 		private string primaryKey = null;
         
 		public string SongPrimaryKey {

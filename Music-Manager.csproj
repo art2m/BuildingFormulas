@@ -112,6 +112,9 @@
     <Compile Include="Classes\Class-Collection\ArtistCollection.cs" />
     <Compile Include="Classes\Class-Collection\AlbumCollection.cs" />
     <Compile Include="Classes\Class-Collection\SongCollection.cs" />
+    <Compile Include="Classes\Class-Database\ArtistDatabaseMovement.cs" />
+    <Compile Include="Classes\Class-Database\AlbumDatabaseMovement.cs" />
+    <Compile Include="Classes\Class-Database\SongDatabaseMovement.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

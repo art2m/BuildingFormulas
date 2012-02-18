@@ -119,8 +119,9 @@ namespace MusicManager
 #region Update Add New Records
         
 		public bool UpdateSongAddNewRecord (string sngTitle, string sngPath,
-                                               string sngTrack, string albumName,
-                                               string artistName, string sngYear)
+                                            string sngTrack, string albumName,
+                                            string artistName, string sngYear,
+                                            string tagValid)
 		{
 			bool retVal = false;            
             
@@ -143,7 +144,11 @@ namespace MusicManager
 			MyMessages myMsg = null;
             
 			try {
-				methodName = "public bool UpdateSongAddNewRecord";
+				methodName = "public bool UpdateSongAddNewRecord(string " +
+                                    " sngTitle, string sngPath," +
+                                    " string sngTrack, string albumName," +
+                                    " string artistName, string sngYear," +
+                                    " string tagValid)";
                    
 				errMsg = "Update of record to database failed.";
                    
@@ -151,9 +156,10 @@ namespace MusicManager
                 
 				//Add new record to Song Table
 				cmd.CommandText = "INSERT INTO song-data (Song-Title" +
-                 " Song-Path, Song-Track, Album-Name, Artist-Name, Song-Year) " +
+                 " Song-Path, Song-Track, Album-Name, Artist-Name, Song-Year" +
+                 " Tag-Valid) " +
                  "VALUES  (sngTitle, sngPath, sngTrack, albumName," +
-                     " artistName, sngYear)";
+                     " artistName, sngYear, tagValid)";
                    
 				//Runs Query
 				cmd.ExecuteNonQuery ();
@@ -197,7 +203,7 @@ namespace MusicManager
 		public bool UpdateSongEditRecord (int intIndex, string sngTitle, 
                                           string sngPath, string sngTrack, 
                                           string albumName, string artistName, 
-                                          string sngYear)
+                                          string sngYear, string tagValid)
 		{
 			bool retVal = false;
             
@@ -220,7 +226,8 @@ namespace MusicManager
 			try {
 				methodName = "public bool UpdateSongEditRecord(int intIndex," +
                   " string sngTitle, string sngPath, string sngTrack," +
-                  " string albumName, string artistName, string sngYear)";
+                  " string albumName, string artistName, string sngYear" +
+                  " string tagValid)";
                  
 				errMsg = "Update of record to database failed.";
                 
@@ -229,7 +236,8 @@ namespace MusicManager
 				cmd.CommandText = "UPDATE song-data SET Song-Title = sngTitle" +
                " SET Song-Path = sngPath, SET Song-Track = sngTrack," +
                " SET Album-Name = albumName, SET Artist-Name = artistName" +
-               " SET Song-Year = sngYear WHERE PKey = intIndex"; 
+               " SET Song-Year = sngYear, SET Tag-Valid = tagValid" +
+                "WHERE PKey = intIndex"; 
                        
 				cmd.ExecuteNonQuery ();
                 
@@ -376,7 +384,9 @@ namespace MusicManager
 				string albumName = null;
 				string artistName = null;
 				string sngYear = null;
+				string tagValid = null;
 				string primaryKey = null;
+                
                 
                 
                 
@@ -389,6 +399,7 @@ namespace MusicManager
 					albumName = reader ["Album-Name"].ToString ();
 					artistName = reader ["Artist-Name"].ToString ();
 					sngYear = reader ["Song-Year"].ToString ();
+					tagValid = reader ["Tag-Valid"].ToString ();
 					primaryKey = reader ["PKey"].ToString ();
                     
 					recSong = new SongRecord ();
@@ -399,6 +410,7 @@ namespace MusicManager
 					recSong.AlbumName = albumName;
 					recSong.ArtistName = artistName;
 					recSong.YearSongCreated = sngYear;
+					recSong.SongTagValid = tagValid;
 					recSong.SongPrimaryKey = primaryKey;
                     
 					SongCollection.AddNewItem (recSong);
