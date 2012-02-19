@@ -36,6 +36,80 @@ namespace MusicManager
 		{
 		} //End Constructor
         
+        
+        #region Store Sql Statement
+        
+		private string sqlStatement;
+
+		public string FillSqlCommand {
+			get {
+				return sqlStatement;
+			}
+         
+			set {
+				sqlStatement = value;
+			}
+		} //End Property
+        
+        
+		public bool ExecuteQuery (string myQuery)
+		{ 
+			bool retVal = false;
+            
+			SqliteCommand sqlCmd = null;
+            
+			try {
+				methodName = "public bool ExecuteQuery(string myQuery)";
+                   
+				errMsg = "Encountered error while executing a query" +
+                                     "  on the MusicManagerSqlite database.";
+                   
+				//If connection not open then open the connection.
+				if (dbCon.State != ConnectionState.Open) {
+                    
+					retVal = this.OpenDatabaseConnection ();                    
+					//unable to open connection.
+					if (retVal != true) {               
+						return retVal;  
+					} else {
+						retVal = false; 
+					}
+				}       
+           
+				sqlCmd = dbCon.CreateCommand (); 
+				sqlCmd.CommandText = myQuery; 
+				sqlCmd.ExecuteNonQuery (); 
+                   
+				//All Ok
+				retVal = true;
+				return retVal;
+			} catch (ArgumentNullException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal; 
+			} catch (NullReferenceException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;                
+			} catch (SqliteException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;  
+			}       
+		} //End Method
+        
+#endregion Store Sql Statement
+        
+        
+        
 #region Open Close database
         
 		//private System.Data.IDbConnection dbCon;
@@ -142,7 +216,7 @@ namespace MusicManager
                   
 			MyMessages myMsg = null;
                
-			SqliteCommand cmd = null;
+			SqliteCommand sqlCmd = null;
                   
 			try {
 				methodName = "public bool UpdateAlbumAddNewRecord(string" +
@@ -152,22 +226,21 @@ namespace MusicManager
                           
 				errMsg = "Update of record to database failed.";
                       
-				cmd = dbCon.CreateCommand ();
+				sqlCmd = dbCon.CreateCommand ();
                    
 				//Add new record to Album Table
-				cmd.CommandText = "INSERT INTO album-data (Album-Name," +
-                     " Track-Count,Disc-Count, Disc-Number, Album-Path, Album-Year," +
-                     " Album-Genre, Artist-Name) " +
-                       "VALUES (albumName, trackCount, discCount, discNumber," +
-                       " albumPath, albumYear, albumGenre, artistName)";
+				sqlCmd.CommandText = "INSERT INTO albumdata (AlbumName," +
+               " TrackCount, DiscCount, DiscNumber, AlbumPath, AlbumYear," +
+                     " AlbumGenre, ArtistName) " +
+                     "VALUES ('albumName', 'trackCount', 'discCount'," +
+                      "'discNumber', 'albumPath', 'albumYear', 'albumGenre'," +
+                       "'artistName')";
 				//Runs Query
-				cmd.ExecuteNonQuery ();
+				sqlCmd.ExecuteNonQuery ();
                    
 				//All ok
 				retVal = true;
-				myMsg = new MyMessages ();
-				myMsg.ShowSuccessMessage ("Album table update completed" +
-                                                             " successfully.");         
+				    
 				return retVal;
                    
 			} catch (InvalidOperationException ex) {
@@ -186,8 +259,8 @@ namespace MusicManager
 				return retVal;
 			} finally {
                       
-				if (cmd != null) {
-					cmd.Dispose ();  
+				if (sqlCmd != null) {
+					sqlCmd.Dispose ();  
 				}               
 				this.CloseConnection ();
 			}       
@@ -200,7 +273,7 @@ namespace MusicManager
         
 #region Update Edit Records
         
-		public bool UpdateAlbumEditRecord (int intIndex, string albumName, 
+		public bool UpdateAlbumEditRecord (int index, string albumName, 
                                             string trackCount, string discCount, 
                                             string discNumber, string albumPath, 
                                             string albumYear, string albumGenre,
@@ -224,26 +297,26 @@ namespace MusicManager
             
 			MyMessages myMsg = null;
                
-			SqliteCommand cmd = null;
+			SqliteCommand sqlCmd = null;
                
 			try {
-				methodName = "public bool UpdateAlbumEditRecord(int intIndex," +
+				methodName = "public bool UpdateAlbumEditRecord(int index," +
                 " string albumName string trackCount, string discCount," +
                 " string discNumber, string albumPath, string albumYear," +
                  " string albumGenre, string artistName)";
                 
 				errMsg = "Update of record to database failed.";
                 
-				cmd = dbCon.CreateCommand ();
+				sqlCmd = dbCon.CreateCommand ();
                 
-				cmd.CommandText = "UPDATE album-data SET Album-Name =" +
-               " albumName, SET Track-Count = trackCount, SET Disc-Count =" +
-               " discCount, SET Disc-Number = discNumber, SET Album-Path =" +
-               " albumPath, SET Album-Year = albumYear, SET Album-Genre =" +
-               " albumGenre, SET Artist-Name = artistName" +
-                " WHERE PKey = intIndex";
+				sqlCmd.CommandText = "UPDATE albumdata SET AlbumName =" +
+               " albumName, SET TrackCount = trackCount, SET DiscCount =" +
+               " discCount, SET DiscNumber = discNumber, SET AlbumPath =" +
+               " albumPath, SET AlbumYear = albumYear, SET AlbumGenre =" +
+               " albumGenre, SET ArtistName = artistName" +
+                " WHERE PKey = index";
                 
-				cmd.ExecuteNonQuery ();
+				sqlCmd.ExecuteNonQuery ();
 				retVal = true;
                    
 				myMsg = new MyMessages ();
@@ -266,8 +339,8 @@ namespace MusicManager
 				return retVal;
 			} finally {
                    
-				if (cmd != null) {
-					cmd.Dispose ();  
+				if (sqlCmd != null) {
+					sqlCmd.Dispose ();  
 				}               
 				this.CloseConnection ();
 			}       
@@ -278,7 +351,7 @@ namespace MusicManager
         
 #region Update Delete Records
         
-		public bool UpdateDeleteRecords (int intIndex)
+		public bool UpdateDeleteRecords (int index)
 		{
 			bool retVal = false;                
             
@@ -297,20 +370,21 @@ namespace MusicManager
             
 			MyMessages myMsg = null;
                
-			SqliteCommand cmd = null;   
+			SqliteCommand sqlCmd = null;   
                
 			try {
 				methodName = "public bool UpdateDeleteReord(int index)";
                 
 				errMsg = "Encountered error while trying to delete this record";
                 
-				cmd = dbCon.CreateCommand ();
+				sqlCmd = dbCon.CreateCommand ();
                    
 				//Delete Record from Album Table
-				cmd.CommandText = "DELETE FROM album-data WHERE PKey = " + 
-                                                                    intIndex;
-				cmd.ExecuteNonQuery ();
-           
+				sqlCmd.CommandText = "DELETE FROM albumdata WHERE PKey = " + 
+                                                                    index;
+				sqlCmd.ExecuteNonQuery ();
+                
+				//All Ok
 				retVal = true;
                 
 				myMsg = new MyMessages ();
@@ -336,11 +410,67 @@ namespace MusicManager
 				return retVal;
 			} finally {
                    
-				if (cmd != null) {
-					cmd.Dispose ();  
+				if (sqlCmd != null) {
+					sqlCmd.Dispose ();  
 				}               
 				this.CloseConnection ();
 			}       
+            
+		} //End Method
+        
+        
+        
+		//Currently not finished does not work
+		public bool DeleteAllRecordsFromTable ()
+		{
+			bool retVal = false;                
+            
+            
+			//If connection not open then open the connection.
+			if (dbCon.State != ConnectionState.Open) {
+                
+				retVal = this.OpenDatabaseConnection ();                    
+				//unable to open connection.
+				if (retVal != true) {               
+					return retVal;  
+				} else {
+					retVal = false; 
+				}
+			} 
+            
+			MyMessages myMsg = null;
+               
+			SqliteCommand sqlCmd = null;   
+           
+			
+			methodName = "public bool UpdateDeleteReord()";
+                
+			errMsg = "Encountered error while trying to delete this record";
+                
+			sqlCmd = dbCon.CreateCommand ();
+              
+			string recordCnt = "SELECT COUNT(*) FROM albumdata";
+			int rowCnt = Convert.ToInt32 (recordCnt);
+            
+			rowCnt = rowCnt - 1;
+			for (int index = 0; index > -1; index--) {
+				//Delete Record from Album Table
+				sqlCmd.CommandText = "DELETE FROM albumdata WHERE PKey > " + 
+                                                                    index;
+				sqlCmd.ExecuteNonQuery ();  
+			}           
+            
+			
+                
+			//All Ok
+			retVal = true;
+                
+			myMsg = new MyMessages ();
+                   
+			myMsg.ShowSuccessMessage ("The record has been deleted" +
+                                                             " successfully");
+                            
+			return retVal;
             
 		} //End Method
         
@@ -374,7 +504,7 @@ namespace MusicManager
 				errMsg = "Encountered error while reading Album database" +
                                                                     " table.";
                 
-				string sql = "SELECT * FROM album-data";
+				string sql = "SELECT * FROM albumdata";
 				dbcmd.CommandText = sql;
 				reader = dbcmd.ExecuteReader ();
 
@@ -388,21 +518,21 @@ namespace MusicManager
 				string artistName = null;
 				string primaryKey = null;
                 
-//			Album-Name," +
-//                     " Track-Count,Disc-Count, Disc-Number, Album-Path, Album-Year," +
-//                     " Album-Genre, Artist-Name
+//			AlbumName," +
+//                     " TrackCount,DiscCount, DiscNumber, AlbumPath, AlbumYear," +
+//                     " AlbumGenre, ArtistName
                 
 				//Read Album Table and add To clsArtistCollectionl.
 				while (reader.Read()) {
                      
-					albumName = reader ["Album-Name"].ToString ();
-					trackCount = reader ["Track-Count"].ToString ();
-					discCount = reader ["Disc-Count"].ToString ();
-					discNumber = reader ["Disc-Number"].ToString ();
-					albumPath = reader ["Album-Path"].ToString ();
-					albumYear = reader ["Album-Year"].ToString ();
-					albumGenre = reader ["Album-Genre"].ToString ();
-					artistName = reader ["Artist-Name"].ToString ();
+					albumName = reader ["AlbumName"].ToString ();
+					trackCount = reader ["TrackCount"].ToString ();
+					discCount = reader ["DiscCount"].ToString ();
+					discNumber = reader ["DiscNumber"].ToString ();
+					albumPath = reader ["AlbumPath"].ToString ();
+					albumYear = reader ["AlbumYear"].ToString ();
+					albumGenre = reader ["AlbumGenre"].ToString ();
+					artistName = reader ["ArtistName"].ToString ();
 					primaryKey = reader ["PKey"].ToString ();
                     
 					recAlbum = new AlbumRecord ();

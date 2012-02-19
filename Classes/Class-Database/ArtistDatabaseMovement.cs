@@ -165,10 +165,10 @@ namespace MusicManager
                 
 					
              
-				da = new OdbcDataAdapter ("select * from artist-data", odbCon);
+				da = new OdbcDataAdapter ("select * from artistdata", odbCon);
 				OdbcCommandBuilder builder = new OdbcCommandBuilder (da);
 				ds = new DataSet ();
-				da.Fill (ds, "artist-data");
+				da.Fill (ds, "artistdata");
                 
 				//All ok
 				retVal = true;
@@ -221,7 +221,7 @@ namespace MusicManager
 					} 
 				} 
                             
-				string recordCnt = "SELECT COUNT(*) FROM artist-data";
+				string recordCnt = "SELECT COUNT(*) FROM artistdata";
 				rowCnt = Convert.ToInt32 (recordCnt);
                              
 				return rowCnt;
@@ -259,17 +259,17 @@ namespace MusicManager
 				errMsg = "Encountered error while moving to first record.";                           
                  
                                         
-				if (ds.Tables ["artist-data"].Rows.Count > 0) {
+				if (ds.Tables ["artistdata"].Rows.Count > 0) {
                            
 					index = 0;
                                 
 					recRow = new string[2];
                                 
-					recRow [0] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [0] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["Artist-Name"].ToString ();
-					recRow [1] = ds.Tables ["artist-data"].Rows [index]
+					recRow [1] = ds.Tables ["artistdata"].Rows [index]
                                                 ["Artist-Path"].ToString ();
-					recRow [2] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [2] = ds.Tables ["artistdata"].Rows [index] 
                                                        ["PKey"].ToString ();
 				}
                 
@@ -313,16 +313,16 @@ namespace MusicManager
              
 				errMsg = "Encountered error while moving to next record.";
              
-				if (index < ds.Tables ["artist-data"].Rows.Count - 1) {
+				if (index < ds.Tables ["artistdata"].Rows.Count - 1) {
 					index++;
                  
 					recRow = new string[2];
                  
-					recRow [0] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [0] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["Artist-Name"].ToString ();
-					recRow [1] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [1] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["Artist-Path"].ToString ();
-					recRow [2] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [2] = ds.Tables ["artistdata"].Rows [index] 
                                                        ["PKey"].ToString ();
                  
 				}            
@@ -366,18 +366,18 @@ namespace MusicManager
                       
 				errMsg = "Encountered error while moving to Previous record.";
                       
-				if (index == ds.Tables ["artist-data"].Rows.Count - 1 || 
+				if (index == ds.Tables ["artistdata"].Rows.Count - 1 || 
                                                                 index != 0) {
                           
 					index--;
                           
 					recRow = new string[2];
                           
-					recRow [0] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [0] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["Artist-Name"].ToString ();
-					recRow [1] = ds.Tables ["artist-data"].Rows 
+					recRow [1] = ds.Tables ["artistdata"].Rows 
                                         [index] ["Artist-Path"].ToString ();
-					recRow [2] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [2] = ds.Tables ["artistdata"].Rows [index] 
                                                         ["PKey"].ToString ();
 				}
                       
@@ -419,17 +419,17 @@ namespace MusicManager
                       
 				errMsg = "Encountered error while moving to last record.";
                       
-				index = ds.Tables ["artist-data"].Rows.Count - 1;
+				index = ds.Tables ["artistdata"].Rows.Count - 1;
                       
 				if (index > 0) {                
                      
 					recRow = new string[2];
                       
-					recRow [0] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [0] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["Artist-Name"].ToString ();
-					recRow [1] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [1] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["Artist-Path"].ToString ();
-					recRow [2] = ds.Tables ["artist-data"].Rows [index] 
+					recRow [2] = ds.Tables ["artistdata"].Rows [index] 
                                                 ["PKey"].ToString ();
 				}
                       

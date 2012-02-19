@@ -21,14 +21,14 @@
 using System;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 using Gtk;
 
 public delegate void ProcessingSongPath (string songPath);
 
 public partial class MainWindow: Gtk.Window
 {		
-	
-	
+	DefaultTraceListener d = new DefaultTraceListener ();
 	private string methodName = "";
 	private string errMsg = "";
 	private const string className = "MainWindow";
@@ -78,7 +78,8 @@ public partial class MainWindow: Gtk.Window
 	protected void SelectPathToMusicFolderMenu (object sender, 
                                                             System.EventArgs e)
 	{
-		
+        
+			
 		methodName = "protected void " +
             " mnuMain_UserInfo_MusicPath_Incorrect_OnClicked (object sender, " +
    "System.EventArgs e)";         

@@ -21,10 +21,11 @@
 using System;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 
 #region MyEvents
 
-public delegate void SngPathBeingProcessed (string strPath);
+public delegate void SngPathBeingProcessed (string sngPath);
 
 
 #endregion MyEvents
@@ -39,6 +40,7 @@ namespace MusicManager
 		SongTagRecord sngRec = null;
 		ValidateSongTags valSngTags = new ValidateSongTags ();
 		TagRecordState tagRecState = new TagRecordState ();
+		DefaultTraceListener d = new DefaultTraceListener ();
         
 #endregion Class Declerations
         
@@ -52,8 +54,9 @@ namespace MusicManager
 		private string errMsg = null;
 		private const string className = "SongTagWindow";
         
-#endregion Error Strings                            
+#endregion Error Strings       
         
+		
 		private Thread sngPath = null;
 		
 		public SongTagWindow () : 
@@ -72,12 +75,40 @@ namespace MusicManager
 		/// 
 		/// Displaies the songs being processed. Delegate event.
 		/// </summary>
-		/// <param name='strpath'>
-		/// Strpath.
+		/// <param name='sngPath'>
+		/// sngPath.
 		/// </param>
-		public void DisplaySongsBeingProcessed (string strpath)
-		{            
-			lblInfo.Text = strpath;
+		public void DisplaySongsBeingProcessed (string sngPath)
+		{     
+            
+			try {
+                
+				methodName = "public void DisplaySongsBeingProcessed(" +
+                                                        " string sngPath)";
+				errMsg = "Encountered error while displaying current" +
+                                                        "  song information.";
+				d.AssertUiEnabled = true;
+				Debug.Listeners.Add (d);
+                   
+				sngPath = sngPath.Trim ();
+                   
+				if (String.IsNullOrEmpty (sngPath)) {
+					Debug.Assert (false);
+				}
+                   
+				lblInfo.Text = sngPath;
+                
+			} catch (ArgumentNullException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());         
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());    
+			}
+            
+            
 		} //End Event            
       
         
@@ -220,30 +251,38 @@ namespace MusicManager
 		{
 			MyMessages myMsg = null;
             
-			methodName = "private void GetTagsWithErrorsFromColleciton()";
-			
-			validTags = false;
-            
-			if (InvalidSongTagCollection.ItemsCount () > 0) {
-				tagRecState.TotalTagRecordCount = 
-                                        InvalidSongTagCollection.ItemsCount ();
-				if (tagRecState.ShowingErrorTagsState != true) {
-					tagRecState.TagWindowInitialize = true;          
-					tagRecState.ShowingErrorTagsState = true;
-					tagRecState.ShowingValidTagsState = false;
-					SetTagEditButtonState ();           
-         
-					btnFirst.Click ();   
+			try {
+				methodName = "private void GetTagsWithErrorsFromColleciton()";
+          
+				validTags = false;
+                   
+				if (InvalidSongTagCollection.ItemsCount () > 0) {
+					tagRecState.TotalTagRecordCount = 
+                                               InvalidSongTagCollection.ItemsCount ();
+					if (tagRecState.ShowingErrorTagsState != true) {
+						tagRecState.TagWindowInitialize = true;          
+						tagRecState.ShowingErrorTagsState = true;
+						tagRecState.ShowingValidTagsState = false;
+						SetTagEditButtonState ();           
+                
+						btnFirst.Click ();   
+					}
+				} else {
+					errMsg = "Currently there are no tags in this collection."; 
+                        
+					myMsg = new MyMessages ();
+					myMsg.ShowInformationMessage (errMsg);
+					myMsg = null;
 				}
-			} else {
-				errMsg = "Currently there are no tags in this collection."; 
-                 
+			} catch (NullReferenceException ex) {
 				myMsg = new MyMessages ();
-				myMsg.ShowInformationMessage (errMsg);
-			} 
-           
-			
-			
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());                
+			} catch (InvalidOperationException ex) {
+				myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());  
+			}
 
 		} //End Method
 
@@ -252,25 +291,36 @@ namespace MusicManager
 		{
 			MyMessages myMsg = null;
          
-			methodName = "private void GetValidSongTagsFromCollection().";		
-			
-			validTags = true;
-            
-			if (ValidSongTagCollection.ItemsCount () > 0) {
-				tagRecState.TotalTagRecordCount = 
-                                        ValidSongTagCollection.ItemsCount ();
-				if (tagRecState.ShowingValidTagsState != true) {
-					tagRecState.TagWindowInitialize = true;  
-					tagRecState.ShowingValidTagsState = true;
-					tagRecState.ShowingErrorTagsState = false;
-					SetTagEditButtonState ();            
-         
-					btnFirst.Click (); 
-				}  
-			} else {
-				errMsg = "Currently there are no tags in this collection."; 
+			try {
+				methodName = "private void GetValidSongTagsFromCollection().";      
+          
+				validTags = true;
+                   
+				if (ValidSongTagCollection.ItemsCount () > 0) {
+					tagRecState.TotalTagRecordCount = 
+                                      ValidSongTagCollection.ItemsCount ();
+					if (tagRecState.ShowingValidTagsState != true) {
+						tagRecState.TagWindowInitialize = true;  
+						tagRecState.ShowingValidTagsState = true;
+						tagRecState.ShowingErrorTagsState = false;
+						SetTagEditButtonState ();            
+                
+						btnFirst.Click (); 
+					}  
+				} else {
+					errMsg = "Currently there are no tags in this collection."; 
+					myMsg = new MyMessages ();
+					myMsg.ShowInformationMessage (errMsg); 
+					myMsg = null;
+				}
+			} catch (NullReferenceException ex) {
 				myMsg = new MyMessages ();
-				myMsg.ShowInformationMessage (errMsg);         
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+			} catch (InvalidOperationException ex) {
+				myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());    
 			}
             
 			
@@ -561,68 +611,82 @@ namespace MusicManager
 		{
 			bool retVal = false;
                
-			SongTagRecord sngTagRecord = new SongTagRecord ();
-			Mp3TagWriter mp3Write = new Mp3TagWriter ();   
-            
-            
-			retVal = ValidateDataInTextBoxes ();
-			if (!retVal) {
-				return retVal;
-			}    
-                     
-               
-             
-			sngTagRecord.ArtistName = txtArtist.Text;           
-			sngTagRecord.AlbumName = txtAlbum.Text;
-			sngTagRecord.SongTitle = txtSong.Text;
-			sngTagRecord.SongPath = txtSongPath.Text;
-			sngTagRecord.GenreType = txtGenre.Text;
-			sngTagRecord.YearCreated = txtYear.Text;
-			sngTagRecord.ThisTrackNumber = txtTrackNum.Text;
-			sngTagRecord.TotalTrackCount = txtTrackCount.Text;
-			sngTagRecord.ThisDiscNumber = txtDiscNum.Text;
-			sngTagRecord.TotalDiscCount = txtDiscCount.Text;
-            
-			retVal = mp3Write.SaveSongTagData (sngTagRecord);
-			if (!retVal) {
-				return retVal;
-			}
-            
-			//Updating invalid tag data.
-			//Remove tag from collection that user has changed data in.
-			//insert new tag with changed data into this record.
-			//This is done after user has updated tag changes to the
-			//Song tag. this gets the corrected tag into the collection.
-			if (!validTags) {
-				retVal = InvalidSongTagCollection.RemoveItemAt (
-                                                tagRecState.CurrentTagIndex);  
-				if (retVal) { 
-					retVal = InvalidSongTagCollection.InsertItemAt (
-                                    tagRecState.CurrentTagIndex, sngTagRecord);
-				} else { //Encountered error.
-					return retVal;
-				}
-			} else { //vaildTags = true. Editing ValidTags data
-				retVal = ValidSongTagCollection.RemoveItemAt (
-                                                tagRecState.CurrentTagIndex);
+			try {
                 
-				if (retVal) {
-					retVal = ValidSongTagCollection.InsertItemAt (
-                        tagRecState.CurrentTagIndex, sngTagRecord);
-				} else { //Encountered error
+				methodName = "private bool UpdateTagData";
+                
+				errMsg = "Encountered error while updating tag data.";
+                
+				SongTagRecord sngTagRecord = new SongTagRecord ();
+				Mp3TagWriter mp3Write = new Mp3TagWriter ();   
+                   
+                   
+				retVal = ValidateDataInTextBoxes ();
+				if (!retVal) {
+					return retVal;
+				}                   
+                    
+				sngTagRecord.ArtistName = txtArtist.Text;           
+				sngTagRecord.AlbumName = txtAlbum.Text;
+				sngTagRecord.SongTitle = txtSong.Text;
+				sngTagRecord.SongPath = txtSongPath.Text;
+				sngTagRecord.GenreType = txtGenre.Text;
+				sngTagRecord.YearCreated = txtYear.Text;
+				sngTagRecord.ThisTrackNumber = txtTrackNum.Text;
+				sngTagRecord.TotalTrackCount = txtTrackCount.Text;
+				sngTagRecord.ThisDiscNumber = txtDiscNum.Text;
+				sngTagRecord.TotalDiscCount = txtDiscCount.Text;
+                   
+				retVal = mp3Write.SaveSongTagData (sngTagRecord);
+				if (!retVal) {
 					return retVal;
 				}
-			}           
-            
-			//if false was errors return false else return true.
-			if (!retVal) {
+                   
+				//Updating invalid tag data.
+				//Remove tag from collection that user has changed data in.
+				//insert new tag with changed data into this record.
+				//This is done after user has updated tag changes to the
+				//Song tag. this gets the corrected tag into the collection.
+				if (!validTags) {
+					retVal = InvalidSongTagCollection.RemoveItemAt (
+                                                tagRecState.CurrentTagIndex);  
+					if (retVal) { 
+						retVal = InvalidSongTagCollection.InsertItemAt (
+                                    tagRecState.CurrentTagIndex, sngTagRecord);
+					} else { //Encountered error.
+						return retVal;
+					}
+				} else { //vaildTags = true. Editing ValidTags data
+					retVal = ValidSongTagCollection.RemoveItemAt (
+                                                tagRecState.CurrentTagIndex);
+                       
+					if (retVal) {
+						retVal = ValidSongTagCollection.InsertItemAt (
+                               tagRecState.CurrentTagIndex, sngTagRecord);
+					} else { //Encountered error
+						return retVal;
+					}
+				}           
+                   
+				//if false was errors return false else return true.
+				if (!retVal) {
+					return retVal;
+				}
+                   
+				//All ok
+				retVal = true;
 				return retVal;
-			}
-            
-			//All ok
-			retVal = true;
-			return retVal;
-               
+			} catch (NullReferenceException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal; 
+			}             
 		} //End Method
            
         
@@ -640,22 +704,30 @@ namespace MusicManager
 			bool retVal = false;
 			bool val = false;
               
-			val = CheckAllTextBoxesContainData ();
-			//if errors found return false
-			if (!val) {
+			try {
+				val = CheckAllTextBoxesContainData ();
+				//if errors found return false
+				if (!val) {
+					return retVal;
+				}
+                  
+				val = ValidateNumericValuesInTextBoxes ();
+				//If not all valid numeric values return false.
+				if (!val) {
+					return retVal;
+				}
+                   
+				//All Ok
+				retVal = true;
 				return retVal;
-			}
-           
-			val = ValidateNumericValuesInTextBoxes ();
-			//If not all valid numeric values return false.
-			if (!val) {
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
 				return retVal;
+          
 			}
-            
-			//All Ok
-			retVal = true;
-			return retVal;
-		}
+		} //End Method
            
            
 		/// <summary>
@@ -671,75 +743,88 @@ namespace MusicManager
 			string infoMsg = null;
 			bool retVal = false;
               
-			MyMessages myMsg = new MyMessages ();
+			MyMessages myMsg = null;
                
-			txtArtist.Text = txtArtist.Text.Trim ();
-			txtAlbum.Text = txtAlbum.Text.Trim ();
-			txtSong.Text = txtSong.Text.Trim ();
-			txtSongPath.Text = txtSongPath.Text.Trim ();
-			txtGenre.Text = txtGenre.Text.Trim ();
-			txtYear.Text = txtYear.Text.Trim ();
-			txtTrackNum.Text = txtTrackNum.Text.Trim ();
-			txtTrackCount.Text = txtTrackCount.Text.Trim ();
-			txtDiscNum.Text = txtDiscNum.Text.Trim ();
-			txtDiscCount.Text = txtDiscCount.Text.Trim ();
-         
-               
-			if (String.IsNullOrEmpty (txtArtist.Text)) {
-				infoMsg = "You must enter the name of the Artist. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
+			try {
+				myMsg = new MyMessages ();
+                
+				methodName = "private bool CheckAllTextBoxesContainData()";
+                
+				errMsg = "Encountered error while validating data in" +
+                                                            " text boxes.";
+                
+				txtArtist.Text = txtArtist.Text.Trim ();
+				txtAlbum.Text = txtAlbum.Text.Trim ();
+				txtSong.Text = txtSong.Text.Trim ();
+				txtSongPath.Text = txtSongPath.Text.Trim ();
+				txtGenre.Text = txtGenre.Text.Trim ();
+				txtYear.Text = txtYear.Text.Trim ();
+				txtTrackNum.Text = txtTrackNum.Text.Trim ();
+				txtTrackCount.Text = txtTrackCount.Text.Trim ();
+				txtDiscNum.Text = txtDiscNum.Text.Trim ();
+				txtDiscCount.Text = txtDiscCount.Text.Trim ();
+                
+                      
+				if (String.IsNullOrEmpty (txtArtist.Text)) {
+					infoMsg = "You must enter the name of the Artist." +
+                                      " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtAlbum.Text)) {
+					infoMsg = "You must enter the name of the Album." +
+                                       " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtSong.Text)) {
+					infoMsg = "You must enter the name of the Song." +
+                                      " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtSongPath.Text)) {
+					infoMsg = "You must enter the name of the Artist." +
+                                      " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtGenre.Text)) {
+					infoMsg = "You must enter the Genre type. Then " +
+                              "select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtYear.Text)) {
+					infoMsg = "You must enter a year. then select update" +
+                                                          " button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtTrackNum.Text)) {                    
+					infoMsg = "You must enter the track number. Then " +
+                              "select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtTrackCount.Text)) {
+					infoMsg = "You must enter the total number of tracks." +
+                                      " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtDiscNum.Text)) {
+					infoMsg = "You must enter the disc number 1 or more." +
+                                      " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				} else if (String.IsNullOrEmpty (txtDiscCount.Text)) {
+					infoMsg = "You must enter the total number of discs." +
+                                      " Then select update button again.";                   
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				}
+                      
+				//All ok
+				retVal = true;
 				return retVal;
-			} else if (String.IsNullOrEmpty (txtAlbum.Text)) {
-				infoMsg = "You must enter the name of the Album. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
+			} catch (InvalidOperationException ex) {
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
 				return retVal;
-			} else if (String.IsNullOrEmpty (txtSong.Text)) {
-				infoMsg = "You must enter the name of the Song. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtSongPath.Text)) {
-				infoMsg = "You must enter the name of the Artist. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtGenre.Text)) {
-				infoMsg = "You must enter the Genre type. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtYear.Text)) {
-				infoMsg = "You must enter a year. then select update button" +
-                               " again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtTrackNum.Text)) {                    
-				infoMsg = "You must enter the track number. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtTrackCount.Text)) {
-				infoMsg = "You must enter the total number of tracks. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtDiscNum.Text)) {
-				infoMsg = "You must enter the disc number 1 or more. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			} else if (String.IsNullOrEmpty (txtDiscCount.Text)) {
-				infoMsg = "You must enter the total number of discs. Then " +
-                       "select update button again.";                   
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			}
-               
-			//All ok
-			retVal = true;
-			return retVal;                
+			}                
 		} //End Method
         
        
@@ -757,52 +842,65 @@ namespace MusicManager
 			uint val = 0;
 			string infoMsg = null;
             
-			MyMessages myMsg = new MyMessages ();
+			MyMessages myMsg = null;
             
-			retVal = UInt32.TryParse (txtYear.Text, out val);
-			if (!retVal) {
-				infoMsg = "You must enter a valid year. Then Select update " +
-                    "button agian.";
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;            
-			}	
-				
-			retVal = UInt32.TryParse (txtTrackNum.Text, out val);
-			if (!retVal) {
-				infoMsg = "You must enter a valid track number. Then Select " +
-                 " update button agian.";
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;  
-			}
-				
-            
-			retVal = UInt32.TryParse (txtTrackCount.Text, out val);
-			if (!retVal) {
-				infoMsg = "You must enter a valid total number of tracks. " +
-                 "Then Select update button agian.";
-				myMsg.ShowErrMessage (infoMsg);
+			try {
+				myMsg = new MyMessages ();
+                
+				methodName = "private bool ValidateNumericValuesInTextBoxes()";
+                
+				errMsg = "Encountered error while validating user" +
+                                              "  entered numeric values.";
+				retVal = UInt32.TryParse (txtYear.Text, out val);
+				if (!retVal) {
+					infoMsg = "You must enter a valid year." +
+                                      " Then Select update button agian.";
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;            
+				}   
+             
+				retVal = UInt32.TryParse (txtTrackNum.Text, out val);
+				if (!retVal) {
+					infoMsg = "You must enter a valid track number." +
+                                      " Then Select update button agian.";
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;  
+				}
+             
+                   
+				retVal = UInt32.TryParse (txtTrackCount.Text, out val);
+				if (!retVal) {
+					infoMsg = "You must enter a valid total " +
+                     "  number of tracks. Then Select update button agian.";
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				}
+          
+				retVal = UInt32.TryParse (txtDiscNum.Text, out val);
+				if (!retVal) {
+					infoMsg = "You must enter a valid Disc number such as: 1" +
+                        "Then Select update button agian.";
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				}
+                   
+				retVal = UInt32.TryParse (txtDiscCount.Text, out val);
+				if (!retVal) {
+					infoMsg = "You must enter a valid total number of Disc. " +
+                        "Then Select update button agian.";
+					myMsg.ShowErrMessage (infoMsg);
+					return retVal;
+				}
+                   
+				//All ok
+				retVal = true;
 				return retVal;
-			}
-			
-			retVal = UInt32.TryParse (txtDiscNum.Text, out val);
-			if (!retVal) {
-				infoMsg = "You must enter a valid Disc number such as: 1" +
-                 "Then Select update button agian.";
-				myMsg.ShowErrMessage (infoMsg);
+			} catch (InvalidOperationException ex) {
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
 				return retVal;
-			}
+			}   
             
-			retVal = UInt32.TryParse (txtDiscCount.Text, out val);
-			if (!retVal) {
-				infoMsg = "You must enter a valid total number of Disc. " +
-                 "Then Select update button agian.";
-				myMsg.ShowErrMessage (infoMsg);
-				return retVal;
-			}
-            
-			//All ok
-			retVal = true;
-			return retVal;            
 		} //End Method 
         
 #endregion  Update Tag
@@ -881,89 +979,103 @@ namespace MusicManager
 		private void DisplayInValidRecord ()
 		{	
 				
-			sngRec = new SongTagRecord ();
-				
-			sngRec = InvalidSongTagCollection.GetItemAt (
-                                                tagRecState.CurrentTagIndex);			
-			
-            
-			if (String.IsNullOrEmpty (sngRec.SongTitle)) {
-				txtSong.Text = "No Tag data found.";
-			} else {
-				txtSong.Text = sngRec.SongTitle;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.ArtistName)) {
-				txtArtist.Text = "No Tag data found.";
-			} else {
-				txtArtist.Text = sngRec.ArtistName;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.AlbumName)) {
-				txtAlbum.Text = "No Tag data found.";
-			} else {
-				txtAlbum.Text = sngRec.AlbumName;	
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.GenreType)) {
-				txtGenre.Text = "No Tag data found.";
-			} else {
-				txtGenre.Text = sngRec.GenreType;	
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.ThisTrackNumber)) {
-				txtTrackNum.Text = "No Tag data found.";
-			} else {
-				txtTrackNum.Text = sngRec.ThisTrackNumber;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.TotalTrackCount)) {
-				txtTrackCount.Text = "No Tag data found.";
-			} else {
-				txtTrackCount.Text = sngRec.TotalTrackCount;	
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.AlbumArt)) {
-				txtAlbumArt.Text = "No Tag data found";
-			} else {
-				txtAlbumArt.Text = sngRec.AlbumArt;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.YearCreated)) {
-				txtYear.Text = "No Tag data found.";
-			} else {
-				txtYear.Text = sngRec.YearCreated;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.ThisDiscNumber)) {
-				txtDiscNum.Text = "No Tag data found.";
-			} else {
-				txtDiscNum.Text = sngRec.ThisDiscNumber;
-			}
-					
-			if (String.IsNullOrEmpty (sngRec.TotalDiscCount)) {
-				txtDiscCount.Text = "No Tag data found.";
-			} else {
-				txtDiscCount.Text = sngRec.TotalDiscCount;		
-			}
-			if (String.IsNullOrEmpty (sngRec.SongPath)) {
-				txtSongPath.Text = "No Song path found.";
-			} else {
-				txtSongPath.Text = sngRec.SongPath;
-			}
-            
-			if (!String.IsNullOrEmpty (sngRec.SongPath)) {
-				string parentDir = Directory.GetParent (
-                                                    sngRec.SongPath).FullName;
-				txtAlbumPath.Text = parentDir;
+			try {
+				methodName = "private void DisplayInvalidRecord()";
                 
-				parentDir = Directory.GetParent (parentDir).FullName;
-                
-				txtArtistPath.Text = parentDir;
-			} else {
-				txtAlbumPath.Text = "Song Path InValid.";
-                
-				txtArtistPath.Text = "Song Path Invalid.";
+				errMsg = "Encountered error while displaying" +
+                                                    " Invalid tag record.";
+				sngRec = new SongTagRecord ();
+             
+				sngRec = InvalidSongTagCollection.GetItemAt (
+                                            tagRecState.CurrentTagIndex);         
+          
+                   
+				if (String.IsNullOrEmpty (sngRec.SongTitle)) {
+					txtSong.Text = "No Tag data found.";
+				} else {
+					txtSong.Text = sngRec.SongTitle;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.ArtistName)) {
+					txtArtist.Text = "No Tag data found.";
+				} else {
+					txtArtist.Text = sngRec.ArtistName;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.AlbumName)) {
+					txtAlbum.Text = "No Tag data found.";
+				} else {
+					txtAlbum.Text = sngRec.AlbumName;   
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.GenreType)) {
+					txtGenre.Text = "No Tag data found.";
+				} else {
+					txtGenre.Text = sngRec.GenreType;   
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.ThisTrackNumber)) {
+					txtTrackNum.Text = "No Tag data found.";
+				} else {
+					txtTrackNum.Text = sngRec.ThisTrackNumber;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.TotalTrackCount)) {
+					txtTrackCount.Text = "No Tag data found.";
+				} else {
+					txtTrackCount.Text = sngRec.TotalTrackCount;    
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.AlbumArt)) {
+					txtAlbumArt.Text = "No Tag data found";
+				} else {
+					txtAlbumArt.Text = sngRec.AlbumArt;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.YearCreated)) {
+					txtYear.Text = "No Tag data found.";
+				} else {
+					txtYear.Text = sngRec.YearCreated;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.ThisDiscNumber)) {
+					txtDiscNum.Text = "No Tag data found.";
+				} else {
+					txtDiscNum.Text = sngRec.ThisDiscNumber;
+				}
+                 
+				if (String.IsNullOrEmpty (sngRec.TotalDiscCount)) {
+					txtDiscCount.Text = "No Tag data found.";
+				} else {
+					txtDiscCount.Text = sngRec.TotalDiscCount;      
+				}
+				if (String.IsNullOrEmpty (sngRec.SongPath)) {
+					txtSongPath.Text = "No Song path found.";
+				} else {
+					txtSongPath.Text = sngRec.SongPath;
+				}
+                   
+				if (!String.IsNullOrEmpty (sngRec.SongPath)) {
+					string parentDir = Directory.GetParent (
+                                                sngRec.SongPath).FullName;
+					txtAlbumPath.Text = parentDir;
+                       
+					parentDir = Directory.GetParent (parentDir).FullName;
+                       
+					txtArtistPath.Text = parentDir;
+				} else {
+					txtAlbumPath.Text = "Song Path InValid.";
+                       
+					txtArtistPath.Text = "Song Path Invalid.";
+				}
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                        ex.Message.ToString ());
+			} catch (NullReferenceException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                        ex.Message.ToString ()); 
 			}
             
 		} //End Method 
@@ -977,91 +1089,106 @@ namespace MusicManager
 		{
 		
 				
-			sngRec = new SongTagRecord ();
-				
-			sngRec = ValidSongTagCollection.GetItemAt (
-                                                tagRecState.CurrentTagIndex);
-				
-			
-            
-			if (string.IsNullOrEmpty (sngRec.SongTitle)) {
-				txtSong.Text = "No Tag data found";
-			} else {
-				txtSong.Text = sngRec.SongTitle;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.ArtistName)) {
-				txtArtist.Text = "No Tag data found.";
-			} else {
-				txtArtist.Text = sngRec.ArtistName;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.AlbumName)) {
-				txtAlbum.Text = "No Tag data found.";
-			} else {
-				txtAlbum.Text = sngRec.AlbumName;	
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.GenreType)) {
-				txtGenre.Text = "No Tag data found.";
-			} else {
-				txtGenre.Text = sngRec.GenreType;	
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.ThisTrackNumber)) {
-				txtTrackNum.Text = "No Tag data found.";
-			} else {
-				txtTrackNum.Text = sngRec.ThisTrackNumber;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.TotalTrackCount)) {
-				txtTrackCount.Text = "No Tag data found.";
-			} else {
-				txtTrackCount.Text = sngRec.TotalTrackCount;	
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.AlbumArt)) {
-				txtAlbumArt.Text = "No Tag data found";
-			} else {
-				txtAlbumArt.Text = sngRec.AlbumArt;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.YearCreated)) {
-				txtYear.Text = "No Tag data found.";
-			} else {
-				txtYear.Text = sngRec.YearCreated;
-			}
-				
-			if (String.IsNullOrEmpty (sngRec.ThisDiscNumber)) {
-				txtDiscNum.Text = "No Tag data found.";
-			} else {
-				txtDiscNum.Text = sngRec.ThisDiscNumber;
-			}
-					
-			if (String.IsNullOrEmpty (sngRec.TotalDiscCount)) {
-				txtDiscCount.Text = "No Tag data found.";
-			} else {
-				txtDiscCount.Text = sngRec.TotalDiscCount;		
-			} 
-            
-			if (String.IsNullOrEmpty (sngRec.SongPath)) {
-				txtSongPath.Text = "No Song path found.";
-			} else {
-				txtSongPath.Text = sngRec.SongPath;
-			}
-            
-			if (!String.IsNullOrEmpty (sngRec.SongPath)) {
-				string parentDir = Directory.GetParent (
-                                                    sngRec.SongPath).FullName;
-				txtAlbumPath.Text = parentDir;
+			try {
                 
-				parentDir = Directory.GetParent (parentDir).FullName;
+				methodName = "private void DisplayValidRecord()";
                 
-				txtArtistPath.Text = parentDir;
-			} else {
-				txtAlbumPath.Text = "Song Path InValid.";
+				errMsg = "Encountered error while Displaying valid tag record.";
                 
-				txtArtistPath.Text = "Song Path Invalid.";
+				sngRec = new SongTagRecord ();
+             
+				sngRec = ValidSongTagCollection.GetItemAt (
+                                            tagRecState.CurrentTagIndex);
+             
+          
+                   
+				if (string.IsNullOrEmpty (sngRec.SongTitle)) {
+					txtSong.Text = "No Tag data found";
+				} else {
+					txtSong.Text = sngRec.SongTitle;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.ArtistName)) {
+					txtArtist.Text = "No Tag data found.";
+				} else {
+					txtArtist.Text = sngRec.ArtistName;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.AlbumName)) {
+					txtAlbum.Text = "No Tag data found.";
+				} else {
+					txtAlbum.Text = sngRec.AlbumName;   
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.GenreType)) {
+					txtGenre.Text = "No Tag data found.";
+				} else {
+					txtGenre.Text = sngRec.GenreType;   
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.ThisTrackNumber)) {
+					txtTrackNum.Text = "No Tag data found.";
+				} else {
+					txtTrackNum.Text = sngRec.ThisTrackNumber;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.TotalTrackCount)) {
+					txtTrackCount.Text = "No Tag data found.";
+				} else {
+					txtTrackCount.Text = sngRec.TotalTrackCount;    
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.AlbumArt)) {
+					txtAlbumArt.Text = "No Tag data found";
+				} else {
+					txtAlbumArt.Text = sngRec.AlbumArt;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.YearCreated)) {
+					txtYear.Text = "No Tag data found.";
+				} else {
+					txtYear.Text = sngRec.YearCreated;
+				}
+             
+				if (String.IsNullOrEmpty (sngRec.ThisDiscNumber)) {
+					txtDiscNum.Text = "No Tag data found.";
+				} else {
+					txtDiscNum.Text = sngRec.ThisDiscNumber;
+				}
+                 
+				if (String.IsNullOrEmpty (sngRec.TotalDiscCount)) {
+					txtDiscCount.Text = "No Tag data found.";
+				} else {
+					txtDiscCount.Text = sngRec.TotalDiscCount;      
+				} 
+                   
+				if (String.IsNullOrEmpty (sngRec.SongPath)) {
+					txtSongPath.Text = "No Song path found.";
+				} else {
+					txtSongPath.Text = sngRec.SongPath;
+				}
+                   
+				if (!String.IsNullOrEmpty (sngRec.SongPath)) {
+					string parentDir = Directory.GetParent (
+                                                sngRec.SongPath).FullName;
+					txtAlbumPath.Text = parentDir;
+                       
+					parentDir = Directory.GetParent (parentDir).FullName;
+                       
+					txtArtistPath.Text = parentDir;
+				} else {
+					txtAlbumPath.Text = "Song Path InValid.";
+                       
+					txtArtistPath.Text = "Song Path Invalid.";
+				}
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                        ex.Message.ToString ());
+			} catch (NullReferenceException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                        ex.Message.ToString ());  
 			}
             
            
@@ -1090,15 +1217,22 @@ namespace MusicManager
 		{
 			bool retVal = false;
 			
-			if (!File.Exists (sngFilePath)) {
+			try {
+				if (!File.Exists (sngFilePath)) {
+					return retVal;
+				}
+          
+				sngName = System.IO.Path.GetFileName (sngFilePath); 
+          
+				//All ok
+				retVal = true;
 				return retVal;
-			}
-			
-			sngName = System.IO.Path.GetFileName (sngFilePath);	
-			
-			//All ok
-			retVal = true;
-			return retVal;
+			} catch (IOException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;
+			} 
 		} //End Method 
         
         

@@ -162,7 +162,7 @@ namespace MusicManager
 					} 
 				} 
                             
-				string recordCnt = "SELECT COUNT(*) FROM album-data";
+				string recordCnt = "SELECT COUNT(*) FROM albumdata";
 				rowCnt = Convert.ToInt32 (recordCnt);
                              
 				return rowCnt;
@@ -205,10 +205,10 @@ namespace MusicManager
                 
                  
              
-				da = new OdbcDataAdapter ("select * from album-data", odbCon);
+				da = new OdbcDataAdapter ("select * from albumdata", odbCon);
 				OdbcCommandBuilder builder = new OdbcCommandBuilder (da);
 				ds = new DataSet ();
-				da.Fill (ds, "album-data");
+				da.Fill (ds, "albumdata");
                 
 				//All ok
 				retVal = true;
@@ -252,29 +252,29 @@ namespace MusicManager
 				errMsg = "Encountered error while moving to first record.";                           
                  
                                         
-				if (ds.Tables ["album-data"].Rows.Count > 0) {
+				if (ds.Tables ["albumdata"].Rows.Count > 0) {
                            
 					index = 0;
                                 
 					recRow = new string[8];
                                 
-					recRow [0] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Name"].ToString ();
-					recRow [1] = ds.Tables ["album-data"].Rows [index]
-                                                ["Track-Count"].ToString ();
-					recRow [2] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Count"].ToString ();
-					recRow [3] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Number"].ToString ();
-					recRow [4] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Path"].ToString ();
-					recRow [5] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Year"].ToString ();
-					recRow [6] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Genre"].ToString ();
-					recRow [7] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Artist-Name"].ToString ();
-					recRow [8] = ds.Tables ["album-data"].Rows [index] 
+					recRow [0] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumName"].ToString ();
+					recRow [1] = ds.Tables ["albumdata"].Rows [index]
+                                                ["TrackCount"].ToString ();
+					recRow [2] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscCount"].ToString ();
+					recRow [3] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscNumber"].ToString ();
+					recRow [4] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumPath"].ToString ();
+					recRow [5] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumYear"].ToString ();
+					recRow [6] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumGenre"].ToString ();
+					recRow [7] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["ArtistName"].ToString ();
+					recRow [8] = ds.Tables ["albumdata"].Rows [index] 
                                                 ["PKey"].ToString ();
 				}
                 
@@ -318,28 +318,28 @@ namespace MusicManager
              
 				errMsg = "Encountered error while moving to next record.";
              
-				if (index < ds.Tables ["album-data"].Rows.Count - 1) {
+				if (index < ds.Tables ["albumdata"].Rows.Count - 1) {
 					index++;
                  
 					recRow = new string[8];
                  
-					recRow [0] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Name"].ToString ();
-					recRow [1] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Track-Count"].ToString ();
-					recRow [2] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Count"].ToString ();
-					recRow [3] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Number"].ToString ();
-					recRow [4] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Path"].ToString ();
-					recRow [5] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Year"].ToString ();
-					recRow [6] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Genre"].ToString ();
-					recRow [7] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Artist-Name"].ToString ();
-					recRow [8] = ds.Tables ["album-data"].Rows [index] 
+					recRow [0] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumName"].ToString ();
+					recRow [1] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["TrackCount"].ToString ();
+					recRow [2] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscCount"].ToString ();
+					recRow [3] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscNumber"].ToString ();
+					recRow [4] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumPath"].ToString ();
+					recRow [5] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumYear"].ToString ();
+					recRow [6] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumGenre"].ToString ();
+					recRow [7] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["ArtistName"].ToString ();
+					recRow [8] = ds.Tables ["albumdata"].Rows [index] 
                                                 ["PKey"].ToString ();
                  
 				}            
@@ -383,30 +383,30 @@ namespace MusicManager
                       
 				errMsg = "Encountered error while moving to Previous record.";
                       
-				if (index == ds.Tables ["album-data"].Rows.Count - 1 || 
+				if (index == ds.Tables ["albumdata"].Rows.Count - 1 || 
                                                                 index != 0) {
                           
 					index--;
                           
 					recRow = new string[8];
                           
-					recRow [0] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Name"].ToString ();
-					recRow [1] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Track-Count"].ToString ();
-					recRow [2] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Count"].ToString ();
-					recRow [3] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Number"].ToString ();
-					recRow [4] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Path"].ToString ();
-					recRow [5] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Year"].ToString ();
-					recRow [6] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Genre"].ToString ();
-					recRow [7] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Artist-Name"].ToString ();
-					recRow [8] = ds.Tables ["album-data"].Rows [index] 
+					recRow [0] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumName"].ToString ();
+					recRow [1] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["TrackCount"].ToString ();
+					recRow [2] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscCount"].ToString ();
+					recRow [3] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscNumber"].ToString ();
+					recRow [4] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumPath"].ToString ();
+					recRow [5] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumYear"].ToString ();
+					recRow [6] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumGenre"].ToString ();
+					recRow [7] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["ArtistName"].ToString ();
+					recRow [8] = ds.Tables ["albumdata"].Rows [index] 
                                                 ["PKey"].ToString ();
 				}
                       
@@ -448,29 +448,29 @@ namespace MusicManager
                       
 				errMsg = "Encountered error while moving to last record.";
                       
-				index = ds.Tables ["album-data"].Rows.Count - 1;
+				index = ds.Tables ["albumdata"].Rows.Count - 1;
                       
 				if (index > 0) {                
                      
 					recRow = new string[8];
                       
-					recRow [0] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Name"].ToString ();
-					recRow [1] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Track-Count"].ToString ();
-					recRow [2] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Count"].ToString ();
-					recRow [3] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Disc-Number"].ToString ();
-					recRow [4] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Path"].ToString ();
-					recRow [5] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Year"].ToString ();
-					recRow [6] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Album-Genre"].ToString ();
-					recRow [7] = ds.Tables ["album-data"].Rows [index] 
-                                                ["Artist-Name"].ToString ();
-					recRow [8] = ds.Tables ["album-data"].Rows [index] 
+					recRow [0] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumName"].ToString ();
+					recRow [1] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["TrackCount"].ToString ();
+					recRow [2] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscCount"].ToString ();
+					recRow [3] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["DiscNumber"].ToString ();
+					recRow [4] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumPath"].ToString ();
+					recRow [5] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumYear"].ToString ();
+					recRow [6] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["AlbumGenre"].ToString ();
+					recRow [7] = ds.Tables ["albumdata"].Rows [index] 
+                                                ["ArtistName"].ToString ();
+					recRow [8] = ds.Tables ["albumdata"].Rows [index] 
                                                 ["PKey"].ToString ();
 				}
                       

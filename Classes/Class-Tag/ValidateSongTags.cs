@@ -433,8 +433,30 @@ namespace MusicManager
 				sngTagRec.ThisDiscNumber = sngTags [8];
 				sngTagRec.TotalDiscCount = sngTags [9];
 				sngTagRec.SongPath = sngTags [10];
+				sngTagRec.SongTagValid = "true"; //Tag is correct.
 				
 				ValidSongTagCollection.AddNewItem (sngTagRec);
+                
+				//Fill Database MusicManagerSqlite Table artistdata 
+				retVal = FillArtistTable (sngTagRec);
+                
+				if (!retVal) {
+					return retVal;
+				}
+                
+				//Fill Database MusicManagerSqlite Table albumdata
+				retVal = FillAlbumTable (sngTagRec);
+                
+				if (!retVal) {
+					return retVal;
+				}
+                
+				//Fill Database MusicManagerSqlite Table songdata
+				retVal = FillSongTable (sngTagRec);
+                
+				if (!retVal) {
+					return retVal;
+				}
 				
 				//All ok
 				retVal = true;
