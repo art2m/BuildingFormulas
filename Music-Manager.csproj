@@ -115,6 +115,8 @@
     <Compile Include="Classes\Class-Database\ArtistDatabaseMovement.cs" />
     <Compile Include="Classes\Class-Database\AlbumDatabaseMovement.cs" />
     <Compile Include="Classes\Class-Database\SongDatabaseMovement.cs" />
+    <Compile Include="Sources\MessageWindow.cs" />
+    <Compile Include="gtk-gui\MusicManager.MessageWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

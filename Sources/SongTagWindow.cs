@@ -942,9 +942,11 @@ namespace MusicManager
 				
 				//pass ValidateSongTags object. for use with delegate event.
 				valSngTags.GetObjecSongTagWindow = this;
-				sngPath = new Thread (valSngTags.GetPathsFromSongPathList);
-				sngPath.Start ();   
-				Thread.Sleep (10);
+				//sngPath = new Thread (valSngTags.GetPathsFromSongPathList);
+				//sngPath.Start ();   
+				//Thread.Sleep (10);
+				valSngTags.GetPathsFromSongPathList ();
+				
 			} catch (ThreadStartException ex) {
 				errMsg = "Encountered error while starting thread.";
 				MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();

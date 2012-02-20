@@ -4,6 +4,9 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System.Data.Odbc;
 using Gtk;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace MusicManager
 {
@@ -22,8 +25,13 @@ namespace MusicManager
 		
 		private string methodName = null;
 		private string errMsg = null;
+		private string exMsg = null;
 		private const string className = "ArtistDatabaseTable";
-		
+		private MessageDialog md = null;
+		private StringBuilder sbMsg = null;
+		private ResponseType rspRetVal;
+		private Thread setErrMsg = null;
+        
 		public ArtistDatabaseTable ()
 		{
 		}
@@ -192,7 +200,7 @@ namespace MusicManager
 		{
 			
 			bool retVal = false;				
-			
+			string retValMsg = null;
 			
 			
 			//If connection not open then open the connection.
@@ -209,6 +217,7 @@ namespace MusicManager
 			
 			
 			SqliteCommand sqlCmd = null;
+			ResponseType rspRetVal;
             
 			MyMessages myMsg = null;
             
@@ -242,12 +251,72 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg, 
                                         ex.Message.ToString ());
 				return retVal;
-			} catch (SqliteException ex) {
+			} catch (SqliteException ex) {   
+                
+//				if (myMsg == null) {
+//					myMsg = new MyMessages ();
+//				}
+                
+				
+       
+				/*
 				if (myMsg == null) {
 					myMsg = new MyMessages ();
 				}
-				myMsg.BuildErrorString (className, methodName, errMsg, 
-                                        ex.Message.ToString ());
+                
+				
+				myMsg.SetClassName = className;
+				myMsg.SetMethodName = methodName;
+				myMsg.SetErrorMessage = errMsg;
+				string strMsg = ex.ToString ();
+                
+				myMsg.SetExceptionMessage = strMsg;
+				myMsg.BuildNewErrorString ();
+                
+				setErrMsg = new Thread (myMsg.ShowNewErrMessage);
+				setErrMsg.Start ();   
+				
+                
+				
+				//retValMsg = BuildNewErrorString ();
+                
+				//retValMsg = "hello there";
+                
+                */
+				
+				//Thread.CurrentThread.Join ();
+				//string dlgtest = "SongTagWindow";
+                
+				md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
+				ButtonsType.Ok, "Testing");
+                
+				rspRetVal = (ResponseType)md.Run ();
+         
+				md.Destroy ();
+               
+//				MessageDialog md = null;
+//				
+//				md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
+//                                    ButtonsType.Ok, retValMsg);
+//				rspRetVal = (ResponseType)md.Run ();
+//         
+//				md.Destroy ();
+       
+                
+				//msgWin.ShowErrMessage (retValMsg);
+                
+				//msgWin.Show ();
+                
+				
+                
+                
+				//msgWin.BuildErrorString (className, methodName, errMsg,
+				//ex.Message.ToString ());
+                
+                
+				//myMsg.ShowMessage (null, "Error Message", "Testing");
+//				myMsg.BuildErrorString (className, methodName, errMsg, 
+//                                        ex.Message.ToString ());
 				return retVal;
 			} finally {
                 
@@ -491,6 +560,113 @@ namespace MusicManager
 		
 		
 #endregion Read Tables Artist
+        
+        
+        #region Show MessageBox
+        
+		/// <summary>
+		/// Method -- public void ShowErrMessage
+		/// 
+		/// Shows the error message.
+		/// </summary>
+		/// <param name='strMsg'>
+		/// String message.
+		/// </param>
+		public void ShowErrMessage (string strMsg)
+		{
+            
+			MessageDialog md = null;
+         
+			//string dlgtest = "SongTagWindow";
+			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
+                                    ButtonsType.Ok, strMsg);
+			rspRetVal = (ResponseType)md.Run ();
+         
+			md.Destroy ();
+			
+		} //End Method
+  
+		/// <summary>
+		/// Method -- public void ShowSucessMessage
+		/// 
+		/// Shows the success message.
+		/// </summary>
+		/// <param name='strMsg'>
+		/// String message.
+		/// </param>
+		public void ShowSuccessMessage (string strMsg)
+		{
+			MessageDialog md = null;
+         
+			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Other, 
+                                    ButtonsType.Ok, strMsg);
+         
+			md.Run ();
+			md.Destroy ();
+		} //End Method
+  
+		/// <summary>
+		/// Method -- public void ShowInformationMessage
+		/// Shows the information message.
+		/// </summary>
+		/// <param name='strMsg'>
+		/// String message.
+		/// </param>
+		public void ShowInformationMessage (string strMsg)
+		{
+			MessageDialog md = null;            
+         
+			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Info, 
+                                    ButtonsType.Ok, strMsg);
+         
+     
+			md.Run ();
+			md.Destroy ();
+		} //End Method
+  
+		/// <summary>
+		/// Method -- public ResponseType showYesNoMessage
+		/// 
+		/// Shows the yes no message.
+		/// </summary>
+		/// <returns>
+		/// The yes no message.
+		/// </returns>
+		/// <param name='strMsg'>
+		/// String message.
+		/// </param>
+		public ResponseType ShowYesNoMessage (string strMsg)
+		{
+			//MessageDialog md = null;
+			ResponseType rspRetVal;
+         
+			md = new MessageDialog (null, DialogFlags.Modal, 
+                                    MessageType.Question, 
+                                    ButtonsType.YesNo, strMsg);
+			rspRetVal = (ResponseType)md.Run ();
+         
+			md.Destroy ();
+			//All Ok
+			return rspRetVal;
+		} //End Method 
+        
+        
+		public string BuildNewErrorString ()
+		{
+			sbMsg = new StringBuilder ();
+         
+			sbMsg.Append (className);
+			sbMsg.AppendLine ();
+			sbMsg.Append (methodName);
+			sbMsg.AppendLine ();
+			sbMsg.Append (errMsg);
+			sbMsg.AppendLine ();
+			sbMsg.Append (exMsg); 
+            
+			return sbMsg.ToString ();
+            
+		}
+     #endregion
         
         
         

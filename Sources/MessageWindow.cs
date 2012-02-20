@@ -1,11 +1,23 @@
-
-/********************************************************************************************************************************
- * 
- *  Class clsMessages
- *  
- * This class displays Messages to give the user information about the program
- * 
- * *****************************************************************************************************************************/
+//  
+//  MessageWindow.cs
+//  
+//  Author:
+//       art2m <art2m@chartermi.net>
+// 
+//  Copyright (c) 2012 art2m
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Text;
 using System.IO;
@@ -13,17 +25,17 @@ using Gtk;
 
 namespace MusicManager
 {
-	class MyMessages
-	{   	
+	public partial class MessageWindow : Gtk.Window
+	{
+        
 		StringBuilder sbMsg = null;
 		MessageDialog md = null;
-		private ResponseType rspRetVal;
-        
-		public MyMessages ()
+     
+		public MessageWindow () : 
+                base(Gtk.WindowType.Toplevel)
 		{
-			
-		} // End Constructor
-        
+			this.Build ();
+		} //End Constructor
         
 		private string className = null;
 
@@ -58,9 +70,8 @@ namespace MusicManager
 			}
 		} //End Property
         
-		private string dispErrMsg = null;
-	
-		#region Show MessageBox
+        
+        #region Show MessageBox
         
 		/// <summary>
 		/// Method -- public void ShowErrMessage
@@ -74,25 +85,13 @@ namespace MusicManager
 		{
             
 			MessageDialog md = null;
-			
+         
 			//string dlgtest = "SongTagWindow";
-			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
+			md = new MessageDialog (this, DialogFlags.DestroyWithParent, MessageType.Error, 
                                     ButtonsType.Ok, strMsg);
-			rspRetVal = (ResponseType)md.Run ();
-         
-			md.Destroy ();
-		} //End Method
-        
-		public void ShowNewErrMessage ()
-		{
-            
-			MessageDialog md = null;
-         
-			//string dlgtest = "SongTagWindow";
-			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
-                                    ButtonsType.Ok, dispErrMsg);
 			md.Run ();
 			md.Destroy ();
+			this.Destroy ();
 		} //End Method
   
 		/// <summary>
@@ -106,10 +105,10 @@ namespace MusicManager
 		public void ShowSuccessMessage (string strMsg)
 		{
 			MessageDialog md = null;
-			
+         
 			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Other, 
                                     ButtonsType.Ok, strMsg);
-			
+         
 			md.Run ();
 			md.Destroy ();
 		} //End Method
@@ -123,12 +122,12 @@ namespace MusicManager
 		/// </param>
 		public void ShowInformationMessage (string strMsg)
 		{
-			MessageDialog md = null;			
-			
+			MessageDialog md = null;            
+         
 			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Info, 
                                     ButtonsType.Ok, strMsg);
-			
-		
+         
+     
 			md.Run ();
 			md.Destroy ();
 		} //End Method
@@ -148,18 +147,18 @@ namespace MusicManager
 		{
 			//MessageDialog md = null;
 			ResponseType rspRetVal;
-			
+         
 			md = new MessageDialog (null, DialogFlags.Modal, 
                                     MessageType.Question, 
                                     ButtonsType.YesNo, strMsg);
 			rspRetVal = (ResponseType)md.Run ();
-			
+         
 			md.Destroy ();
 			//All Ok
 			return rspRetVal;
 		} //End Method 
-		#endregion
-		
+     #endregion
+     
 		/// <summary>
 		/// Method -- public void BuildErrorString
 		/// 
@@ -178,23 +177,7 @@ namespace MusicManager
 		/// String exception.
 		/// </param>
 		public void BuildErrorString (string className, string methodName,
-								string errMsg, string strException)
-		{
-			sbMsg = new StringBuilder ();
-			
-			sbMsg.Append (className);
-			sbMsg.AppendLine ();
-			sbMsg.Append (methodName);
-			sbMsg.AppendLine ();
-			sbMsg.Append (errMsg);
-			sbMsg.AppendLine ();
-			sbMsg.Append (strException);
-			
-			this.ShowErrMessage (sbMsg.ToString ());
-		
-		} // End METHOD 	
-        
-		public void BuildNewErrorString ()
+                             string errMsg, string strException)
 		{
 			sbMsg = new StringBuilder ();
          
@@ -204,10 +187,27 @@ namespace MusicManager
 			sbMsg.AppendLine ();
 			sbMsg.Append (errMsg);
 			sbMsg.AppendLine ();
-			sbMsg.Append (exMsg); 
-            
-			dispErrMsg = sbMsg.ToString ();
-            
+			sbMsg.Append (strException);
+         
+			this.ShowErrMessage (sbMsg.ToString ());
+     
+		} // End METHOD     
+        
+        
+		public string BuildNewErrorString ()
+		{
+			sbMsg = new StringBuilder ();
+         
+			sbMsg.Append (className);
+			sbMsg.AppendLine ();
+			sbMsg.Append (methodName);
+			sbMsg.AppendLine ();
+			sbMsg.Append (errMsg);
+			sbMsg.AppendLine ();
+			sbMsg.Append (exMsg);
+         
+			return sbMsg.ToString ();
+			//this.ShowErrMessage (sbMsg.ToString ());
 		}
         
 		public void ShowMessage (Window parent, string title, string message)
@@ -226,7 +226,9 @@ namespace MusicManager
 					dialog.Destroy ();
 			}
 		}
+        
+        
+	} //End class MessageWindow : Gtk.Window
+    
+} //End namespace MusicManager
 
-	} // End class clsMessages
-
-} // End namespace MusicManager
