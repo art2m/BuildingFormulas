@@ -10,6 +10,7 @@ using System;
 using System.Text;
 using System.IO;
 using Gtk;
+using System.Threading;
 
 namespace MusicManager
 {
@@ -22,43 +23,7 @@ namespace MusicManager
 		public MyMessages ()
 		{
 			
-		} // End Constructor
-        
-        
-		private string className = null;
-
-		public string SetClassName {
-			set {
-				className = value;
-			}    
-		} //End Property
-        
-        
-		private string methodName = null;
-
-		public string SetMethodName {
-			set {
-				methodName = value;
-			}
-		} //End Property
-        
-		private string errMsg = null;
-
-		public string SetErrorMessage {
-			set {
-				errMsg = value;
-			}
-		} //End Property
-        
-		private string exMsg = null;
-
-		public string SetExceptionMessage {
-			set {
-				exMsg = value;
-			}
-		} //End Property
-        
-		private string dispErrMsg = null;
+		} // End Constructor		
 	
 		#region Show MessageBox
         
@@ -78,22 +43,14 @@ namespace MusicManager
 			//string dlgtest = "SongTagWindow";
 			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
                                     ButtonsType.Ok, strMsg);
+            
+			Thread.Sleep (20);
 			rspRetVal = (ResponseType)md.Run ();
          
 			md.Destroy ();
 		} //End Method
         
-		public void ShowNewErrMessage ()
-		{
-            
-			MessageDialog md = null;
-         
-			//string dlgtest = "SongTagWindow";
-			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
-                                    ButtonsType.Ok, dispErrMsg);
-			md.Run ();
-			md.Destroy ();
-		} //End Method
+		
   
 		/// <summary>
 		/// Method -- public void ShowSucessMessage
@@ -109,8 +66,9 @@ namespace MusicManager
 			
 			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Other, 
                                     ButtonsType.Ok, strMsg);
-			
-			md.Run ();
+			Thread.Sleep (20);
+			rspRetVal = (ResponseType)md.Run ();
+		
 			md.Destroy ();
 		} //End Method
   
@@ -127,9 +85,9 @@ namespace MusicManager
 			
 			md = new MessageDialog (null, DialogFlags.Modal, MessageType.Info, 
                                     ButtonsType.Ok, strMsg);
-			
-		
-			md.Run ();
+			Thread.Sleep (20);
+			rspRetVal = (ResponseType)md.Run ();
+            
 			md.Destroy ();
 		} //End Method
   
@@ -152,6 +110,8 @@ namespace MusicManager
 			md = new MessageDialog (null, DialogFlags.Modal, 
                                     MessageType.Question, 
                                     ButtonsType.YesNo, strMsg);
+			Thread.Sleep (20);
+            
 			rspRetVal = (ResponseType)md.Run ();
 			
 			md.Destroy ();
@@ -194,21 +154,7 @@ namespace MusicManager
 		
 		} // End METHOD 	
         
-		public void BuildNewErrorString ()
-		{
-			sbMsg = new StringBuilder ();
-         
-			sbMsg.Append (className);
-			sbMsg.AppendLine ();
-			sbMsg.Append (methodName);
-			sbMsg.AppendLine ();
-			sbMsg.Append (errMsg);
-			sbMsg.AppendLine ();
-			sbMsg.Append (exMsg); 
-            
-			dispErrMsg = sbMsg.ToString ();
-            
-		}
+	
         
 		public void ShowMessage (Window parent, string title, string message)
 		{

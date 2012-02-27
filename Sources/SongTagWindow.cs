@@ -83,6 +83,8 @@ namespace MusicManager
             
 			try {
                 
+				Thread.Sleep (20);
+                
 				methodName = "public void DisplaySongsBeingProcessed(" +
                                                         " string sngPath)";
 				errMsg = "Encountered error while displaying current" +

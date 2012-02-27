@@ -224,24 +224,22 @@ namespace MusicManager
 			try {
 				methodName = "public bool UpdateArtistAddNewRecord( string" +
                               " artistName, string artistPath)";
+                
 				errMsg = "Update of record to database failed.";
                 
+				
 				            
 				sqlCmd = dbCon.CreateCommand ();                
              
-				 	 
+				//sqlCmd = new SqliteCommand (sqlQuery, dbCon);	 
 				//Add New record To Artist Table.                
-				sqlCmd.CommandText = "insert into artistdata (" +
-				" ArtistName, ArtistPath) " +
-				"values (" + artistName + "," + artistPath + ")";
-                
+				sqlCmd.CommandText = "INSERT INTO artistdata ('ArtistName', 'ArtistPath') VALUES (artistName, artistPath )";
+                                                    
 				
 				//Runs Query
-				sqlCmd.ExecuteNonQuery ();
-				
+				sqlCmd.ExecuteNonQuery ();				
 				//All ok
 				retVal = true;
-						
 				return retVal;
 				
 			} catch (InvalidOperationException ex) {
@@ -252,82 +250,33 @@ namespace MusicManager
                                         ex.Message.ToString ());
 				return retVal;
 			} catch (SqliteException ex) {   
-                
-//				if (myMsg == null) {
-//					myMsg = new MyMessages ();
-//				}
-                
-				
-       
-				/*
 				if (myMsg == null) {
 					myMsg = new MyMessages ();
 				}
-                
-				
-				myMsg.SetClassName = className;
-				myMsg.SetMethodName = methodName;
-				myMsg.SetErrorMessage = errMsg;
-				string strMsg = ex.ToString ();
-                
-				myMsg.SetExceptionMessage = strMsg;
-				myMsg.BuildNewErrorString ();
-                
-				setErrMsg = new Thread (myMsg.ShowNewErrMessage);
-				setErrMsg.Start ();   
-				
-                
-				
-				//retValMsg = BuildNewErrorString ();
-                
-				//retValMsg = "hello there";
-                
-                */
-				
-				//Thread.CurrentThread.Join ();
-				//string dlgtest = "SongTagWindow";
-                
-				md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
-				ButtonsType.Ok, "Testing");
-                
-				rspRetVal = (ResponseType)md.Run ();
-         
-				md.Destroy ();
-               
-//				MessageDialog md = null;
-//				
-//				md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
-//                                    ButtonsType.Ok, retValMsg);
-//				rspRetVal = (ResponseType)md.Run ();
-//         
-//				md.Destroy ();
-       
-                
-				//msgWin.ShowErrMessage (retValMsg);
-                
-				//msgWin.Show ();
-                
-				
-                
-                
-				//msgWin.BuildErrorString (className, methodName, errMsg,
-				//ex.Message.ToString ());
-                
-                
-				//myMsg.ShowMessage (null, "Error Message", "Testing");
-//				myMsg.BuildErrorString (className, methodName, errMsg, 
-//                                        ex.Message.ToString ());
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                        ex.Message.ToString ());
 				return retVal;
 			} finally {
                 
 				if (sqlCmd != null) {
 					sqlCmd.Dispose ();  
-				}				
+				}               
 				this.CloseConnection ();
-			}		
-			
-		} //End Method	
-		
+			}       
+         
+		} //End Method  
+     
+          
+           	
+                
+//				md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, 
+//				ButtonsType.Ok, "Testing");
+//				//
+//				Thread.Sleep (10);
+//				rspRetVal = (ResponseType)md.Run ();
+//         
+//				md.Destroy ();
+         
 		
 #endregion Update Add New Records
 		
