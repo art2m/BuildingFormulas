@@ -84,13 +84,7 @@ namespace MusicManager
 				sngPaths = SongPathsCollection.GetAllItems ();
 				
 				recCnt = sngPaths.Length;
-				if (recCnt < 0) {
-					throw new IndexOutOfRangeException ("Index for collection" +
-                                                        " can not be < 0");
-				} else if (recCnt > (sngPaths.Length)) {
-					throw new IndexOutOfRangeException ("Index for collection" +
-                                                        " to large.");
-				}				
+					
 				//if no records then return false.
 				if (recCnt < 1) {                    
 					string strMsg = "No music files in collection. In Main " +
@@ -228,155 +222,27 @@ namespace MusicManager
 		/// <param name='sngTags'>
 		/// If set to <c>true</c> string tag info.
 		/// </param>
-		public bool CheckTagInfoForMissingData (string[] sngTags)
+		private bool CheckTagInfoForMissingData (string[] sngTags)
 		{
 			
 			bool retVal = false;
-			int missTagData = 1;
-			int errTagData = 1;
-           
 			
 			try {
 				methodName = "private bool CheckTagInfoForMissingData(" +
                  " string[] sngTags)";
-				if (sngTags == null) {
-					throw new ArgumentNullException ("String array has not " +
-                     "been initialized.");
-				}
-            
-                
-				if (sngTags.Length < 1) {
-					errMsg = "There was no tag information found.";
-					MyMessages clsMsg = new MyMessages ();
-					clsMsg.ShowInformationMessage (errMsg);
-					return retVal;
-				}
-				//Check Artist Name return value.
-				missTagData = String.Compare (sngTags [0], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [0], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;
-				
-				//Check Ablum Name return value.
-				missTagData = String.Compare (sngTags [1], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [1], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;
-				
-				//Check Song Title return value.
-				missTagData = String.Compare (sngTags [2], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [2], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;
-				
-				//Check Genre Name return value.
-				missTagData = String.Compare (sngTags [3], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [3], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;
-				
-				//Check Track Number return value.
-				missTagData = String.Compare (sngTags [4], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [4], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-                
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
+			
+				retVal = ValidateTagStringData (sngTags);
+				if (!retVal)
 					return retVal;
                 
-				int trackNum = Convert.ToInt32 (sngTags [4]);
-				if (trackNum < 1) //Track Number less then 1 error.             
-					return retVal;
-               
-				
-				//Check Total Track Count return value.
-				missTagData = String.Compare (sngTags [5], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [5], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
+				retVal = ValidateNumericData (sngTags);
+				if (!retVal)
 					return retVal;
                 
-				int trackCnt = Convert.ToInt32 (sngTags [5]);
-				if (trackCnt < 1)
-					return retVal; //if track count < 0 error.
-				
-				//Check Number of Album Art Found return value.
-				missTagData = String.Compare (sngTags [6], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [6], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;
-				
-				//Check Year return value.
-				missTagData = String.Compare (sngTags [7], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [7], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;	
-             
-				int numYear = Convert.ToInt32 (sngTags [7]);
-				if (numYear < 1900)
-					return retVal;
-				
-				//Check Disc Number return value.                
-				missTagData = String.Compare (sngTags [8], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [8], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)
-					return retVal;
-				int discNum = Convert.ToInt32 (sngTags [8]);                
-				if (discNum < 1) 
-					return retVal; //if Disc Number count is less then 1 error.
-				
-				//Check Total Disc Count return value.
-				missTagData = String.Compare (sngTags [9], "missing", 
-                                            StringComparison.OrdinalIgnoreCase);
-				errTagData = String.Compare (sngTags [9], "error", 
-                                           StringComparison.OrdinalIgnoreCase);
-				if (missTagData == 0)
-					return retVal;
-				if (errTagData == 0)                    
-					return retVal;
-                
-				int discCnt = Convert.ToInt32 (sngTags [9]);                
-				if (discCnt < 1)
-					return retVal; //if Disc Total Cnt < 1 error.
-				
-				//Return true if all data is filled.
-				//Return false if empty string as there
-				//was no data for this item.
+				//Tag data is valid return true;
 				retVal = true;
 				return retVal;
+                
 			} catch (IndexOutOfRangeException ex) {
 				errMsg = "Index out of range.";
 				MyMessages clsMsg = new MyMessages ();
@@ -391,8 +257,206 @@ namespace MusicManager
 				return retVal;   
 			}		
 		} //End Method 
+        
 		
+		/// <summary>
+		/// Method -- private bool ValidateTagStringData(string[] valTags)
+		/// 
+		/// Validates the tag string data. check string for the words
+		/// missing or error if found then tag data not entered 
+		/// correctly so return false else return true tagdata ok.
+		/// </summary>
+		/// <returns>
+		/// The tag string data.
+		/// </returns>
+		/// <param name='valTags'>
+		/// If set to <c>true</c> value tags.
+		/// </param>
+		private bool ValidateTagStringData (string[] valTags)
+		{
+            
+			bool retVal = false;
+			int missTagData = 0;
+            
+			try {
+				methodName = "private bool ValidateTagStringData(" +
+                                                        " string[] valTags)";
+				errMsg = "Encountered error while validating Song tag data.";
+                
+				int valTagLen = valTags.Length;
+				if (valTagLen < 1)
+					return retVal;
+                    
+				for (int i = 0; i < valTagLen; i++) {
+					missTagData = String.Compare (valTags [i], "missing", 
+                                        StringComparison.OrdinalIgnoreCase);
+                       
+					if (missTagData == 0)
+						return retVal;
+                       
+					missTagData = String.Compare (valTags [i], "error",
+                                        StringComparison.OrdinalIgnoreCase);
+                       
+					if (missTagData == 0)
+						return retVal;
+                                                          
+				}
+                   
+				//if all correct then
+				retVal = true;
+				return retVal;
+			} catch (IndexOutOfRangeException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (ArgumentNullException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (ArgumentException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg,
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ()); 
+				return retVal;
+			}
+            
+             
+		} //End Method
+        
+        
+		/// <summary>
+		/// Method -- private bool ValidateNumericData(string[] valTags)
+		/// 
+		/// Validates the numeric data. the string should be a numeric value.
+		/// The value should be greater then 0 as this is disc count track
+		/// count.
+		/// </summary>
+		/// <returns>
+		/// The numeric data.
+		/// </returns>
+		/// <param name='valTags'>
+		/// If set to <c>true</c> value tags.
+		/// </param>
+		private bool ValidateNumericData (string[] valTags)
+		{
+			bool retVal = false;
+			uint val = 0;
+            
+			try {
+				methodName = "private bool ValidateNumericData(" +
+                                                        " string[] valTags)"; 
+				errMsg = "Encountered error while validating song tag data.";
+                
+				int valTagLen = valTags.Length;
+                   
+				for (int i = 4; i < valTagLen; i++) {
+					if (i == 7) {
+						retVal = ValidateYearData (valTags [i]);
+						if (!retVal)
+							return retVal;                    
+					} else {
+						retVal = UInt32.TryParse (valTags [i], out val);
+						if (!retVal) // should be numeric if not.
+							return retVal;  
+                           
+						//value should not be 0 as we should have a disc count,
+						//or a track count.
+						int numVal = Convert.ToInt32 (valTags [i]);
+						if (numVal < 1)
+							return retVal;
+					}
+				} //End for loop
+                   
+				//If here all is valid return true
+				retVal = true;
+				return retVal;
+			} catch (IndexOutOfRangeException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (ArgumentNullException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (ArgumentException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (InvalidCastException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());   
+				return retVal;
+			} 
+            
+		} //End Method
+        
+		/// <summary>
+		/// Method -- private bool ValidateYearData(string valTag)
+		/// 
+		/// Validates the year data. check that the number is a numeric
+		/// value. Return false if not. if true then check to see that the
+		/// numeric value is larger then 1900. if not return false else
+		/// return true valid numeric year.
+		/// </summary>
+		/// <returns>
+		/// The year data.
+		/// </returns>
+		/// <param name='valTag'>
+		/// If set to <c>true</c> value tag.
+		/// </param>
+		private bool ValidateYearData (string valTag)
+		{
+			bool retVal = false;
+			uint val = 0;
+            
+			try {
+				methodName = "private bool ValidateYearData(string valTag)";
+                
+				errMsg = "Encountered error while validating tag data.";
+                
+				retVal = UInt32.TryParse (valTag, out val);
+				if (!retVal)
+					return retVal;
+                   
+				int numYear = Convert.ToInt32 (valTag);
+				if (numYear < 1900)
+					return retVal;
+                   
+				//Tag year is valid return true
+				retVal = true;
+				return retVal;
+			} catch (InvalidCastException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());
+				return retVal;
+			} catch (InvalidOperationException ex) {
+				MyMessages myMsg = new MyMessages ();
+				myMsg.BuildErrorString (className, methodName, errMsg, 
+                                       ex.Message.ToString ());   
+				return retVal;
+			}
+                
+		} //End Method
+        
 		
+        
 		/// <summary>
 		/// METHOD -- private bool FillSongTagListCollection
 		/// 
@@ -507,15 +571,6 @@ namespace MusicManager
                  " string[] sngTags)";
                 
 				sngTagRec = new SongTagRecord ();
-                
-				if (sngTags == null) {
-					throw new ArgumentNullException ("String array has not " +
-                     "been initialized.");
-				} else if (sngTagRec == null) {
-					throw new ArgumentNullException ("clsSongRecord has not" +
-                     "been initialized");
-				}
-                
                
 				sngTagRec.ArtistName = sngTags [0];
 				sngTagRec.AlbumName = sngTags [1];
@@ -596,32 +651,49 @@ namespace MusicManager
 			bool retVal = false;
                   
 			try {
+
 				methodName = "private bool FillArtistTable(SongRecord" +
                                                                  " sngTagRec)";
                 
 				errMsg = "Encounterd error while adding a new record to" +
                                                         " the Artist table";
                 
-				ArtistDatabaseTable dtArtist = new ArtistDatabaseTable ();
-                            
+				//ArtistDatabaseTable dtArtist = new ArtistDatabaseTable ();
+                
+				ArtistTable dtArtist = new ArtistTable ();
+                
+              
+				/*
 				retVal = dtArtist.OpenDatabaseConnection ();
                             
 				if (!retVal) {
 					MyMessages myMsg = new MyMessages ();
 					myMsg.ShowErrMessage ("Error unable to open database" +
-                                                            " connection.");
+				                                        " connection.");
 					myMsg = null;
 					return retVal;
 				}
+    */         
 				DirectoryInfo dirInfo = new DirectoryInfo (sngTagRec.SongPath);
                    
 				DirectoryInfo dirAlbum = dirInfo.Parent;
 				DirectoryInfo dirArtist = dirAlbum.Parent;                
 				
-				string artistPath = dirArtist.ToString ();          
-                            
-				retVal = dtArtist.UpdateArtistAddNewRecord (
-                                            sngTagRec.ArtistName, artistPath);           
+				ArtistRecord recArtist = new ArtistRecord ();
+                
+				recArtist.ArtistPath = dirArtist.ToString (); 
+				recArtist.ArtistName = sngTagRec.ArtistName;
+                
+				if (String.IsNullOrEmpty (recArtist.ArtistPath))
+					return retVal;
+				if (String.IsNullOrEmpty (recArtist.ArtistName))
+					return retVal;
+                
+				dtArtist.LoadDatabase ();
+				retVal = dtArtist.AddNewRecord (recArtist);                
+                
+				//retVal = dtArtist.UpdateArtistAddNewRecord (
+				// sngTagRec.ArtistName, artistPath);           
 				if (!retVal) {
 					return retVal;
 				}          
