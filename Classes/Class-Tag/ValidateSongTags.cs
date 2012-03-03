@@ -501,26 +501,26 @@ namespace MusicManager
 				
 				ValidSongTagCollection.AddNewItem (sngTagRec);
                 
-				//Fill Database MusicManagerSqlite Table artistdata 
-				retVal = FillArtistTable (sngTagRec);
-                
-				if (!retVal) {
-					return retVal;
-				}
-                
-				//Fill Database MusicManagerSqlite Table albumdata
-				retVal = FillAlbumTable (sngTagRec);
-                
-				if (!retVal) {
-					return retVal;
-				}
-                
-				//Fill Database MusicManagerSqlite Table songdata
-				retVal = FillSongTable (sngTagRec);
-                
-				if (!retVal) {
-					return retVal;
-				}
+//				//Fill Database MusicManagerSqlite Table artistdata 
+//				retVal = FillArtistTable (sngTagRec);
+//                
+//				if (!retVal) {
+//					return retVal;
+//				}
+//                
+//				//Fill Database MusicManagerSqlite Table albumdata
+//				retVal = FillAlbumTable (sngTagRec);
+//                
+//				if (!retVal) {
+//					return retVal;
+//				}
+//                
+//				//Fill Database MusicManagerSqlite Table songdata
+//				retVal = FillSongTable (sngTagRec);
+//                
+//				if (!retVal) {
+//					return retVal;
+//				}
 				
 				//All ok
 				retVal = true;
@@ -587,23 +587,26 @@ namespace MusicManager
                 
 				InvalidSongTagCollection.AddNewItem (sngTagRec);
                 
+			
 				retVal = FillArtistTable (sngTagRec);
                 
 				if (!retVal) {
 					return retVal;
 				}
-                
-				retVal = FillAlbumTable (sngTagRec);
-                
-				if (!retVal) {
-					return retVal;
-				}
-                
-				retVal = FillSongTable (sngTagRec);
-                
-				if (!retVal) {
-					return retVal;
-				}
+//                
+//				retVal = FillAlbumTable (sngTagRec);
+//                
+//				if (!retVal) {
+//					return retVal;
+//				}
+//                
+//				retVal = FillSongTable (sngTagRec);
+//                
+//				if (!retVal) {
+//					return retVal;
+//				}
+//                
+               
                 
 				//All ok
 				retVal = true;
@@ -692,8 +695,7 @@ namespace MusicManager
 				dtArtist.LoadDatabase ();
 				retVal = dtArtist.AddNewRecord (recArtist);                
                 
-				//retVal = dtArtist.UpdateArtistAddNewRecord (
-				// sngTagRec.ArtistName, artistPath);           
+				     
 				if (!retVal) {
 					return retVal;
 				}          

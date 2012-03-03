@@ -28,7 +28,7 @@ namespace MusicManager
 #region Database And Program Startup Path
         
 		//MusicManagerSqlite Database connection string.
-		private static string dbCon = "Data Source=MusicManagerSqlite;Version=3;" +
+		private static string dbCon = "Data Source=/home/art2m/Projects/CSharp-Programs/Music-Manager/Music-Manager/bin/Debug/MusicManager.sqlite;Version=3;" +
                                                 "New=False;Compress=True;";
   
 		/// <summary>

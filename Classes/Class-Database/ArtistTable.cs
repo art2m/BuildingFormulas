@@ -21,9 +21,11 @@
 using System;
 
 using System.IO;
-using Mono.Data.Sqlite;
+
+//using Mono.Data.Sqlite;
 using System.Data;
 using System.Data.Odbc;
+using System.Data.SQLite;
 
 namespace MusicManager
 {
@@ -31,21 +33,33 @@ namespace MusicManager
 	{
         
         #region Database Objects
+		private System.Data.SQLite.SQLiteConnection dbCon;
+		//private Mono.Data.Sqlite.SqliteConnection dbCon;
+		private string strCon;
+		private System.Data.SQLite.SQLiteDataAdapter sqlDA = null;
+		//private Mono.Data.Sqlite.SqliteDataAdapter sqlDA = null;
+		//private DataRow sqlDR = null;
+		//private System.Data.DataRow sqlDR = null;
+		private System.Data.DataSet sqlDS = new System.Data.DataSet ();
+		//private DataSet sqlDS = new DataSet ();
+		//private DataTable sqlDT = new DataTable ();
+		//private System.Data.DataTable sqlDT = null;
+		private System.Data.SQLite.SQLiteCommand sqlCMD = null;
+		//private SqliteCommand sqlCMD = null;
         
-		private IDataAdapter da = null;
-		private DataSet ds = null;
-		private int index = 0;
 		
-       
+		
+     
         
 #endregion Database Objects
         
 #region Class Variables
-        
+		private const string sqlQuery = null;
+		private string sqlLoadQuery = "SELECT * FROM Artist";
+		private int index = 0;
 		private string methodName = null;
 		private string errMsg = null;
 		private const string className = "ArtistTable";
-        
 #endregion Class Variables
         
 		public ArtistTable ()
@@ -54,10 +68,8 @@ namespace MusicManager
         
 #region Open Close database
         
-		//private System.Data.IDbConnection dbCon;
-		private Mono.Data.Sqlite.SqliteConnection dbCon;
-		//private bool bolCon;
-		private string strCon;
+		
+		
 
 		public bool OpenDatabaseConnection ()
 		{   
@@ -70,7 +82,7 @@ namespace MusicManager
 				methodName = "public bool OpenDatabaseConnection()";
                  
 				strCon = ConnectionProperties.DataBaseConnection;
-				dbCon = new Mono.Data.Sqlite.SqliteConnection (strCon);
+				dbCon = new System.Data.SQLite.SQLiteConnection (strCon);
 				//dbCon = (System.Data.IDbConnection) 
 				//new SqliteConnection(strCon);
 				dbCon.Open ();
@@ -84,7 +96,7 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                        ex.Message.ToString ());
 				return retVal;
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				errMsg = "Unable to open database.";
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
@@ -112,7 +124,7 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg, 
                                        ex.Message.ToString ());
 				return retVal;
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg, 
                                        ex.Message.ToString ());
@@ -135,6 +147,11 @@ namespace MusicManager
         
 #endregion Open Close database   
         
+		public void SetSqlQuery (string Val)
+		{
+			//sqlQuery = Val;
+		}
+        
         
 		/// <summary>
 		/// Method -- public bool LoadDatabase
@@ -148,6 +165,25 @@ namespace MusicManager
 		{
 			bool retVal = false;
             
+           
+			if (dbCon == null) {
+				OpenDatabaseConnection ();
+			}
+			Console.WriteLine (dbCon.State.ToString ());
+            
+			//If connection not open then open the connection.
+			if (dbCon.State != ConnectionState.Open) {
+                 
+				
+				retVal = this.OpenDatabaseConnection ();                    
+				//unable to open connection.
+				if (retVal != true) {               
+					return retVal;  
+				} else {
+					retVal = false; 
+				}
+			}       
+            
 			try {
                 
 				methodName = "public bool LoadDatabase()";
@@ -155,17 +191,14 @@ namespace MusicManager
                                                             " and dataAdaptr";
          
 				
-				string sql = "SELECT * FROM artistdata";
-//				IDbCommand dbcmd = dbCon.CreateCommand ();
-//				dbcmd.CommandText = sql;
+				string sql = "SELECT * FROM Artist";
+
                 
-				da = new Mono.Data.Sqlite.SqliteDataAdapter (sql, dbCon);
-				
-				ds = new DataSet ();
+				sqlDA = new System.Data.SQLite.SQLiteDataAdapter (sql, dbCon);				
+				sqlDS.Reset ();
+				sqlDA.Fill (sqlDS);
 
-				da.Fill (ds);
-
-				DataTable dt = ds.Tables ["artistdata"];
+				//DataTable dt = sqlDS.Tables ["artist"];
                  
              
 				
@@ -183,7 +216,7 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                        ex.Message.ToString ());
 				return retVal;                
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                        ex.Message.ToString ());
@@ -221,7 +254,7 @@ namespace MusicManager
 					} 
 				} 
                             
-				string recordCnt = "SELECT COUNT(*) FROM artistdata";
+				string recordCnt = "SELECT COUNT(*) FROM Artist";
 				rowCnt = Convert.ToInt32 (recordCnt);
                              
 				return rowCnt;
@@ -230,7 +263,7 @@ namespace MusicManager
 				myMsg.BuildErrorString (className, methodName, errMsg, 
                                              ex.Message.ToString ());
 				return rowCnt;
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg, 
                                              ex.Message.ToString ());
@@ -260,19 +293,74 @@ namespace MusicManager
                 
 				errMsg = "Encountered error while adding new record" +
                                         " to the Artist database tabel.";
+                                           
+				string sql = "SELECT * FROM Artist";
+
                 
-				DataRow artistRow = ds.Tables ["artistdata"].NewRow (); 
-				artistRow ["ArtistName"] = recArtist.ArtistName;
-				artistRow ["ArtistPath"] = recArtist.ArtistPath;
-				ds.Tables ["artistdata"].Rows.Add (artistRow);
+				sqlDA = new System.Data.SQLite.SQLiteDataAdapter (sql, dbCon);              
+
+				sqlDA.Fill (sqlDS);
+                
+				if (sqlDS == null) {
+					Console.WriteLine ("DataSet is null.");
+				}
+               
+				System.Data.DataTable sqlDT = new System.Data.DataTable ("Artist");
+                
+				//sqlDT = sqlDS.Tables ["Artist"];
+                
+				if (sqlDT == null) {
+					Console.WriteLine ("The data table is null.");
+				}
+                
+                
+                
+				System.Data.DataRow sqlDR = sqlDT.NewRow ();
+                
+				if (sqlDR == null) {
+					Console.WriteLine ("DataRow is null.");
+				}
+                
+				//DataRow sqlDR = sqlDT.NewRow ();
+                
+				//sqlDT = DataTable ["Artist"];
+				//sqlDT = new DataTable ("Artist"); 
+				//sqlDR = sqlDT ["Artist"].NewRow ();
+                
+				
+				//sqlDR = sqlDT.Rows.Add ();
+				
+				int intCnt = sqlDT.Columns.Count;
+				Console.WriteLine (intCnt.ToString ());
+                
+				bool bolRetVal = sqlDS.Tables.Contains ("ArtistName");
+				if (bolRetVal) {
+					Console.WriteLine ("Found it.");
+				}
+				string strTemp = sqlDR.GetColumnError ("ArtistName");
+                
+				Console.WriteLine (strTemp);
+                
+                
+				strTemp = sqlDR.GetColumnError ("ArtistPath");
+                
+				Console.WriteLine (strTemp);
+				
+                
+				//Console.WriteLine (sqlDR.RowState.ToString);
+                
+               
+				sqlDR [1] = "Test"; //recArtist.ArtistName;
+				sqlDR [2] = "Hello"; //recArtist.ArtistPath;
+				sqlDS.Tables ["Artist"].Rows.Add (sqlDR);
                    
 				//update database with chnages.
-				da.Update (ds);
+				sqlDA.Update (sqlDS);
                 
 				//All ok 
 				retVal = true;
 				return retVal;
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                        ex.Message.ToString ());     
@@ -312,7 +400,7 @@ namespace MusicManager
 				methodName = "public void EditRecord (" +
                                                 " ArtistRecord recArtist)";
 				errMsg = "Encountered error while editing a record" +
-                                            " in the artistdata table.";
+                                            " in the artist table.";
 				int intPKey = Convert.ToInt32 (recArtist.ArtistPrimaryKey);
 				/*
 				DataTable dt = new DataTable ();
@@ -330,7 +418,7 @@ namespace MusicManager
 				//All Ok
 				retVal = true;
 				return retVal;
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                        ex.Message.ToString ());  
@@ -349,7 +437,7 @@ namespace MusicManager
 		/// Method -- public bool DeleteRecord(int intPKey)
 		/// 
 		/// Deletes the record that matches the Primary key
-		/// from the table artistdata.
+		/// from the table Artist.
 		/// </summary>
 		/// <returns>
 		/// The record.
@@ -365,10 +453,10 @@ namespace MusicManager
 			try {
 				methodName = "public void DeleteRecord(int intPKey)";
 				errMsg = "Encountered error while deleting a record" +
-                                            " from the artistdata table.";
+                                            " from the Artist table.";
 				DataTable dt = new DataTable ();
 				/*
-				da.Fill (dt);
+				sqlDA.Fill (dt);
 				foreach (DataRow row in dt.Rows) {
 					key = Convert.ToInt32 (row ["PKey"]);
 					if (key == intPKey) {
@@ -380,7 +468,7 @@ namespace MusicManager
 				//All ok 
 				retVal = true;
 				return retVal;
-			} catch (SqliteException ex) {
+			} catch (SQLiteException ex) {
 				MyMessages myMsg = new MyMessages ();
 				myMsg.BuildErrorString (className, methodName, errMsg,
                                        ex.Message.ToString ());  

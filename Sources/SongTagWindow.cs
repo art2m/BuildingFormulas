@@ -260,7 +260,7 @@ namespace MusicManager
                    
 				if (InvalidSongTagCollection.ItemsCount () > 0) {
 					tagRecState.TotalTagRecordCount = 
-                                               InvalidSongTagCollection.ItemsCount ();
+                                    InvalidSongTagCollection.ItemsCount ();
 					if (tagRecState.ShowingErrorTagsState != true) {
 						tagRecState.TagWindowInitialize = true;          
 						tagRecState.ShowingErrorTagsState = true;

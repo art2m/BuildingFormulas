@@ -118,6 +118,7 @@
     <Compile Include="Sources\MessageWindow.cs" />
     <Compile Include="gtk-gui\MusicManager.MessageWindow.cs" />
     <Compile Include="Classes\Class-Database\ArtistTable.cs" />
+    <Compile Include="Classes\Class-Database\ArtistDataTable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -132,5 +133,7 @@
     <Folder Include="Classes\Class-Paths\" />
     <Folder Include="Classes\Class-Write-To-File\" />
     <Folder Include="Classes\Class-Database\" />
+    <Folder Include="Classes\Class-Collection\Class-Interface\" />
+    <Folder Include="Classes\Class-Interface\" />
   </ItemGroup>
 </Project>
