@@ -57,6 +57,33 @@ namespace MusicManager
 			}
 		}
 		
+		/// <summary>
+		/// Method -- public bool GetPathsFromSongPathList
+		/// 
+		/// Acts on one song at a time.
+		/// </summary>
+		/// <returns>
+		/// The paths from song path list.
+		/// </returns>
+		/// <param name='sngPath'>
+		/// If set to <c>true</c> sng path.
+		/// </param>
+		/// <param name='isValid'>
+		/// If set to <c>true</c> is valid.
+		/// </param>
+		public bool GetPathsFromSongPathList (string sngPath, ref int isValid)
+		{
+			bool retVal = false;
+            
+			retVal = GetSongTagInfo (sngPath, ref isValid);
+            
+			if (!retVal) {
+				return retVal;
+			}            
+           
+			return retVal;
+		} //End Method
+        
 		
 		/// <summary>
 		/// METHOD -- public bool GetPathsFromSongPathList
@@ -124,7 +151,74 @@ namespace MusicManager
                                          ex.Message.ToString ());
 			}		
 		} //End Method 
-	
+	    
+        
+        
+		/// <summary>
+		/// Method -- private bool GetSongTagInfo
+		/// 
+		/// Gets the song tag info for one song. fills array for validating 
+		/// tag data. fills SongTag with data from the tag. isValid is 1 if
+		/// the tag is valid else 2 if the tag is not valid.
+		/// </summary>
+		/// <returns>
+		/// The song tag info.
+		/// </returns>
+		/// <param name='sngPath'>
+		/// If set to <c>true</c> sng path.
+		/// </param>
+		/// <param name='isValid'>
+		/// If set to <c>true</c> is valid.
+		/// </param>
+		private bool GetSongTagInfo (string sngPath, ref int isValid)
+		{
+			bool retVal = false;
+            
+			string[] sngTags = new string[11];          
+            
+			//Array filled to validate Tag valid or invalid.
+			sngTags [0] = tgRead.GetArtist (sngPath);
+			sngTags [1] = tgRead.GetAlbum (sngPath);
+			sngTags [2] = tgRead.GetTitle (sngPath);
+			sngTags [3] = tgRead.GetGenre (sngPath);
+			sngTags [4] = tgRead.GetTrack (sngPath);
+			sngTags [5] = tgRead.GetTrackCount (sngPath);
+			sngTags [6] = tgRead.AlbumArtExists (sngPath);
+			sngTags [7] = tgRead.GetYear (sngPath);
+			sngTags [8] = tgRead.GetDisc (sngPath);
+			sngTags [9] = tgRead.GetDiscCount (sngPath);
+			sngTags [10] = sngPath;         
+             
+			//fill SongTag with tag data for this song.
+			SongTag.ArtistName = tgRead.GetArtist (sngPath);
+			SongTag.AlbumName = tgRead.GetAlbum (sngPath);
+			SongTag.SongTitle = tgRead.GetTitle (sngPath);
+			SongTag.GenreType = tgRead.GetGenre (sngPath);
+			SongTag.TrackNumber = tgRead.GetTrack (sngPath);
+			SongTag.TrackCount = tgRead.GetTrackCount (sngPath);
+			SongTag.AlbumArtExists = tgRead.AlbumArtExists (sngPath);
+			SongTag.YearOfSongOrCd = tgRead.GetYear (sngPath);
+			SongTag.DiscNumber = tgRead.GetDisc (sngPath);
+			SongTag.DiscCount = tgRead.GetDiscCount (sngPath);
+			SongTag.SongPath = sngPath;     
+             
+			//Check for Missing Data or Error getting data from the 
+			//returned values.
+			retVal = CheckTagInfoForMissingData (sngTags);
+             
+             
+			if (retVal) { //If no missing or error add this to 
+				//SongTagList Collection.
+				isValid = 1; //No tag errors.
+			} else { //if is missing or erorr then add this to 
+				//SongMissingTagList Collection.
+				isValid = 2;
+			}
+            
+			//All ok 
+			retVal = true;
+			return retVal;
+		}
 		
 		/// <summary>
 		/// METHOD -- private bool GetSongTagInfo
@@ -147,10 +241,7 @@ namespace MusicManager
 			
 			try {
 				methodName = "private bool GetSongTagInfo(string sngPath)";
-				if (String.IsNullOrEmpty (sngPath)) {
-					throw new ArgumentNullException ("String sngPath can " +
-                     "   not be null empty.");
-				}
+				
 				string[] sngTags = new string[11];			
 				
 				sngTags [0] = tgRead.GetArtist (sngPath);

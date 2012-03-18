@@ -25,53 +25,55 @@ using System.Diagnostics;
 
 namespace MusicManager
 {
-    public class ArtistDataTable
-    {
-        public ArtistDataTable ()
-        {
-        } //End Constructor
+	public class ArtistDataTable
+	{
+		public ArtistDataTable ()
+		{
+		} //End Constructor
         
-        public bool WriteTagDataToFile (ArtistRecord recArtist)
-        {
-            bool retVal = false;
-            //Take the csv string and write it to the file.
+		public bool WriteTagDataToFile (ArtistRecord recArtist)
+		{
+			bool retVal = false;
+			//Take the csv string and write it to the file.
             
-            string csvValue = CreateArtistRecord (recArtist);
+			//string csvValue = CreateArtistRecord (recArtist);
             
-            return retVal;
+			return retVal;
             
-        } //End Method 
+		} //End Method 
         
-        private string CreateArtistRecord (ArtistRecord recArtist)
-        {
-            string retVal = null;
-            string comma = ",";
+		private string CreateArtistRecord (ArtistRecord recArtist)
+		{
+			string retVal = null;
+			//string comma = ",";
             
             
-            StringBuilder sb = new StringBuilder ();
+			//StringBuilder sb = new StringBuilder ();
             
-            sb.Append = recArtist.ArtistName;
-            sb.Append = comma;
-            sb.Append = recArtist.ArtistPath;
+//            sb.Append = recArtist.ArtistName;
+//            sb.Append = comma;
+//            sb.Append = recArtist.ArtistPath;
             
-            //Read Artist data from ArtistRecord Collection and
-            //create csv string to be placed into file.
-            return retVal;
-        } //End Method
+			//Read Artist data from ArtistRecord Collection and
+			//create csv string to be placed into file.
+			return retVal;
+		} //End Method
         
-        public bool ReadArtistDataFromFile ()
-        {
-            //Read the csv strings from the file.
-        } //End Method
+		public bool ReadArtistDataFromFile ()
+		{
+			return true;
+			//Read the csv strings from the file.
+		} //End Method
         
-        private bool PlaceArtistRecordInCollection (string artistRecord)
-        {
-            //Read data from csv string and fill ArtistRecord collection.
-        }
+		private bool PlaceArtistRecordInCollection (string artistRecord)
+		{
+			//Read data from csv string and fill ArtistRecord collection.
+			return true;
+		}
         
        
         
-    } //End class ArtistDataTable
+	} //End class ArtistDataTable
     
 } //End namespace MusicManager
 

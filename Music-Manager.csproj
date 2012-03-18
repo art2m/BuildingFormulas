@@ -88,7 +88,6 @@
     <Compile Include="Classes\Class-Properties\AlbumRecord.cs" />
     <Compile Include="Classes\Class-Properties\ArtistRecord.cs" />
     <Compile Include="Classes\Class-Properties\SongRecord.cs" />
-    <Compile Include="Classes\Class-Tag\SongTagRecord.cs" />
     <Compile Include="Classes\Class-Tag\Mp3TagReader.cs" />
     <Compile Include="Classes\Class-Tag\CreateTagDirectoryAndFiles.cs" />
     <Compile Include="Classes\Class-Read-From-File\GetPlaylist.cs" />
@@ -110,7 +109,6 @@
     <Compile Include="Classes\Class-Database\ArtistDatabaseTable.cs" />
     <Compile Include="Classes\Class-Database\SongDatabaseTable.cs" />
     <Compile Include="Classes\Class-Collection\ArtistCollection.cs" />
-    <Compile Include="Classes\Class-Collection\AlbumCollection.cs" />
     <Compile Include="Classes\Class-Collection\SongCollection.cs" />
     <Compile Include="Classes\Class-Database\ArtistDatabaseMovement.cs" />
     <Compile Include="Classes\Class-Database\AlbumDatabaseMovement.cs" />
@@ -119,6 +117,9 @@
     <Compile Include="gtk-gui\MusicManager.MessageWindow.cs" />
     <Compile Include="Classes\Class-Database\ArtistTable.cs" />
     <Compile Include="Classes\Class-Database\ArtistDataTable.cs" />
+    <Compile Include="Classes\Class-Collection\AlbumCollection.cs" />
+    <Compile Include="Classes\Class-Properties\SongTag.cs" />
+    <Compile Include="Classes\Class-Tag\SongTagRecord.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -133,7 +134,5 @@
     <Folder Include="Classes\Class-Paths\" />
     <Folder Include="Classes\Class-Write-To-File\" />
     <Folder Include="Classes\Class-Database\" />
-    <Folder Include="Classes\Class-Collection\Class-Interface\" />
-    <Folder Include="Classes\Class-Interface\" />
   </ItemGroup>
 </Project>

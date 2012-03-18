@@ -1258,7 +1258,6 @@
             <child>
               <widget class="Gtk.Button" id="btnErrorTags">
                 <property name="MemberName" />
-                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
                 <property name="Icon">stock:gtk-no Menu</property>
@@ -1276,7 +1275,6 @@
             <child>
               <widget class="Gtk.Button" id="btnValidTags">
                 <property name="MemberName" />
-                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
                 <property name="Icon">stock:gtk-ok Menu</property>

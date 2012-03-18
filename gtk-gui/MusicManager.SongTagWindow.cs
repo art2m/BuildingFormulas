@@ -669,7 +669,6 @@ namespace MusicManager
 			w108.Fill = false;
 			// Container child hbuttonbox3.Gtk.ButtonBox+ButtonBoxChild
 			this.btnErrorTags = new global::Gtk.Button ();
-			this.btnErrorTags.Sensitive = false;
 			this.btnErrorTags.CanFocus = true;
 			this.btnErrorTags.Name = "btnErrorTags";
 			this.btnErrorTags.UseUnderline = true;
@@ -697,7 +696,6 @@ namespace MusicManager
 			w117.Fill = false;
 			// Container child hbuttonbox3.Gtk.ButtonBox+ButtonBoxChild
 			this.btnValidTags = new global::Gtk.Button ();
-			this.btnValidTags.Sensitive = false;
 			this.btnValidTags.CanFocus = true;
 			this.btnValidTags.Name = "btnValidTags";
 			this.btnValidTags.UseUnderline = true;

@@ -403,6 +403,17 @@ namespace MusicManager
 			}
 		} //End Property
         
+		private int prevTagIndex = 0;
+
+		public int PreviousTagIndex {
+			get {
+				return prevTagIndex;
+			}
+			set {
+				prevTagIndex = value;
+			}
+		} //End Property.
+        
 		private  int sngCnt = 0;
 		/// <summary>
 		/// Property -- public  int TotalNumberSongsFound
@@ -441,9 +452,60 @@ namespace MusicManager
 		} //End Property
         
        
+#region Movement button currently selected.
         
+		private bool moveFirst = false;
+
+		public bool MoveFirstButtonState {
+			get {
+				return moveFirst;
+			}
+			set {
+				moveFirst = value;
+			}
+		} //End Property
+           
+           
+		private bool moveNext = false;
+
+		public bool MoveNextButtonState {
+			get {
+				return moveNext;
+			}
+			set {
+				moveNext = value;
+			}
+		} //End Property
+           
+           
+		private bool movePrev = false;
+
+		public bool MovePreviousButtonState {
+			get {
+				return movePrev;
+			}
+			set {
+				movePrev = value; 
+			}
+		} //End Property
+           
+           
+		private bool moveLast = false;
+
+		public bool MoveLastButtonState {
+			get {
+				return moveLast;
+			}
+			set {
+				moveLast = value;
+			}
+		} //End Property
         
-	} //End class TagRecordState
+#endregion  Movement button currently selected.
+        
+            
+            
+	}//End class TagRecordState
     
     
 } //End namespace MusicManager
