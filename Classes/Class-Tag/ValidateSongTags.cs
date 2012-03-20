@@ -29,6 +29,7 @@
 using System;
 using System.IO;
 using System.Collections;
+using System.Text;
 using System.Threading;
 
 namespace MusicManager
@@ -90,13 +91,14 @@ namespace MusicManager
 		/// 
 		/// Get all song paths stored in the collection clsSongsPathList.
 		/// loop threw each song path so if no errors or nothing missing can be 
-		/// saved
+		/// saved. Does all of the song tags at one time. 
 		/// to clsSongTagList. or if errors or missing data save to 
 		/// clsSongMissingTagList.
 		/// </summary>
 		/// <returns>
 		/// true if no problems and false if so.
 		/// </returns>
+		/// 
 		public void GetPathsFromSongPathList ()
 		{
 			bool retVal = false;	
@@ -136,13 +138,16 @@ namespace MusicManager
 						return;	
 					}
 				}
-                            
-				string msgCnt = "Found " + recCnt.ToString () + " Tags ";
-				msgCnt = msgCnt + "Valid tags = " 
-                    + ValidSongTagCollection.ItemsCount () + " InValid Tags " +
-                        InvalidSongTagCollection.ItemsCount ();
-                    
-				evSngPath (msgCnt);
+                
+				StringBuilder sb = new StringBuilder ();
+                
+				sb.Append ("Total tags found: ").Append (recCnt.ToString ());
+				sb.AppendLine ("\n  Valid tags found: ");
+				sb.Append (ValidSongTagCollection.ItemsCount ());
+				sb.AppendLine ("\n  Invalid tags found: ");
+				sb.Append (InvalidSongTagCollection.ItemsCount ());
+				
+				evSngPath (sb.ToString ());
 			} catch (IndexOutOfRangeException ex) {
 				errMsg = "SongPathList collection index invalid." +
                     recCnt.ToString ();
@@ -676,10 +681,10 @@ namespace MusicManager
 				sngTagRec.SongPath = sngTags [10];
 				sngTagRec.SongTagValid = "false"; //Invalid tag.
                 
-				InvalidSongTagCollection.AddNewItem (sngTagRec);
+				retVal = InvalidSongTagCollection.AddNewItem (sngTagRec);
                 
 			
-				retVal = FillArtistTable (sngTagRec);
+				
                 
 				if (!retVal) {
 					return retVal;
@@ -722,226 +727,8 @@ namespace MusicManager
 				return retVal; 
 			}
 			
-		} //End Method      
-	
-        
-        
-#region Fill Artist, Album And Song Database
-        
-        
-		/// <summary>
-		/// Method -- private bool fillArtistTable(SongTagRecord sngTagRec)
-		/// 
-		/// Fills the artist table.
-		/// </summary>
-		/// <returns>
-		/// The artist table.
-		/// </returns>
-		/// <param name='sngTagRec'>
-		/// If set to <c>true</c> sng tag rec.
-		/// </param>
-		private bool FillArtistTable (SongTagRecord sngTagRec)
-		{
-			bool retVal = false;
-                  
-			try {
+		} //End Method           
 
-				methodName = "private bool FillArtistTable(SongRecord" +
-                                                                 " sngTagRec)";
-                
-				errMsg = "Encounterd error while adding a new record to" +
-                                                        " the Artist table";
-                
-				//ArtistDatabaseTable dtArtist = new ArtistDatabaseTable ();
-                
-				ArtistTable dtArtist = new ArtistTable ();
-                
-              
-				/*
-				retVal = dtArtist.OpenDatabaseConnection ();
-                            
-				if (!retVal) {
-					MyMessages myMsg = new MyMessages ();
-					myMsg.ShowErrMessage ("Error unable to open database" +
-				                                        " connection.");
-					myMsg = null;
-					return retVal;
-				}
-    */         
-				DirectoryInfo dirInfo = new DirectoryInfo (sngTagRec.SongPath);
-                   
-				DirectoryInfo dirAlbum = dirInfo.Parent;
-				DirectoryInfo dirArtist = dirAlbum.Parent;                
-				
-				ArtistRecord recArtist = new ArtistRecord ();
-                
-				recArtist.ArtistPath = dirArtist.ToString (); 
-				recArtist.ArtistName = sngTagRec.ArtistName;
-                
-				if (String.IsNullOrEmpty (recArtist.ArtistPath))
-					return retVal;
-				if (String.IsNullOrEmpty (recArtist.ArtistName))
-					return retVal;
-                
-				dtArtist.LoadDatabase ();
-				retVal = dtArtist.AddNewRecord (recArtist);                
-                
-				     
-				if (!retVal) {
-					return retVal;
-				}          
-                              
-				//All ok
-				retVal = true;
-				return retVal;
-			} catch (InvalidOperationException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal;
-			} catch (NullReferenceException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal; 
-			} catch (ArgumentNullException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal;
-			}
-		} //End Method
-              
-        
-		/// <summary>
-		/// Method -- private bool FillAlbumTable(SongTagRecord sngTagRec)
-		/// 
-		/// Fills the album table.
-		/// </summary>
-		/// <returns>
-		/// The album table.
-		/// </returns>
-		/// <param name='sngTagRec'>
-		/// If set to <c>true</c> sng tag rec.
-		/// </param>
-		private bool FillAlbumTable (SongTagRecord sngTagRec)
-		{
-			bool retVal = false;
-              
-			try {
-				methodName = "private bool FillAlbumTable(SongRecord" +
-                                                                " sngTagRec)";
-                      
-				errMsg = "Encountered error while adding a new record to" +
-                                                            " the album Table.";
-                      
-				AlbumDatabaseTable dtAlbum = new AlbumDatabaseTable ();
-                      
-				retVal = dtAlbum.OpenDatabaseConnection ();
-                      
-				if (!retVal) {
-					MyMessages myMsg = new MyMessages ();
-					myMsg.ShowErrMessage ("Error unable to open database" +
-                                                             " connection.");
-					myMsg = null;
-					return retVal;   
-				}
-                
-				DirectoryInfo dirInfo = new DirectoryInfo (sngTagRec.SongPath);
-				DirectoryInfo dirAlbum = dirInfo.Parent;
-                
-				string albPath = dirAlbum.ToString ();
-                      
-				retVal = dtAlbum.UpdateAlbumAddNewRecord (sngTagRec.AlbumName, 
-                            sngTagRec.TotalTrackCount, sngTagRec.TotalDiscCount,
-                            sngTagRec.ThisDiscNumber, albPath, 
-                            sngTagRec.YearCreated, sngTagRec.GenreType,
-                            sngTagRec.ArtistName);
-                      
-				if (!retVal) {
-					return retVal;
-				}
-                      
-                      
-				//All Ok
-				retVal = true;
-				return retVal;
-			} catch (InvalidOperationException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal;
-			} catch (NullReferenceException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal; 
-			} catch (ArgumentNullException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal;
-			}
-                      
-		} //End Method
-        
-        
-              
-		private bool FillSongTable (SongTagRecord sngTagRec)
-		{
-			bool retVal = false;
-            
-			try {
-				methodName = "private bool FillSongTable(" +
-                                                    " SongTagRecord sngTagRec)";
-                      
-				errMsg = "Encountered error while adding" +
-                                            " new record to the Song Table.";
-				SongDatabaseTable dtSong = new SongDatabaseTable ();
-                      
-				retVal = dtSong.OpenDatabaseConnection ();
-                      
-				if (!retVal) {
-					MyMessages myMsg = new MyMessages ();
-					myMsg.ShowErrMessage ("Error unable to open database" +
-                                                            " connection.");
-					myMsg = null;
-					return retVal;
-				}
-                      
-                      
-				retVal = dtSong.UpdateSongAddNewRecord (sngTagRec.SongTitle, 
-                                sngTagRec.SongPath, sngTagRec.ThisTrackNumber,
-                                sngTagRec.AlbumName, sngTagRec.ArtistName, 
-                                sngTagRec.YearCreated, sngTagRec.SongTagValid);
-                      
-				if (!retVal) {
-					return retVal;
-				}
-                      
-				//All ok
-				retVal = true;
-				return retVal;
-			} catch (InvalidOperationException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal;
-			} catch (NullReferenceException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal; 
-			} catch (ArgumentNullException ex) {
-				MyMessages myMsg = new MyMessages ();
-				myMsg.BuildErrorString (className, methodName, errMsg,
-                                       ex.Message.ToString ());
-				return retVal;
-			}
-                  
-		} //End Method
-        
-#endregion Fill Artist, Album And Song Database
           
 	} //End class clsCheckSongTagInfo
     

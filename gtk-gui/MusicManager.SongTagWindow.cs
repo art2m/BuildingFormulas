@@ -83,7 +83,7 @@ namespace MusicManager
 			w1.Expand = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.lblInfo = new global::Gtk.Label ();
-			this.lblInfo.HeightRequest = 24;
+			this.lblInfo.HeightRequest = 83;
 			this.lblInfo.Name = "lblInfo";
 			this.lblInfo.LabelProp = global::Mono.Unix.Catalog.GetString ("lblInfo");
 			this.lblInfo.Justify = ((global::Gtk.Justification)(2));
@@ -898,7 +898,7 @@ namespace MusicManager
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 1022;
-			this.DefaultHeight = 555;
+			this.DefaultHeight = 605;
 			this.aliTop.Hide ();
 			this.aliBetweenbtnDatabtnMove.Hide ();
 			this.aliBetweenlblArtistPathtxtPath.Hide ();

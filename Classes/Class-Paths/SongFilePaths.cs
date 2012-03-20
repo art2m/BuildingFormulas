@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace MusicManager
@@ -168,6 +169,8 @@ namespace MusicManager
 						Thread.Sleep (100);
                         
 						SongPathsCollection.AddNewItem (sngFile);
+						GetMusicPathInfo (sngFile);
+                        
 					}
 					
 					//Get and display the number of songs found.
@@ -199,8 +202,180 @@ namespace MusicManager
 				return retVal;
 			}
 			
-		} //End Method     
+		} //End Method  
+        
+        
+		public void GetMusicPathInfo (string sngPath)
+		{
+			string artistName = null;
+			string albumName = null;
+			string artistPath = null;
+			string albumPath = null;            
+			MyMessages myMsg;
+            
+			methodName = "private void GetMusicPathInfo (string sngPath)";
+			myMsg = new MyMessages ();
+           
+			if (String.IsNullOrEmpty (sngPath)) {
+				errMsg = "Null string song file path.";
+				myMsg.BuildErrorString (className, methodName, errMsg, "");
+				return;
+			}		
+
+			albumPath = Directory.GetParent (sngPath).ToString ();
+			artistPath = Directory.GetParent (albumPath).ToString ();
+            
+			//Get the directory name only from directory path.
+			string[] splitAlbum = albumPath.Split (Path.DirectorySeparatorChar);
+			int cnt = splitAlbum.Length - 1;
+			albumName = splitAlbum [cnt];
+            
+			
+            
+			string[] split = artistPath.Split (Path.DirectorySeparatorChar);
+			cnt = split.Length - 1;
+			artistName = split [cnt];
+            
+			AddNewAlbumDictionary (albumName, albumPath);
+			AddNewAlbumPath (albumName, albumPath);
+			AddNewArtistDictionary (artistName, artistPath);
+			AddNewArtistPath (artistName, artistPath);
+			AddNewSongPath (albumName, albumPath);
+            
+            
+		} //End Method
+        
+        
+        
+		public void AddNewAlbumDictionary (string albumName, string albumPath)
+		{
+			bool retVal = false;
+			string[] sngPaths;
+			List<string> mp3Songs = new List<string> ();
+			string ext;
+          
+			//Check if key all ready in collection.
+			retVal = AlbumDictionary.ContainsKey (albumName);
+            
+			//if key in collection exit.
+			if (retVal) {
+				return;
+			}
+            
+			//Get all files contained in this directory.
+			sngPaths = Directory.GetFiles (albumPath);
+            
+			//if songs found check ext for mp3 songs if found add to 
+			//array.
+			if (sngPaths.Length > 0) {   				
+				for (int i = 0; i < sngPaths.Length; i++) {
+					ext = Path.GetExtension (sngPaths [i]);
+                    
+					if (ext == ".mp3") {
+						
+						mp3Songs.Add (
+                            Path.GetFileNameWithoutExtension (sngPaths [i]));
+                       
+						
+					}     
+				} //End For
+                
+				string[] sngItems = mp3Songs.ToArray ();  			
+                 
+				//Add new album name key and mp3Song Array as value.
+				AlbumDictionary.AddNewItem (albumName, sngItems);
+			} //End If
+		} //End Metod
+        
+		public void AddNewAlbumPath (string albumName, string albumPath)
+		{
+			bool retVal = false;
+            
+			//Check to see if albumName all ready in collection
+			retVal = AlbumPaths.ContainsKey (albumName);
+            
+			//If not then enter album name and albumPath.
+			if (!retVal) {
+				AlbumPaths.AddNewItem (albumName, albumPath);
+			}                           
+		} //End Method
+        
+		public void AddNewArtistDictionary (string artistName,
+                                                        string artistPath)
+		{
+			bool retVal = false;
+            
+			//Check artist name not all ready in collection.
+			retVal = Artist_Dictionary.ContainsKey (artistName);
+            
+			//if it is then exit.
+			if (retVal) {
+				return;
+			}
+            
+			//Get all Album directories for this artist. if found then
+			//add them to the Artist_Dictionary with the artist name as key.
+			string[] albumPaths = Directory.GetDirectories (artistPath);
+            
+			if (albumPaths.Length > 0) {
+				Artist_Dictionary.AddNewItem (artistName, albumPaths);
+			}
+                
+		} //End Method
+        
+		public void AddNewArtistPath (string artistName, string artistPath)
+		{
+			bool retVal = false;
+            
+			//Check if Artist all ready in collection.
+			retVal = ArtistPaths.ContainsKey (artistName);
+            
+			//if Artist not in collection then add artistName as Key and
+			// artistPath as value.
+			if (!retVal) {
+				ArtistPaths.AddNewItem (artistName, artistPath);
+			}
+		}
+        
+		public void AddNewSongPath (string albumName, string albumPath)
+		{
+			bool retVal = false;
+			string[] sngPaths;
+			List<string> mp3Songs = new List<string> ();
+			string ext;
+          
+			//Check if key all ready in collection.
+			retVal = SongPaths.ContainsKey (albumName);
+            
+			//if key in collection exit.
+			if (retVal) {
+				return;
+			}
+            
+			//Get all files contained in this directory.
+			sngPaths = Directory.GetFiles (albumPath);
+            
+			//if songs found check ext for mp3 songs if found add to 
+			//array.
+			if (sngPaths.Length > 0) {  
+				for (int i = 0; i < sngPaths.Length; i++) {
+					ext = Path.GetExtension (sngPaths [i]);
+                    
+					if (ext == ".mp3") {
+						mp3Songs.Add (sngPaths [i]);
+					}     
+				} //End For
+                
+				string[] sngItems = mp3Songs.ToArray ();
+                
+				//Add new album name key and sngItems array as value.
+				SongPaths.AddNewItem (albumName, sngItems);
+			} //End If            
+		}
+      
+        
 	} //End class clsSongs
+    
 	
 } //End namespace MusicManager
 

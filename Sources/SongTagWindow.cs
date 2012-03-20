@@ -992,13 +992,21 @@ namespace MusicManager
                               
              
 				//pass ValidateSongTags object. for use with delegate event.
-				valSngTags.GetObjecSongTagWindow = this;
+                
               
-				//sngPath = new Thread (valSngTags.GetPathsFromSongPathList);
-				//sngPath.Start ();   
-				//Thread.Sleep (10);
+				valSngTags.GetObjecSongTagWindow = this;
+                 
+				//used to loop threw all songs getting tag information.
+				//Loops threw all at once. stops upon completion.
+				sngPath = new Thread (valSngTags.GetPathsFromSongPathList);
+				sngPath.Start ();   
+				Thread.Sleep (10);
+                
+				/*
+                 * 
+                 * used to loop threw tags one at a time.
 				valSngTags.GetPathsFromSongPathList ();
-             
+                */
 			} catch (ThreadStartException ex) {
 				errMsg = "Encountered error while starting thread.";
 				MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
@@ -1037,7 +1045,7 @@ namespace MusicManager
 			int isValid = 0;
 			string sngPath;
 			string msgInfo;
-			int sngPathCnt = 0;
+			
             
 			MyMessages myMsg; 
             
@@ -1049,9 +1057,8 @@ namespace MusicManager
 				errMsg = "Encountered error while displaying" +
                                                    " Invalid tag record.";               
              
-				myMsg = new MyMessages ();          
-               
-				sngPathCnt = SongPathsCollection.ItemsCount ();
+				myMsg = new MyMessages ();                 
+				
                
 				ValidateSongTags valSngTag = new ValidateSongTags ();
                                
@@ -1216,7 +1223,7 @@ namespace MusicManager
 			int isValid = 0;
 			string sngPath;            
 			string msgInfo;
-			int sngPathCnt = 0;
+			
              
 			MyMessages myMsg; 
             
@@ -1229,7 +1236,7 @@ namespace MusicManager
                 
 				myMsg = new MyMessages ();
                 
-				sngPathCnt = SongPathsCollection.ItemsCount ();
+				
                
 				ValidateSongTags valSngTag = new ValidateSongTags ();
                

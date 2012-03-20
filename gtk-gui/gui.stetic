@@ -7,7 +7,7 @@
   <import>
     <widget-library name="../bin/Debug/Music-Manager.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="802 830">
+  <widget class="Gtk.Window" id="MainWindow" design-size="1022 830">
     <action-group name="Default">
       <action id="UserInformationAction">
         <property name="Type">Action</property>
@@ -110,7 +110,7 @@
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="WidthRequest">800</property>
+    <property name="WidthRequest">1020</property>
     <property name="HeightRequest">800</property>
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterAlways</property>
@@ -196,21 +196,12 @@
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Alignment" id="aliLeft_TableUser">
-                <property name="MemberName" />
-                <child>
-                  <placeholder />
-                </child>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-              </packing>
+              <placeholder />
             </child>
             <child>
               <widget class="Gtk.Table" id="tblUserInfo">
                 <property name="MemberName" />
-                <property name="WidthRequest">600</property>
+                <property name="WidthRequest">700</property>
                 <property name="HeightRequest">130</property>
                 <property name="NRows">5</property>
                 <property name="NColumns">2</property>
@@ -440,16 +431,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Alignment" id="aliRigth_TableUserInfo">
-                <property name="MemberName" />
-                <child>
-                  <placeholder />
-                </child>
-              </widget>
-              <packing>
-                <property name="Position">2</property>
-                <property name="AutoSize">True</property>
-              </packing>
+              <placeholder />
             </child>
           </widget>
           <packing>
@@ -526,7 +508,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="MusicManager.SongTagWindow" design-size="1022 555">
+  <widget class="Gtk.Window" id="MusicManager.SongTagWindow" design-size="1022 605">
     <property name="MemberName" />
     <property name="WidthRequest">1020</property>
     <property name="HeightRequest">525</property>
@@ -555,7 +537,7 @@
         <child>
           <widget class="Gtk.Label" id="lblInfo">
             <property name="MemberName" />
-            <property name="HeightRequest">24</property>
+            <property name="HeightRequest">83</property>
             <property name="LabelProp" translatable="yes">lblInfo</property>
             <property name="Justify">Center</property>
           </widget>

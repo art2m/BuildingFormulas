@@ -297,7 +297,9 @@ namespace MusicManager
 		
         
         
-		      
+		/*
+             * Currently not being used.
+             *       
 		/// <summary>
 		/// Method -- public static clsSongTagRecord GetAllIems
 		/// Gets all items.
@@ -309,7 +311,7 @@ namespace MusicManager
 		{
 		
 			
-            
+           
 			try {
 				methodName = "public static clsSongTagRecord GetAllItems()";
                 
@@ -339,7 +341,7 @@ namespace MusicManager
 				
 			} 
 		} //End Method
-		
+		*/
      
 	} //End class clsSongMissingTagList
 	

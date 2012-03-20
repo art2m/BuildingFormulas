@@ -79,7 +79,7 @@ namespace MusicManager
 		{
 			bool retVal = false;
             
-			RemoveUnderscore remUnderscore = new RemoveUnderscore ();
+			//RemoveUnderscore remUnderscore = new RemoveUnderscore ();
             
 			//retVal = remUnderscore.RemoveUnderscoreFromSongPath ();
             

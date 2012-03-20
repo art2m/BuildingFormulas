@@ -83,7 +83,6 @@
     <Compile Include="Classes\Class-Collection\InvalidSongTagCollection.cs" />
     <Compile Include="Classes\Class-Collection\SongPathsCollection.cs" />
     <Compile Include="Classes\Class-Collection\ValidSongTagCollection.cs" />
-    <Compile Include="Classes\Class-Collection\UserEnviormentInfo.cs" />
     <Compile Include="Classes\Class-Paths\SongFilePaths.cs" />
     <Compile Include="Classes\Class-Properties\AlbumRecord.cs" />
     <Compile Include="Classes\Class-Properties\ArtistRecord.cs" />
@@ -104,22 +103,19 @@
     <Compile Include="Classes\Class-BasicMusicStructure\ValidateUserMusicDirectory.cs" />
     <Compile Include="Sources\MusicPathWindow.cs" />
     <Compile Include="gtk-gui\MusicManager.MusicPathWindow.cs" />
-    <Compile Include="Classes\Class-Database\ConnectionProperties.cs" />
-    <Compile Include="Classes\Class-Database\AlbumDatabaseTable.cs" />
-    <Compile Include="Classes\Class-Database\ArtistDatabaseTable.cs" />
-    <Compile Include="Classes\Class-Database\SongDatabaseTable.cs" />
     <Compile Include="Classes\Class-Collection\ArtistCollection.cs" />
     <Compile Include="Classes\Class-Collection\SongCollection.cs" />
-    <Compile Include="Classes\Class-Database\ArtistDatabaseMovement.cs" />
-    <Compile Include="Classes\Class-Database\AlbumDatabaseMovement.cs" />
-    <Compile Include="Classes\Class-Database\SongDatabaseMovement.cs" />
     <Compile Include="Sources\MessageWindow.cs" />
     <Compile Include="gtk-gui\MusicManager.MessageWindow.cs" />
-    <Compile Include="Classes\Class-Database\ArtistTable.cs" />
-    <Compile Include="Classes\Class-Database\ArtistDataTable.cs" />
     <Compile Include="Classes\Class-Collection\AlbumCollection.cs" />
     <Compile Include="Classes\Class-Properties\SongTag.cs" />
     <Compile Include="Classes\Class-Tag\SongTagRecord.cs" />
+    <Compile Include="Classes\Class-Dictionary\ArtistDictionary.cs" />
+    <Compile Include="Classes\Class-Dictionary\AlbumDictionary.cs" />
+    <Compile Include="Classes\Class-Dictionary\AlbumPaths.cs" />
+    <Compile Include="Classes\Class-Dictionary\ArtistPaths.cs" />
+    <Compile Include="Classes\Class-Dictionary\SongPaths.cs" />
+    <Compile Include="Classes\Class-Properties\UserEnviormentInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -133,6 +129,6 @@
     <Folder Include="Classes\Class-Collection\" />
     <Folder Include="Classes\Class-Paths\" />
     <Folder Include="Classes\Class-Write-To-File\" />
-    <Folder Include="Classes\Class-Database\" />
+    <Folder Include="Classes\Class-Dictionary\" />
   </ItemGroup>
 </Project>

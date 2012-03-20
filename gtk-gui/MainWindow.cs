@@ -28,7 +28,6 @@ public partial class MainWindow
 	private global::Gtk.Label lblInfo;
 	private global::Gtk.Alignment aliLblInfo_TableUserInfo;
 	private global::Gtk.HBox hbox1;
-	private global::Gtk.Alignment aliLeft_TableUser;
 	private global::Gtk.Table tblUserInfo;
 	private global::Gtk.Alignment aliLeft_UserHome;
 	private global::Gtk.Alignment aliLeft_UserName;
@@ -40,7 +39,6 @@ public partial class MainWindow
 	private global::Gtk.Label lblUserMusic;
 	private global::Gtk.Label lblUserMusicPath;
 	private global::Gtk.Label lblUserName;
-	private global::Gtk.Alignment aliRigth_TableUserInfo;
 	private global::Gtk.Alignment aliBottom_TableUser;
 	private global::Gtk.Alignment aliAbove_ButtonBox;
 	private global::Gtk.HButtonBox btnBox_Bottom;
@@ -110,7 +108,7 @@ public partial class MainWindow
 		w1.Add (this.mnuMusicPath1, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
-		this.WidthRequest = 800;
+		this.WidthRequest = 1020;
 		this.HeightRequest = 800;
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
@@ -161,14 +159,8 @@ public partial class MainWindow
 		this.hbox1.Name = "hbox1";
 		this.hbox1.Spacing = 6;
 		// Container child hbox1.Gtk.Box+BoxChild
-		this.aliLeft_TableUser = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-		this.aliLeft_TableUser.Name = "aliLeft_TableUser";
-		this.hbox1.Add (this.aliLeft_TableUser);
-		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.aliLeft_TableUser]));
-		w6.Position = 0;
-		// Container child hbox1.Gtk.Box+BoxChild
 		this.tblUserInfo = new global::Gtk.Table (((uint)(5)), ((uint)(2)), false);
-		this.tblUserInfo.WidthRequest = 600;
+		this.tblUserInfo.WidthRequest = 700;
 		this.tblUserInfo.HeightRequest = 130;
 		this.tblUserInfo.Name = "tblUserInfo";
 		this.tblUserInfo.RowSpacing = ((uint)(6));
@@ -178,43 +170,43 @@ public partial class MainWindow
 		this.aliLeft_UserHome.HeightRequest = 25;
 		this.aliLeft_UserHome.Name = "aliLeft_UserHome";
 		this.tblUserInfo.Add (this.aliLeft_UserHome);
-		global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliLeft_UserHome]));
-		w7.TopAttach = ((uint)(3));
-		w7.BottomAttach = ((uint)(4));
-		w7.XOptions = ((global::Gtk.AttachOptions)(4));
-		w7.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliLeft_UserHome]));
+		w6.TopAttach = ((uint)(3));
+		w6.BottomAttach = ((uint)(4));
+		w6.XOptions = ((global::Gtk.AttachOptions)(4));
+		w6.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.aliLeft_UserName = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 		this.aliLeft_UserName.HeightRequest = 25;
 		this.aliLeft_UserName.Name = "aliLeft_UserName";
 		this.tblUserInfo.Add (this.aliLeft_UserName);
-		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliLeft_UserName]));
-		w8.TopAttach = ((uint)(1));
-		w8.BottomAttach = ((uint)(2));
-		w8.XOptions = ((global::Gtk.AttachOptions)(4));
-		w8.YOptions = ((global::Gtk.AttachOptions)(0));
+		global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliLeft_UserName]));
+		w7.TopAttach = ((uint)(1));
+		w7.BottomAttach = ((uint)(2));
+		w7.XOptions = ((global::Gtk.AttachOptions)(4));
+		w7.YOptions = ((global::Gtk.AttachOptions)(0));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.aliRight_LblUserName = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 		this.aliRight_LblUserName.Name = "aliRight_LblUserName";
 		this.tblUserInfo.Add (this.aliRight_LblUserName);
-		global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliRight_LblUserName]));
-		w9.TopAttach = ((uint)(1));
-		w9.BottomAttach = ((uint)(2));
-		w9.LeftAttach = ((uint)(1));
-		w9.RightAttach = ((uint)(2));
-		w9.XOptions = ((global::Gtk.AttachOptions)(4));
-		w9.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliRight_LblUserName]));
+		w8.TopAttach = ((uint)(1));
+		w8.BottomAttach = ((uint)(2));
+		w8.LeftAttach = ((uint)(1));
+		w8.RightAttach = ((uint)(2));
+		w8.XOptions = ((global::Gtk.AttachOptions)(4));
+		w8.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.aliRight_UserHomePath = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 		this.aliRight_UserHomePath.Name = "aliRight_UserHomePath";
 		this.tblUserInfo.Add (this.aliRight_UserHomePath);
-		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliRight_UserHomePath]));
-		w10.TopAttach = ((uint)(3));
-		w10.BottomAttach = ((uint)(4));
-		w10.LeftAttach = ((uint)(1));
-		w10.RightAttach = ((uint)(2));
-		w10.XOptions = ((global::Gtk.AttachOptions)(4));
-		w10.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.aliRight_UserHomePath]));
+		w9.TopAttach = ((uint)(3));
+		w9.BottomAttach = ((uint)(4));
+		w9.LeftAttach = ((uint)(1));
+		w9.RightAttach = ((uint)(2));
+		w9.XOptions = ((global::Gtk.AttachOptions)(4));
+		w9.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.lblUser = new global::Gtk.Label ();
 		this.lblUser.Name = "lblUser";
@@ -222,8 +214,8 @@ public partial class MainWindow
 		this.lblUser.Justify = ((global::Gtk.Justification)(2));
 		this.lblUser.SingleLineMode = true;
 		this.tblUserInfo.Add (this.lblUser);
-		global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUser]));
-		w11.YOptions = ((global::Gtk.AttachOptions)(0));
+		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUser]));
+		w10.YOptions = ((global::Gtk.AttachOptions)(0));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.lblUserHome = new global::Gtk.Label ();
 		this.lblUserHome.Name = "lblUserHome";
@@ -231,11 +223,11 @@ public partial class MainWindow
 		this.lblUserHome.Justify = ((global::Gtk.Justification)(2));
 		this.lblUserHome.SingleLineMode = true;
 		this.tblUserInfo.Add (this.lblUserHome);
-		global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserHome]));
-		w12.TopAttach = ((uint)(2));
-		w12.BottomAttach = ((uint)(3));
-		w12.XOptions = ((global::Gtk.AttachOptions)(4));
-		w12.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserHome]));
+		w11.TopAttach = ((uint)(2));
+		w11.BottomAttach = ((uint)(3));
+		w11.XOptions = ((global::Gtk.AttachOptions)(4));
+		w11.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.lblUserHomePath = new global::Gtk.Label ();
 		this.lblUserHomePath.Name = "lblUserHomePath";
@@ -243,13 +235,13 @@ public partial class MainWindow
 		this.lblUserHomePath.Justify = ((global::Gtk.Justification)(2));
 		this.lblUserHomePath.SingleLineMode = true;
 		this.tblUserInfo.Add (this.lblUserHomePath);
-		global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserHomePath]));
-		w13.TopAttach = ((uint)(2));
-		w13.BottomAttach = ((uint)(3));
-		w13.LeftAttach = ((uint)(1));
-		w13.RightAttach = ((uint)(2));
-		w13.XOptions = ((global::Gtk.AttachOptions)(4));
-		w13.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserHomePath]));
+		w12.TopAttach = ((uint)(2));
+		w12.BottomAttach = ((uint)(3));
+		w12.LeftAttach = ((uint)(1));
+		w12.RightAttach = ((uint)(2));
+		w12.XOptions = ((global::Gtk.AttachOptions)(4));
+		w12.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.lblUserMusic = new global::Gtk.Label ();
 		this.lblUserMusic.Name = "lblUserMusic";
@@ -257,11 +249,11 @@ public partial class MainWindow
 		this.lblUserMusic.Justify = ((global::Gtk.Justification)(2));
 		this.lblUserMusic.SingleLineMode = true;
 		this.tblUserInfo.Add (this.lblUserMusic);
-		global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserMusic]));
-		w14.TopAttach = ((uint)(4));
-		w14.BottomAttach = ((uint)(5));
-		w14.XOptions = ((global::Gtk.AttachOptions)(4));
-		w14.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserMusic]));
+		w13.TopAttach = ((uint)(4));
+		w13.BottomAttach = ((uint)(5));
+		w13.XOptions = ((global::Gtk.AttachOptions)(4));
+		w13.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.lblUserMusicPath = new global::Gtk.Label ();
 		this.lblUserMusicPath.Name = "lblUserMusicPath";
@@ -269,13 +261,13 @@ public partial class MainWindow
 		this.lblUserMusicPath.Justify = ((global::Gtk.Justification)(2));
 		this.lblUserMusicPath.SingleLineMode = true;
 		this.tblUserInfo.Add (this.lblUserMusicPath);
-		global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserMusicPath]));
-		w15.TopAttach = ((uint)(4));
-		w15.BottomAttach = ((uint)(5));
-		w15.LeftAttach = ((uint)(1));
-		w15.RightAttach = ((uint)(2));
-		w15.XOptions = ((global::Gtk.AttachOptions)(4));
-		w15.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserMusicPath]));
+		w14.TopAttach = ((uint)(4));
+		w14.BottomAttach = ((uint)(5));
+		w14.LeftAttach = ((uint)(1));
+		w14.RightAttach = ((uint)(2));
+		w14.XOptions = ((global::Gtk.AttachOptions)(4));
+		w14.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tblUserInfo.Gtk.Table+TableChild
 		this.lblUserName = new global::Gtk.Label ();
 		this.lblUserName.Name = "lblUserName";
@@ -283,39 +275,33 @@ public partial class MainWindow
 		this.lblUserName.Justify = ((global::Gtk.Justification)(2));
 		this.lblUserName.SingleLineMode = true;
 		this.tblUserInfo.Add (this.lblUserName);
-		global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserName]));
-		w16.LeftAttach = ((uint)(1));
-		w16.RightAttach = ((uint)(2));
-		w16.YOptions = ((global::Gtk.AttachOptions)(0));
+		global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.tblUserInfo [this.lblUserName]));
+		w15.LeftAttach = ((uint)(1));
+		w15.RightAttach = ((uint)(2));
+		w15.YOptions = ((global::Gtk.AttachOptions)(0));
 		this.hbox1.Add (this.tblUserInfo);
-		global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.tblUserInfo]));
-		w17.Position = 1;
-		w17.Expand = false;
-		// Container child hbox1.Gtk.Box+BoxChild
-		this.aliRigth_TableUserInfo = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-		this.aliRigth_TableUserInfo.Name = "aliRigth_TableUserInfo";
-		this.hbox1.Add (this.aliRigth_TableUserInfo);
-		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.aliRigth_TableUserInfo]));
-		w18.Position = 2;
+		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.tblUserInfo]));
+		w16.Position = 1;
+		w16.Expand = false;
 		this.vbox1.Add (this.hbox1);
-		global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox1]));
-		w19.Position = 4;
-		w19.Expand = false;
-		w19.Fill = false;
+		global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox1]));
+		w17.Position = 4;
+		w17.Expand = false;
+		w17.Fill = false;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.aliBottom_TableUser = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 		this.aliBottom_TableUser.HeightRequest = 34;
 		this.aliBottom_TableUser.Name = "aliBottom_TableUser";
 		this.vbox1.Add (this.aliBottom_TableUser);
-		global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.aliBottom_TableUser]));
-		w20.Position = 5;
-		w20.Expand = false;
+		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.aliBottom_TableUser]));
+		w18.Position = 5;
+		w18.Expand = false;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.aliAbove_ButtonBox = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 		this.aliAbove_ButtonBox.Name = "aliAbove_ButtonBox";
 		this.vbox1.Add (this.aliAbove_ButtonBox);
-		global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.aliAbove_ButtonBox]));
-		w21.Position = 8;
+		global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.aliAbove_ButtonBox]));
+		w19.Position = 8;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.btnBox_Bottom = new global::Gtk.HButtonBox ();
 		this.btnBox_Bottom.HeightRequest = 40;
@@ -330,35 +316,35 @@ public partial class MainWindow
 		this.btnQuit.UseUnderline = true;
 		this.btnQuit.BorderWidth = ((uint)(2));
 		// Container child btnQuit.Gtk.Container+ContainerChild
-		global::Gtk.Alignment w22 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+		global::Gtk.Alignment w20 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 		// Container child GtkAlignment.Gtk.Container+ContainerChild
-		global::Gtk.HBox w23 = new global::Gtk.HBox ();
-		w23.Spacing = 2;
+		global::Gtk.HBox w21 = new global::Gtk.HBox ();
+		w21.Spacing = 2;
 		// Container child GtkHBox.Gtk.Container+ContainerChild
-		global::Gtk.Image w24 = new global::Gtk.Image ();
-		w24.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-quit", global::Gtk.IconSize.Menu);
-		w23.Add (w24);
+		global::Gtk.Image w22 = new global::Gtk.Image ();
+		w22.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-quit", global::Gtk.IconSize.Menu);
+		w21.Add (w22);
 		// Container child GtkHBox.Gtk.Container+ContainerChild
-		global::Gtk.Label w26 = new global::Gtk.Label ();
-		w26.LabelProp = global::Mono.Unix.Catalog.GetString ("Quit Application");
-		w26.UseUnderline = true;
-		w23.Add (w26);
-		w22.Add (w23);
-		this.btnQuit.Add (w22);
+		global::Gtk.Label w24 = new global::Gtk.Label ();
+		w24.LabelProp = global::Mono.Unix.Catalog.GetString ("Quit Application");
+		w24.UseUnderline = true;
+		w21.Add (w24);
+		w20.Add (w21);
+		this.btnQuit.Add (w20);
 		this.btnBox_Bottom.Add (this.btnQuit);
-		global::Gtk.ButtonBox.ButtonBoxChild w30 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.btnBox_Bottom [this.btnQuit]));
-		w30.Expand = false;
-		w30.Fill = false;
+		global::Gtk.ButtonBox.ButtonBoxChild w28 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.btnBox_Bottom [this.btnQuit]));
+		w28.Expand = false;
+		w28.Fill = false;
 		this.vbox1.Add (this.btnBox_Bottom);
-		global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.btnBox_Bottom]));
-		w31.Position = 9;
-		w31.Expand = false;
-		w31.Fill = false;
+		global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.btnBox_Bottom]));
+		w29.Position = 9;
+		w29.Expand = false;
+		w29.Fill = false;
 		this.Add (this.vbox1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 802;
+		this.DefaultWidth = 1022;
 		this.DefaultHeight = 830;
 		this.Show ();
 		this.mnuReplaceSpaceUnderscore.Activated += new global::System.EventHandler (this.ReplaceSpaceInFileWithUnderscoreMenu);
