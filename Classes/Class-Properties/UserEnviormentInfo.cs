@@ -133,6 +133,7 @@ namespace MusicManager
 		}// End Property
 		
 		
+		
 		private static readonly string incorFolderName = "MusicManagerProg";
 
 		public static string GetIncorrectCorrectTagFolderName {
@@ -151,7 +152,9 @@ namespace MusicManager
 		} //End Property
 		
 		
-		
+		/// <summary>
+		/// The name of the corr file.
+		/// </summary>
 		private static readonly String corrFileName = "CorrectTags.dat";
 
 		public static string GetCorrectFileName {
@@ -160,7 +163,38 @@ namespace MusicManager
 			}
 		} //End Property
 		
-		
+		/// <summary>
+		/// Property -- public static string GetSongCollectionFileName
+		///  
+		/// Return the name of the file where the songs from the 
+		/// class songPathsCollection is to be writen to or read from.
+		/// 
+		/// </summary>
+		private static readonly string songPathCollectionName = 
+                                                    "SongCollection.dat";
+
+		public static string GetSongPathCollectionFileName {
+			get {
+				return songPathCollectionName;
+			}
+			
+		} //End Property
+        
+        
+		/// <summary>
+		/// Property -- public static string GetProgramDataDirectoryName
+		/// 
+		/// Returns the name of the directory where all data files for 
+		/// this program will be stored. Music-Manager
+		/// </summary>
+		private static readonly string programDataDirectory = "Music-Manager";
+        
+		public static string GetProgramDataDirectoryName {
+			get {
+				return programDataDirectory;
+			}
+		} //End Property  
+        
 		
 		/// <summary>
 		/// Method -- static public bool GetUserInfo

@@ -50,7 +50,17 @@ namespace MusicManager
             
 			MusicDirectoryLoop (MusicManager.UserEnviormentInfo.
                                 UserMusicDirectoryPath);
-		}
+            
+			WriteSongPathsCollectionToFile wSngPath =
+                                new WriteSongPathsCollectionToFile ();
+			bool retVal = wSngPath.CreateDirectoryAndFileForWrite ();
+            
+			if (retVal) {
+				//Do nothing
+			} else {
+				//do nothing
+			}
+		} //End Method
 		
 		/// <summary>
 		/// Method -- public void MusicDirectoryLoop (string dirMusic)

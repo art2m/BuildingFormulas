@@ -22,6 +22,9 @@ public partial class MainWindow
 	private global::Gtk.Action mnuMusicPath;
 	private global::Gtk.Action MusicDirectoryStructureAction;
 	private global::Gtk.Action mnuMusicPath1;
+	private global::Gtk.Action LoadMusicAction;
+	private global::Gtk.Action LoadSongsFromMusicFolderAction;
+	private global::Gtk.Action LoadSongsFromFileAction;
 	private global::Gtk.VBox vbox1;
 	private global::Gtk.MenuBar mnuMain;
 	private global::Gtk.Alignment aliMenuLabelInfo;
@@ -106,6 +109,15 @@ public partial class MainWindow
 		this.mnuMusicPath1 = new global::Gtk.Action ("mnuMusicPath1", global::Mono.Unix.Catalog.GetString ("Select Path To Music Folder"), null, null);
 		this.mnuMusicPath1.ShortLabel = global::Mono.Unix.Catalog.GetString ("Select Path To Music Folder");
 		w1.Add (this.mnuMusicPath1, null);
+		this.LoadMusicAction = new global::Gtk.Action ("LoadMusicAction", global::Mono.Unix.Catalog.GetString ("Load Music"), null, null);
+		this.LoadMusicAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Load Music");
+		w1.Add (this.LoadMusicAction, null);
+		this.LoadSongsFromMusicFolderAction = new global::Gtk.Action ("LoadSongsFromMusicFolderAction", global::Mono.Unix.Catalog.GetString ("Load Songs From Music Folder"), null, null);
+		this.LoadSongsFromMusicFolderAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Load Mp3 Songs");
+		w1.Add (this.LoadSongsFromMusicFolderAction, null);
+		this.LoadSongsFromFileAction = new global::Gtk.Action ("LoadSongsFromFileAction", global::Mono.Unix.Catalog.GetString ("Load Songs From File"), null, null);
+		this.LoadSongsFromFileAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Load mp3 songs from file");
+		w1.Add (this.LoadSongsFromFileAction, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.WidthRequest = 1020;
@@ -118,7 +130,7 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><menuitem name='mnuLoadSongs' action='mnuLoadSongs'/><separator/><menuitem name='mnuQuitApp' action='mnuQuitApp'/></menu><menu name='PathActionsAction' action='PathActionsAction'><menuitem name='mnuReplaceSpaceUnderscore' action='mnuReplaceSpaceUnderscore'/><menuitem name='mnuReplaceUnderscore' action='mnuReplaceUnderscore'/><separator/><menuitem name='mnuCreateArtistFolder' action='mnuCreateArtistFolder'/></menu><menu name='TagActionsAction' action='TagActionsAction'><menuitem name='mnuShowSngTagWin' action='mnuShowSngTagWin'/></menu><menu name='MusicDirectoryStructureAction' action='MusicDirectoryStructureAction'><menuitem name='mnuMusicPath1' action='mnuMusicPath1'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><separator/><menuitem name='mnuQuitApp' action='mnuQuitApp'/></menu><menu name='PathActionsAction' action='PathActionsAction'><menuitem name='mnuReplaceSpaceUnderscore' action='mnuReplaceSpaceUnderscore'/><menuitem name='mnuReplaceUnderscore' action='mnuReplaceUnderscore'/><separator/><menuitem name='mnuCreateArtistFolder' action='mnuCreateArtistFolder'/></menu><menu name='TagActionsAction' action='TagActionsAction'><menuitem name='mnuShowSngTagWin' action='mnuShowSngTagWin'/></menu><menu name='MusicDirectoryStructureAction' action='MusicDirectoryStructureAction'><menuitem name='mnuMusicPath1' action='mnuMusicPath1'/></menu><menu name='LoadMusicAction' action='LoadMusicAction'><menuitem name='LoadSongsFromMusicFolderAction' action='LoadSongsFromMusicFolderAction'/><menuitem name='LoadSongsFromFileAction' action='LoadSongsFromFileAction'/></menu></menubar></ui>");
 		this.mnuMain = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/mnuMain")));
 		this.mnuMain.Name = "mnuMain";
 		this.vbox1.Add (this.mnuMain);
@@ -352,8 +364,9 @@ public partial class MainWindow
 		this.mnuCreateArtistFolder.Activated += new global::System.EventHandler (this.CreateVariousArtistFolderMenu);
 		this.mnuShowSngTagWin.Activated += new global::System.EventHandler (this.DisplaySongTagWindowMenu);
 		this.mnuQuitApp.Activated += new global::System.EventHandler (this.QuitMusicManagerProgramMenu);
-		this.mnuLoadSongs.Activated += new global::System.EventHandler (this.LoadMp3SongsFromMusicFolderMenu);
 		this.mnuMusicPath1.Activated += new global::System.EventHandler (this.SelectPathToMusicFolderMenu);
+		this.LoadSongsFromMusicFolderAction.Activated += new global::System.EventHandler (this.LoadSongsFromMusicFolderMenu);
+		this.LoadSongsFromFileAction.Activated += new global::System.EventHandler (this.LoadSongsFromFilemnu);
 		this.btnQuit.Clicked += new global::System.EventHandler (this.QuitApplicationButton);
 	}
 }

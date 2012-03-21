@@ -92,22 +92,11 @@ public partial class MainWindow: Gtk.Window
 	
 	} //End Event 
     
-	/// <summary>
-	/// Event -- protected void LoadMp3SongsFromMusicFolderMenu
-	/// 
-	/// Loads the mp3 songs from music folder.
-	/// </summary>
-	/// <param name='sender'>
-	/// Sender.
-	/// </param>
-	/// <param name='e'>
-	/// E.
-	/// </param>
-	protected void LoadMp3SongsFromMusicFolderMenu (object sender, 
-                                                            System.EventArgs e)
+	protected void LoadSongsFromMusicFolderMenu (object sender, 
+                                                        System.EventArgs e)
 	{
 		try {
-			methodName = "protected void LoadMp3SongsFromMusicFolerMenu";
+			methodName = "protected void LoadSongsFromMusicFolderMenu";
             
 			MusicManager.SongFilePaths sngFile = new 
                                                 MusicManager.SongFilePaths ();
@@ -124,7 +113,8 @@ public partial class MainWindow: Gtk.Window
 			//Calls method to get all of the mp3 song files located under
 			//the toplevel music folder.
 			sngPath = new Thread (sngFile.GetAllSongPaths);
-			sngPath.Start ();
+			sngPath.Start ();  
+			
             
 		} catch (ThreadStartException ex) {
 			errMsg = "Encountered error while starting thread.";
@@ -143,11 +133,10 @@ public partial class MainWindow: Gtk.Window
 			myMsg.BuildErrorString (className, methodName, errMsg,
                                                         ex.Message.ToString ());
 		}
-            
-		
-	} //End Event
-    
-    
+        
+	} //End Event    
+
+   
 	/// <summary>
 	/// Event -- protected void QuitMusicManagerProgramMenu
 	/// 
@@ -164,6 +153,12 @@ public partial class MainWindow: Gtk.Window
 	{
 		Application.Quit ();
 	} //End Event
+    
+    
+	protected void LoadSongsFromFilemnu (object sender, System.EventArgs e)
+	{
+		throw new System.NotImplementedException ();
+	}
 
  
 	/// <summary>
@@ -275,59 +270,8 @@ public partial class MainWindow: Gtk.Window
 	} //End Event
     
 	
-    
-//	/// <summary>
-//	/// Event -- protected void LoadAllSongFilesMenu
-//	/// 
-//	/// Loads all song files in users music folder.
-//	/// </summary>
-//	/// <param name='sender'>
-//	/// Sender.
-//	/// </param>
-//	/// <param name='e'>
-//	/// E.
-//	/// </param>
-////    protected void LoadAllSongFilesMenu (object sender, System.EventArgs e)
-////    {
-////        MusicManager.SongFilePaths clsSfp = new MusicManager.SongFilePaths ();
-////        //If no toplevel music directory selected exit.
-////        if (!CheckToplevelMusicDirectorySelected ())
-////            return;      
-////        clsSfp.SetObjectMainWindow = this;
-////     
-////        MusicManager.SongPathsCollection.ClearArray ();
-////        //Fill clsSongPaths with all .mp3 song files located in the Toplevel 
-////        //music directory and sub folders.
-////        //This is used to check all the tags for the songs listed.
-////        sngPath = new Thread (clsSfp.GetAllSongPaths);
-////        sngPath.Start ();
-////        Thread.Sleep (10);
-////        //sngPath.Join ();
-////        //clsSfp.MusicDirectoryLoop (MusicManager.clsUserEnvData.
-////        // UserMusicDirectoryPath);
-////        int intCnt = MusicManager.SongPathsCollection.ItemsCount ();
-////     
-////        lblInfo.Text = "Located: " + intCnt + " Songs.";  
-////    } //End Event
-////    
-//	/// <summary>
-//	/// Event -- protected void QuitMusicManagerApplicationMenu
-//	/// 
-//	/// Quits the MusicManager application.
-//	/// </summary>
-//	/// <param name='sender'>
-//	/// Sender.
-//	/// </param>
-//	/// <param name='e'>
-//	/// E.
-//	/// </param>
-//	protected void QuitMusicMangerApplicationMenu (object sender, 
-//                                                            System.EventArgs e)
-//	{
-//		Application.Quit ();
-//	} //End Event
-    
-    #endregion Menu Events
+ 
+#endregion Menu Events
 
 	
 	
@@ -355,34 +299,9 @@ public partial class MainWindow: Gtk.Window
 	
 #region Get Music Folders and Files
 	
-	/// <summary>
-	/// Method -- private void CheckForVariousArtistFolder()
-	/// 
-	/// Checks for various artist folder.
-	/// </summary>
-//	private void CheckForVariousArtistFolder ()
-//	{
-//		bool retVal = false;
-//		string pathEnv = MusicManager.UserEnviormentInfo.UserMusicDirectoryPath;
-//		
-//		if (String.IsNullOrEmpty (pathEnv)) {
-//			MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
-//			myMsg.ShowErrMessage ("You need to select your top level music " +
-//                                                                "directory.");
-//			return;
-//		}
-//            
-//		MusicManager.ValidateUserMusicDirectory valDir = new MusicManager.
-//            ValidateUserMusicDirectory ();
-//		
-//		retVal = valDir.CheckForVariousArtistFolder (pathEnv);
-//		        
-//		if (retVal)
-//		//if true Various Artist folder exists if false it does not.
-//			MusicManager.MusicPathStructure.VariousArtistFolder = retVal;		
-//		
-//	} //End Method
 	
+    
+    
 	/// <summary>
 	/// Method -- private bool CheckToplevelMusicDirectorySelected()
 	/// 
@@ -538,6 +457,7 @@ public partial class MainWindow: Gtk.Window
     
 
 	
+
 
 #endregion End Get Music Folders and Files
 	

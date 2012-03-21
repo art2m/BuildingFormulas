@@ -116,6 +116,8 @@
     <Compile Include="Classes\Class-Dictionary\ArtistPaths.cs" />
     <Compile Include="Classes\Class-Dictionary\SongPaths.cs" />
     <Compile Include="Classes\Class-Properties\UserEnviormentInfo.cs" />
+    <Compile Include="Classes\Class-Write-To-File\WriteSongPathsCollectionToFile.cs" />
+    <Compile Include="Classes\Class-Read-From-File\ReadSongPathsCollectionFromFile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -90,7 +90,6 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Load mp3 Songs</property>
         <property name="ShortLabel" translatable="yes">Load mp3 Songs</property>
-        <signal name="Activated" handler="LoadMp3SongsFromMusicFolderMenu" />
       </action>
       <action id="mnuMusicPath">
         <property name="Type">Action</property>
@@ -108,6 +107,23 @@
         <property name="ShortLabel" translatable="yes">Select Path To Music Folder</property>
         <signal name="Activated" handler="SelectPathToMusicFolderMenu" />
       </action>
+      <action id="LoadMusicAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Load Music</property>
+        <property name="ShortLabel" translatable="yes">Load Music</property>
+      </action>
+      <action id="LoadSongsFromMusicFolderAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Load Songs From Music Folder</property>
+        <property name="ShortLabel" translatable="yes">Load Mp3 Songs</property>
+        <signal name="Activated" handler="LoadSongsFromMusicFolderMenu" />
+      </action>
+      <action id="LoadSongsFromFileAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Load Songs From File</property>
+        <property name="ShortLabel" translatable="yes">Load mp3 songs from file</property>
+        <signal name="Activated" handler="LoadSongsFromFilemnu" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="WidthRequest">1020</property>
@@ -123,7 +139,6 @@
             <property name="MemberName" />
             <node name="mnuMain" type="Menubar">
               <node type="Menu" action="FileAction">
-                <node type="Menuitem" action="mnuLoadSongs" />
                 <node type="Separator" />
                 <node type="Menuitem" action="mnuQuitApp" />
               </node>
@@ -138,6 +153,10 @@
               </node>
               <node type="Menu" action="MusicDirectoryStructureAction">
                 <node type="Menuitem" action="mnuMusicPath1" />
+              </node>
+              <node type="Menu" action="LoadMusicAction">
+                <node type="Menuitem" action="LoadSongsFromMusicFolderAction" />
+                <node type="Menuitem" action="LoadSongsFromFileAction" />
               </node>
             </node>
           </widget>
