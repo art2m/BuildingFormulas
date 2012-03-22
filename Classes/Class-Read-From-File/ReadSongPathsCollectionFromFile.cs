@@ -18,15 +18,33 @@
 // 
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
 
-namespace ClassesClassReadFromFile
+/// <summary>
+/// Class -- ReadSongPathsCollectionFromFile.cs
+/// 
+/// Read song paths collection from file and refill the SongPathsCollection
+/// wit it. Quicker then rescanning the users music files. As long as the 
+/// user made no changes to there music file since the last time it was
+/// saved to file.
+/// </summary>
+using System;
+using System.IO;
+using System.Text;
+
+namespace MusicManager
 {
-    public class ReadSongPathsCollectionFromFile
-    {
-        public ReadSongPathsCollectionFromFile ()
-        {
-        }
-    }
-}
+	public class ReadSongPathsCollectionFromFile
+	{
+		public ReadSongPathsCollectionFromFile ()
+		{
+		} //End Constructor
+        
+		public void FillSongPathsCollectionFromFile ()
+		{
+			//
+		}
+        
+	} //End class ReadSongPathsCollectionFromFile
+    
+} //End namespace MusicManager
 

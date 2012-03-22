@@ -53,13 +53,9 @@ namespace MusicManager
             
 			WriteSongPathsCollectionToFile wSngPath =
                                 new WriteSongPathsCollectionToFile ();
-			bool retVal = wSngPath.CreateDirectoryAndFileForWrite ();
+			wSngPath.CreateDirectoryAndFileForWrite ();
             
-			if (retVal) {
-				//Do nothing
-			} else {
-				//do nothing
-			}
+			
 		} //End Method
 		
 		/// <summary>

@@ -157,8 +157,12 @@ public partial class MainWindow: Gtk.Window
     
 	protected void LoadSongsFromFilemnu (object sender, System.EventArgs e)
 	{
-		throw new System.NotImplementedException ();
-	}
+		MusicManager.ReadSongPathsCollectionFromFile rSngPath =
+                        new MusicManager.ReadSongPathsCollectionFromFile ();
+        
+		rSngPath.FillSongPathsCollectionFromFile ();
+        
+	} //End Event
 
  
 	/// <summary>

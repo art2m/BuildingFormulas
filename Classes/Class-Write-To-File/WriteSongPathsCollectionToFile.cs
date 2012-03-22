@@ -43,46 +43,54 @@ namespace MusicManager
 		{
 		} //End consturctor
         
-		public bool CreateDirectoryAndFileForWrite ()
+		public void CreateDirectoryAndFileForWrite ()
 		{
 			bool retVal = false;
-			bool val = false;
-			
+			MyMessages myMsg = null;
             
-			methodName = "public bool WriteSongsToFile";		
+                      
+			methodName = "public bool WriteSongsToFile";	
+            
+			myMsg = new MyMessages ();
+            
+            
             
 			string dirPath = null;
-			val = CreateMusicManagerDirectory (ref dirPath);
+			retVal = CreateMusicManagerDirectory (ref dirPath);
             
 			//if directory does not exist and failed to be created
 			//exit without createing songPathCollection file.
-			if (!val) {
-				return retVal;
+			if (!retVal) {
+				errMsg = "Unable to create file. Exiting.";
+				myMsg.BuildErrorString (className, methodName, errMsg, "");
+				return;
 			}             
             
 			string filePath = null;
 			
-			val = CreateSongPathCollectionFile (dirPath, ref filePath);
+			retVal = CreateSongPathCollectionFile (dirPath, ref filePath);
             
-			if (val) 
-				val = this.ShowHiddenFile (filePath);
+			if (retVal) 
+				retVal = this.ShowHiddenFile (filePath);
            
             
-			if (val) 
-				val = this.ShowHiddenDirectory (dirPath);
+			if (retVal) 
+				retVal = this.ShowHiddenDirectory (dirPath);
            
             
-			if (val) 
+			if (retVal) 
 				retVal = WriteSongsToFile (filePath);   
            
             
-			val = this.HideFile (filePath);
+			retVal = this.HideFile (filePath);
             
-			if (val) 
-				val = this.HideDirectory (dirPath);
-            
-			retVal = val;
-			return retVal;
+			if (retVal) 
+				retVal = this.HideDirectory (dirPath);
+			if (retVal) {
+				myMsg.ShowSuccessMessage ("Collection wrote to file" +
+                                                            " successfully.");
+			}
+			
                 
 		} //End Method
         
