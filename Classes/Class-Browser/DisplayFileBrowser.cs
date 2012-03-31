@@ -29,7 +29,6 @@
  * ******************************************************************************/
 using System;
 using System.IO;
-
 using Gtk;
 
 namespace MusicManager
@@ -39,7 +38,7 @@ namespace MusicManager
        
 		private string methodName = null;
 		private string errMsg = null;
-		private const string className = "clsFileBrowser";
+		private const string className = "DisplayFileBrowser.cs";
 		
 		public DisplayFileBrowser ()
 		{
@@ -104,8 +103,215 @@ namespace MusicManager
 		
 		
 	
-#endregion Display Directory Browser Start At Personal Directory	
-	
+#endregion Display Directory Browser Start At Personal Directory    
+        
+        
+        
+#region Playlist
+        
+        
+		/// <summary>
+		/// Method -- public string SelectPlaylistDirectory();
+		/// 
+		/// Selects the Directory where the playlist is saved.
+		/// This will enable you to manipulate all playlists in this
+		/// directory. Opertations on multiple playlist such as 
+		/// combining them.
+		/// </summary>
+		/// <returns>
+		/// The playlist directory.
+		/// </returns>
+		public string SelectPlaylistDirectory ()
+		{
+               
+			FileChooserDialog fcd = null;
+			string retVal = null;
+			string msgBrowser = null;
+               
+         
+			try {
+				methodName = "public string SelectPlayListDirectroy()";
+                 
+				errMsg = "Encountered error while selecting playlist directory";
+				msgBrowser = "Select directory where the playlist is found.";
+				fcd = new FileChooserDialog (msgBrowser, null,
+                                               FileChooserAction.SelectFolder,
+                                               "Cancel", ResponseType.Cancel,
+                                               "Open", ResponseType.Accept);
+                      
+				string strPath = UserEnviormentInfo.UserHomeDirectoryPath;
+                      
+                      
+				fcd.DefaultResponse = ResponseType.Accept;
+				fcd.SetCurrentFolder (strPath);
+				if (fcd.Run () == (int)ResponseType.Accept) {
+					retVal = fcd.CurrentFolder.ToString ();
+					fcd.Destroy ();                    
+				} else {
+					//user did not make selection or canceled.
+					//check return value for null.
+					fcd.Destroy ();
+				}
+                   
+				return retVal;
+			} catch (IOException ex) {
+				MyMessages clsMsg = new MyMessages ();
+				clsMsg.BuildErrorString (className, methodName, errMsg, 
+                       ex.Message.ToString ());   
+				return retVal;
+			}
+               
+		} //End Method
+        
+           
+		/// <summary>
+		/// Method -- public string SelectDirectorySavePlaylist.
+		/// this method allows you to place a playlist into it after you 
+		/// have made changes to one or multiple playlist such as combining
+		/// them.
+		/// Slects the directory save playlist.
+		/// </summary>
+		/// <returns>
+		/// The directory save playlist.
+		/// </returns>
+		public string SlectDirectorySavePlaylist ()
+		{
+			FileChooserDialog fcd = null;
+			string retVal = null;
+			string msgBrowser = null;
+               
+			try {
+				methodName = "public bool SelectDirectroySavePlaylist()";
+				errMsg = "Encountered error selecting playlist save directory";
+				msgBrowser = "Select directory to save playlist in.";
+				fcd = new FileChooserDialog (msgBrowser, null,
+                                                FileChooserAction.SelectFolder,
+                                                "Cancel", ResponseType.Cancel,
+                                                "Open", ResponseType.Accept);
+                       
+				string strPath = UserEnviormentInfo.UserHomeDirectoryPath;
+                       
+                       
+				fcd.DefaultResponse = ResponseType.Accept;
+				fcd.SetCurrentFolder (strPath);
+				if (fcd.Run () == (int)ResponseType.Accept) {
+					retVal = fcd.CurrentFolder.ToString ();
+					fcd.Destroy ();                    
+				} else {
+					//user did not make selection or canceled.
+					//check return value for null.
+					fcd.Destroy ();
+				}
+                    
+				return retVal;
+			} catch (IOException ex) {
+				MyMessages clsMsg = new MyMessages ();
+				clsMsg.BuildErrorString (className, methodName, errMsg, 
+                       ex.Message.ToString ());   
+				return retVal;
+			}
+               
+		} //End Method
+           
+        
+		/// <summary>
+		/// Method -- public bool SavePlayList()
+		/// Saves the play list.
+		/// </summary>
+		/// <returns>
+		/// The play list.
+		/// </returns>
+		public bool SavePlayList ()
+		{
+               
+			FileChooserDialog fcd = null;
+			bool retVal = false;
+			string msgBrowser = null;
+               
+			try {
+				methodName = "public bool SavePlayList()";
+				errMsg = "Encountered error saving playlist.";
+				msgBrowser = "Select directory to save playlist in.";
+				fcd = new FileChooserDialog (msgBrowser, null,
+                                                FileChooserAction.Save,
+                                                "Cancel", ResponseType.Cancel,
+                                                "Save", ResponseType.Accept);
+                       
+				string strPath = UserEnviormentInfo.UserHomeDirectoryPath;
+                       
+                       
+				fcd.DefaultResponse = ResponseType.Accept;
+				fcd.SetCurrentFolder (strPath);
+				if (fcd.Run () == (int)ResponseType.Accept) {					         
+					retVal = true;
+					fcd.Destroy ();                    
+				} else {
+					//user did not make selection or canceled.
+					//check return value for null.
+                       
+					fcd.Destroy ();
+				}
+                    
+				return retVal;
+			} catch (IOException ex) {
+				MyMessages clsMsg = new MyMessages ();
+				clsMsg.BuildErrorString (className, methodName, errMsg, 
+                       ex.Message.ToString ());   
+				return retVal;
+			}  
+		} //End Method
+           
+  
+		/// <summary>
+		/// Method -- public string selectPlayList()
+		/// Selects the play list to open for use.
+		/// </summary>
+		/// <returns>
+		/// The play list.
+		/// </returns>
+		public string SelectPlayList ()
+		{
+			FileChooserDialog fcd = null;
+			string retVal = null;
+			string msgBrowser = null;
+               
+			try {
+				methodName = "public bool SavePlayList()";
+				errMsg = "Encountered error selecting playlist.";
+				msgBrowser = "Select playlist to open.";
+				fcd = new FileChooserDialog (msgBrowser, null,
+                                                FileChooserAction.Open,
+                                                "Cancel", ResponseType.Cancel,
+                                                "Open", ResponseType.Accept);
+                       
+				string strPath = UserEnviormentInfo.UserHomeDirectoryPath;
+                       
+                       
+				fcd.DefaultResponse = ResponseType.Accept;
+				fcd.SetCurrentFolder (strPath);
+				if (fcd.Run () == (int)ResponseType.Accept) {				
+					retVal = fcd.Filename.ToString ();                    
+					fcd.Destroy ();                    
+				} else {
+					//user did not make selection or canceled.
+					//check return value for null.
+                       
+					fcd.Destroy ();
+				}
+                    
+				return retVal;
+			} catch (IOException ex) {
+				MyMessages clsMsg = new MyMessages ();
+				clsMsg.BuildErrorString (className, methodName, errMsg, 
+                       ex.Message.ToString ());   
+				return retVal;
+			}  
+		} //End Method
+        
+        
+#endregion PlayList
+        
+		
 		
 	} //End class clsFileBrowser
 	

@@ -25,6 +25,10 @@ public partial class MainWindow
 	private global::Gtk.Action LoadMusicAction;
 	private global::Gtk.Action LoadSongsFromMusicFolderAction;
 	private global::Gtk.Action LoadSongsFromFileAction;
+	private global::Gtk.Action PlayListAction;
+	private global::Gtk.Action mnuNewPlaylist;
+	private global::Gtk.Action mnuSavePlaylist;
+	private global::Gtk.Action mnuCombinePlaylist;
 	private global::Gtk.VBox vbox1;
 	private global::Gtk.MenuBar mnuMain;
 	private global::Gtk.Alignment aliMenuLabelInfo;
@@ -118,6 +122,18 @@ public partial class MainWindow
 		this.LoadSongsFromFileAction = new global::Gtk.Action ("LoadSongsFromFileAction", global::Mono.Unix.Catalog.GetString ("Load Songs From File"), null, null);
 		this.LoadSongsFromFileAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Load mp3 songs from file");
 		w1.Add (this.LoadSongsFromFileAction, null);
+		this.PlayListAction = new global::Gtk.Action ("PlayListAction", global::Mono.Unix.Catalog.GetString ("PlayList"), null, null);
+		this.PlayListAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("PlayList");
+		w1.Add (this.PlayListAction, null);
+		this.mnuNewPlaylist = new global::Gtk.Action ("mnuNewPlaylist", global::Mono.Unix.Catalog.GetString ("New Playlist"), null, null);
+		this.mnuNewPlaylist.ShortLabel = global::Mono.Unix.Catalog.GetString ("New Playlist");
+		w1.Add (this.mnuNewPlaylist, null);
+		this.mnuSavePlaylist = new global::Gtk.Action ("mnuSavePlaylist", global::Mono.Unix.Catalog.GetString ("Save Playlist"), null, null);
+		this.mnuSavePlaylist.ShortLabel = global::Mono.Unix.Catalog.GetString ("Save Playlist");
+		w1.Add (this.mnuSavePlaylist, null);
+		this.mnuCombinePlaylist = new global::Gtk.Action ("mnuCombinePlaylist", global::Mono.Unix.Catalog.GetString ("Combine Playlist"), null, null);
+		this.mnuCombinePlaylist.ShortLabel = global::Mono.Unix.Catalog.GetString ("Combine Playlist");
+		w1.Add (this.mnuCombinePlaylist, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.WidthRequest = 1020;
@@ -130,7 +146,7 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><separator/><menuitem name='mnuQuitApp' action='mnuQuitApp'/></menu><menu name='PathActionsAction' action='PathActionsAction'><menuitem name='mnuReplaceSpaceUnderscore' action='mnuReplaceSpaceUnderscore'/><menuitem name='mnuReplaceUnderscore' action='mnuReplaceUnderscore'/><separator/><menuitem name='mnuCreateArtistFolder' action='mnuCreateArtistFolder'/></menu><menu name='TagActionsAction' action='TagActionsAction'><menuitem name='mnuShowSngTagWin' action='mnuShowSngTagWin'/></menu><menu name='MusicDirectoryStructureAction' action='MusicDirectoryStructureAction'><menuitem name='mnuMusicPath1' action='mnuMusicPath1'/></menu><menu name='LoadMusicAction' action='LoadMusicAction'><menuitem name='LoadSongsFromMusicFolderAction' action='LoadSongsFromMusicFolderAction'/><menuitem name='LoadSongsFromFileAction' action='LoadSongsFromFileAction'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><separator/><menuitem name='mnuQuitApp' action='mnuQuitApp'/></menu><menu name='PathActionsAction' action='PathActionsAction'><menuitem name='mnuReplaceSpaceUnderscore' action='mnuReplaceSpaceUnderscore'/><menuitem name='mnuReplaceUnderscore' action='mnuReplaceUnderscore'/><separator/><menuitem name='mnuCreateArtistFolder' action='mnuCreateArtistFolder'/></menu><menu name='TagActionsAction' action='TagActionsAction'><menuitem name='mnuShowSngTagWin' action='mnuShowSngTagWin'/></menu><menu name='MusicDirectoryStructureAction' action='MusicDirectoryStructureAction'><menuitem name='mnuMusicPath1' action='mnuMusicPath1'/></menu><menu name='LoadMusicAction' action='LoadMusicAction'><menuitem name='LoadSongsFromMusicFolderAction' action='LoadSongsFromMusicFolderAction'/><menuitem name='LoadSongsFromFileAction' action='LoadSongsFromFileAction'/></menu><menu name='PlayListAction' action='PlayListAction'><menuitem name='mnuNewPlaylist' action='mnuNewPlaylist'/><menuitem name='mnuSavePlaylist' action='mnuSavePlaylist'/><separator/><menuitem name='mnuCombinePlaylist' action='mnuCombinePlaylist'/></menu></menubar></ui>");
 		this.mnuMain = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/mnuMain")));
 		this.mnuMain.Name = "mnuMain";
 		this.vbox1.Add (this.mnuMain);
@@ -367,6 +383,9 @@ public partial class MainWindow
 		this.mnuMusicPath1.Activated += new global::System.EventHandler (this.SelectPathToMusicFolderMenu);
 		this.LoadSongsFromMusicFolderAction.Activated += new global::System.EventHandler (this.LoadSongsFromMusicFolderMenu);
 		this.LoadSongsFromFileAction.Activated += new global::System.EventHandler (this.LoadSongsFromFilemnu);
+		this.mnuNewPlaylist.Activated += new global::System.EventHandler (this.CreateNewPlaylistMenu);
+		this.mnuSavePlaylist.Activated += new global::System.EventHandler (this.SavePlaylistMenu);
+		this.mnuCombinePlaylist.Activated += new global::System.EventHandler (this.CombineMultiplePlaylistMenu);
 		this.btnQuit.Clicked += new global::System.EventHandler (this.QuitApplicationButton);
 	}
 }

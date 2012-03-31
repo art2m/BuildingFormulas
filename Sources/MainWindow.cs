@@ -20,6 +20,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.IO;
+using System.Text;
+using System.Collections.Generic;
 using System.Threading;
 using System.Diagnostics;
 using Gtk;
@@ -63,7 +65,10 @@ public partial class MainWindow: Gtk.Window
  
     
 #region Menu Events
-
+ 
+    
+#region Music Directory Structure Menu Events
+    
 	/// <summary>
 	/// Event -- protected void SelectPathToMusicFolderMenu
 	/// 
@@ -79,7 +84,7 @@ public partial class MainWindow: Gtk.Window
                                                             System.EventArgs e)
 	{
         
-			
+         
 		methodName = "protected void " +
             " mnuMain_UserInfo_MusicPath_Incorrect_OnClicked (object sender, " +
    "System.EventArgs e)";         
@@ -89,8 +94,13 @@ public partial class MainWindow: Gtk.Window
   
 		fBrowser.SelectToplevelMusicDirectory ();
      
-	
-	} //End Event 
+
+	} //End Event
+    
+#endregion Music Directory Structure Menu Events
+    
+    
+#region Load Music Menu Events
     
 	protected void LoadSongsFromMusicFolderMenu (object sender, 
                                                         System.EventArgs e)
@@ -114,7 +124,7 @@ public partial class MainWindow: Gtk.Window
 			//the toplevel music folder.
 			sngPath = new Thread (sngFile.GetAllSongPaths);
 			sngPath.Start ();  
-			
+         
             
 		} catch (ThreadStartException ex) {
 			errMsg = "Encountered error while starting thread.";
@@ -130,13 +140,29 @@ public partial class MainWindow: Gtk.Window
 		} catch (ThreadAbortException ex) {
 			errMsg = "sngPath thread terminated unexpectedly"; 
 			MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
-			myMsg.BuildErrorString (className, methodName, errMsg,
-                                                        ex.Message.ToString ());
+			myMsg.BuildErrorString
+                (className, methodName, errMsg, ex.Message.ToString ());
 		}
         
-	} //End Event    
+	} //End Event
+    
+    
+	protected void LoadSongsFromFilemnu (object sender, System.EventArgs e)
+	{
+		MusicManager.ReadSongPathsCollectionFromFile rSngPath =
+                        new MusicManager.ReadSongPathsCollectionFromFile ();
+        
+		rSngPath.FillSongPathsCollectionFromFile ();
+        
+	} //End Event
 
-   
+    
+    
+#endregion Load Music Menu Events  
+    
+
+#region File Menu Events
+    
 	/// <summary>
 	/// Event -- protected void QuitMusicManagerProgramMenu
 	/// 
@@ -154,17 +180,13 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 	} //End Event
     
+#endregion File Menu Events
     
-	protected void LoadSongsFromFilemnu (object sender, System.EventArgs e)
-	{
-		MusicManager.ReadSongPathsCollectionFromFile rSngPath =
-                        new MusicManager.ReadSongPathsCollectionFromFile ();
-        
-		rSngPath.FillSongPathsCollectionFromFile ();
-        
-	} //End Event
-
+    
+	
  
+#region Path Actions Menu Events
+    
 	/// <summary>
 	/// Event -- protected void ReplaceSpaceInFileWithUnderscoreMenu
 	/// 
@@ -187,7 +209,7 @@ public partial class MainWindow: Gtk.Window
 		musicPath.ShowAll ();
         
 	} //End Event
- 
+
     
 	/// <summary>
 	/// Event -- protected void ReplaceUnderscoreInFileWithSpaceMenu
@@ -226,31 +248,38 @@ public partial class MainWindow: Gtk.Window
 	protected void CreateVariousArtistFolderMenu (object sender, 
                                                             System.EventArgs e)
 	{
-//		string[] genres = null;
-// 
-//		int intCnt = MusicManager.GenreCollection.ItemsCount ();
-// 
-//		if ((intCnt - 1) < 1) {
-//			return;
-//		}
-// 
-//		genres = new string[intCnt];
-//
-//		//Fill the list with music directories paths.
-//		genres = MusicManager.GenreCollection.GetAllGenreDirectories ();
-// 
-//		if (genres == null) {
-//			return;
-//		} else if (genres.Length < 1) {
-//			return;
-//		}
-// 
-//		for (int i = 0; i < intCnt -1; i++) {     
-//             
-//		}
-// 
+		//      string[] genres = null;
+		// 
+		//      int intCnt = MusicManager.GenreCollection.ItemsCount ();
+		// 
+		//      if ((intCnt - 1) < 1) {
+		//          return;
+		//      }
+		// 
+		//      genres = new string[intCnt];
+		//
+		//      //Fill the list with music directories paths.
+		//      genres = MusicManager.GenreCollection.GetAllGenreDirectories ();
+		// 
+		//      if (genres == null) {
+		//          return;
+		//      } else if (genres.Length < 1) {
+		//          return;
+		//      }
+		// 
+		//      for (int i = 0; i < intCnt -1; i++) {     
+		//             
+		//      }
+		// 
 		throw new System.NotImplementedException ();
 	} //End Event
+    
+#endregion Path Actions Menu Events
+    
+    
+    
+    
+#region Tag Actions Menu Events
     
 	/// <summary>
 	/// Event -- protected void DisplaySongTagWindowMenu
@@ -265,7 +294,7 @@ public partial class MainWindow: Gtk.Window
 	/// </param>
 	protected void DisplaySongTagWindowMenu (object sender, System.EventArgs e)
 	{
-		
+     
 		MusicManager.SongTagWindow sngtag = new MusicManager.SongTagWindow ();
          
 		sngtag.ShowAll ();
@@ -273,7 +302,91 @@ public partial class MainWindow: Gtk.Window
      
 	} //End Event
     
+#endregion Tag Actions Menu Events
+    
 	
+#region Playlist Menu Events
+    
+	protected void CreateNewPlaylistMenu (object sender, System.EventArgs e)
+	{
+		MusicManager.MyInputDialog dlgInput = new MusicManager.MyInputDialog ();        
+		ResponseType rspRetVal = new ResponseType ();        
+		
+		MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
+        
+		myMsg.InputDialogMessage = "Enter a name for this playlist.";
+        
+		rspRetVal = (ResponseType)dlgInput.Run ();
+        
+		if (rspRetVal == ResponseType.Ok) {
+			string plistName = myMsg.OutputDialogMessage;   
+		}
+        
+		dlgInput.Destroy ();
+        
+	}
+  
+	protected void SavePlaylistMenu (object sender, System.EventArgs e)
+	{
+		throw new System.NotImplementedException ();
+	}
+  
+	protected void CombineMultiplePlaylistMenu (object sender,
+                                                System.EventArgs e)
+	{
+		MusicManager.MyInputDialog dlgInput = new MusicManager.MyInputDialog ();
+		MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
+		ResponseType rspRetVal = new ResponseType ();
+		MusicManager.DisplayFileBrowser fb = new 
+                                        MusicManager.DisplayFileBrowser ();
+        
+		string dirPlaylist = fb.SelectPlaylistDirectory ();        
+        
+		if (!File.Exists (dirPlayList)) {
+			myMsg.ShowErrMessage ("you must select a valid directory.");
+			return;
+		}
+        
+		string[] filePlaylists = Directory.GetFiles (dirPlayList);
+        
+		string myTemp = null;
+		List<string> lstPaths = new List<string> ();
+        
+		for (int i = 0; i < filePlaylists.Length; i++) {           
+			myTemp = filePlaylists [i];
+			if (System.IO.Path.GetExtension (myTemp) == ".m3u") {
+				lstPaths.Add (myTemp);
+			}         
+		}
+        
+		//only 1 or less playlists not enough to combine.
+		if (lstPaths.Count < 2) {
+			return;
+		}
+        
+        
+        
+		//enter string to be displayed in myInputDialog.
+		myMsg.InputDialogMessage = "Enter name for combined playlist.";
+		rspRetVal = (ResponseType)dlgInput.Run ();
+        
+		if (rspRetVal == ResponseType.Ok) {
+			string plistName = myMsg.OutputDialogMessage;    
+			dlgInput.Destroy ();
+		} else {
+			dlgInput.Destroy ();
+			return;
+		}
+        
+        
+        
+       
+        
+       
+	} //End Method
+    
+#endregion Playlist Menu Events
+
  
 #endregion Menu Events
 
@@ -463,6 +576,9 @@ public partial class MainWindow: Gtk.Window
 	
 
 
+
+
+   
 #endregion End Get Music Folders and Files
 	
 } //End class public partial class MainWindow: Gtk.Window

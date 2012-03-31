@@ -25,7 +25,7 @@ namespace MusicManager
 			
 		} // End Constructor		
 	
-		#region Show MessageBox
+#region Show MessageBox
         
 		/// <summary>
 		/// Method -- public void ShowErrMessage
@@ -46,8 +46,11 @@ namespace MusicManager
             
 			Thread.Sleep (20);
 			rspRetVal = (ResponseType)md.Run ();
+            
+			if (rspRetVal == ResponseType.None)
+                //Not used stop warning.
          
-			md.Destroy ();
+				md.Destroy ();
 		} //End Method
         
 		
@@ -118,7 +121,88 @@ namespace MusicManager
 			//All Ok
 			return rspRetVal;
 		} //End Method 
-		#endregion
+        
+		/// <summary>
+		/// Method -- public string ShowOkCancelMessage(string strMsg)
+		/// Shows the OK cancel message.
+		/// </summary>
+		/// <returns>
+		/// The OK cancel message.
+		/// </returns>
+		/// <param name='strMsg'>
+		/// String message.
+		/// </param>
+		public ResponseType ShowOKCancelMessage (string strMsg)
+		{
+			MessageDialog md = null;			
+            
+			md = new MessageDialog (null, DialogFlags.Modal,
+                                   MessageType.Question,
+                                   ButtonsType.OkCancel, strMsg);
+			Thread.Sleep (20);
+            
+			rspRetVal = (ResponseType)md.Run ();		
+			md.Destroy ();
+            
+			return rspRetVal;
+          
+		} //End Method
+        
+          
+		public void ShowMessage (Window parent, string title, string message)
+		{
+			Dialog dialog = null;
+			try {
+				dialog = new Dialog (title, parent,
+            DialogFlags.DestroyWithParent | DialogFlags.Modal,
+            ResponseType.Ok);
+				dialog.VBox.Add (new Label (message));
+				dialog.ShowAll ();
+
+				dialog.Run ();
+			} finally {
+				if (dialog != null)
+					dialog.Destroy ();
+			}
+            
+		} //End Method
+        
+#endregion Show MessageBox
+        
+		/// <summary>
+		/// Property -- public string InputDialogMessage
+		/// 
+		/// gets or sets the message from the InputDialog.cs
+		/// </summary>
+		private string msgInputDlg;
+
+		public string InputDialogMessage {
+			get {
+				return msgInputDlg;
+			} 
+			set {
+				msgInputDlg = value;
+			}
+		} //End Property
+        
+        
+		/// <summary>
+		/// Property public string OutputDialogMessage
+		/// 
+		/// gets or sets the Message output by InputDialog.cs
+		/// </summary>
+		private string msgOutputDlg;
+
+		public string OutputDialogMessage {
+			get {
+				return msgOutputDlg;
+			}
+			set {
+				msgOutputDlg = value;
+			}
+		} //End Property
+        
+        
 		
 		/// <summary>
 		/// Method -- public void BuildErrorString
@@ -155,23 +239,7 @@ namespace MusicManager
 		} // End METHOD 	
         
 	
-        
-		public void ShowMessage (Window parent, string title, string message)
-		{
-			Dialog dialog = null;
-			try {
-				dialog = new Dialog (title, parent,
-            DialogFlags.DestroyWithParent | DialogFlags.Modal,
-            ResponseType.Ok);
-				dialog.VBox.Add (new Label (message));
-				dialog.ShowAll ();
-
-				dialog.Run ();
-			} finally {
-				if (dialog != null)
-					dialog.Destroy ();
-			}
-		}
+      
 
 	} // End class clsMessages
 

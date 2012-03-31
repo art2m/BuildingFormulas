@@ -124,6 +124,29 @@
         <property name="ShortLabel" translatable="yes">Load mp3 songs from file</property>
         <signal name="Activated" handler="LoadSongsFromFilemnu" />
       </action>
+      <action id="PlayListAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">PlayList</property>
+        <property name="ShortLabel" translatable="yes">PlayList</property>
+      </action>
+      <action id="mnuNewPlaylist">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">New Playlist</property>
+        <property name="ShortLabel" translatable="yes">New Playlist</property>
+        <signal name="Activated" handler="CreateNewPlaylistMenu" />
+      </action>
+      <action id="mnuSavePlaylist">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Save Playlist</property>
+        <property name="ShortLabel" translatable="yes">Save Playlist</property>
+        <signal name="Activated" handler="SavePlaylistMenu" />
+      </action>
+      <action id="mnuCombinePlaylist">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Combine Playlist</property>
+        <property name="ShortLabel" translatable="yes">Combine Playlist</property>
+        <signal name="Activated" handler="CombineMultiplePlaylistMenu" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="WidthRequest">1020</property>
@@ -157,6 +180,12 @@
               <node type="Menu" action="LoadMusicAction">
                 <node type="Menuitem" action="LoadSongsFromMusicFolderAction" />
                 <node type="Menuitem" action="LoadSongsFromFileAction" />
+              </node>
+              <node type="Menu" action="PlayListAction">
+                <node type="Menuitem" action="mnuNewPlaylist" />
+                <node type="Menuitem" action="mnuSavePlaylist" />
+                <node type="Separator" />
+                <node type="Menuitem" action="mnuCombinePlaylist" />
               </node>
             </node>
           </widget>
@@ -1736,6 +1765,120 @@
     <property name="WindowPosition">CenterOnParent</property>
     <child>
       <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Dialog" id="MusicManager.MyInputDialog" design-size="602 237">
+    <property name="MemberName" />
+    <property name="WidthRequest">600</property>
+    <property name="Title" translatable="yes">Message Input Box</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <property name="BorderWidth">6</property>
+    <property name="Buttons">2</property>
+    <property name="HelpButton">False</property>
+    <child internal-child="VBox">
+      <widget class="Gtk.VBox" id="dialog1_VBox">
+        <property name="MemberName" />
+        <property name="BorderWidth">2</property>
+        <child>
+          <widget class="Gtk.VBox" id="vbox3">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Label" id="lblInfo">
+                <property name="MemberName" />
+                <property name="WidthRequest">0</property>
+                <property name="HeightRequest">60</property>
+                <property name="LabelProp" translatable="yes">label2</property>
+                <property name="Wrap">True</property>
+                <property name="Justify">Center</property>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Alignment" id="alignment2">
+                <property name="MemberName" />
+                <property name="HeightRequest">30</property>
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">False</property>
+                <property name="Expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Entry" id="txtData">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="IsEditable">True</property>
+                <property name="InvisibleChar">•</property>
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+    <child internal-child="ActionArea">
+      <widget class="Gtk.HButtonBox" id="dialog1_ActionArea">
+        <property name="MemberName" />
+        <property name="HeightRequest">60</property>
+        <property name="Spacing">10</property>
+        <property name="BorderWidth">5</property>
+        <property name="Size">2</property>
+        <property name="LayoutStyle">End</property>
+        <child>
+          <widget class="Gtk.Button" id="btnCancel">
+            <property name="MemberName" />
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-cancel</property>
+            <property name="ResponseId">-6</property>
+            <signal name="Clicked" handler="SelectedCancelButton" />
+            <property name="label">gtk-cancel</property>
+          </widget>
+          <packing>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnOk">
+            <property name="MemberName" />
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-ok</property>
+            <property name="ResponseId">-5</property>
+            <signal name="Clicked" handler="SelectedOkButton" />
+            <property name="label">gtk-ok</property>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
     </child>
   </widget>
 </stetic-interface>
