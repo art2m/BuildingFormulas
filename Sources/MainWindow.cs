@@ -58,6 +58,10 @@ public partial class MainWindow: Gtk.Window
 			lblUserMusicPath.Text = "Undetermined";			
 		
 		}
+        
+		//Check to see what platform the program is running on.
+		//Linux = 1 Windows = 2 Mac = 3;
+		CheckOperatingSystem ();
 		
 	} //End Method 
 	
@@ -307,24 +311,58 @@ public partial class MainWindow: Gtk.Window
 	
 #region Playlist Menu Events
     
+	/// <summary>
+	/// Event -- protected void CreateNewPlaylistMenu()
+	/// 
+	/// Creates Displays a dialog box to get name for new playlist to be
+	/// created..
+	/// </summary>
+	/// <param name='sender'>
+	/// Sender.
+	/// </param>
+	/// <param name='e'>
+	/// E.
+	/// </param>
 	protected void CreateNewPlaylistMenu (object sender, System.EventArgs e)
 	{
-		MusicManager.MyInputDialog dlgInput = new MusicManager.MyInputDialog ();        
-		ResponseType rspRetVal = new ResponseType ();        
-		
-		MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
+		MusicManager.MyMessages myMsg = null;
+		string msg = null;
+		string plistName = null;
         
-		myMsg.InputDialogMessage = "Enter a name for this playlist.";
-        
-		rspRetVal = (ResponseType)dlgInput.Run ();
-        
-		if (rspRetVal == ResponseType.Ok) {
-			string plistName = myMsg.OutputDialogMessage;   
+		try {
+			methodName = "protected void CreateNewPlaylistMenu()";
+			errMsg = "Encountered error while displaying name new playlist" +
+                                                                " dialog box.";
+			MusicManager.MyInputDialog dlgInput = 
+                                            new MusicManager.MyInputDialog ();        
+			ResponseType rspRetVal = new ResponseType ();     
+			myMsg = new MusicManager.MyMessages (); 
+            
+			MusicManager.ConstantMessages.InputDialogMessage = 
+                                            "Enter a name for this playlist.";
+            
+			rspRetVal = (ResponseType)dlgInput.Run ();
+            
+			if (rspRetVal == ResponseType.Ok) {
+				plistName = MusicManager.ConstantMessages.OutputDialogMessage;            
+			}
+			//If zero length not created was error.
+			if (plistName.Length < 1) {
+				msg = "No playlist name was created.";
+				myMsg.ShowErrMessage (msg);
+			}
+            
+			dlgInput.Destroy ();
+		} catch (NullReferenceException ex) {
+			myMsg.BuildErrorString (className, methodName, errMsg,
+                                   ex.Message.ToString ());
+            
+		} catch (ApplicationException ex) {
+			myMsg.BuildErrorString (className, methodName, errMsg,
+                                   ex.Message.ToString ());  
 		}
         
-		dlgInput.Destroy ();
-        
-	}
+	} //End Method
   
 	protected void SavePlaylistMenu (object sender, System.EventArgs e)
 	{
@@ -334,55 +372,32 @@ public partial class MainWindow: Gtk.Window
 	protected void CombineMultiplePlaylistMenu (object sender,
                                                 System.EventArgs e)
 	{
-		MusicManager.MyInputDialog dlgInput = new MusicManager.MyInputDialog ();
-		MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
-		ResponseType rspRetVal = new ResponseType ();
-		MusicManager.DisplayFileBrowser fb = new 
-                                        MusicManager.DisplayFileBrowser ();
+		bool retVal = false;
+		string msg = null;
+		MusicManager.MyMessages myMsg = null;
         
-		string dirPlaylist = fb.SelectPlaylistDirectory ();        
-        
-		if (!File.Exists (dirPlayList)) {
-			myMsg.ShowErrMessage ("you must select a valid directory.");
-			return;
+		try {
+			methodName = "protected void CombineMultiplePlaylistMenu()";
+			errMsg = "Encountered error while combining playlists.";
+			MusicManager.CombinePlaylist cmbPlaylist =
+                                         new MusicManager.CombinePlaylist (); 
+			myMsg = new MusicManager.MyMessages ();
+         
+			retVal = cmbPlaylist.CreateNewPlaylistFile ();
+             
+			if (retVal) {
+				retVal = cmbPlaylist.CombineMultiplePlaylists ();            
+			}
+         
+			if (retVal) {
+				msg = "Unable to complete combining Playlists.";
+				myMsg.ShowErrMessage (msg);            
+			}
+		} catch (ApplicationException ex) {
+			myMsg.BuildErrorString (className, methodName, errMsg,
+                                   ex.Message.ToString ());
 		}
         
-		string[] filePlaylists = Directory.GetFiles (dirPlayList);
-        
-		string myTemp = null;
-		List<string> lstPaths = new List<string> ();
-        
-		for (int i = 0; i < filePlaylists.Length; i++) {           
-			myTemp = filePlaylists [i];
-			if (System.IO.Path.GetExtension (myTemp) == ".m3u") {
-				lstPaths.Add (myTemp);
-			}         
-		}
-        
-		//only 1 or less playlists not enough to combine.
-		if (lstPaths.Count < 2) {
-			return;
-		}
-        
-        
-        
-		//enter string to be displayed in myInputDialog.
-		myMsg.InputDialogMessage = "Enter name for combined playlist.";
-		rspRetVal = (ResponseType)dlgInput.Run ();
-        
-		if (rspRetVal == ResponseType.Ok) {
-			string plistName = myMsg.OutputDialogMessage;    
-			dlgInput.Destroy ();
-		} else {
-			dlgInput.Destroy ();
-			return;
-		}
-        
-        
-        
-       
-        
-       
 	} //End Method
     
 #endregion Playlist Menu Events
@@ -580,5 +595,34 @@ public partial class MainWindow: Gtk.Window
 
    
 #endregion End Get Music Folders and Files
+    
+	private void CheckOperatingSystem ()
+	{
+		int osLinux = 0;
+		int platLinux = 1;
+		int platWindows = 2;
+		int PlatMac = 3;
+        
+		try {
+			methodName = "private void CheckOpertaingSystem()";
+			errMsg = "Encountered error while getting the Platform ID.";
+			osLinux = (int)Environment.OSVersion.Platform;
+            
+			if (osLinux == 4) { //linux os.
+				MusicManager.UserEnviormentInfo.OSLinuxOrOSWindows = platLinux;            
+			} else if (osLinux == 6) { //Mac os.
+				MusicManager.UserEnviormentInfo.OSLinuxOrOSWindows = PlatMac;     
+			} else if (osLinux == 128) { //linux os.
+				MusicManager.UserEnviormentInfo.OSLinuxOrOSWindows = platLinux;  
+			} else { //Windows os.
+				MusicManager.UserEnviormentInfo.OSLinuxOrOSWindows = platWindows;  
+			}
+		} catch (Exception ex) {
+			MusicManager.MyMessages myMsg = new MusicManager.MyMessages ();
+			myMsg.BuildErrorString (className, methodName, errMsg,
+                                   ex.Message.ToString ());
+		}        
+       
+	} //End Method 
 	
 } //End class public partial class MainWindow: Gtk.Window

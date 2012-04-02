@@ -42,7 +42,7 @@ namespace MusicManager
 				myMsg = new MyMessages ();   
 			}
 			
-			myMsg.OutputDialogMessage = null;
+			ConstantMessages.OutputDialogMessage = null;
 		
 		} //End Event
 
@@ -53,7 +53,7 @@ namespace MusicManager
 				myMsg = new MyMessages ();    
 			}           
 			retVal = txtData.Text.Trim ();
-			myMsg.OutputDialogMessage = retVal;
+			ConstantMessages.OutputDialogMessage = retVal;
             
 			
 		} //End Event
@@ -66,7 +66,7 @@ namespace MusicManager
 				myMsg = new MyMessages ();   
 			}
 			
-			lblInfo.Text = myMsg.InputDialogMessage;
+			lblInfo.Text = ConstantMessages.InputDialogMessage;
             
 		} //End Method
         

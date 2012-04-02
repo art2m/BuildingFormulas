@@ -120,6 +120,8 @@
     <Compile Include="Classes\Class-Read-From-File\ReadSongPathsCollectionFromFile.cs" />
     <Compile Include="Dialogs\MyInputDialog.cs" />
     <Compile Include="gtk-gui\MusicManager.MyInputDialog.cs" />
+    <Compile Include="Classes\Class-Messages\ConstantMessages.cs" />
+    <Compile Include="Classes\Class-Playlists\CombinePlaylist.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -135,5 +137,6 @@
     <Folder Include="Classes\Class-Write-To-File\" />
     <Folder Include="Classes\Class-Dictionary\" />
     <Folder Include="Dialogs\" />
+    <Folder Include="Classes\Class-Playlists\" />
   </ItemGroup>
 </Project>

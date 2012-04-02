@@ -195,6 +195,25 @@ namespace MusicManager
 			}
 		} //End Property  
         
+        
+		/// <summary>
+		/// Property -- public static bool OSLinuxOrOSWindows
+		/// 
+		/// if osLinux = 0 not set yet. if osLinux = 1 running on linux
+		/// plataform. If osLinux = 2 running on Windows Platform. If
+		///  osLinux = 3 running on Mac.
+		/// </summary>
+		private static int osLinux = 0;
+
+		public static int OSLinuxOrOSWindows {
+			get {
+				return osLinux;                
+			} 
+			set {
+				osLinux = value;
+			}
+		} //End Property
+        
 		
 		/// <summary>
 		/// Method -- static public bool GetUserInfo

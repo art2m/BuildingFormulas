@@ -127,13 +127,14 @@ namespace MusicManager
 			FileChooserDialog fcd = null;
 			string retVal = null;
 			string msgBrowser = null;
-               
+                          
          
 			try {
 				methodName = "public string SelectPlayListDirectroy()";
                  
 				errMsg = "Encountered error while selecting playlist directory";
-				msgBrowser = "Select directory where the playlist is found.";
+				msgBrowser = "Select directory that contains multiple " +
+                                                    ".m3u playlist files.";
 				fcd = new FileChooserDialog (msgBrowser, null,
                                                FileChooserAction.SelectFolder,
                                                "Cancel", ResponseType.Cancel,
@@ -150,6 +151,7 @@ namespace MusicManager
 				} else {
 					//user did not make selection or canceled.
 					//check return value for null.
+					
 					fcd.Destroy ();
 				}
                    

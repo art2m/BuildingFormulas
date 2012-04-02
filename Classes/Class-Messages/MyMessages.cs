@@ -169,39 +169,7 @@ namespace MusicManager
         
 #endregion Show MessageBox
         
-		/// <summary>
-		/// Property -- public string InputDialogMessage
-		/// 
-		/// gets or sets the message from the InputDialog.cs
-		/// </summary>
-		private string msgInputDlg;
-
-		public string InputDialogMessage {
-			get {
-				return msgInputDlg;
-			} 
-			set {
-				msgInputDlg = value;
-			}
-		} //End Property
-        
-        
-		/// <summary>
-		/// Property public string OutputDialogMessage
-		/// 
-		/// gets or sets the Message output by InputDialog.cs
-		/// </summary>
-		private string msgOutputDlg;
-
-		public string OutputDialogMessage {
-			get {
-				return msgOutputDlg;
-			}
-			set {
-				msgOutputDlg = value;
-			}
-		} //End Property
-        
+		
         
 		
 		/// <summary>
