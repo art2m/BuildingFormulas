@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="BuildingFormulas.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Src/DataEntryWindow.cs">
+    <Files>
+      <File FileName="Src/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="Classes/Class-Properties/RectangleSquareStorage.cs" Line="80" Column="80" />
+      <File FileName="Src/DataEntryWindow.cs" Line="23" Column="23" />
+      <File FileName="Classes/Class-Formulas/RectangleSquareSolve.cs" Line="26" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/Src/DataEntryWindow.cs" line="257" column="1" />
+      <Breakpoint file="/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/Src/DataEntryWindow.cs" line="262" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

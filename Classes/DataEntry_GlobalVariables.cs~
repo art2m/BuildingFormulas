@@ -1,0 +1,457 @@
+﻿//  DataEntry_GlobalVariables.cs
+//
+//  Author:
+//       art2m <art2m@live.com>
+//
+//  Copyright (c) 2015 art2m
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+namespace BuildingFormulas
+{
+    /// <summary>
+    /// Data entry global variables.
+    /// </summary>
+    public static class DataEntry_GlobalVariables
+    {
+        /// <summary>
+        /// The cubic area.
+        /// </summary>
+        private static readonly string CubicArea = "cubic";
+
+        #region SHAPES TO SOLVE FOR PROPERTIES VARIABLES
+
+        /// <summary>
+        /// The circle.
+        /// </summary>
+        private static readonly string Circle = "circle";
+
+        /// <summary>
+        /// The Cone.
+        /// </summary>
+        private static readonly string Cone = "cone";
+
+        /// <summary>
+        /// The Cylinder.
+        /// </summary>
+        private static readonly string Cylinder = "cylinder";
+
+        /// <summary>
+        /// The Hexagon.
+        /// </summary>
+        private static readonly string Hexagon = "hexagon";
+
+        /// <summary>
+        /// The Octagon.
+        /// </summary>
+        private static readonly string Octagon = "octagon";
+
+        /// <summary>
+        /// The Pyramid.
+        /// </summary>
+        private static readonly string PyramidRectangle = "pyramid-rectangle";
+
+        /// <summary>
+        /// The pyramid square.
+        /// </summary>
+        private static readonly string PyramidSquare = "pyramid-square";
+
+        /// <summary>
+        /// The pyramid triangle.
+        /// </summary>
+        private static readonly string PyramidTriangle = "pyramid-triangle";
+
+        /// <summary>
+        /// The Rectangle.
+        /// </summary>
+        private static readonly string Rectangle = "Rectangle";
+
+        /// <summary>
+        /// The Square.
+        /// </summary>
+        private static readonly string Square = "square";
+
+        /// <summary>
+        /// The triangle.
+        /// </summary>
+        private static readonly string Triangle = "triangle";
+
+        #endregion SHAPES TO SOLVE FOR PROPERTIES VARIABLES
+
+        #region MEASUREMENTS STANDARD AND METRIC CAPTION PROPERTIES VARIABLES
+
+        /// <summary>
+        /// The Yards label.
+        /// </summary>
+        private static readonly string YardsLabel = "Yards:";
+
+        /// <summary>
+        /// The Feet label.
+        /// </summary>
+        private static readonly string FeetLabel = "Feet:";
+
+        /// <summary>
+        /// The Inches label.
+        /// </summary>
+        private static readonly string InchesLabel = "Inches:";
+
+        #endregion MEASUREMENT STANDARD AND METRIC CAPTIONS PROPERTIES VARIABLES
+
+        #region ENTRY DATA LABELS PROPERTIES VARIABLES
+
+        /// <summary>
+        /// The base label.
+        /// </summary>
+        private static readonly string BaseLabel = "Enter base length.";
+
+        /// <summary>
+        /// The Depth label.
+        /// </summary>
+        private static readonly string DepthLabel = "Enter depth:";
+
+        /// <summary>
+        /// The Length label.
+        /// </summary>
+        private static readonly string LengthLabel = "Enter length:";
+
+        /// <summary>
+        /// The Width label.
+        /// </summary>
+        private static readonly string WidthLabel = "Enter width:";
+
+        /// <summary>
+        /// The diameter label.
+        /// </summary>
+        private static readonly string DiameterLabel = "Enter diameter:";
+
+        /// <summary>
+        /// The height label.
+        /// </summary>
+        private static readonly string HeightLabel = "Enter height:";
+
+        /// <summary>
+        /// The slant height label.
+        /// </summary>
+        private static readonly string SlantHeightLabel = "Enter slant height:";
+
+        #endregion ENTRY DATA LABELS PROPERTIES VARIABLES
+
+        #region DISPLAY DATA LABELS SUM PROPERTIES VARIABLES
+
+        /// <summary>
+        /// The Area cubic yards.
+        /// </summary>
+        private static readonly string AreaCubicYards = "Area in Cubic Yards:";
+
+        /// <summary>
+        /// The Area cubic feet.
+        /// </summary>
+        private static readonly string AreaCubicFeet = "Area in Cubic Feet:";
+
+        /// <summary>
+        /// The Area cubic inches.
+        /// </summary>
+        private static readonly string AreaCubicInches = 
+            "Area in Cubic inches:";
+
+        #endregion DISPLAY DATA LABELS SUM PROPERTIES VARIABLES
+
+        /// <summary>
+        /// The solve for.
+        /// </summary>
+        private static string solveFor = null;
+
+        /// <summary>
+        /// The shape as string value.
+        /// Such as: rectangle, square, cylinder etc...
+        /// </summary>
+        private static string shape = null;
+
+        #region SHAPES PROPERTIES USED FOR COMPARISON TO WHAT USER SELECTED
+
+        /// <summary>
+        /// Gets the circle compare.
+        /// </summary>
+        /// <value>The circle compare.</value>
+        public static string CircleCompare
+        {
+            get { return Circle; }
+        }
+
+        /// <summary>
+        /// Gets the cone compare.
+        /// </summary>
+        /// <value>The cone compare.</value>
+        public static string ConeCompare
+        {
+            get { return Cone; }
+        }
+
+        /// <summary>
+        /// Gets the Cylinder compare.
+        /// </summary>
+        /// <value>The Cylinder compare.</value>
+        public static string CylinderCompare
+        {
+            get { return Cylinder; }
+        }
+
+        /// <summary>
+        /// Gets the Hexagon compare.
+        /// </summary>
+        /// <value>The Hexagon compare.</value>
+        public static string HexagonCompare
+        {
+            get { return Hexagon; } 
+        }
+
+        /// <summary>
+        /// Gets the Ocatagon compare.
+        /// </summary>
+        /// <value>The Ocatagon compare.</value>
+        public static string OcatagonCompare
+        {
+            get { return Octagon; }
+        }
+
+        /// <summary>
+        /// Gets the Pyramid compare.
+        /// </summary>
+        /// <value>The Pyramid compare.</value>
+        public static string PyramidRectangleCompare
+        {
+            get { return PyramidRectangle; }
+        }
+
+        /// <summary>
+        /// Gets the pyramid square compare.
+        /// </summary>
+        /// <value>The pyramid square compare.</value>
+        public static string PyramidSquareCompare
+        {
+            get { return PyramidSquare; }
+        }
+
+        /// <summary>
+        /// Gets the pyramid triangle compare.
+        /// </summary>
+        /// <value>The pyramid triangle compare.</value>
+        public static string PyramidTriangleCompare
+        {
+            get { return PyramidTriangle; }
+        }
+
+        /// <summary>
+        /// Gets the Rectangle compare.
+        /// </summary>
+        /// <value>The Rectangle compare.</value>
+        public static string RectangleCompare
+        {
+            get { return Rectangle; }
+        }
+
+        /// <summary>
+        /// Gets the square compare.
+        /// </summary>
+        /// <value>The Square compare.</value>
+        public static string SquareCompare
+        {
+            get { return Square; }
+        }
+
+        /// <summary>
+        /// Gets the triangle compare.
+        /// </summary>
+        /// <value>The triangle compare.</value>
+        public static string TriangleCompare
+        {
+            get { return Triangle; }
+        }
+
+        /// <summary>
+        /// Gets or sets the shapes.
+        /// </summary>
+        /// <value>The shapes.</value>
+        public static string Shapes
+        {
+            get { return shape; }
+
+            set { shape = value; }
+        }
+
+        #endregion SHAPES PROPERTIES USED FOR COMPARISON TO WHAT USER SELECTED
+
+        #region DISPLAY MEASUREMENTS PROPERTIES LABEL CAPTIONS
+
+        /// <summary>
+        /// Gets the yards label caption.
+        /// </summary>
+        /// <value>The yards label caption.</value>
+        public static string YardsLabelCaption
+        {
+            get { return YardsLabel; }
+        }
+
+        /// <summary>
+        /// Gets the feet label caption.
+        /// </summary>
+        public static string FeetLabelCaption
+        {
+            get { return FeetLabel; }
+        }
+
+        /// <summary>
+        /// Gets the inches label caption.
+        /// </summary>
+        /// <value>The inches label caption.</value>
+        public static string InchesLabelCaption
+        {
+            get { return InchesLabel; }
+        }
+
+        /// <summary>
+        /// Gets the base label caption.
+        /// </summary>
+        /// <value>The base label caption.</value>
+        public static string BaseLabelCaption
+        {
+            get { return BaseLabel; }
+        }
+
+        /// <summary>
+        /// Gets the depth label caption.
+        /// </summary>
+        /// <value>The depth label caption.</value>
+        public static string DepthLabelCaption
+        {
+            get { return DepthLabel; }
+        }
+
+        /// <summary>
+        /// Gets the length label caption.
+        /// </summary>
+        /// <value>The length label caption.</value>
+        public static string LengthLabelCaption
+        {
+            get { return LengthLabel; }
+        }
+
+        /// <summary>
+        /// Gets the width label caption.
+        /// </summary>
+        /// <value>The width label caption.</value>
+        public static string WidthLabelCaption
+        {
+            get { return WidthLabel; }
+        }
+
+        /// <summary>
+        /// Gets the diameter label caption.
+        /// </summary>
+        /// <value>The diameter label caption.</value>
+        public static string DiameterLabelCaption
+        {
+            get { return DiameterLabel; }
+        }
+
+        /// <summary>
+        /// Gets the height label caption.
+        /// </summary>
+        /// <value>The height label caption.</value>
+        public static string HeightLabelCaption
+        {
+            get { return HeightLabel; }
+        }
+
+        /// <summary>
+        /// Gets the slant height label caption.
+        /// </summary>
+        /// <value>The slant height label caption.</value>
+        public static string SlantHeightLabelCaption
+        {
+            get { return SlantHeightLabel; }
+        }
+
+        #endregion DISPLAY MEASSURMENT METHODS LABEL CAPTIONS
+
+        #region MEASUREMENTS TOTALS PROPERTIES LABEL CAPTIONS
+
+        /// <summary>
+        /// Gets the area in cubic yards label caption.
+        /// </summary>
+        /// <value>The area in cubic yards label caption.</value>
+        public static string AreaInCubicYardsLabelCaption
+        {
+            get { return AreaCubicYards; }
+        }
+
+        /// <summary>
+        /// Gets the area in cubic feet label caption.
+        /// </summary>
+        /// <value>The area in cubic feet label caption.</value>
+        public static string AreaInCubicFeetLabelCaption
+        {
+            get { return AreaCubicFeet; }
+        }
+
+        /// <summary>
+        /// Gets the area in cubic inches label caption.
+        /// </summary>
+        /// <value>The area in cubic inches label caption.</value>
+        public static string AreaInCubicInchesLabelCaption
+        {
+            get { return AreaCubicInches; }
+        }
+
+        /// <summary>
+        /// Gets the Cubic area compare.
+        /// </summary>
+        /// <value>The cubic area compare.</value>
+        public static string CubicAreaCompare
+        {
+            get { return CubicArea; }
+        }
+
+        #endregion MEASUREMENTS TOTALS PROPERTIES LABEL CAPTIONS
+
+        #region SETS GETS WHAT SHAPE TO SOLVE FOR PROPERTIES USE FOR COMPARISON
+
+        /// <summary>
+        /// Gets or sets the shape to solve for.
+        /// This is by Main Window when the user 
+        /// selects Button for shape to solve for.
+        /// </summary>
+        /// <value>The shape to solve for.</value>
+        public static string ShapeToSolveFor
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the solve for.
+        /// Holds what to solve for. Such As
+        /// cubic area.
+        /// </summary>
+        /// <value>The set get solve for.</value>
+        public static string SolveForFormulas
+        {
+            get { return solveFor; }
+
+            set { solveFor = value; }
+        }
+
+        #endregion SETS GETS WHAT SHAPE TO SOLVE FOR PROPERTIES
+    }
+}
