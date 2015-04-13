@@ -1,4 +1,4 @@
-﻿//
+﻿
 //  DataEntryWindow.cs
 //
 //  Author:
@@ -18,7 +18,6 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 namespace BuildingFormulas
 {
     using System;
@@ -38,12 +37,12 @@ namespace BuildingFormulas
 
         /// <summary>
         /// The name of the method.
-        /// </summary>
+        /// </summary> 
         private string methodName;
 
         /// <summary>
         /// My message.
-        /// </summary>
+        /// </summary> 
         private MyMessages myMsg = new MyMessages();
 
         /// <summary>
@@ -690,7 +689,7 @@ namespace BuildingFormulas
         /// Shows the text boxes for cubic area pyramid data entry.
         /// </summary>
         private void 
-        ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
+ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
         {
             const string MethodName = 
                 "private void ShowTextBoxesForCubicArea" +
@@ -851,8 +850,83 @@ namespace BuildingFormulas
         /// </summary>
         private void SolveForCubicAreaSquare()
         {
-            this.ClearDataFromRectangleSquareSolve();
-            this.ValidateCubicAreaSquare();
+            bool val = false;
+            // this.ClearDataFromRectangleSquareSolve();
+            // Check For data in boxes. Put 0 if none found.
+            val = this.ValidateCubicAreaYardsSquareShape();
+
+            if (!val)
+            {
+                return; 
+            }
+
+            val = this.ValidateCubicAreaFeetSquareShape();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicAreaInchesSquareShape();
+
+            // Check that all boxes have a numeric value.
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareDepthYardNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareDepthFeetNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareDepthInchesNumeric();           
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareLengthYardsNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareLengthFeetNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareLengthInchesNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareWidthYardsNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquardWidthFeetNumeric();
+            if (!val)
+            {
+                return;
+            }
+
+            val = this.ValidateCubicSquareWidthInchesNumeric();
+            if (!val)
+            {
+                return;
+            }
         }
 
         /// <summary>
@@ -865,33 +939,115 @@ namespace BuildingFormulas
 
         #endregion SOLVE FOR CUBIC AREA SHAPES
 
+        #region VALIDATE CUBIC AREA SQUARE RECTANGLE
+
         /// <summary>
-        /// Validates the cubic area square.
+        /// Validates the cubic area yards square shape.
         /// </summary>
-        private void ValidateCubicAreaSquare()
+        /// <returns><c>true</c>, if cubic area yards 
+        /// square shape was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaYardsSquareShape()
         {
+            bool retVal = false;
+
             // Depth settings for squard.
-            rss.RectangleDepthInYards = 
-                this.ValidateTextBoxOneYardsStringValue();
-            rss.RectangleDepthInFeet = 
-                this.ValidateTextBoxOneFeetStringValue();
-            rss.RectangleDepthInInches = 
-                this.ValidateTextBoxOneInchesStringValue();
+            retVal = this.ValidateDepthYardsStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix
+                return retVal;
+            }
 
-            // Length settings for square.
-            this.ValidateTextBoxTwoYardsStringValue();
-            rss.RectangleLengthInFeet = 
-                this.ValidateTextBoxTwoFeetStringValue();
-            rss.RectangleLengthInInches =
-                this.ValidateTextBoxTwoInchesStringValue();
+            retVal = this.ValidateLengthYardsStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
 
-            // Width settings for squared.
-            rss.RectangleWidthInYards = 
-                this.ValidateTextBoxThreeYardsStringValue();
-            rss.RectangleWidthInFeet = 
-                this.ValidateTextBoxThreeFeetStringValue();
-            rss.RectangleWidthInInches = 
-                this.ValidateTextBoxThreeInchesStringValue();
+            retVal = this.ValidateWidthYardsStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
+
+            // rss.RectangleDepthInYards = 
+
+            // rss.RectangleDepthInFeet =            
+
+            // rss.RectangleDepthInInches =           
+
+            // Length settings for square. 
+            return retVal = true;
+        }
+
+        /// <summary>
+        /// Validates the cubic area feet square shape.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area feet 
+        /// square shape was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaFeetSquareShape()
+        {
+            bool retVal = false;
+
+            retVal = this.ValidateDepthFeetStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix
+                return retVal;
+            }
+
+            retVal = this.ValidateLengthFeetStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
+
+            retVal = this.ValidateWidthFeetStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
+
+            return retVal = true;
+        }
+
+        /// <summary>
+        /// Validates the cubic area inches square shape.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area inches square 
+        /// shape was validated, <c>false</c> otherwise.</returns>
+        private bool ValidateCubicAreaInchesSquareShape()
+        {
+            bool retVal = false;
+
+            retVal = this.ValidateDepthInchesStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
+
+            retVal = this.ValidateLengthInchesStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
+
+            retVal = this.ValidateWidthInchesStringValueNotEmpty();
+            if (!retVal)
+            {
+                // Error in called function user must fix.
+                return retVal;
+            }
+
+            return retVal = true;
         }
 
         /// <summary>
@@ -913,16 +1069,15 @@ namespace BuildingFormulas
             rss.CubicInchesInCubicRectangle = 0;
         }
 
-        #region VALIDATE DATA ENTERED IN TEXT BOXES.
-
         /// <summary>
-        /// Validates the text box one yards string value.
+        /// Validates the depth yards string value.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1.</returns>
-        private int ValidateTextBoxOneYardsStringValue()
+        /// <returns><c>true</c>, if depth yards string 
+        /// value was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateDepthYardsStringValueNotEmpty()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
@@ -930,65 +1085,18 @@ namespace BuildingFormulas
                 "ValidateTextBoxOneYardsStringValue()";
 
                 txtBoxYard1.Text = txtBoxYard1.Text.Trim();
-                if (this.vd.ValidateDataExists(txtBoxYard1.Text))
-                {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxYard1.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxYard1.Text))
-                        {
-                            if (retVal > -1)
-                            {
-                                // Valid int so return value.
-                                retVal = Convert.ToInt32(txtBoxYard1.Text);
-                            }
-                            else
-                            {
-                                // Not valid -1
-                                return retVal;
-                            }
-                        }
-                        else if (this.vd.ValidateDataIsGreaterThenMinusOne(
-                                     txtBoxYard1.Text))
-                        {
-                            if (retVal > -1)
-                            {
-                                // Valid int 0 this box might not be used by 
-                                // user so 0 is valid.
-                                retVal = Convert.ToInt32(txtBoxYard1.Text);
-                            }
-                            else
-                            {
-                                // Not valid -1
-                                return retVal;
-                            }
-                        }
-                        else
-                        {
-                            // value is -1 or less
-                            return retVal;
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.DepthName +
-                        " in yards is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
 
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                // Check to see if box is empty.
+                retVal = this.vd.ValidateDataExists(txtBoxYard1.Text);
+                if (retVal)
+                {
+                    return retVal;     
                 }
                 else
                 {
-                    this.errMsg = degb.DepthName +
-                    " in yards has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                    // Place a zero in textbox and return true.
+                    txtBoxYard1.Text = "0";
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1001,7 +1109,7 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1013,61 +1121,36 @@ namespace BuildingFormulas
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
-
-                // Error so return -1 not valid.
                 return retVal;
             }
-
-            // Error so return -1 not valid.
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box one feet string value.
+        /// Validates the depth feet string value not empty.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1.</returns>
-        private int ValidateTextBoxOneFeetStringValue()
+        /// <returns><c>true</c>, if depth feet string 
+        /// value not empty was validated, 
+        /// <c>false</c> otherwise.</returns>
+        private bool ValidateDepthFeetStringValueNotEmpty()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxOneFeetStringValue()";
+            "private void ValidateTextBoxOneFeetStringValue()";
 
                 txtBoxFeet1.Text = txtBoxFeet1.Text.Trim();
-                if (this.vd.ValidateDataExists(txtBoxFeet1.Text))
+                retVal = this.vd.ValidateDataExists(txtBoxFeet1.Text);
+                if (retVal)
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxFeet1.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxFeet1.Text))
-                        {
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxFeet1.Text);
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.DepthName +
-                        " in feet is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
-
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal;
                 }
                 else
-                {
-                    this.errMsg = degb.DepthName +
-                    " in feet has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                {   
+                    // Place a zero in textbox and return true.
+                    txtBoxFeet1.Text = "0";
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1080,7 +1163,7 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());  
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1093,60 +1176,36 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Error so return -1 not valid.
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box one inches string value.
+        /// Validates the depth inches string value not empty.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1</returns>
-        private int ValidateTextBoxOneInchesStringValue()
+        /// <returns><c>true</c>, if depth inches string 
+        /// value not empty was validated, 
+        /// <c>false</c> otherwise.</returns>
+        private bool ValidateDepthInchesStringValueNotEmpty()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxOneInchesStringValue()";
+        "private void ValidateTextBoxOneInchesStringValue()";
 
                 txtBoxInches1.Text = txtBoxInches1.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxInches1.Text))
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxInches1.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxInches1.Text))
-                        {
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxInches1.Text);
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.DepthName +
-                        " in inches is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
-
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal = true;
                 }
                 else
                 {
-                    this.errMsg = degb.DepthName +
-                    " in inches has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                    // Place a zero in textbox and return true.
+                    txtBoxInches1.Text = "0";
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1159,7 +1218,7 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());   
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1172,60 +1231,36 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Error so return -1 not valid.
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box two yards string value.
+        /// Validates the length yards string value not empty.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1</returns>
-        private int ValidateTextBoxTwoYardsStringValue()
+        /// <returns><c>true</c>, if length yards string value 
+        /// not empty was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateLengthYardsStringValueNotEmpty()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
-                this.methodName = "private void " +
-                "ValidateTextBoxTwoYardsStringValue()";
+                this.methodName = 
+                    "private bool ValidateLengthYardsStringValueNotEmpty()";
 
                 txtBoxYard2.Text = txtBoxYard2.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxYard2.Text))
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxYard2.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxYard2.Text))
-                        {
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxYard2.Text);
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.LengthName +
-                        " in yards is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
-
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal = true;
                 }
                 else
                 {
-                    this.errMsg = degb.LengthName +
-                    " in yards has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                    // Place a zero in textbox and return true.
+                    txtBoxYard2.Text = "0";
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1236,9 +1271,9 @@ namespace BuildingFormulas
                     ClassName, 
                     this.methodName, 
                     this.errMsg,
-                    ex.ToString());
+                    ex.ToString());   
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1251,61 +1286,37 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box two feet string value.
+        /// Validates the length feet string value not empty.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1.</returns>
-        private int ValidateTextBoxTwoFeetStringValue()
+        /// <returns><c>true</c>, if length feet string value 
+        /// not empty was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateLengthFeetStringValueNotEmpty()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxTwoFeetStringValue()";
+                    "private bool ValidateLengthFeetStringValueNotEmpty()";
 
                 txtBoxFeet2.Text = txtBoxFeet2.Text.Trim();
-                if (this.vd.ValidateDataExists(txtBoxFeet2.Text))
+                retVal = this.vd.ValidateDataExists(txtBoxFeet2.Text);
+                if (retVal)
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxFeet2.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxFeet2.Text))
-                        {
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxFeet2.Text);
-                            return retVal;
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.LengthName +
-                        " in feet is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
-
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal;
                 }
                 else
-                {
-                    this.errMsg = degb.LengthName +
-                    " in feet has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                {   
+                    // Place a zero in textbox and return true.
+                    txtBoxFeet2.Text = "0";
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1318,7 +1329,7 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());  
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1331,60 +1342,36 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box two inches string value.
+        /// Validates the length inches string value not empty.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1.</returns>
-        private int ValidateTextBoxTwoInchesStringValue()
+        /// <returns><c>true</c>, if length inches string value 
+        /// not empty was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateLengthInchesStringValueNotEmpty()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxTwoInchesStringValue()";
+                    "private bool ValidateLengthInchesStringValueNotEmpty()";
 
                 txtBoxInches2.Text = txtBoxInches2.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxInches2.Text))
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxInches2.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxInches2.Text))
-                        {   
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxInches2.Text);
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.LengthName +
-                        " in inches is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
-
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal = true;
                 }
                 else
                 {
-                    this.errMsg = degb.LengthName +
-                    " in inches has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid. 
-                    return retVal;
+                    // Place a zero in textbox and return true.
+                    txtBoxInches2.Text = "0";
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1397,7 +1384,7 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());   
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1410,13 +1397,341 @@ namespace BuildingFormulas
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
+
+        /// <summary>
+        /// Validates the width yards string value not empty.
+        /// </summary>
+        /// <returns><c>true</c>, if width yards string value 
+        /// not empty was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateWidthYardsStringValueNotEmpty()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateWidthYardsStringValueNotEmpty()";
+
+                txtBoxYard3.Text = txtBoxYard3.Text.Trim();
+                if (this.vd.ValidateDataExists(txtBoxYard3.Text))
+                {
+                    return retVal = true;
+                }
+                else
+                {
+                    // Place a zero in textbox and return true.
+                    txtBoxYard3.Text = "0";
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in yards entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in yards entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the width feet string value not empty.
+        /// </summary>
+        /// <returns><c>true</c>, if width feet string value 
+        /// not empty was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateWidthFeetStringValueNotEmpty()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateWidthFeetStringValueNotEmpty()";
+
+                txtBoxFeet3.Text = txtBoxFeet3.Text.Trim();
+                retVal = this.vd.ValidateDataExists(txtBoxFeet3.Text);
+                if (retVal)
+                {
+                    return retVal;
+                }
+                else
+                {   
+                    // Place a zero in textbox and return true.
+                    txtBoxFeet3.Text = "0";
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in feet entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());  
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in feet entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Thises the validate width inches string value not empty.
+        /// </summary>
+        /// <returns><c>true</c>, if validate width inches string value 
+        /// not empty was thised, <c>false</c> otherwise.</returns>
+        private bool ValidateWidthInchesStringValueNotEmpty()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateWidthInchesStringValueNotEmpty()";
+
+                txtBoxInches3.Text = txtBoxInches3.Text.Trim();
+                if (this.vd.ValidateDataExists(txtBoxInches3.Text))
+                {
+                    return retVal = true;
+                }
+                else
+                {
+                    // Place a zero in textbox and return true.
+                    txtBoxInches3.Text = "0";
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in inches entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in inches entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square yard numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square yard 
+        /// numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareDepthYardNumeric()
+        {
+            bool retVal = false;
+
+            try
+            {
+                methodName = 
+                    "private bool ValidateCubicSquareDepthYardNumeric()";
+                
+                retVal = vd.ValidateDataIsNumericValue();
+                if (!retVal)
+                {
+                    this.errMsg = degb.DepthName +
+                    " in yards entry not a valid numeric value."; 
+                    this.myMsg.BuildErrorString(
+                        ClassName, 
+                        this.methodName, 
+                        this.errMsg,
+                        ex.ToString());   
+                
+                    return retVal;
+                }
+                else
+                {
+                    // All ok.
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in yards entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in yards entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square depth feet numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square depth feet 
+        /// numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareDepthFeetNumeric()
+        {
+            bool retVal = false;
+
+            try
+            {
+                methodName = 
+                    "private bool ValidateCubicSquareDepthYardNumeric()";
+
+                retVal = vd.ValidateDataIsNumericValue();
+                if (!retVal)
+                {
+                    this.errMsg = degb.DepthName +
+                    " in feet entry not a valid numeric value."; 
+                    this.myMsg.BuildErrorString(
+                        ClassName, 
+                        this.methodName, 
+                        this.errMsg,
+                        ex.ToString());   
+
+                    return retVal;
+                }
+                else
+                {
+                    // All ok.
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in feet entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in feet entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        private bool ValidateCubicSquareDepthInchesNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        bool ValidateCubicSquareLengthYardsNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ValidateCubicSquareLengthFeetNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ValidateCubicSquareLengthInchesNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ValidateCubicSquareWidthYardsNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ValidateCubicSquardWidthFeetNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ValidateCubicSquareWidthInchesNumeric()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion VALIDATE CUBIC AREA SQUARE RECTANGLE
+
+
+
+
 
         /// <summary>
         /// Validates the text box three yards string value.
@@ -1437,11 +1752,16 @@ namespace BuildingFormulas
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxYard3.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
                                 txtBoxYard3.Text))
                         {
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxYard3.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
                             return retVal;
                         }
                     }
@@ -1519,11 +1839,16 @@ namespace BuildingFormulas
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxFeet3.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
                                 txtBoxFeet3.Text))
                         {   
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxFeet3.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
                             return retVal;
                         }
                     }
@@ -1601,10 +1926,15 @@ namespace BuildingFormulas
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxInches3.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
                                 txtBoxInches3.Text))
                         {   // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxInches3.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
                             return retVal;
                         }
                     }
@@ -1661,6 +1991,6 @@ namespace BuildingFormulas
             return retVal;
         }
 
-        #endregion VALIDATE DATA ENTERED IN TEXT BOXES.
+       
     }
 }

@@ -18,7 +18,6 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 namespace BuildingFormulas
 {
     using System;
@@ -34,23 +33,19 @@ namespace BuildingFormulas
         /// The name of the class.
         /// </summary>
         private const string ClassName = 
-            "public partial class DataEntryWindow : Gtk.Window";
-
+    "public partial class DataEntryWindow : Gtk.Window";
         /// <summary>
         /// The name of the method.
         /// </summary>
         private string methodName;
-
         /// <summary>
         /// My message.
         /// </summary>
         private MyMessages myMsg = new MyMessages();
-
         /// <summary>
         /// Create object of class ValidateData.
         /// </summary>
         private ValidateData vd = new ValidateData();
-
         /// <summary>
         /// The state of the solve.
         /// If true then solve button depresed by user.
@@ -60,7 +55,6 @@ namespace BuildingFormulas
         /// data they need to enter.
         /// </summary>
         private bool solveState = false;
-
         /// <summary>
         /// The error message.
         /// </summary>
@@ -71,13 +65,11 @@ namespace BuildingFormulas
         /// <see cref="BuildingFormulas.DataEntryWindow"/> class.
         /// </summary>
         public DataEntryWindow()
-            : base(Gtk.WindowType.Toplevel)
+    : base(Gtk.WindowType.Toplevel)
         {
             this.Build();  
         }
-
         #region SHOW LABELS FOR CUBIC AREA SHAPES
-
         /// <summary>
         /// Shows the labels for cubic area circle data entry.
         /// </summary>
@@ -219,11 +211,8 @@ namespace BuildingFormulas
             this.FillLabelsForCubicAreaTriangle();
             this.ShowTextBoxesForCubicAreaTriangleDataEntry();
         }
-
         #endregion SHOW LABELS FOR CUBIC AREA SHAPES
-
         #region BUTTON CLICK EVENTS
-
         /// <summary>
         /// Raises the button close event.
         /// </summary>
@@ -361,11 +350,8 @@ namespace BuildingFormulas
             retVal = true;
             return retVal;           
         }
-
         #endregion BUTTON CLICK EVENTS
-
         #region FIND CUBIC AREA SHAPE TO SOLVE FOR
-
         /// <summary>
         /// Cubics the area shape.
         /// </summary>
@@ -374,62 +360,71 @@ namespace BuildingFormulas
             const int Match = 0; 
 
             if (string.Compare(
-                    degb.CircleCompare,
-                    degb.ShapeToSolveFor) == Match)
+                degb.CircleCompare,
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaCircle();      
             }
-            else if (string.Compare(
-                         degb.ConeCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.ConeCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaCone();
             }
-            else if (string.Compare(
-                         degb.CylinderCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.CylinderCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaCylinder();     
             }
-            else if (string.Compare(
-                         degb.HexagonCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.HexagonCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaHexagon();
             }
-            else if (string.Compare(
-                         degb.OcatagonCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.OcatagonCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaOctagon();           
             }
-            else if (string.Compare(
-                         degb.PyramidRectangleCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.PyramidRectangleCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaPyramidRectangleBase();
             }
-            else if (string.Compare(
-                         degb.PyramidTriangleCompare,
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.PyramidTriangleCompare,
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaPyramidTriangleBase();           
             }
-            else if (string.Compare(
-                         degb.RectangleCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.RectangleCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaRectangle();
             }
-            else if (string.Compare(
-                         degb.SquareCompare, 
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.SquareCompare, 
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaSquare();          
             }
-            else if (string.Compare(
-                         degb.TriangleCompare,
-                         degb.ShapeToSolveFor) == Match)
+            else
+			if (string.Compare(
+                degb.TriangleCompare,
+                degb.ShapeToSolveFor) == Match)
             {
                 this.SolveForCubicAreaTriangle();
             }
@@ -438,11 +433,8 @@ namespace BuildingFormulas
                 throw new NotImplementedException();
             }                  
         }
-
         #endregion FIND CUBIC AREA SHAPE TO SOLVE FOR
-
         #region FILL LABELS FOR CUBIC AREA FORMULAS
-
         /// <summary>
         /// Fills the labels for cubic area circle.
         /// </summary>
@@ -587,11 +579,8 @@ namespace BuildingFormulas
             lblCubicFeet.Text = degb.AreaInCubicFeetLabelCaption;
             lblCubicInches.Text = degb.AreaInCubicInchesLabelCaption;
         }
-
         #endregion FILL LABELS FOR CUBIC AREA FORMULAS
-
         #region SHOW ENTRY BOXES FOR CUBIC AREA SHAPES
-
         /// <summary>
         /// Shows the text boxes for cubic are circle data entry.
         /// </summary>
@@ -690,10 +679,10 @@ namespace BuildingFormulas
         /// Shows the text boxes for cubic area pyramid data entry.
         /// </summary>
         private void 
-        ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
+ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
         {
             const string MethodName = 
-                "private void ShowTextBoxesForCubicArea" +
+        "private void ShowTextBoxesForCubicArea" +
                 "PyramidRectangleSquareBaseDataEntry()";
 
             // Holds length
@@ -777,11 +766,8 @@ namespace BuildingFormulas
             txtCubicFeet.Visible = true;
             txtCubicInches.Visible = true;
         }
-
         #endregion SHOW ENTRY BOXES FOR CUBIC AREA SHAPES
-
         #region SOLVE FOR CUBIC AREA SHAPES
-
         /// <summary>
         /// Solves for cubic area circle.
         /// </summary>
@@ -862,9 +848,7 @@ namespace BuildingFormulas
         {
             throw new NotImplementedException();
         }
-
         #endregion SOLVE FOR CUBIC AREA SHAPES
-
         /// <summary>
         /// Validates the cubic area square.
         /// </summary>
@@ -872,26 +856,26 @@ namespace BuildingFormulas
         {
             // Depth settings for squard.
             rss.RectangleDepthInYards = 
-                this.ValidateTextBoxOneYardsStringValue();
+        this.ValidateTextBoxOneYardsStringValue();
             rss.RectangleDepthInFeet = 
-                this.ValidateTextBoxOneFeetStringValue();
+        this.ValidateTextBoxOneFeetStringValue();
             rss.RectangleDepthInInches = 
-                this.ValidateTextBoxOneInchesStringValue();
+        this.ValidateTextBoxOneInchesStringValue();
 
             // Length settings for square.
             this.ValidateTextBoxTwoYardsStringValue();
             rss.RectangleLengthInFeet = 
-                this.ValidateTextBoxTwoFeetStringValue();
+        this.ValidateTextBoxTwoFeetStringValue();
             rss.RectangleLengthInInches =
-                this.ValidateTextBoxTwoInchesStringValue();
+        this.ValidateTextBoxTwoInchesStringValue();
 
             // Width settings for squared.
             rss.RectangleWidthInYards = 
-                this.ValidateTextBoxThreeYardsStringValue();
+        this.ValidateTextBoxThreeYardsStringValue();
             rss.RectangleWidthInFeet = 
-                this.ValidateTextBoxThreeFeetStringValue();
+        this.ValidateTextBoxThreeFeetStringValue();
             rss.RectangleWidthInInches = 
-                this.ValidateTextBoxThreeInchesStringValue();
+        this.ValidateTextBoxThreeInchesStringValue();
         }
 
         /// <summary>
@@ -912,9 +896,7 @@ namespace BuildingFormulas
             rss.CubicFeetInCubicRectangle = 0;
             rss.CubicInchesInCubicRectangle = 0;
         }
-
         #region VALIDATE DATA ENTERED IN TEXT BOXES.
-
         /// <summary>
         /// Validates the text box one yards string value.
         /// </summary>
@@ -927,35 +909,22 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = "private void " +
-                "ValidateTextBoxOneYardsStringValue()";
+                    "ValidateTextBoxOneYardsStringValue()";
 
                 txtBoxYard1.Text = txtBoxYard1.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxYard1.Text))
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxYard1.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxYard1.Text))
-                        {
-                            if (retVal > -1)
-                            {
-                                // Valid int so return value.
-                                retVal = Convert.ToInt32(txtBoxYard1.Text);
-                            }
-                            else
-                            {
-                                // Not valid -1
-                                return retVal;
-                            }
-                        }
-                        else if (this.vd.ValidateDataIsGreaterThenMinusOne(
-                                     txtBoxYard1.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxYard1.Text))
                         {
                             if (retVal > -1)
                             {
                                 // Valid int 0 this box might not be used by 
                                 // user so 0 is valid.
                                 retVal = Convert.ToInt32(txtBoxYard1.Text);
+                                return retVal;
                             }
                             else
                             {
@@ -972,7 +941,7 @@ namespace BuildingFormulas
                     else
                     {
                         this.errMsg = degb.DepthName +
-                        " in yards is not a numeric value.";
+                            " in yards is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -982,9 +951,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.DepthName +
-                    " in yards has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in yards has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -994,7 +963,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.DepthName +
-                " in yards entry not a valid numeric value."; 
+                    " in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1007,7 +976,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.DepthName +
-                " in yards entry numeric value is to large.";
+                    " in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1034,36 +1003,34 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxOneFeetStringValue()";
+            "private void ValidateTextBoxOneFeetStringValue()";
 
                 txtBoxFeet1.Text = txtBoxFeet1.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxFeet1.Text))
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxFeet1.Text))
+                    if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                        txtBoxFeet1.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxFeet1.Text))
+                        if (retVal > -1)
                         {
-                            // Valid int so return value.
+                            // Valid int 0 this box might not be used by 
+                            // user so 0 is valid.
                             retVal = Convert.ToInt32(txtBoxFeet1.Text);
+                            return retVal;
                         }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.DepthName +
-                        " in feet is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
-
-                        // Error so return -1 not valid.
-                        return retVal;
+                        else
+                        {
+                            // Not valid -1
+                            return retVal;
+                        }
                     }
                 }
                 else
                 {
                     this.errMsg = degb.DepthName +
-                    " in feet has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in feet has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1073,7 +1040,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.DepthName +
-                " in feet entry not a valid numeric value."; 
+                    " in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1086,7 +1053,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.DepthName +
-                " in feet entry numeric value is to large.";
+                    " in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1113,24 +1080,30 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxOneInchesStringValue()";
+        "private void ValidateTextBoxOneInchesStringValue()";
 
                 txtBoxInches1.Text = txtBoxInches1.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxInches1.Text))
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxInches1.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxInches1.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxInches1.Text))
                         {
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxInches1.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
+                            return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.DepthName +
-                        " in inches is not a numeric value.";
+                            " in inches is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1140,9 +1113,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.DepthName +
-                    " in inches has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in inches has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1152,7 +1125,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.DepthName +
-                " in inches entry not a valid numeric value."; 
+                    " in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1165,7 +1138,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.DepthName +
-                " in inches entry numeric value is to large.";
+                    " in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1175,9 +1148,6 @@ namespace BuildingFormulas
                 // Error so return -1 not valid.
                 return retVal;
             }
-
-            // Error so return -1 not valid.
-            return retVal;
         }
 
         /// <summary>
@@ -1192,24 +1162,30 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = "private void " +
-                "ValidateTextBoxTwoYardsStringValue()";
+                    "ValidateTextBoxTwoYardsStringValue()";
 
                 txtBoxYard2.Text = txtBoxYard2.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxYard2.Text))
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxYard2.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxYard2.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxYard2.Text))
                         {
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxYard2.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid retrun -1
+                            return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.LengthName +
-                        " in yards is not a numeric value.";
+                            " in yards is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1219,9 +1195,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.LengthName +
-                    " in yards has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in yards has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1231,7 +1207,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.LengthName +
-                " in yards entry not a valid numeric value."; 
+                    " in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1244,7 +1220,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.LengthName +
-                " in yards entry numeric value is to large.";
+                    " in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1254,9 +1230,6 @@ namespace BuildingFormulas
                 // Error so return -1 not valid.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
 
         /// <summary>
@@ -1278,18 +1251,23 @@ namespace BuildingFormulas
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxFeet2.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxFeet2.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxFeet2.Text))
                         {
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxFeet2.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid retrun -1
                             return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.LengthName +
-                        " in feet is not a numeric value.";
+                            " in feet is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1299,9 +1277,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.LengthName +
-                    " in feet has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in feet has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1311,7 +1289,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.LengthName +
-                " in feet entry not a valid numeric value."; 
+                    " in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1324,7 +1302,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.LengthName +
-                " in feet entry numeric value is to large.";
+                    " in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1359,16 +1337,21 @@ namespace BuildingFormulas
                     if (this.vd.ValidateDataIsNumericValue(txtBoxInches2.Text))
                     {
                         if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxInches2.Text))
+                            txtBoxInches2.Text))
                         {   
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxInches2.Text);
+                        }
+                        else
+                        {
+                            // Invalid return -1
+                            return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.LengthName +
-                        " in inches is not a numeric value.";
+                            " in inches is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1378,9 +1361,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.LengthName +
-                    " in inches has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in inches has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid. 
@@ -1390,7 +1373,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.LengthName +
-                " in inches entry not a valid numeric value."; 
+                    " in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1403,7 +1386,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.LengthName +
-                " in inches entry numeric value is to large.";
+                    " in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1430,25 +1413,30 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = "private void " +
-                "ValidateTextBoxThreeYardsStringValue()";
+                    "ValidateTextBoxThreeYardsStringValue()";
 
                 txtBoxYard3.Text = txtBoxYard3.Text.Trim();
                 if (this.vd.ValidateDataExists(txtBoxYard3.Text))
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxYard3.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxYard3.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxYard3.Text))
                         {
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxYard3.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
                             return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.WidthName +
-                        " in yards is not a numeric value.";
+                            " in yards is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1458,9 +1446,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.WidthName +
-                    " in yards has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in yards has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1470,7 +1458,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.WidthName +
-                " in yards entry not a valid numeric value."; 
+                    " in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1483,7 +1471,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.WidthName +
-                " in yards entry numeric value is to large.";
+                    " in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1519,18 +1507,23 @@ namespace BuildingFormulas
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxFeet3.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxFeet3.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxFeet3.Text))
                         {   
                             // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxFeet3.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
                             return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.WidthName +
-                        " in feet is not a numeric value.";
+                            " in feet is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1540,9 +1533,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.WidthName +
-                    " in feet has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in feet has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1552,7 +1545,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.WidthName +
-                " in feet entry not a valid numeric value."; 
+                    " in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1565,7 +1558,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.WidthName +
-                " in feet entry numeric value is to large.";
+                    " in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1601,17 +1594,22 @@ namespace BuildingFormulas
                 {
                     if (this.vd.ValidateDataIsNumericValue(txtBoxInches3.Text))
                     {
-                        if (this.vd.ValidateDataIsGreaterThenZero(
-                                txtBoxInches3.Text))
+                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
+                            txtBoxInches3.Text))
                         {   // Valid int so return value.
                             retVal = Convert.ToInt32(txtBoxInches3.Text);
+                            return retVal;
+                        }
+                        else
+                        {
+                            // Invalid return -1
                             return retVal;
                         }
                     }
                     else
                     {
                         this.errMsg = degb.WidthName +
-                        " in inches is not a numeric value.";
+                            " in inches is not a numeric value.";
                         this.myMsg.ShowErrMessage(this.errMsg);
 
                         // Error so return -1 not valid.
@@ -1621,9 +1619,9 @@ namespace BuildingFormulas
                 else
                 {
                     this.errMsg = degb.WidthName +
-                    " in inches has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                        " in inches has no value entered.\n" +
+                        " You must place a 0 or larger numeric value\n" +
+                        " in this box.";
                     this.myMsg.ShowErrMessage(this.errMsg);
 
                     // Error so return -1 not valid.
@@ -1633,7 +1631,7 @@ namespace BuildingFormulas
             catch (FormatException ex)
             {
                 this.errMsg = degb.WidthName +
-                " in inches entry not a valid numeric value."; 
+                    " in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1646,7 +1644,7 @@ namespace BuildingFormulas
             catch (OverflowException ex)
             {
                 this.errMsg = degb.WidthName +
-                " in inches entry numeric value is to large.";
+                    " in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
                     ClassName, 
                     this.methodName, 
@@ -1660,7 +1658,6 @@ namespace BuildingFormulas
             // Should never get here but if I do return -1 as error
             return retVal;
         }
-
         #endregion VALIDATE DATA ENTERED IN TEXT BOXES.
     }
 }
