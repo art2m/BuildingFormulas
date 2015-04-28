@@ -83,6 +83,24 @@
     <Compile Include="Classes\Class-Collections\StoreCubicStandardCollection.cs" />
     <Compile Include="Src\dlgDisplayStoredData.cs" />
     <Compile Include="gtk-gui\BuildingFormulas.dlgDisplayStoredData.cs" />
+    <Compile Include="Src\CircleCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.CircleCubic.cs" />
+    <Compile Include="Src\CylinderCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.CylinderCubic.cs" />
+    <Compile Include="Src\ConeCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.ConeCubic.cs" />
+    <Compile Include="Src\TriangleCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.TriangleCubic.cs" />
+    <Compile Include="Src\PyramidRectangleBaseCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.PyramidRectangleBaseCubic.cs" />
+    <Compile Include="Src\PyramidTriangleBaseCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.PyramidTriangleBaseCubic.cs" />
+    <Compile Include="Src\PyramidSquareBaseCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.PyramidSquareBaseCubic.cs" />
+    <Compile Include="Src\HexagonCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.HexagonCubic.cs" />
+    <Compile Include="Src\OctagonCubic.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.OctagonCubic.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
