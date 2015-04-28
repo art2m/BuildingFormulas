@@ -8,8 +8,6 @@ namespace BuildingFormulas
 		
 		private global::Gtk.HBox hbox1;
 		
-		private global::Gtk.Alignment alignment1;
-		
 		private global::Gtk.Table tblData;
 		
 		private global::Gtk.Label lblDepth;
@@ -43,8 +41,6 @@ namespace BuildingFormulas
 		private global::Gtk.Entry txtWidthInches;
 		
 		private global::Gtk.Entry txtWidthYard;
-		
-		private global::Gtk.Alignment alignment2;
 		
 		private global::Gtk.Table tblCubicTotals;
 		
@@ -133,14 +129,8 @@ namespace BuildingFormulas
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.alignment1 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment1.Name = "alignment1";
-			this.hbox1.Add (this.alignment1);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.alignment1]));
-			w1.Position = 0;
-			// Container child hbox1.Gtk.Box+BoxChild
 			this.tblData = new global::Gtk.Table (((uint)(4)), ((uint)(4)), false);
-			this.tblData.WidthRequest = 594;
+			this.tblData.WidthRequest = 670;
 			this.tblData.HeightRequest = 186;
 			this.tblData.Name = "tblData";
 			this.tblData.RowSpacing = ((uint)(15));
@@ -153,11 +143,11 @@ namespace BuildingFormulas
 			this.lblDepth.Name = "lblDepth";
 			this.lblDepth.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter depth:");
 			this.tblData.Add (this.lblDepth);
-			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblDepth]));
-			w2.TopAttach = ((uint)(1));
-			w2.BottomAttach = ((uint)(2));
-			w2.XOptions = ((global::Gtk.AttachOptions)(4));
-			w2.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblDepth]));
+			w1.TopAttach = ((uint)(1));
+			w1.BottomAttach = ((uint)(2));
+			w1.XOptions = ((global::Gtk.AttachOptions)(4));
+			w1.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.lblEmpty = new global::Gtk.Label ();
 			this.lblEmpty.WidthRequest = 142;
@@ -165,9 +155,9 @@ namespace BuildingFormulas
 			this.lblEmpty.Name = "lblEmpty";
 			this.lblEmpty.Justify = ((global::Gtk.Justification)(2));
 			this.tblData.Add (this.lblEmpty);
-			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblEmpty]));
-			w3.XOptions = ((global::Gtk.AttachOptions)(4));
-			w3.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblEmpty]));
+			w2.XOptions = ((global::Gtk.AttachOptions)(4));
+			w2.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.lblFeet = new global::Gtk.Label ();
 			this.lblFeet.WidthRequest = 132;
@@ -176,11 +166,11 @@ namespace BuildingFormulas
 			this.lblFeet.LabelProp = global::Mono.Unix.Catalog.GetString ("Feet");
 			this.lblFeet.Justify = ((global::Gtk.Justification)(2));
 			this.tblData.Add (this.lblFeet);
-			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblFeet]));
-			w4.LeftAttach = ((uint)(2));
-			w4.RightAttach = ((uint)(3));
-			w4.XOptions = ((global::Gtk.AttachOptions)(4));
-			w4.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblFeet]));
+			w3.LeftAttach = ((uint)(2));
+			w3.RightAttach = ((uint)(3));
+			w3.XOptions = ((global::Gtk.AttachOptions)(4));
+			w3.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.lblInches = new global::Gtk.Label ();
 			this.lblInches.WidthRequest = 132;
@@ -189,11 +179,11 @@ namespace BuildingFormulas
 			this.lblInches.LabelProp = global::Mono.Unix.Catalog.GetString ("Inches");
 			this.lblInches.Justify = ((global::Gtk.Justification)(2));
 			this.tblData.Add (this.lblInches);
-			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblInches]));
-			w5.LeftAttach = ((uint)(3));
-			w5.RightAttach = ((uint)(4));
-			w5.XOptions = ((global::Gtk.AttachOptions)(4));
-			w5.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblInches]));
+			w4.LeftAttach = ((uint)(3));
+			w4.RightAttach = ((uint)(4));
+			w4.XOptions = ((global::Gtk.AttachOptions)(4));
+			w4.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.lblLength = new global::Gtk.Label ();
 			this.lblLength.WidthRequest = 142;
@@ -201,11 +191,11 @@ namespace BuildingFormulas
 			this.lblLength.Name = "lblLength";
 			this.lblLength.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter length:");
 			this.tblData.Add (this.lblLength);
-			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblLength]));
-			w6.TopAttach = ((uint)(2));
-			w6.BottomAttach = ((uint)(3));
-			w6.XOptions = ((global::Gtk.AttachOptions)(4));
-			w6.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblLength]));
+			w5.TopAttach = ((uint)(2));
+			w5.BottomAttach = ((uint)(3));
+			w5.XOptions = ((global::Gtk.AttachOptions)(4));
+			w5.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.lblWidth = new global::Gtk.Label ();
 			this.lblWidth.WidthRequest = 142;
@@ -213,11 +203,11 @@ namespace BuildingFormulas
 			this.lblWidth.Name = "lblWidth";
 			this.lblWidth.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter width:");
 			this.tblData.Add (this.lblWidth);
-			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblWidth]));
-			w7.TopAttach = ((uint)(3));
-			w7.BottomAttach = ((uint)(4));
-			w7.XOptions = ((global::Gtk.AttachOptions)(4));
-			w7.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblWidth]));
+			w6.TopAttach = ((uint)(3));
+			w6.BottomAttach = ((uint)(4));
+			w6.XOptions = ((global::Gtk.AttachOptions)(4));
+			w6.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.lblYards = new global::Gtk.Label ();
 			this.lblYards.WidthRequest = 132;
@@ -226,15 +216,15 @@ namespace BuildingFormulas
 			this.lblYards.LabelProp = global::Mono.Unix.Catalog.GetString ("Yards");
 			this.lblYards.Justify = ((global::Gtk.Justification)(2));
 			this.tblData.Add (this.lblYards);
-			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblYards]));
-			w8.LeftAttach = ((uint)(1));
-			w8.RightAttach = ((uint)(2));
-			w8.XOptions = ((global::Gtk.AttachOptions)(4));
-			w8.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblYards]));
+			w7.LeftAttach = ((uint)(1));
+			w7.RightAttach = ((uint)(2));
+			w7.XOptions = ((global::Gtk.AttachOptions)(4));
+			w7.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtDepthFeet = new global::Gtk.Entry ();
 			this.txtDepthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtDepthFeet.WidthRequest = 124;
+			this.txtDepthFeet.WidthRequest = 159;
 			this.txtDepthFeet.HeightRequest = 30;
 			this.txtDepthFeet.CanFocus = true;
 			this.txtDepthFeet.Name = "txtDepthFeet";
@@ -242,17 +232,17 @@ namespace BuildingFormulas
 			this.txtDepthFeet.MaxLength = 4;
 			this.txtDepthFeet.InvisibleChar = '•';
 			this.tblData.Add (this.txtDepthFeet);
-			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthFeet]));
-			w9.TopAttach = ((uint)(1));
-			w9.BottomAttach = ((uint)(2));
-			w9.LeftAttach = ((uint)(2));
-			w9.RightAttach = ((uint)(3));
-			w9.XOptions = ((global::Gtk.AttachOptions)(4));
-			w9.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthFeet]));
+			w8.TopAttach = ((uint)(1));
+			w8.BottomAttach = ((uint)(2));
+			w8.LeftAttach = ((uint)(2));
+			w8.RightAttach = ((uint)(3));
+			w8.XOptions = ((global::Gtk.AttachOptions)(4));
+			w8.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtDepthInches = new global::Gtk.Entry ();
 			this.txtDepthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtDepthInches.WidthRequest = 124;
+			this.txtDepthInches.WidthRequest = 159;
 			this.txtDepthInches.HeightRequest = 30;
 			this.txtDepthInches.CanFocus = true;
 			this.txtDepthInches.Name = "txtDepthInches";
@@ -260,17 +250,17 @@ namespace BuildingFormulas
 			this.txtDepthInches.MaxLength = 4;
 			this.txtDepthInches.InvisibleChar = '•';
 			this.tblData.Add (this.txtDepthInches);
-			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthInches]));
-			w10.TopAttach = ((uint)(1));
-			w10.BottomAttach = ((uint)(2));
-			w10.LeftAttach = ((uint)(3));
-			w10.RightAttach = ((uint)(4));
-			w10.XOptions = ((global::Gtk.AttachOptions)(4));
-			w10.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthInches]));
+			w9.TopAttach = ((uint)(1));
+			w9.BottomAttach = ((uint)(2));
+			w9.LeftAttach = ((uint)(3));
+			w9.RightAttach = ((uint)(4));
+			w9.XOptions = ((global::Gtk.AttachOptions)(4));
+			w9.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtDepthYard = new global::Gtk.Entry ();
 			this.txtDepthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtDepthYard.WidthRequest = 132;
+			this.txtDepthYard.WidthRequest = 159;
 			this.txtDepthYard.HeightRequest = 30;
 			this.txtDepthYard.CanFocus = true;
 			this.txtDepthYard.Name = "txtDepthYard";
@@ -278,13 +268,13 @@ namespace BuildingFormulas
 			this.txtDepthYard.MaxLength = 4;
 			this.txtDepthYard.InvisibleChar = '•';
 			this.tblData.Add (this.txtDepthYard);
-			global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthYard]));
-			w11.TopAttach = ((uint)(1));
-			w11.BottomAttach = ((uint)(2));
-			w11.LeftAttach = ((uint)(1));
-			w11.RightAttach = ((uint)(2));
-			w11.XOptions = ((global::Gtk.AttachOptions)(4));
-			w11.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthYard]));
+			w10.TopAttach = ((uint)(1));
+			w10.BottomAttach = ((uint)(2));
+			w10.LeftAttach = ((uint)(1));
+			w10.RightAttach = ((uint)(2));
+			w10.XOptions = ((global::Gtk.AttachOptions)(4));
+			w10.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtLengthFeet = new global::Gtk.Entry ();
 			this.txtLengthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
@@ -296,13 +286,13 @@ namespace BuildingFormulas
 			this.txtLengthFeet.MaxLength = 4;
 			this.txtLengthFeet.InvisibleChar = '•';
 			this.tblData.Add (this.txtLengthFeet);
-			global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthFeet]));
-			w12.TopAttach = ((uint)(2));
-			w12.BottomAttach = ((uint)(3));
-			w12.LeftAttach = ((uint)(2));
-			w12.RightAttach = ((uint)(3));
-			w12.XOptions = ((global::Gtk.AttachOptions)(4));
-			w12.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthFeet]));
+			w11.TopAttach = ((uint)(2));
+			w11.BottomAttach = ((uint)(3));
+			w11.LeftAttach = ((uint)(2));
+			w11.RightAttach = ((uint)(3));
+			w11.XOptions = ((global::Gtk.AttachOptions)(4));
+			w11.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtLengthInches = new global::Gtk.Entry ();
 			this.txtLengthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
@@ -314,13 +304,13 @@ namespace BuildingFormulas
 			this.txtLengthInches.MaxLength = 4;
 			this.txtLengthInches.InvisibleChar = '•';
 			this.tblData.Add (this.txtLengthInches);
-			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthInches]));
-			w13.TopAttach = ((uint)(2));
-			w13.BottomAttach = ((uint)(3));
-			w13.LeftAttach = ((uint)(3));
-			w13.RightAttach = ((uint)(4));
-			w13.XOptions = ((global::Gtk.AttachOptions)(4));
-			w13.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthInches]));
+			w12.TopAttach = ((uint)(2));
+			w12.BottomAttach = ((uint)(3));
+			w12.LeftAttach = ((uint)(3));
+			w12.RightAttach = ((uint)(4));
+			w12.XOptions = ((global::Gtk.AttachOptions)(4));
+			w12.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtLengthYard = new global::Gtk.Entry ();
 			this.txtLengthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
@@ -332,13 +322,13 @@ namespace BuildingFormulas
 			this.txtLengthYard.MaxLength = 4;
 			this.txtLengthYard.InvisibleChar = '•';
 			this.tblData.Add (this.txtLengthYard);
-			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthYard]));
-			w14.TopAttach = ((uint)(2));
-			w14.BottomAttach = ((uint)(3));
-			w14.LeftAttach = ((uint)(1));
-			w14.RightAttach = ((uint)(2));
-			w14.XOptions = ((global::Gtk.AttachOptions)(4));
-			w14.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthYard]));
+			w13.TopAttach = ((uint)(2));
+			w13.BottomAttach = ((uint)(3));
+			w13.LeftAttach = ((uint)(1));
+			w13.RightAttach = ((uint)(2));
+			w13.XOptions = ((global::Gtk.AttachOptions)(4));
+			w13.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtWidthFeet = new global::Gtk.Entry ();
 			this.txtWidthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
@@ -350,13 +340,13 @@ namespace BuildingFormulas
 			this.txtWidthFeet.MaxLength = 4;
 			this.txtWidthFeet.InvisibleChar = '•';
 			this.tblData.Add (this.txtWidthFeet);
-			global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtWidthFeet]));
-			w15.TopAttach = ((uint)(3));
-			w15.BottomAttach = ((uint)(4));
-			w15.LeftAttach = ((uint)(2));
-			w15.RightAttach = ((uint)(3));
-			w15.XOptions = ((global::Gtk.AttachOptions)(4));
-			w15.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtWidthFeet]));
+			w14.TopAttach = ((uint)(3));
+			w14.BottomAttach = ((uint)(4));
+			w14.LeftAttach = ((uint)(2));
+			w14.RightAttach = ((uint)(3));
+			w14.XOptions = ((global::Gtk.AttachOptions)(4));
+			w14.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtWidthInches = new global::Gtk.Entry ();
 			this.txtWidthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
@@ -368,13 +358,13 @@ namespace BuildingFormulas
 			this.txtWidthInches.MaxLength = 4;
 			this.txtWidthInches.InvisibleChar = '•';
 			this.tblData.Add (this.txtWidthInches);
-			global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtWidthInches]));
-			w16.TopAttach = ((uint)(3));
-			w16.BottomAttach = ((uint)(4));
-			w16.LeftAttach = ((uint)(3));
-			w16.RightAttach = ((uint)(4));
-			w16.XOptions = ((global::Gtk.AttachOptions)(4));
-			w16.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtWidthInches]));
+			w15.TopAttach = ((uint)(3));
+			w15.BottomAttach = ((uint)(4));
+			w15.LeftAttach = ((uint)(3));
+			w15.RightAttach = ((uint)(4));
+			w15.XOptions = ((global::Gtk.AttachOptions)(4));
+			w15.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
 			this.txtWidthYard = new global::Gtk.Entry ();
 			this.txtWidthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
@@ -386,29 +376,23 @@ namespace BuildingFormulas
 			this.txtWidthYard.MaxLength = 4;
 			this.txtWidthYard.InvisibleChar = '•';
 			this.tblData.Add (this.txtWidthYard);
-			global::Gtk.Table.TableChild w17 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtWidthYard]));
-			w17.TopAttach = ((uint)(3));
-			w17.BottomAttach = ((uint)(4));
-			w17.LeftAttach = ((uint)(1));
-			w17.RightAttach = ((uint)(2));
-			w17.XOptions = ((global::Gtk.AttachOptions)(4));
-			w17.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtWidthYard]));
+			w16.TopAttach = ((uint)(3));
+			w16.BottomAttach = ((uint)(4));
+			w16.LeftAttach = ((uint)(1));
+			w16.RightAttach = ((uint)(2));
+			w16.XOptions = ((global::Gtk.AttachOptions)(4));
+			w16.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.hbox1.Add (this.tblData);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.tblData]));
-			w18.Position = 1;
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.tblData]));
+			w17.Position = 1;
+			w17.Expand = false;
+			w17.Fill = false;
+			this.dialog1_VBox.Add (this.hbox1);
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox1]));
+			w18.Position = 0;
 			w18.Expand = false;
 			w18.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.alignment2 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment2.Name = "alignment2";
-			this.hbox1.Add (this.alignment2);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.alignment2]));
-			w19.Position = 2;
-			this.dialog1_VBox.Add (this.hbox1);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox1]));
-			w20.Position = 0;
-			w20.Expand = false;
-			w20.Fill = false;
 			// Container child dialog1_VBox.Gtk.Box+BoxChild
 			this.tblCubicTotals = new global::Gtk.Table (((uint)(4)), ((uint)(2)), true);
 			this.tblCubicTotals.WidthRequest = 524;
@@ -424,11 +408,11 @@ namespace BuildingFormulas
 			this.lblCubicFeet.Name = "lblCubicFeet";
 			this.lblCubicFeet.LabelProp = global::Mono.Unix.Catalog.GetString ("Total Cubic Area in Feet:");
 			this.tblCubicTotals.Add (this.lblCubicFeet);
-			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicFeet]));
-			w21.TopAttach = ((uint)(2));
-			w21.BottomAttach = ((uint)(3));
-			w21.XOptions = ((global::Gtk.AttachOptions)(4));
-			w21.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicFeet]));
+			w19.TopAttach = ((uint)(2));
+			w19.BottomAttach = ((uint)(3));
+			w19.XOptions = ((global::Gtk.AttachOptions)(4));
+			w19.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblCubicTotals.Gtk.Table+TableChild
 			this.lblCubicInches = new global::Gtk.Label ();
 			this.lblCubicInches.WidthRequest = 348;
@@ -436,11 +420,11 @@ namespace BuildingFormulas
 			this.lblCubicInches.Name = "lblCubicInches";
 			this.lblCubicInches.LabelProp = global::Mono.Unix.Catalog.GetString ("Total Cubic Area in Inches:");
 			this.tblCubicTotals.Add (this.lblCubicInches);
-			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicInches]));
-			w22.TopAttach = ((uint)(3));
-			w22.BottomAttach = ((uint)(4));
-			w22.XOptions = ((global::Gtk.AttachOptions)(4));
-			w22.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicInches]));
+			w20.TopAttach = ((uint)(3));
+			w20.BottomAttach = ((uint)(4));
+			w20.XOptions = ((global::Gtk.AttachOptions)(4));
+			w20.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblCubicTotals.Gtk.Table+TableChild
 			this.lblCubicYards = new global::Gtk.Label ();
 			this.lblCubicYards.WidthRequest = 348;
@@ -448,11 +432,11 @@ namespace BuildingFormulas
 			this.lblCubicYards.Name = "lblCubicYards";
 			this.lblCubicYards.LabelProp = global::Mono.Unix.Catalog.GetString ("Total Cubic Area in Yards:");
 			this.tblCubicTotals.Add (this.lblCubicYards);
-			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicYards]));
-			w23.TopAttach = ((uint)(1));
-			w23.BottomAttach = ((uint)(2));
-			w23.XOptions = ((global::Gtk.AttachOptions)(4));
-			w23.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicYards]));
+			w21.TopAttach = ((uint)(1));
+			w21.BottomAttach = ((uint)(2));
+			w21.XOptions = ((global::Gtk.AttachOptions)(4));
+			w21.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblCubicTotals.Gtk.Table+TableChild
 			this.lblInfo = new global::Gtk.Label ();
 			this.lblInfo.WidthRequest = 124;
@@ -460,11 +444,11 @@ namespace BuildingFormulas
 			this.lblInfo.Name = "lblInfo";
 			this.lblInfo.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.tblCubicTotals.Add (this.lblInfo);
-			global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblInfo]));
-			w24.LeftAttach = ((uint)(1));
-			w24.RightAttach = ((uint)(2));
-			w24.XOptions = ((global::Gtk.AttachOptions)(4));
-			w24.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblInfo]));
+			w22.LeftAttach = ((uint)(1));
+			w22.RightAttach = ((uint)(2));
+			w22.XOptions = ((global::Gtk.AttachOptions)(4));
+			w22.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblCubicTotals.Gtk.Table+TableChild
 			this.txtCubicFeet = new global::Gtk.Entry ();
 			this.txtCubicFeet.TooltipMarkup = "Total cubic area for shape in feet.";
@@ -475,13 +459,13 @@ namespace BuildingFormulas
 			this.txtCubicFeet.IsEditable = false;
 			this.txtCubicFeet.InvisibleChar = '•';
 			this.tblCubicTotals.Add (this.txtCubicFeet);
-			global::Gtk.Table.TableChild w25 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicFeet]));
-			w25.TopAttach = ((uint)(2));
-			w25.BottomAttach = ((uint)(3));
-			w25.LeftAttach = ((uint)(1));
-			w25.RightAttach = ((uint)(2));
-			w25.XOptions = ((global::Gtk.AttachOptions)(4));
-			w25.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicFeet]));
+			w23.TopAttach = ((uint)(2));
+			w23.BottomAttach = ((uint)(3));
+			w23.LeftAttach = ((uint)(1));
+			w23.RightAttach = ((uint)(2));
+			w23.XOptions = ((global::Gtk.AttachOptions)(4));
+			w23.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblCubicTotals.Gtk.Table+TableChild
 			this.txtCubicInches = new global::Gtk.Entry ();
 			this.txtCubicInches.TooltipMarkup = "Total cubic area for shape in inches.";
@@ -492,13 +476,13 @@ namespace BuildingFormulas
 			this.txtCubicInches.IsEditable = false;
 			this.txtCubicInches.InvisibleChar = '•';
 			this.tblCubicTotals.Add (this.txtCubicInches);
-			global::Gtk.Table.TableChild w26 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicInches]));
-			w26.TopAttach = ((uint)(3));
-			w26.BottomAttach = ((uint)(4));
-			w26.LeftAttach = ((uint)(1));
-			w26.RightAttach = ((uint)(2));
-			w26.XOptions = ((global::Gtk.AttachOptions)(4));
-			w26.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicInches]));
+			w24.TopAttach = ((uint)(3));
+			w24.BottomAttach = ((uint)(4));
+			w24.LeftAttach = ((uint)(1));
+			w24.RightAttach = ((uint)(2));
+			w24.XOptions = ((global::Gtk.AttachOptions)(4));
+			w24.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblCubicTotals.Gtk.Table+TableChild
 			this.txtCubicYards = new global::Gtk.Entry ();
 			this.txtCubicYards.TooltipMarkup = "Total cubic area for shape in yards.";
@@ -509,17 +493,17 @@ namespace BuildingFormulas
 			this.txtCubicYards.IsEditable = false;
 			this.txtCubicYards.InvisibleChar = '•';
 			this.tblCubicTotals.Add (this.txtCubicYards);
-			global::Gtk.Table.TableChild w27 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicYards]));
-			w27.TopAttach = ((uint)(1));
-			w27.BottomAttach = ((uint)(2));
-			w27.LeftAttach = ((uint)(1));
-			w27.RightAttach = ((uint)(2));
-			w27.XOptions = ((global::Gtk.AttachOptions)(4));
-			w27.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w25 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicYards]));
+			w25.TopAttach = ((uint)(1));
+			w25.BottomAttach = ((uint)(2));
+			w25.LeftAttach = ((uint)(1));
+			w25.RightAttach = ((uint)(2));
+			w25.XOptions = ((global::Gtk.AttachOptions)(4));
+			w25.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.dialog1_VBox.Add (this.tblCubicTotals);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.tblCubicTotals]));
-			w28.Position = 1;
-			w28.Expand = false;
+			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.tblCubicTotals]));
+			w26.Position = 1;
+			w26.Expand = false;
 			// Container child dialog1_VBox.Gtk.Box+BoxChild
 			this.hbox7 = new global::Gtk.HBox ();
 			this.hbox7.Name = "hbox7";
@@ -533,8 +517,8 @@ namespace BuildingFormulas
 			this.alignment5 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment5.Name = "alignment5";
 			this.hbox8.Add (this.alignment5);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment5]));
-			w29.Position = 0;
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment5]));
+			w27.Position = 0;
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.vbtnLeft = new global::Gtk.VButtonBox ();
 			this.vbtnLeft.WidthRequest = 142;
@@ -553,9 +537,9 @@ namespace BuildingFormulas
 			this.btnNewItem.BorderWidth = ((uint)(4));
 			this.btnNewItem.Label = global::Mono.Unix.Catalog.GetString ("Enter New Item");
 			this.vbtnLeft.Add (this.btnNewItem);
-			global::Gtk.ButtonBox.ButtonBoxChild w30 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnNewItem]));
-			w30.Expand = false;
-			w30.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w28 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnNewItem]));
+			w28.Expand = false;
+			w28.Fill = false;
 			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
 			this.btnClear = new global::Gtk.Button ();
 			this.btnClear.TooltipMarkup = "Reset all boxes to zero.";
@@ -567,10 +551,10 @@ namespace BuildingFormulas
 			this.btnClear.BorderWidth = ((uint)(4));
 			this.btnClear.Label = global::Mono.Unix.Catalog.GetString ("Clear Form");
 			this.vbtnLeft.Add (this.btnClear);
-			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnClear]));
-			w31.Position = 1;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w29 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnClear]));
+			w29.Position = 1;
+			w29.Expand = false;
+			w29.Fill = false;
 			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
 			this.btnStandard = new global::Gtk.Button ();
 			this.btnStandard.TooltipMarkup = "Use standard messaurement units.";
@@ -582,10 +566,10 @@ namespace BuildingFormulas
 			this.btnStandard.BorderWidth = ((uint)(4));
 			this.btnStandard.Label = global::Mono.Unix.Catalog.GetString ("Standard");
 			this.vbtnLeft.Add (this.btnStandard);
-			global::Gtk.ButtonBox.ButtonBoxChild w32 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnStandard]));
-			w32.Position = 2;
-			w32.Expand = false;
-			w32.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w30 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnStandard]));
+			w30.Position = 2;
+			w30.Expand = false;
+			w30.Fill = false;
 			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
 			this.btnMetric = new global::Gtk.Button ();
 			this.btnMetric.TooltipMarkup = "Use metric messaurement units.";
@@ -597,10 +581,10 @@ namespace BuildingFormulas
 			this.btnMetric.BorderWidth = ((uint)(4));
 			this.btnMetric.Label = global::Mono.Unix.Catalog.GetString ("Metric");
 			this.vbtnLeft.Add (this.btnMetric);
-			global::Gtk.ButtonBox.ButtonBoxChild w33 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnMetric]));
-			w33.Position = 3;
-			w33.Expand = false;
-			w33.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnMetric]));
+			w31.Position = 3;
+			w31.Expand = false;
+			w31.Fill = false;
 			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
 			this.btnConvert = new global::Gtk.Button ();
 			this.btnConvert.TooltipMarkup = "Convert from stadard units to metric units or metric units to standard units.";
@@ -612,24 +596,24 @@ namespace BuildingFormulas
 			this.btnConvert.BorderWidth = ((uint)(4));
 			this.btnConvert.Label = global::Mono.Unix.Catalog.GetString ("Convert");
 			this.vbtnLeft.Add (this.btnConvert);
-			global::Gtk.ButtonBox.ButtonBoxChild w34 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnConvert]));
-			w34.Position = 4;
-			w34.Expand = false;
-			w34.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w32 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnConvert]));
+			w32.Position = 4;
+			w32.Expand = false;
+			w32.Fill = false;
 			this.hbox8.Add (this.vbtnLeft);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.vbtnLeft]));
-			w35.Position = 1;
-			w35.Expand = false;
-			w35.Fill = false;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.vbtnLeft]));
+			w33.Position = 1;
+			w33.Expand = false;
+			w33.Fill = false;
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.alignment6 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment6.Name = "alignment6";
 			this.hbox8.Add (this.alignment6);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment6]));
-			w36.Position = 2;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment6]));
+			w34.Position = 2;
 			this.hbox7.Add (this.hbox8);
-			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox8]));
-			w37.Position = 0;
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox8]));
+			w35.Position = 0;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.hbox9 = new global::Gtk.HBox ();
 			this.hbox9.Name = "hbox9";
@@ -638,8 +622,8 @@ namespace BuildingFormulas
 			this.alignment7 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment7.Name = "alignment7";
 			this.hbox9.Add (this.alignment7);
-			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment7]));
-			w38.Position = 0;
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment7]));
+			w36.Position = 0;
 			// Container child hbox9.Gtk.Box+BoxChild
 			this.vbtnCenter = new global::Gtk.VButtonBox ();
 			this.vbtnCenter.WidthRequest = 142;
@@ -658,9 +642,9 @@ namespace BuildingFormulas
 			this.btnSolve.BorderWidth = ((uint)(4));
 			this.btnSolve.Label = global::Mono.Unix.Catalog.GetString ("Solve");
 			this.vbtnCenter.Add (this.btnSolve);
-			global::Gtk.ButtonBox.ButtonBoxChild w39 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnSolve]));
-			w39.Expand = false;
-			w39.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w37 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnSolve]));
+			w37.Expand = false;
+			w37.Fill = false;
 			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
 			this.btnStore = new global::Gtk.Button ();
 			this.btnStore.TooltipMarkup = "Save the cubic area result for this shape.";
@@ -672,10 +656,10 @@ namespace BuildingFormulas
 			this.btnStore.BorderWidth = ((uint)(4));
 			this.btnStore.Label = global::Mono.Unix.Catalog.GetString ("Store Result");
 			this.vbtnCenter.Add (this.btnStore);
-			global::Gtk.ButtonBox.ButtonBoxChild w40 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnStore]));
-			w40.Position = 1;
-			w40.Expand = false;
-			w40.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w38 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnStore]));
+			w38.Position = 1;
+			w38.Expand = false;
+			w38.Fill = false;
 			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
 			this.btnDisplayStore = new global::Gtk.Button ();
 			this.btnDisplayStore.TooltipMarkup = "Display the cubic area for items stored.";
@@ -687,10 +671,10 @@ namespace BuildingFormulas
 			this.btnDisplayStore.BorderWidth = ((uint)(4));
 			this.btnDisplayStore.Label = global::Mono.Unix.Catalog.GetString ("Display Store");
 			this.vbtnCenter.Add (this.btnDisplayStore);
-			global::Gtk.ButtonBox.ButtonBoxChild w41 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnDisplayStore]));
-			w41.Position = 2;
-			w41.Expand = false;
-			w41.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w39 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnDisplayStore]));
+			w39.Position = 2;
+			w39.Expand = false;
+			w39.Fill = false;
 			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
 			this.btnClearStore = new global::Gtk.Button ();
 			this.btnClearStore.TooltipMarkup = "Clear the items that are currently in store.";
@@ -702,24 +686,24 @@ namespace BuildingFormulas
 			this.btnClearStore.BorderWidth = ((uint)(4));
 			this.btnClearStore.Label = global::Mono.Unix.Catalog.GetString ("Clear Store");
 			this.vbtnCenter.Add (this.btnClearStore);
-			global::Gtk.ButtonBox.ButtonBoxChild w42 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnClearStore]));
-			w42.Position = 3;
-			w42.Expand = false;
-			w42.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w40 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnClearStore]));
+			w40.Position = 3;
+			w40.Expand = false;
+			w40.Fill = false;
 			this.hbox9.Add (this.vbtnCenter);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.vbtnCenter]));
-			w43.Position = 1;
-			w43.Expand = false;
-			w43.Fill = false;
+			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.vbtnCenter]));
+			w41.Position = 1;
+			w41.Expand = false;
+			w41.Fill = false;
 			// Container child hbox9.Gtk.Box+BoxChild
 			this.alignment8 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment8.Name = "alignment8";
 			this.hbox9.Add (this.alignment8);
-			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment8]));
-			w44.Position = 2;
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment8]));
+			w42.Position = 2;
 			this.hbox7.Add (this.hbox9);
-			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox9]));
-			w45.Position = 1;
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox9]));
+			w43.Position = 1;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.hbox10 = new global::Gtk.HBox ();
 			this.hbox10.Name = "hbox10";
@@ -728,8 +712,8 @@ namespace BuildingFormulas
 			this.alignment9 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment9.Name = "alignment9";
 			this.hbox10.Add (this.alignment9);
-			global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment9]));
-			w46.Position = 0;
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment9]));
+			w44.Position = 0;
 			// Container child hbox10.Gtk.Box+BoxChild
 			this.vbtnRight = new global::Gtk.VButtonBox ();
 			this.vbtnRight.WidthRequest = 142;
@@ -748,9 +732,9 @@ namespace BuildingFormulas
 			this.btnPrintForm.BorderWidth = ((uint)(4));
 			this.btnPrintForm.Label = global::Mono.Unix.Catalog.GetString ("Print Form");
 			this.vbtnRight.Add (this.btnPrintForm);
-			global::Gtk.ButtonBox.ButtonBoxChild w47 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintForm]));
-			w47.Expand = false;
-			w47.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintForm]));
+			w45.Expand = false;
+			w45.Fill = false;
 			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
 			this.btnPrintStored = new global::Gtk.Button ();
 			this.btnPrintStored.TooltipMarkup = "Print the data that is contained in store.";
@@ -762,10 +746,10 @@ namespace BuildingFormulas
 			this.btnPrintStored.BorderWidth = ((uint)(4));
 			this.btnPrintStored.Label = global::Mono.Unix.Catalog.GetString ("Print Stored");
 			this.vbtnRight.Add (this.btnPrintStored);
-			global::Gtk.ButtonBox.ButtonBoxChild w48 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintStored]));
-			w48.Position = 1;
-			w48.Expand = false;
-			w48.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w46 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintStored]));
+			w46.Position = 1;
+			w46.Expand = false;
+			w46.Fill = false;
 			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
 			this.btnClose = new global::Gtk.Button ();
 			this.btnClose.TooltipMarkup = "Exit from this form. ";
@@ -778,27 +762,27 @@ namespace BuildingFormulas
 			this.btnClose.BorderWidth = ((uint)(4));
 			this.btnClose.Label = "gtk-close";
 			this.vbtnRight.Add (this.btnClose);
-			global::Gtk.ButtonBox.ButtonBoxChild w49 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnClose]));
-			w49.Position = 2;
-			w49.Expand = false;
-			w49.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w47 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnClose]));
+			w47.Position = 2;
+			w47.Expand = false;
+			w47.Fill = false;
 			this.hbox10.Add (this.vbtnRight);
-			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.vbtnRight]));
-			w50.Position = 1;
-			w50.Expand = false;
-			w50.Fill = false;
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.vbtnRight]));
+			w48.Position = 1;
+			w48.Expand = false;
+			w48.Fill = false;
 			// Container child hbox10.Gtk.Box+BoxChild
 			this.alignment10 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment10.Name = "alignment10";
 			this.hbox10.Add (this.alignment10);
-			global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment10]));
-			w51.Position = 2;
+			global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment10]));
+			w49.Position = 2;
 			this.hbox7.Add (this.hbox10);
-			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox10]));
-			w52.Position = 2;
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox10]));
+			w50.Position = 2;
 			this.dialog1_VBox.Add (this.hbox7);
-			global::Gtk.Box.BoxChild w53 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox7]));
-			w53.Position = 2;
+			global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox7]));
+			w51.Position = 2;
 			this.Add (this.dialog1_VBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

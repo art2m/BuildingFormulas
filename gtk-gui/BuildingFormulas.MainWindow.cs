@@ -199,6 +199,7 @@ namespace BuildingFormulas
 			this.DefaultHeight = 700;
 			// Container child BuildingFormulas.MainWindow.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox ();
+			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><menuitem name='QuitBuildingFormulasAction' action='QuitBuildingFormulasAction'/></menu><menu name='FormulasAction' action='FormulasAction'><menu name='CubicAreaAction' action='CubicAreaAction'><separator/><menuitem name='CubicAreaCircleAction1' action='CubicAreaCircleAction1'/><menuitem name='CubicAreaCylinderAction' action='CubicAreaCylinderAction'/><separator/><menuitem name='CubicAreaConeAction' action='CubicAreaConeAction'/><menu name='CubicAreaPyramidAction' action='CubicAreaPyramidAction'><menuitem name='WithRectangleBaseAction' action='WithRectangleBaseAction'/><menuitem name='WithSquareBaseAction1' action='WithSquareBaseAction1'/><menuitem name='WithTriangleBaseAction' action='WithTriangleBaseAction'/></menu><menuitem name='CubicAreaTriangleAction1' action='CubicAreaTriangleAction1'/><separator/><menuitem name='CubicAreaHexagonAction' action='CubicAreaHexagonAction'/><menuitem name='CubicAreaOctagonAction' action='CubicAreaOctagonAction'/><separator/><menuitem name='CubicAreaRectangleAction1' action='CubicAreaRectangleAction1'/><menuitem name='CubicAreaSquareAction2' action='CubicAreaSquareAction2'/></menu><menu name='SurfaceAreaAction' action='SurfaceAreaAction'><menuitem name='CircleAction' action='CircleAction'/><menuitem name='CylinderAction' action='CylinderAction'/><separator/><menuitem name='ConeAction' action='ConeAction'/><menuitem name='PyramidAction' action='PyramidAction'/><menuitem name='TriangleAction' action='TriangleAction'/><separator/><menuitem name='HexagonAction' action='HexagonAction'/><menuitem name='OctagonAction' action='OctagonAction'/><separator/><menuitem name='RectangleAction' action='RectangleAction'/><menuitem name='SquareAction' action='SquareAction'/></menu></menu></menubar></ui>");
@@ -218,7 +219,6 @@ namespace BuildingFormulas
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbuttonbox1 = new global::Gtk.HButtonBox ();
 			this.hbuttonbox1.HeightRequest = 46;
-			this.hbuttonbox1.Name = "hbuttonbox1";
 			this.hbuttonbox1.BorderWidth = ((uint)(4));
 			this.hbuttonbox1.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
