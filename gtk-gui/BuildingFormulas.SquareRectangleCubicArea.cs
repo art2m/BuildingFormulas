@@ -788,7 +788,7 @@ namespace BuildingFormulas
 				this.Child.ShowAll ();
 			}
 			this.Show ();
-			this.btnClear.Activated += new global::System.EventHandler (this.OnBtnClearFormClicked);
+			this.btnClear.Clicked += new global::System.EventHandler (this.OnBtnClearFormClicked);
 			this.btnStandard.Clicked += new global::System.EventHandler (this.OnBtnStandardClicked);
 			this.btnMetric.Clicked += new global::System.EventHandler (this.OnBtnMetricClicked);
 			this.btnConvert.Clicked += new global::System.EventHandler (this.OnBtnConvertClicked);

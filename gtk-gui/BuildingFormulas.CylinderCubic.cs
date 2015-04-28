@@ -4,19 +4,691 @@ namespace BuildingFormulas
 {
 	public partial class CylinderCubic
 	{
+		private global::Gtk.VBox dialog1_VBox;
+		
+		private global::Gtk.HBox hbox1;
+		
+		private global::Gtk.Table tblData;
+		
+		private global::Gtk.Label lblCircumference;
+		
+		private global::Gtk.Label lblEmpty;
+		
+		private global::Gtk.Label lblFeet;
+		
+		private global::Gtk.Label lblHeight;
+		
+		private global::Gtk.Label lblInches;
+		
+		private global::Gtk.Label lblYards;
+		
+		private global::Gtk.Entry txtDepthFeet;
+		
+		private global::Gtk.Entry txtDepthInches;
+		
+		private global::Gtk.Entry txtDepthYard;
+		
+		private global::Gtk.Entry txtLengthFeet;
+		
+		private global::Gtk.Entry txtLengthInches;
+		
+		private global::Gtk.Entry txtLengthYard;
+		
+		private global::Gtk.Table tblCubicTotals;
+		
+		private global::Gtk.Label lblCubicFeet;
+		
+		private global::Gtk.Label lblCubicInches;
+		
+		private global::Gtk.Label lblCubicYards;
+		
+		private global::Gtk.Label lblInfo;
+		
+		private global::Gtk.Entry txtCubicFeet;
+		
+		private global::Gtk.Entry txtCubicInches;
+		
+		private global::Gtk.Entry txtCubicYards;
+		
+		private global::Gtk.HBox hbox7;
+		
+		private global::Gtk.HBox hbox8;
+		
+		private global::Gtk.Alignment alignment5;
+		
+		private global::Gtk.VButtonBox vbtnLeft;
+		
+		private global::Gtk.Button btnNew;
+		
+		private global::Gtk.Button btnStandard;
+		
+		private global::Gtk.Button btnMetric;
+		
+		private global::Gtk.Alignment alignment6;
+		
+		private global::Gtk.HBox hbox9;
+		
+		private global::Gtk.Alignment alignment7;
+		
+		private global::Gtk.VButtonBox vbtnCenter;
+		
+		private global::Gtk.Button btnSolve;
+		
+		private global::Gtk.Button btnStore;
+		
+		private global::Gtk.Button btnDisplayStore;
+		
+		private global::Gtk.Button btnClearStore;
+		
+		private global::Gtk.Alignment alignment8;
+		
+		private global::Gtk.HBox hbox10;
+		
+		private global::Gtk.Alignment alignment9;
+		
+		private global::Gtk.VButtonBox vbtnRight;
+		
+		private global::Gtk.Button btnPrintForm;
+		
+		private global::Gtk.Button btnPrintStored;
+		
+		private global::Gtk.Button btnClose;
+		
+		private global::Gtk.Alignment alignment10;
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
 			// Widget BuildingFormulas.CylinderCubic
+			this.WidthRequest = 800;
+			this.HeightRequest = 600;
 			this.Name = "BuildingFormulas.CylinderCubic";
 			this.Title = global::Mono.Unix.Catalog.GetString ("CylinderCubic");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.BorderWidth = ((uint)(8));
+			// Container child BuildingFormulas.CylinderCubic.Gtk.Container+ContainerChild
+			this.dialog1_VBox = new global::Gtk.VBox ();
+			this.dialog1_VBox.Name = "dialog1_VBox";
+			this.dialog1_VBox.BorderWidth = ((uint)(6));
+			// Container child dialog1_VBox.Gtk.Box+BoxChild
+			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1.Name = "hbox1";
+			this.hbox1.Spacing = 6;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.tblData = new global::Gtk.Table (((uint)(3)), ((uint)(4)), false);
+			this.tblData.WidthRequest = 670;
+			this.tblData.HeightRequest = 186;
+			this.tblData.Name = "tblData";
+			this.tblData.RowSpacing = ((uint)(15));
+			this.tblData.ColumnSpacing = ((uint)(10));
+			this.tblData.BorderWidth = ((uint)(8));
+			// Container child tblData.Gtk.Table+TableChild
+			this.lblCircumference = new global::Gtk.Label ();
+			this.lblCircumference.WidthRequest = 142;
+			this.lblCircumference.HeightRequest = 30;
+			this.lblCircumference.Name = "lblCircumference";
+			this.lblCircumference.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter circumference:");
+			this.tblData.Add (this.lblCircumference);
+			global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblCircumference]));
+			w1.TopAttach = ((uint)(1));
+			w1.BottomAttach = ((uint)(2));
+			w1.XOptions = ((global::Gtk.AttachOptions)(4));
+			w1.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.lblEmpty = new global::Gtk.Label ();
+			this.lblEmpty.WidthRequest = 142;
+			this.lblEmpty.HeightRequest = 24;
+			this.lblEmpty.Name = "lblEmpty";
+			this.lblEmpty.Justify = ((global::Gtk.Justification)(2));
+			this.tblData.Add (this.lblEmpty);
+			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblEmpty]));
+			w2.XOptions = ((global::Gtk.AttachOptions)(4));
+			w2.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.lblFeet = new global::Gtk.Label ();
+			this.lblFeet.WidthRequest = 132;
+			this.lblFeet.HeightRequest = 24;
+			this.lblFeet.Name = "lblFeet";
+			this.lblFeet.LabelProp = global::Mono.Unix.Catalog.GetString ("Feet");
+			this.lblFeet.Justify = ((global::Gtk.Justification)(2));
+			this.tblData.Add (this.lblFeet);
+			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblFeet]));
+			w3.LeftAttach = ((uint)(2));
+			w3.RightAttach = ((uint)(3));
+			w3.XOptions = ((global::Gtk.AttachOptions)(4));
+			w3.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.lblHeight = new global::Gtk.Label ();
+			this.lblHeight.WidthRequest = 142;
+			this.lblHeight.HeightRequest = 30;
+			this.lblHeight.Name = "lblHeight";
+			this.lblHeight.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter height:");
+			this.tblData.Add (this.lblHeight);
+			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblHeight]));
+			w4.TopAttach = ((uint)(2));
+			w4.BottomAttach = ((uint)(3));
+			w4.XOptions = ((global::Gtk.AttachOptions)(4));
+			w4.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.lblInches = new global::Gtk.Label ();
+			this.lblInches.WidthRequest = 132;
+			this.lblInches.HeightRequest = 24;
+			this.lblInches.Name = "lblInches";
+			this.lblInches.LabelProp = global::Mono.Unix.Catalog.GetString ("Inches");
+			this.lblInches.Justify = ((global::Gtk.Justification)(2));
+			this.tblData.Add (this.lblInches);
+			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblInches]));
+			w5.LeftAttach = ((uint)(3));
+			w5.RightAttach = ((uint)(4));
+			w5.XOptions = ((global::Gtk.AttachOptions)(4));
+			w5.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.lblYards = new global::Gtk.Label ();
+			this.lblYards.WidthRequest = 132;
+			this.lblYards.HeightRequest = 24;
+			this.lblYards.Name = "lblYards";
+			this.lblYards.LabelProp = global::Mono.Unix.Catalog.GetString ("Yards");
+			this.lblYards.Justify = ((global::Gtk.Justification)(2));
+			this.tblData.Add (this.lblYards);
+			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblYards]));
+			w6.LeftAttach = ((uint)(1));
+			w6.RightAttach = ((uint)(2));
+			w6.XOptions = ((global::Gtk.AttachOptions)(4));
+			w6.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.txtDepthFeet = new global::Gtk.Entry ();
+			this.txtDepthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtDepthFeet.WidthRequest = 159;
+			this.txtDepthFeet.HeightRequest = 30;
+			this.txtDepthFeet.CanFocus = true;
+			this.txtDepthFeet.Name = "txtDepthFeet";
+			this.txtDepthFeet.IsEditable = true;
+			this.txtDepthFeet.MaxLength = 4;
+			this.txtDepthFeet.InvisibleChar = '•';
+			this.tblData.Add (this.txtDepthFeet);
+			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthFeet]));
+			w7.TopAttach = ((uint)(1));
+			w7.BottomAttach = ((uint)(2));
+			w7.LeftAttach = ((uint)(2));
+			w7.RightAttach = ((uint)(3));
+			w7.XOptions = ((global::Gtk.AttachOptions)(4));
+			w7.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.txtDepthInches = new global::Gtk.Entry ();
+			this.txtDepthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtDepthInches.WidthRequest = 159;
+			this.txtDepthInches.HeightRequest = 30;
+			this.txtDepthInches.CanFocus = true;
+			this.txtDepthInches.Name = "txtDepthInches";
+			this.txtDepthInches.IsEditable = true;
+			this.txtDepthInches.MaxLength = 4;
+			this.txtDepthInches.InvisibleChar = '•';
+			this.tblData.Add (this.txtDepthInches);
+			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthInches]));
+			w8.TopAttach = ((uint)(1));
+			w8.BottomAttach = ((uint)(2));
+			w8.LeftAttach = ((uint)(3));
+			w8.RightAttach = ((uint)(4));
+			w8.XOptions = ((global::Gtk.AttachOptions)(4));
+			w8.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.txtDepthYard = new global::Gtk.Entry ();
+			this.txtDepthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtDepthYard.WidthRequest = 159;
+			this.txtDepthYard.HeightRequest = 30;
+			this.txtDepthYard.CanFocus = true;
+			this.txtDepthYard.Name = "txtDepthYard";
+			this.txtDepthYard.IsEditable = true;
+			this.txtDepthYard.MaxLength = 4;
+			this.txtDepthYard.InvisibleChar = '•';
+			this.tblData.Add (this.txtDepthYard);
+			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthYard]));
+			w9.TopAttach = ((uint)(1));
+			w9.BottomAttach = ((uint)(2));
+			w9.LeftAttach = ((uint)(1));
+			w9.RightAttach = ((uint)(2));
+			w9.XOptions = ((global::Gtk.AttachOptions)(4));
+			w9.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.txtLengthFeet = new global::Gtk.Entry ();
+			this.txtLengthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtLengthFeet.WidthRequest = 124;
+			this.txtLengthFeet.HeightRequest = 30;
+			this.txtLengthFeet.CanFocus = true;
+			this.txtLengthFeet.Name = "txtLengthFeet";
+			this.txtLengthFeet.IsEditable = true;
+			this.txtLengthFeet.MaxLength = 4;
+			this.txtLengthFeet.InvisibleChar = '•';
+			this.tblData.Add (this.txtLengthFeet);
+			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthFeet]));
+			w10.TopAttach = ((uint)(2));
+			w10.BottomAttach = ((uint)(3));
+			w10.LeftAttach = ((uint)(2));
+			w10.RightAttach = ((uint)(3));
+			w10.XOptions = ((global::Gtk.AttachOptions)(4));
+			w10.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.txtLengthInches = new global::Gtk.Entry ();
+			this.txtLengthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtLengthInches.WidthRequest = 124;
+			this.txtLengthInches.HeightRequest = 30;
+			this.txtLengthInches.CanFocus = true;
+			this.txtLengthInches.Name = "txtLengthInches";
+			this.txtLengthInches.IsEditable = true;
+			this.txtLengthInches.MaxLength = 4;
+			this.txtLengthInches.InvisibleChar = '•';
+			this.tblData.Add (this.txtLengthInches);
+			global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthInches]));
+			w11.TopAttach = ((uint)(2));
+			w11.BottomAttach = ((uint)(3));
+			w11.LeftAttach = ((uint)(3));
+			w11.RightAttach = ((uint)(4));
+			w11.XOptions = ((global::Gtk.AttachOptions)(4));
+			w11.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblData.Gtk.Table+TableChild
+			this.txtLengthYard = new global::Gtk.Entry ();
+			this.txtLengthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtLengthYard.WidthRequest = 124;
+			this.txtLengthYard.HeightRequest = 30;
+			this.txtLengthYard.CanFocus = true;
+			this.txtLengthYard.Name = "txtLengthYard";
+			this.txtLengthYard.IsEditable = true;
+			this.txtLengthYard.MaxLength = 4;
+			this.txtLengthYard.InvisibleChar = '•';
+			this.tblData.Add (this.txtLengthYard);
+			global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthYard]));
+			w12.TopAttach = ((uint)(2));
+			w12.BottomAttach = ((uint)(3));
+			w12.LeftAttach = ((uint)(1));
+			w12.RightAttach = ((uint)(2));
+			w12.XOptions = ((global::Gtk.AttachOptions)(4));
+			w12.YOptions = ((global::Gtk.AttachOptions)(4));
+			this.hbox1.Add (this.tblData);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.tblData]));
+			w13.Position = 1;
+			w13.Expand = false;
+			w13.Fill = false;
+			this.dialog1_VBox.Add (this.hbox1);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox1]));
+			w14.Position = 0;
+			w14.Expand = false;
+			w14.Fill = false;
+			// Container child dialog1_VBox.Gtk.Box+BoxChild
+			this.tblCubicTotals = new global::Gtk.Table (((uint)(4)), ((uint)(2)), true);
+			this.tblCubicTotals.WidthRequest = 524;
+			this.tblCubicTotals.HeightRequest = 186;
+			this.tblCubicTotals.Name = "tblCubicTotals";
+			this.tblCubicTotals.RowSpacing = ((uint)(15));
+			this.tblCubicTotals.ColumnSpacing = ((uint)(10));
+			this.tblCubicTotals.BorderWidth = ((uint)(8));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.lblCubicFeet = new global::Gtk.Label ();
+			this.lblCubicFeet.WidthRequest = 348;
+			this.lblCubicFeet.HeightRequest = 30;
+			this.lblCubicFeet.Name = "lblCubicFeet";
+			this.lblCubicFeet.LabelProp = global::Mono.Unix.Catalog.GetString ("Total Cubic Area in Feet:");
+			this.tblCubicTotals.Add (this.lblCubicFeet);
+			global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicFeet]));
+			w15.TopAttach = ((uint)(2));
+			w15.BottomAttach = ((uint)(3));
+			w15.XOptions = ((global::Gtk.AttachOptions)(4));
+			w15.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.lblCubicInches = new global::Gtk.Label ();
+			this.lblCubicInches.WidthRequest = 348;
+			this.lblCubicInches.HeightRequest = 30;
+			this.lblCubicInches.Name = "lblCubicInches";
+			this.lblCubicInches.LabelProp = global::Mono.Unix.Catalog.GetString ("Total Cubic Area in Inches:");
+			this.tblCubicTotals.Add (this.lblCubicInches);
+			global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicInches]));
+			w16.TopAttach = ((uint)(3));
+			w16.BottomAttach = ((uint)(4));
+			w16.XOptions = ((global::Gtk.AttachOptions)(4));
+			w16.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.lblCubicYards = new global::Gtk.Label ();
+			this.lblCubicYards.WidthRequest = 348;
+			this.lblCubicYards.HeightRequest = 30;
+			this.lblCubicYards.Name = "lblCubicYards";
+			this.lblCubicYards.LabelProp = global::Mono.Unix.Catalog.GetString ("Total Cubic Area in Yards:");
+			this.tblCubicTotals.Add (this.lblCubicYards);
+			global::Gtk.Table.TableChild w17 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblCubicYards]));
+			w17.TopAttach = ((uint)(1));
+			w17.BottomAttach = ((uint)(2));
+			w17.XOptions = ((global::Gtk.AttachOptions)(4));
+			w17.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.lblInfo = new global::Gtk.Label ();
+			this.lblInfo.WidthRequest = 124;
+			this.lblInfo.HeightRequest = 30;
+			this.lblInfo.Name = "lblInfo";
+			this.lblInfo.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
+			this.tblCubicTotals.Add (this.lblInfo);
+			global::Gtk.Table.TableChild w18 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.lblInfo]));
+			w18.LeftAttach = ((uint)(1));
+			w18.RightAttach = ((uint)(2));
+			w18.XOptions = ((global::Gtk.AttachOptions)(4));
+			w18.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.txtCubicFeet = new global::Gtk.Entry ();
+			this.txtCubicFeet.TooltipMarkup = "Total cubic area for shape in feet.";
+			this.txtCubicFeet.WidthRequest = 348;
+			this.txtCubicFeet.HeightRequest = 30;
+			this.txtCubicFeet.CanFocus = true;
+			this.txtCubicFeet.Name = "txtCubicFeet";
+			this.txtCubicFeet.IsEditable = false;
+			this.txtCubicFeet.InvisibleChar = '•';
+			this.tblCubicTotals.Add (this.txtCubicFeet);
+			global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicFeet]));
+			w19.TopAttach = ((uint)(2));
+			w19.BottomAttach = ((uint)(3));
+			w19.LeftAttach = ((uint)(1));
+			w19.RightAttach = ((uint)(2));
+			w19.XOptions = ((global::Gtk.AttachOptions)(4));
+			w19.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.txtCubicInches = new global::Gtk.Entry ();
+			this.txtCubicInches.TooltipMarkup = "Total cubic area for shape in inches.";
+			this.txtCubicInches.WidthRequest = 348;
+			this.txtCubicInches.HeightRequest = 30;
+			this.txtCubicInches.CanFocus = true;
+			this.txtCubicInches.Name = "txtCubicInches";
+			this.txtCubicInches.IsEditable = false;
+			this.txtCubicInches.InvisibleChar = '•';
+			this.tblCubicTotals.Add (this.txtCubicInches);
+			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicInches]));
+			w20.TopAttach = ((uint)(3));
+			w20.BottomAttach = ((uint)(4));
+			w20.LeftAttach = ((uint)(1));
+			w20.RightAttach = ((uint)(2));
+			w20.XOptions = ((global::Gtk.AttachOptions)(4));
+			w20.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child tblCubicTotals.Gtk.Table+TableChild
+			this.txtCubicYards = new global::Gtk.Entry ();
+			this.txtCubicYards.TooltipMarkup = "Total cubic area for shape in yards.";
+			this.txtCubicYards.WidthRequest = 348;
+			this.txtCubicYards.HeightRequest = 30;
+			this.txtCubicYards.CanFocus = true;
+			this.txtCubicYards.Name = "txtCubicYards";
+			this.txtCubicYards.IsEditable = false;
+			this.txtCubicYards.InvisibleChar = '•';
+			this.tblCubicTotals.Add (this.txtCubicYards);
+			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.tblCubicTotals [this.txtCubicYards]));
+			w21.TopAttach = ((uint)(1));
+			w21.BottomAttach = ((uint)(2));
+			w21.LeftAttach = ((uint)(1));
+			w21.RightAttach = ((uint)(2));
+			w21.XOptions = ((global::Gtk.AttachOptions)(4));
+			w21.YOptions = ((global::Gtk.AttachOptions)(4));
+			this.dialog1_VBox.Add (this.tblCubicTotals);
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.tblCubicTotals]));
+			w22.Position = 1;
+			w22.Expand = false;
+			// Container child dialog1_VBox.Gtk.Box+BoxChild
+			this.hbox7 = new global::Gtk.HBox ();
+			this.hbox7.Name = "hbox7";
+			this.hbox7.Spacing = 6;
+			// Container child hbox7.Gtk.Box+BoxChild
+			this.hbox8 = new global::Gtk.HBox ();
+			this.hbox8.Name = "hbox8";
+			this.hbox8.Spacing = 6;
+			this.hbox8.BorderWidth = ((uint)(8));
+			// Container child hbox8.Gtk.Box+BoxChild
+			this.alignment5 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment5.Name = "alignment5";
+			this.hbox8.Add (this.alignment5);
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment5]));
+			w23.Position = 0;
+			// Container child hbox8.Gtk.Box+BoxChild
+			this.vbtnLeft = new global::Gtk.VButtonBox ();
+			this.vbtnLeft.WidthRequest = 142;
+			this.vbtnLeft.HeightRequest = 142;
+			this.vbtnLeft.Name = "vbtnLeft";
+			this.vbtnLeft.BorderWidth = ((uint)(4));
+			this.vbtnLeft.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(1));
+			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
+			this.btnNew = new global::Gtk.Button ();
+			this.btnNew.TooltipMarkup = "Reset all boxes to zero.";
+			this.btnNew.WidthRequest = 118;
+			this.btnNew.HeightRequest = 40;
+			this.btnNew.CanFocus = true;
+			this.btnNew.Name = "btnNew";
+			this.btnNew.UseUnderline = true;
+			this.btnNew.BorderWidth = ((uint)(4));
+			this.btnNew.Label = global::Mono.Unix.Catalog.GetString ("New Cylinder");
+			this.vbtnLeft.Add (this.btnNew);
+			global::Gtk.ButtonBox.ButtonBoxChild w24 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnNew]));
+			w24.Expand = false;
+			w24.Fill = false;
+			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
+			this.btnStandard = new global::Gtk.Button ();
+			this.btnStandard.TooltipMarkup = "Use standard messaurement units.";
+			this.btnStandard.WidthRequest = 118;
+			this.btnStandard.HeightRequest = 40;
+			this.btnStandard.CanFocus = true;
+			this.btnStandard.Name = "btnStandard";
+			this.btnStandard.UseUnderline = true;
+			this.btnStandard.BorderWidth = ((uint)(4));
+			this.btnStandard.Label = global::Mono.Unix.Catalog.GetString ("Standard");
+			this.vbtnLeft.Add (this.btnStandard);
+			global::Gtk.ButtonBox.ButtonBoxChild w25 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnStandard]));
+			w25.Position = 1;
+			w25.Expand = false;
+			w25.Fill = false;
+			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
+			this.btnMetric = new global::Gtk.Button ();
+			this.btnMetric.TooltipMarkup = "Use metric messaurement units.";
+			this.btnMetric.WidthRequest = 118;
+			this.btnMetric.HeightRequest = 40;
+			this.btnMetric.CanFocus = true;
+			this.btnMetric.Name = "btnMetric";
+			this.btnMetric.UseUnderline = true;
+			this.btnMetric.BorderWidth = ((uint)(4));
+			this.btnMetric.Label = global::Mono.Unix.Catalog.GetString ("Metric");
+			this.vbtnLeft.Add (this.btnMetric);
+			global::Gtk.ButtonBox.ButtonBoxChild w26 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnMetric]));
+			w26.Position = 2;
+			w26.Expand = false;
+			w26.Fill = false;
+			this.hbox8.Add (this.vbtnLeft);
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.vbtnLeft]));
+			w27.Position = 1;
+			w27.Expand = false;
+			w27.Fill = false;
+			// Container child hbox8.Gtk.Box+BoxChild
+			this.alignment6 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment6.Name = "alignment6";
+			this.hbox8.Add (this.alignment6);
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment6]));
+			w28.Position = 2;
+			this.hbox7.Add (this.hbox8);
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox8]));
+			w29.Position = 0;
+			// Container child hbox7.Gtk.Box+BoxChild
+			this.hbox9 = new global::Gtk.HBox ();
+			this.hbox9.Name = "hbox9";
+			this.hbox9.Spacing = 6;
+			// Container child hbox9.Gtk.Box+BoxChild
+			this.alignment7 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment7.Name = "alignment7";
+			this.hbox9.Add (this.alignment7);
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment7]));
+			w30.Position = 0;
+			// Container child hbox9.Gtk.Box+BoxChild
+			this.vbtnCenter = new global::Gtk.VButtonBox ();
+			this.vbtnCenter.WidthRequest = 142;
+			this.vbtnCenter.HeightRequest = 142;
+			this.vbtnCenter.Name = "vbtnCenter";
+			this.vbtnCenter.BorderWidth = ((uint)(8));
+			this.vbtnCenter.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(1));
+			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
+			this.btnSolve = new global::Gtk.Button ();
+			this.btnSolve.TooltipMarkup = "Get square or rectangle cubic area.";
+			this.btnSolve.WidthRequest = 118;
+			this.btnSolve.HeightRequest = 40;
+			this.btnSolve.CanFocus = true;
+			this.btnSolve.Name = "btnSolve";
+			this.btnSolve.UseUnderline = true;
+			this.btnSolve.BorderWidth = ((uint)(4));
+			this.btnSolve.Label = global::Mono.Unix.Catalog.GetString ("Solve");
+			this.vbtnCenter.Add (this.btnSolve);
+			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnSolve]));
+			w31.Expand = false;
+			w31.Fill = false;
+			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
+			this.btnStore = new global::Gtk.Button ();
+			this.btnStore.TooltipMarkup = "Save the cubic area result for this shape.";
+			this.btnStore.WidthRequest = 118;
+			this.btnStore.HeightRequest = 40;
+			this.btnStore.CanFocus = true;
+			this.btnStore.Name = "btnStore";
+			this.btnStore.UseUnderline = true;
+			this.btnStore.BorderWidth = ((uint)(4));
+			this.btnStore.Label = global::Mono.Unix.Catalog.GetString ("Store Result");
+			this.vbtnCenter.Add (this.btnStore);
+			global::Gtk.ButtonBox.ButtonBoxChild w32 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnStore]));
+			w32.Position = 1;
+			w32.Expand = false;
+			w32.Fill = false;
+			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
+			this.btnDisplayStore = new global::Gtk.Button ();
+			this.btnDisplayStore.TooltipMarkup = "Display the cubic area for items stored.";
+			this.btnDisplayStore.WidthRequest = 118;
+			this.btnDisplayStore.HeightRequest = 40;
+			this.btnDisplayStore.CanFocus = true;
+			this.btnDisplayStore.Name = "btnDisplayStore";
+			this.btnDisplayStore.UseUnderline = true;
+			this.btnDisplayStore.BorderWidth = ((uint)(4));
+			this.btnDisplayStore.Label = global::Mono.Unix.Catalog.GetString ("Display Store");
+			this.vbtnCenter.Add (this.btnDisplayStore);
+			global::Gtk.ButtonBox.ButtonBoxChild w33 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnDisplayStore]));
+			w33.Position = 2;
+			w33.Expand = false;
+			w33.Fill = false;
+			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
+			this.btnClearStore = new global::Gtk.Button ();
+			this.btnClearStore.TooltipMarkup = "Clear the items that are currently in store.";
+			this.btnClearStore.WidthRequest = 118;
+			this.btnClearStore.HeightRequest = 40;
+			this.btnClearStore.CanFocus = true;
+			this.btnClearStore.Name = "btnClearStore";
+			this.btnClearStore.UseUnderline = true;
+			this.btnClearStore.BorderWidth = ((uint)(4));
+			this.btnClearStore.Label = global::Mono.Unix.Catalog.GetString ("Clear Store");
+			this.vbtnCenter.Add (this.btnClearStore);
+			global::Gtk.ButtonBox.ButtonBoxChild w34 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnClearStore]));
+			w34.Position = 3;
+			w34.Expand = false;
+			w34.Fill = false;
+			this.hbox9.Add (this.vbtnCenter);
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.vbtnCenter]));
+			w35.Position = 1;
+			w35.Expand = false;
+			w35.Fill = false;
+			// Container child hbox9.Gtk.Box+BoxChild
+			this.alignment8 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment8.Name = "alignment8";
+			this.hbox9.Add (this.alignment8);
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment8]));
+			w36.Position = 2;
+			this.hbox7.Add (this.hbox9);
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox9]));
+			w37.Position = 1;
+			// Container child hbox7.Gtk.Box+BoxChild
+			this.hbox10 = new global::Gtk.HBox ();
+			this.hbox10.Name = "hbox10";
+			this.hbox10.Spacing = 6;
+			// Container child hbox10.Gtk.Box+BoxChild
+			this.alignment9 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment9.Name = "alignment9";
+			this.hbox10.Add (this.alignment9);
+			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment9]));
+			w38.Position = 0;
+			// Container child hbox10.Gtk.Box+BoxChild
+			this.vbtnRight = new global::Gtk.VButtonBox ();
+			this.vbtnRight.WidthRequest = 142;
+			this.vbtnRight.HeightRequest = 142;
+			this.vbtnRight.Name = "vbtnRight";
+			this.vbtnRight.BorderWidth = ((uint)(8));
+			this.vbtnRight.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(1));
+			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
+			this.btnPrintForm = new global::Gtk.Button ();
+			this.btnPrintForm.TooltipMarkup = "Print the information on this form.";
+			this.btnPrintForm.WidthRequest = 118;
+			this.btnPrintForm.HeightRequest = 40;
+			this.btnPrintForm.CanFocus = true;
+			this.btnPrintForm.Name = "btnPrintForm";
+			this.btnPrintForm.UseUnderline = true;
+			this.btnPrintForm.BorderWidth = ((uint)(4));
+			this.btnPrintForm.Label = global::Mono.Unix.Catalog.GetString ("Print Form");
+			this.vbtnRight.Add (this.btnPrintForm);
+			global::Gtk.ButtonBox.ButtonBoxChild w39 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintForm]));
+			w39.Expand = false;
+			w39.Fill = false;
+			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
+			this.btnPrintStored = new global::Gtk.Button ();
+			this.btnPrintStored.TooltipMarkup = "Print the data that is contained in store.";
+			this.btnPrintStored.WidthRequest = 118;
+			this.btnPrintStored.HeightRequest = 40;
+			this.btnPrintStored.CanFocus = true;
+			this.btnPrintStored.Name = "btnPrintStored";
+			this.btnPrintStored.UseUnderline = true;
+			this.btnPrintStored.BorderWidth = ((uint)(4));
+			this.btnPrintStored.Label = global::Mono.Unix.Catalog.GetString ("Print Stored");
+			this.vbtnRight.Add (this.btnPrintStored);
+			global::Gtk.ButtonBox.ButtonBoxChild w40 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintStored]));
+			w40.Position = 1;
+			w40.Expand = false;
+			w40.Fill = false;
+			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
+			this.btnClose = new global::Gtk.Button ();
+			this.btnClose.TooltipMarkup = "Exit from this form. ";
+			this.btnClose.WidthRequest = 118;
+			this.btnClose.HeightRequest = 40;
+			this.btnClose.CanFocus = true;
+			this.btnClose.Name = "btnClose";
+			this.btnClose.UseStock = true;
+			this.btnClose.UseUnderline = true;
+			this.btnClose.BorderWidth = ((uint)(4));
+			this.btnClose.Label = "gtk-close";
+			this.vbtnRight.Add (this.btnClose);
+			global::Gtk.ButtonBox.ButtonBoxChild w41 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnClose]));
+			w41.Position = 2;
+			w41.Expand = false;
+			w41.Fill = false;
+			this.hbox10.Add (this.vbtnRight);
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.vbtnRight]));
+			w42.Position = 1;
+			w42.Expand = false;
+			w42.Fill = false;
+			// Container child hbox10.Gtk.Box+BoxChild
+			this.alignment10 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment10.Name = "alignment10";
+			this.hbox10.Add (this.alignment10);
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment10]));
+			w43.Position = 2;
+			this.hbox7.Add (this.hbox10);
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox10]));
+			w44.Position = 2;
+			this.dialog1_VBox.Add (this.hbox7);
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox7]));
+			w45.Position = 2;
+			this.Add (this.dialog1_VBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 400;
-			this.DefaultHeight = 300;
+			this.DefaultWidth = 800;
+			this.DefaultHeight = 600;
 			this.Show ();
+			this.btnNew.Clicked += new global::System.EventHandler (this.OnBtnNewCylinderClicked);
+			this.btnStandard.Clicked += new global::System.EventHandler (this.OnBtnStandardClicked);
+			this.btnMetric.Clicked += new global::System.EventHandler (this.OnBtnMetricClicked);
+			this.btnSolve.Clicked += new global::System.EventHandler (this.OnBtnSolveClicked);
+			this.btnDisplayStore.Clicked += new global::System.EventHandler (this.OnBtnDisplayStoreClicked);
+			this.btnClearStore.Clicked += new global::System.EventHandler (this.OnBtnClearStoreClicked);
+			this.btnPrintForm.Clicked += new global::System.EventHandler (this.OnBtnPrintFormClicked);
+			this.btnPrintStored.Clicked += new global::System.EventHandler (this.OnBtnPrintStoredClicked);
+			this.btnClose.Clicked += new global::System.EventHandler (this.OnBtnCloseClicked);
 		}
 	}
 }

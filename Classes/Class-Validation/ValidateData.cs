@@ -27,11 +27,17 @@ namespace BuildingFormulas
     /// </summary>
     public class ValidateData
     {
+        /// <summary>
+        /// My message.
+        /// </summary>
+        private MyMessages myMsg = new MyMessages();
 
         /// <summary>
         /// The name of the class.
         /// </summary>
-        private const string MyClassName = "ValidateData";
+        private const string ThisClassName = "ValidateData";
+
+        private string errMsg = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref=
@@ -58,12 +64,18 @@ namespace BuildingFormulas
             const string MethodName = "public bool ValidateDataExists(" +
                                       " string data)";
 
+            errMsg = "All data entry boxes must have a numeric value.\n " +
+            "Enter 0 for no data.";
+
             if (string.IsNullOrEmpty(data))
             {
+                myMsg.BuildErrorString(ThisClassName, MethodName, errMsg, "");
+
                 return retVal;
             }
             else if (string.IsNullOrWhiteSpace(data))
             {
+                myMsg.BuildErrorString(ThisClassName, MethodName, errMsg, "");
                 return retVal;
             }
 
@@ -122,31 +134,81 @@ namespace BuildingFormulas
         }
 
         /// <summary>
-        /// Validates the data is greater then minus one.
+        /// Validates the text boxes not empty.
         /// </summary>
-        /// <returns><c>true</c>, if data is greater then minus one 
-        /// was validated, <c>false</c> if value is less then 
-        /// -1</returns>
-        /// <param name="data">String representing and integer</param>
-        public bool ValidateDataIsGreaterThenMinusOne(string data)
+        /// <returns><c>true</c>, if text boxes not 
+        /// empty was validated, <c>false</c> otherwise.</returns>
+        /// <param name="values">The values array of strings.</param>
+        /// <param name="cnt">The count of items in array.</param>
+        public bool ValidateTextBoxesNotEmpty(string[] values, int cnt)
         {
-            bool retVal = false;
-            bool val; 
-            int num;
+            bool retVal = true;
+            string val = null;
 
-            val = int.TryParse(data, out num);
-            if (!val)
+            for (int i = 0; i < cnt; i++)
             {
-                return retVal;
+                val = values[cnt].Trim();
+                retVal = ValidateDataExists(val);
+                if (!retVal)
+                {
+                    break;
+                }
             }
 
-            if (num < 0)
-            {
-                return retVal;
-            }
-
-            retVal = true;
             return retVal;
         }
+
+        /// <summary>
+        /// Validates the text boxes have numeric value.
+        /// </summary>
+        /// <returns><c>true</c>, if text boxes have 
+        /// numeric value was validated, 
+        /// <c>false</c> otherwise.</returns>
+        /// <param name="values">The values array of strings.</param>
+        /// <param name="cnt">The count of items in array.</param>
+        public bool ValidateTextBoxesHaveNumericValue(string[] values, int cnt)
+        {
+            bool retVal = true;
+            string val = null;
+
+            for (int i = 0; i < cnt; i++)
+            {
+                val = values[cnt].Trim();
+                retVal = ValidateDataIsNumericValue(val);
+                if (!retVal)
+                {
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Validates the text boxes have value greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if text boxes have 
+        /// value greater then zero was validated, 
+        /// <c>false</c> otherwise.</returns>
+        /// <param name="values">The values array of strings.</param>
+        /// <param name="cnt">The count of items in the array.</param>
+        public bool ValidateTextBoxesHaveValueGreaterThenZero(
+            string[] values, int cnt)
+        {
+            bool retVal = true;
+            string val = null;
+            for (int i = 0; i < cnt; i++)
+            {
+                val = values[cnt].Trim();
+                retVal = ValidateDataIsGreaterThenZero(val);
+                if (!retVal)
+                {
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
     }
 }

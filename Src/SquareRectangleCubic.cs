@@ -31,7 +31,7 @@ namespace BuildingFormulas
         /// <summary>
         /// The name of the class.
         /// </summary>
-        private const string MyClassName = 
+        private const string ThisClassName = 
             "public partial class SquareRectangleCubicArea : Gtk.Window";
        
         /// <summary>
@@ -93,6 +93,7 @@ namespace BuildingFormulas
         {
             this.Build();
 
+            //this.ClearData();
             this.metricUnits = false;
             this.standardUnits = true;
             btnStandard.Label = "Sandard On:";
@@ -276,7 +277,7 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxOneFeetStringValue()";
+                    "ValidateDepthFeetStringValueNotEmpty()";
 
                 txtDepthFeet.Text = txtDepthFeet.Text.Trim();
                 retVal = this.vd.ValidateDataExists(txtDepthFeet.Text);
@@ -296,7 +297,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());  
@@ -309,7 +310,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -332,7 +333,7 @@ namespace BuildingFormulas
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxOneInchesStringValue()";
+                    "private void ValidateDepthInchesStringValueNotEmpty()";
 
                 txtDepthInches.Text = txtDepthInches.Text.Trim();
                 if (this.vd.ValidateDataExists(txtDepthInches.Text))
@@ -351,7 +352,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -364,7 +365,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -386,8 +387,8 @@ namespace BuildingFormulas
 
             try
             {
-                this.methodName = "private void " +
-                "ValidateTextBoxOneYardsStringValue()";
+                this.methodName = 
+                    "private bool ValidateDepthYardsStringValueNotEmpty()";
 
                 txtDepthYard.Text = txtDepthYard.Text.Trim();
 
@@ -409,7 +410,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -422,7 +423,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -463,7 +464,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());  
@@ -476,7 +477,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -518,7 +519,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -531,7 +532,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -573,7 +574,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Length in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -586,7 +587,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Length in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -731,7 +732,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Width in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());  
@@ -744,7 +745,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -785,7 +786,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -798,7 +799,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -840,7 +841,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -853,7 +854,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -940,7 +941,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -953,7 +954,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -999,7 +1000,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1012,7 +1013,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1058,7 +1059,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1071,7 +1072,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1245,7 +1246,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1258,7 +1259,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1304,7 +1305,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1317,7 +1318,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1363,7 +1364,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1376,7 +1377,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Length in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1422,7 +1423,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1435,7 +1436,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1481,7 +1482,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Width in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1494,7 +1495,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Width in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1586,7 +1587,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1599,7 +1600,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1680,7 +1681,7 @@ namespace BuildingFormulas
             }
 
             message = "At leas one of the depth values yards, feet or inches " +
-            "must containe a numeric value greater then zero.";           
+            "must contain a numeric value greater then zero.";           
             this.myMsg.ShowErrMessage(message);
 
             return retVal;
@@ -1720,7 +1721,7 @@ namespace BuildingFormulas
             }
 
             message = "At leas one of the Length values yards, feet or " +
-            "inches must containe a numeric value greater then zero.";
+            "inches must contain a numeric value greater then zero.";
             this.myMsg.ShowErrMessage(message);
 
             return retVal;
@@ -1759,7 +1760,7 @@ namespace BuildingFormulas
             }
 
             message = "At leas one of the width values yards, feet or " +
-            "inches must containe a numeric value greater then zero.";
+            "inches must contain a numeric value greater then zero.";
             this.myMsg.ShowErrMessage(message);
 
             return retVal;
@@ -1790,7 +1791,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1803,7 +1804,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1839,7 +1840,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Depth in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1852,7 +1853,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1887,7 +1888,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1900,7 +1901,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Depth in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1936,7 +1937,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1949,7 +1950,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -1985,7 +1986,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -1998,7 +1999,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -2033,7 +2034,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -2046,7 +2047,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Length in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -2082,7 +2083,7 @@ namespace BuildingFormulas
                 this.errMsg = 
                     "Width in yards entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -2095,7 +2096,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in yards entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -2131,7 +2132,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in feet entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -2144,7 +2145,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in feet entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -2179,7 +2180,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in inches entry not a valid numeric value."; 
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -2192,7 +2193,7 @@ namespace BuildingFormulas
                 this.errMsg =
                     "Width in inches entry numeric value is to large.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -2217,11 +2218,15 @@ namespace BuildingFormulas
 
             txtLengthYard.Text = "0";
             txtLengthFeet.Text = "0";
-            txtLengthFeet.Text = "0";
+            txtLengthInches.Text = "0";
 
             txtWidthYard.Text = "0";
             txtWidthFeet.Text = "0";
             txtWidthInches.Text = "0";
+
+            txtCubicYards.Text = "0";
+            txtCubicFeet.Text = "0";
+            txtCubicInches.Text = "0";
 
             this.math.DepthInYards = 0;
             this.math.DepthInFeet = 0;
@@ -2294,7 +2299,7 @@ namespace BuildingFormulas
                 this.errMsg = "Encountered error converting numeric string " +
                 "to integer value.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());   
@@ -2307,7 +2312,7 @@ namespace BuildingFormulas
                 this.errMsg = "Encountered error converting numeric string " +
                 "to integer value.";
                 this.myMsg.BuildErrorString(
-                    MyClassName, 
+                    ThisClassName, 
                     this.methodName, 
                     this.errMsg,
                     ex.ToString());
@@ -2386,7 +2391,8 @@ namespace BuildingFormulas
         /// </summary>
         private void ShapeFormulaToSolveFor()
         {    
-            int val = 0;           
+            int val = 0;     
+            bool retVal = false;
 
             val = string.Compare(
                 degb.ShapeToSolveFor, 
@@ -2396,10 +2402,20 @@ namespace BuildingFormulas
             {
                 if (this.metricUnits)
                 {
-                    this.SolveForCubicAreaRectangleSquare();
+                    retVal = this.ValidateCubicAreaRectangleSquareData();
+                    if (!retVal)
+                    {
+                        return;
+                    }
                 }
                 else if (this.standardUnits)
                 {
+                    retVal = this.ValidateCubicAreaRectangleSquareData();
+                    if (!retVal)
+                    {
+                        return;
+                    }
+
                     this.SolveForCubicRectangleSquareStandard();
                 }
             }
@@ -2409,10 +2425,22 @@ namespace BuildingFormulas
             {   
                 if (this.metricUnits)
                 {
+                    retVal = this.ValidateCubicAreaRectangleSquareData();
+                    if (!retVal)
+                    {
+                        return;
+                    }
+
                     this.SolveForCubicRectangleSquareMetric();
                 }
                 else if (this.standardUnits)
                 {
+                    retVal = this.ValidateCubicAreaRectangleSquareData();
+                    if (!retVal)
+                    {
+                        return;
+                    }
+
                     this.SolveForCubicRectangleSquareStandard();
                 }
             }
@@ -2422,42 +2450,58 @@ namespace BuildingFormulas
         /// <summary>
         /// Solves for cubic area square.
         /// </summary>
-        private void SolveForCubicAreaRectangleSquare()
+        private bool ValidateCubicAreaRectangleSquareData()
         {
             bool retVal = false;
+            const int cnt = 8;
+            string[] values = new string[cnt];
+
+            values[0] = txtDepthYard.Text;
+            values[1] = txtDepthFeet.Text;
+            values[2] = txtDepthInches.Text;
+            values[3] = txtLengthYard.Text;
+            values[4] = txtLengthFeet.Text;
+            values[5] = txtLengthInches.Text;
+            values[6] = txtWidthYard.Text;
+            values[7] = txtWidthFeet.Text;
+            values[8] = txtWidthInches.Text;
+
+            retVal = vd.ValidateTextBoxesNotEmpty(values, cnt);
+
+
 
             retVal = this.ValidateTextBoxesNotEmpty();
 
             if (!retVal)
             {
-                return;
+                return retVal;
             }
 
             retVal = this.ValidateTextBoxesHaveNumericStringValue();
             if (!retVal)
             {
-                return;
+                return retVal;
             }
 
             retVal = this.ValidateTextBoxesHaveNumericValueGreaterThanZero();
             if (!retVal)
             {
-                return;
+                return retVal;
             }
 
             retVal = this.FillDataWithDataFromTextBoxes();
             if (!retVal)
             {
-                return;
+                return retVal;
             }
 
             retVal = this.ConvertDataToInches();
             if (!retVal)
             {
-                return;
+                return retVal;
             }
 
-            this.SolveForCubicRectangleSquareStandard();
+            return retVal = true;
         }
 
 
