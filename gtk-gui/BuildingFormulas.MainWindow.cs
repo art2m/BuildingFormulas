@@ -12,7 +12,7 @@ namespace BuildingFormulas
 		
 		private global::Gtk.Action FormulasAction;
 		
-		private global::Gtk.Action CubicShapesAreaAction;
+		private global::Gtk.Action CubicAreaAction;
 		
 		private global::Gtk.Action CubicAreaSquareAction;
 		
@@ -48,7 +48,29 @@ namespace BuildingFormulas
 		
 		private global::Gtk.Action CubicAreaTriangleAction1;
 		
-		private global::Gtk.Action Action;
+		private global::Gtk.Action CubicAreaRectangleAction1;
+		
+		private global::Gtk.Action CubicAreaSquareAction2;
+		
+		private global::Gtk.Action SurfaceAreaAction;
+		
+		private global::Gtk.Action CircleAction;
+		
+		private global::Gtk.Action CylinderAction;
+		
+		private global::Gtk.Action ConeAction;
+		
+		private global::Gtk.Action PyramidAction;
+		
+		private global::Gtk.Action TriangleAction;
+		
+		private global::Gtk.Action HexagonAction;
+		
+		private global::Gtk.Action OctagonAction;
+		
+		private global::Gtk.Action RectangleAction;
+		
+		private global::Gtk.Action SquareAction;
 		
 		private global::Gtk.VBox vbox1;
 		
@@ -75,9 +97,9 @@ namespace BuildingFormulas
 			this.FormulasAction = new global::Gtk.Action ("FormulasAction", global::Mono.Unix.Catalog.GetString ("Formulas"), null, null);
 			this.FormulasAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Formulas");
 			w1.Add (this.FormulasAction, null);
-			this.CubicShapesAreaAction = new global::Gtk.Action ("CubicShapesAreaAction", global::Mono.Unix.Catalog.GetString ("Cubic Shapes Area"), null, null);
-			this.CubicShapesAreaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cubic Shapes Area");
-			w1.Add (this.CubicShapesAreaAction, null);
+			this.CubicAreaAction = new global::Gtk.Action ("CubicAreaAction", global::Mono.Unix.Catalog.GetString ("Cubic Area "), null, null);
+			this.CubicAreaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cubic Shapes Area");
+			w1.Add (this.CubicAreaAction, null);
 			this.CubicAreaSquareAction = new global::Gtk.Action ("CubicAreaSquareAction", global::Mono.Unix.Catalog.GetString ("Cubic Area Square"), null, null);
 			this.CubicAreaSquareAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cubic Area Square");
 			w1.Add (this.CubicAreaSquareAction, null);
@@ -129,8 +151,42 @@ namespace BuildingFormulas
 			this.CubicAreaTriangleAction1 = new global::Gtk.Action ("CubicAreaTriangleAction1", global::Mono.Unix.Catalog.GetString ("Cubic Area Triangle"), null, null);
 			this.CubicAreaTriangleAction1.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cubic Area Triangle");
 			w1.Add (this.CubicAreaTriangleAction1, null);
-			this.Action = new global::Gtk.Action ("Action", null, null, null);
-			w1.Add (this.Action, null);
+			this.CubicAreaRectangleAction1 = new global::Gtk.Action ("CubicAreaRectangleAction1", global::Mono.Unix.Catalog.GetString ("Cubic Area Rectangle"), null, null);
+			this.CubicAreaRectangleAction1.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cubic Area Rectangle");
+			w1.Add (this.CubicAreaRectangleAction1, null);
+			this.CubicAreaSquareAction2 = new global::Gtk.Action ("CubicAreaSquareAction2", global::Mono.Unix.Catalog.GetString ("Cubic Area Square"), null, null);
+			this.CubicAreaSquareAction2.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cubic Area Square");
+			w1.Add (this.CubicAreaSquareAction2, null);
+			this.SurfaceAreaAction = new global::Gtk.Action ("SurfaceAreaAction", global::Mono.Unix.Catalog.GetString ("Surface Area"), null, null);
+			this.SurfaceAreaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Surface Area");
+			w1.Add (this.SurfaceAreaAction, null);
+			this.CircleAction = new global::Gtk.Action ("CircleAction", global::Mono.Unix.Catalog.GetString ("Circle"), null, null);
+			this.CircleAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Circle");
+			w1.Add (this.CircleAction, null);
+			this.CylinderAction = new global::Gtk.Action ("CylinderAction", global::Mono.Unix.Catalog.GetString ("Cylinder"), null, null);
+			this.CylinderAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cylinder");
+			w1.Add (this.CylinderAction, null);
+			this.ConeAction = new global::Gtk.Action ("ConeAction", global::Mono.Unix.Catalog.GetString ("Cone"), null, null);
+			this.ConeAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cone");
+			w1.Add (this.ConeAction, null);
+			this.PyramidAction = new global::Gtk.Action ("PyramidAction", global::Mono.Unix.Catalog.GetString ("Pyramid"), null, null);
+			this.PyramidAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Pyramid");
+			w1.Add (this.PyramidAction, null);
+			this.TriangleAction = new global::Gtk.Action ("TriangleAction", global::Mono.Unix.Catalog.GetString ("Triangle"), null, null);
+			this.TriangleAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Triangle");
+			w1.Add (this.TriangleAction, null);
+			this.HexagonAction = new global::Gtk.Action ("HexagonAction", global::Mono.Unix.Catalog.GetString ("Hexagon"), null, null);
+			this.HexagonAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Hexagon");
+			w1.Add (this.HexagonAction, null);
+			this.OctagonAction = new global::Gtk.Action ("OctagonAction", global::Mono.Unix.Catalog.GetString ("Octagon"), null, null);
+			this.OctagonAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Octagon");
+			w1.Add (this.OctagonAction, null);
+			this.RectangleAction = new global::Gtk.Action ("RectangleAction", global::Mono.Unix.Catalog.GetString ("Rectangle"), null, null);
+			this.RectangleAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Rectangle");
+			w1.Add (this.RectangleAction, null);
+			this.SquareAction = new global::Gtk.Action ("SquareAction", global::Mono.Unix.Catalog.GetString ("Square"), null, null);
+			this.SquareAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Square");
+			w1.Add (this.SquareAction, null);
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.WidthRequest = 800;
@@ -138,15 +194,14 @@ namespace BuildingFormulas
 			this.Name = "BuildingFormulas.MainWindow";
 			this.Title = global::Mono.Unix.Catalog.GetString ("Building Formulas");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(3));
-			this.BorderWidth = ((uint)(6));
+			this.BorderWidth = ((uint)(8));
 			this.DefaultWidth = 800;
 			this.DefaultHeight = 700;
 			// Container child BuildingFormulas.MainWindow.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox ();
-			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><menuitem name='QuitBuildingFormulasAction' action='QuitBuildingFormulasAction'/></menu><menu name='FormulasAction' action='FormulasAction'><menu name='CubicShapesAreaAction' action='CubicShapesAreaAction'><menuitem name='CubicAreaSquareAction1' action='CubicAreaSquareAction1'/><menuitem name='CubicAreaRectangleAction' action='CubicAreaRectangleAction'/><separator/><menuitem name='CubicAreaCircleAction1' action='CubicAreaCircleAction1'/><menuitem name='CubicAreaCylinderAction' action='CubicAreaCylinderAction'/><separator/><menuitem name='CubicAreaConeAction' action='CubicAreaConeAction'/><menu name='CubicAreaPyramidAction' action='CubicAreaPyramidAction'><menuitem name='WithRectangleBaseAction' action='WithRectangleBaseAction'/><menuitem name='WithSquareBaseAction1' action='WithSquareBaseAction1'/><menuitem name='WithTriangleBaseAction' action='WithTriangleBaseAction'/></menu><menuitem name='CubicAreaTriangleAction1' action='CubicAreaTriangleAction1'/><separator/><menuitem name='CubicAreaHexagonAction' action='CubicAreaHexagonAction'/><menuitem name='CubicAreaOctagonAction' action='CubicAreaOctagonAction'/><separator/><menuitem name='Action' action='Action'/></menu></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='mnuMain'><menu name='FileAction' action='FileAction'><menuitem name='QuitBuildingFormulasAction' action='QuitBuildingFormulasAction'/></menu><menu name='FormulasAction' action='FormulasAction'><menu name='CubicAreaAction' action='CubicAreaAction'><separator/><menuitem name='CubicAreaCircleAction1' action='CubicAreaCircleAction1'/><menuitem name='CubicAreaCylinderAction' action='CubicAreaCylinderAction'/><separator/><menuitem name='CubicAreaConeAction' action='CubicAreaConeAction'/><menu name='CubicAreaPyramidAction' action='CubicAreaPyramidAction'><menuitem name='WithRectangleBaseAction' action='WithRectangleBaseAction'/><menuitem name='WithSquareBaseAction1' action='WithSquareBaseAction1'/><menuitem name='WithTriangleBaseAction' action='WithTriangleBaseAction'/></menu><menuitem name='CubicAreaTriangleAction1' action='CubicAreaTriangleAction1'/><separator/><menuitem name='CubicAreaHexagonAction' action='CubicAreaHexagonAction'/><menuitem name='CubicAreaOctagonAction' action='CubicAreaOctagonAction'/><separator/><menuitem name='CubicAreaRectangleAction1' action='CubicAreaRectangleAction1'/><menuitem name='CubicAreaSquareAction2' action='CubicAreaSquareAction2'/></menu><menu name='SurfaceAreaAction' action='SurfaceAreaAction'><menuitem name='CircleAction' action='CircleAction'/><menuitem name='CylinderAction' action='CylinderAction'/><separator/><menuitem name='ConeAction' action='ConeAction'/><menuitem name='PyramidAction' action='PyramidAction'/><menuitem name='TriangleAction' action='TriangleAction'/><separator/><menuitem name='HexagonAction' action='HexagonAction'/><menuitem name='OctagonAction' action='OctagonAction'/><separator/><menuitem name='RectangleAction' action='RectangleAction'/><menuitem name='SquareAction' action='SquareAction'/></menu></menu></menubar></ui>");
 			this.mnuMain = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/mnuMain")));
 			this.mnuMain.Name = "mnuMain";
 			this.vbox1.Add (this.mnuMain);
@@ -203,6 +258,17 @@ namespace BuildingFormulas
 			this.WithSquareBaseAction1.Activated += new global::System.EventHandler (this.OnBtnPyramidSquareBaseActionActivated);
 			this.CubicAreaCircleAction1.Activated += new global::System.EventHandler (this.OnBtnCubicAreaCircleActionActivated);
 			this.CubicAreaTriangleAction1.Activated += new global::System.EventHandler (this.OnBtnCubicAreaTriangleActionActivated);
+			this.CubicAreaRectangleAction1.Activated += new global::System.EventHandler (this.OnCubicAreaRectangleActionActivated);
+			this.CubicAreaSquareAction2.Activated += new global::System.EventHandler (this.OnCubicAreaSquareActionActivated);
+			this.CircleAction.Activated += new global::System.EventHandler (this.OnMenuCircleSurfaceAreaActivated);
+			this.CylinderAction.Activated += new global::System.EventHandler (this.OnMenuCylinderSurfaceAreaActivated);
+			this.ConeAction.Activated += new global::System.EventHandler (this.OnMenuConeSurfaceAreaActivated);
+			this.PyramidAction.Activated += new global::System.EventHandler (this.OnMenuPyramidSurfaceAreaActivated);
+			this.TriangleAction.Activated += new global::System.EventHandler (this.OnMenuTriangleSurfaceAreaActivated);
+			this.HexagonAction.Activated += new global::System.EventHandler (this.OnMenuHexagonSurfaceAreaActivated);
+			this.OctagonAction.Activated += new global::System.EventHandler (this.OnMenuOctagonSurfaceAreaActivated);
+			this.RectangleAction.Activated += new global::System.EventHandler (this.OnMenuRectangleSurfaceAreaActivated);
+			this.SquareAction.Activated += new global::System.EventHandler (this.OnMenuSquareSurfaceAreaActivated);
 			this.btnQuit.Clicked += new global::System.EventHandler (this.OnBtnQuitClicked);
 		}
 	}

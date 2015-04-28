@@ -1,5 +1,4 @@
-﻿
-//  DataEntryWindow.cs
+﻿//  DataEntryWindow.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -845,12 +844,20 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
             throw new NotImplementedException();
         }
 
+        #endregion SOLVE FOR CUBIC AREA SHAPES
+
+        #region VALIDATE CUBIC AREA SQUARE RECTANGLE
+
         /// <summary>
         /// Solves for cubic area square.
         /// </summary>
         private void SolveForCubicAreaSquare()
         {
             bool val = false;
+            bool valDepth = false;
+            bool valLength = false;
+            bool valWidth = false;
+
             // this.ClearDataFromRectangleSquareSolve();
             // Check For data in boxes. Put 0 if none found.
             val = this.ValidateCubicAreaYardsSquareShape();
@@ -927,6 +934,162 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
             {
                 return;
             }
+
+            // One of the Depth text boxes have to have value > 0.
+            val = this.ValidateCubicSquareDepthYardsGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleDepthInYards = Convert.ToInt32(txtBoxYard1.Text);
+                valDepth = true;
+            }
+            else
+            {
+                rss.RectangleDepthInYards = Convert.ToInt32(txtBoxYard1.Text);
+            }
+
+            // One of the Depth text boxes have to have value > 0.
+            val = this.ValidateCubicSquareDepthFeetGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleDepthInFeet = Convert.ToInt32(txtBoxFeet1.Text);
+                valDepth = true;
+            }
+            else
+            {
+                rss.RectangleDepthInFeet = Convert.ToInt32(txtBoxFeet1.Text);
+            }
+
+            // One of the Depth text boxes have to have value > 0.
+            val = this.ValidateCubicSquareDepthInchesGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleDepthInInches = 
+                    Convert.ToInt32(txtBoxInches1.Text);
+                valDepth = true;
+            }
+            else
+            {
+                // None of the Depth boxes had a value larger then zero.
+                // So return false can not proceed as one depth value 
+                // must be larger then zero.
+                if (!valDepth)
+                {
+                    return;
+                }
+                else
+                {
+                    // one of the prior txtboxes had val> 0.
+                    // so fill the inches bos with the zero value.
+                    // it holds.
+                    rss.RectangleDepthInInches =
+                        Convert.ToInt32(txtBoxInches1.Text);
+                    valDepth = true;
+                }
+            }     
+                       
+            // One of the Length text boxes have to have value > 0;
+            val = this.ValidateCubicAreaSquareLenghtYardsGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleLengthInYards = Convert.ToInt32(txtBoxYard2.Text);
+                valLength = true;
+            }
+            else
+            {
+                rss.RectangleLengthInYards = Convert.ToInt32(txtBoxFeet2.Text);
+            }
+
+            // One of the Length text boxes have to have value > 0;
+            val = this.ValidaeCubicAreaSquareLengthFeetGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleLengthInFeet = Convert.ToInt32(txtBoxFeet2.Text);
+                valLength = true;
+            }
+            else
+            {
+                rss.RectangleLengthInFeet = Convert.ToInt32(txtBoxFeet2.Text);
+            }
+
+            // One of the Length text boxes have to have value > 0;
+            val = this.ValidateCubicAreaSquareLengthInchesGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleDepthInInches = 
+                    Convert.ToInt32(txtBoxInches2.Text);
+                valLength = true;
+            }
+            else
+            {
+                // None of the Length boxes had a value larger then zero.
+                // So return false can not proceed as one Length value 
+                // must be larger then zero.
+                if (!valLength)
+                {
+                    return;
+                }
+                else
+                {
+                    // one of the prior txtboxes had val> 0.
+                    // so fill the inches bos with the zero value.
+                    // it holds.
+                    rss.RectangleLengthInInches =
+                        Convert.ToInt32(txtBoxInches2.Text);
+                    valLength = true;
+                }
+            }           
+
+            // One of the Width text boxes have to have value > 0;
+            val = this.ValidateCubicAreaSquareWidthYardsGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleWidthInYards = Convert.ToInt32(txtBoxYard3.Text);
+                valWidth = true;
+            }
+            else
+            {
+                rss.RectangleWidthInYards = Convert.ToInt32(txtBoxYard3.Text);
+            }
+
+            // One of the Width text boxes have to have value > 0;
+            val = this.ValidateCubicAreaSquareWidthFeetGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleWidthInFeet = Convert.ToInt32(txtBoxFeet3.Text);
+                valWidth = true;
+            }
+            else
+            {
+                rss.RectangleWidthInFeet = Convert.ToInt32(txtBoxFeet3.Text);
+            }
+
+            // One of the Width text boxes have to have value > 0;
+            val = this.ValidateCubicAreaSquareWdithInchesGreaterThenZero();
+            if (val)
+            {
+                rss.RectangleWidthInInches = 
+                    Convert.ToInt32(txtBoxInches3.Text);
+                valWidth = true;
+            }
+            else
+            {
+                // None of the width boxes had a value larger then zero.
+                // So return false can not proceed as one width value 
+                // must be larger then zero.
+                if (!valWidth)
+                {
+                    return;
+                }
+                else
+                {
+                    // one of the prior txtboxes had val> 0.
+                    // so fill the inches bos with the zero value.
+                    // it holds.
+                    rss.RectangleWidthInInches =
+                        Convert.ToInt32(txtBoxInches3.Text);
+                    valWidth = true;
+                }
+            }
         }
 
         /// <summary>
@@ -936,10 +1099,6 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
         {
             throw new NotImplementedException();
         }
-
-        #endregion SOLVE FOR CUBIC AREA SHAPES
-
-        #region VALIDATE CUBIC AREA SQUARE RECTANGLE
 
         /// <summary>
         /// Validates the cubic area yards square shape.
@@ -1048,25 +1207,6 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
             }
 
             return retVal = true;
-        }
-
-        /// <summary>
-        /// Clears the data from rectangle square solve.
-        /// </summary>
-        private void ClearDataFromRectangleSquareSolve()
-        {
-            rss.RectangleDepthInYards = 0;
-            rss.RectangleDepthInFeet = 0;
-            rss.RectangleDepthInInches = 0;
-            rss.RectangleLengthInYards = 0;
-            rss.RectangleLengthInFeet = 0;
-            rss.RectangleLengthInInches = 0;
-            rss.RectangleWidthInYards = 0;
-            rss.RectangleWidthInFeet = 0;
-            rss.RectangleWidthInInches = 0;
-            rss.CubicYardsInCubicRectangle = 0;
-            rss.CubicFeetInCubicRectangle = 0;
-            rss.CubicInchesInCubicRectangle = 0;
         }
 
         /// <summary>
@@ -1568,6 +1708,54 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
         }
 
         /// <summary>
+        /// Clears the data from rectangle square solve.
+        /// </summary>
+        private void ClearDataFromRectangleSquareSolve()
+        {
+            rss.RectangleDepthInYards = 0;
+            rss.RectangleDepthInFeet = 0;
+            rss.RectangleDepthInInches = 0;
+            rss.RectangleLengthInYards = 0;
+            rss.RectangleLengthInFeet = 0;
+            rss.RectangleLengthInInches = 0;
+            rss.RectangleWidthInYards = 0;
+            rss.RectangleWidthInFeet = 0;
+            rss.RectangleWidthInInches = 0;
+            rss.CubicYardsInCubicRectangle = 0;
+            rss.CubicFeetInCubicRectangle = 0;
+            rss.CubicInchesInCubicRectangle = 0;
+        }
+
+        /// <summary>
+        /// Sets the clear text boxes rectangle square solve.
+        /// </summary>
+        /// <value>The clear text boxes rectangle square solve.</value>
+        private void ClearEntrtTextBoxesRectangleSquareSolve()
+        {
+            txtBoxYard1.Text = "0";
+            txtBoxFeet1.Text = "0";
+            txtBoxInches1.Text = "0";
+
+            txtBoxYard2.Text = "0";
+            txtBoxFeet2.Text = "0";
+            txtBoxFeet2.Text = "0";
+
+            txtBoxYard3.Text = "0";
+            txtBoxFeet3.Text = "0";
+            txtBoxInches3.Text = "0";
+        }
+
+        /// <summary>
+        /// Clears the text boxes solve for rectangle square solve.
+        /// </summary>
+        private void ClearTextBoxesSolveForRectangleSquareSolve()
+        {
+            txtCubicYards.Text = "0";
+            txtCubicFeet.Text = "0";
+            txtCubicInches.Text = "0";
+        }
+
+        /// <summary>
         /// Validates the cubic square yard numeric.
         /// </summary>
         /// <returns><c>true</c>, if cubic square yard 
@@ -1579,19 +1767,16 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
 
             try
             {
-                methodName = 
+                this.methodName = 
                     "private bool ValidateCubicSquareDepthYardNumeric()";
-                
-                retVal = vd.ValidateDataIsNumericValue();
+
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxYard1.Text);
                 if (!retVal)
                 {
                     this.errMsg = degb.DepthName +
                     " in yards entry not a valid numeric value."; 
-                    this.myMsg.BuildErrorString(
-                        ClassName, 
-                        this.methodName, 
-                        this.errMsg,
-                        ex.ToString());   
+                    this.myMsg.ShowErrMessage(this.errMsg); 
                 
                     return retVal;
                 }
@@ -1641,19 +1826,16 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
 
             try
             {
-                methodName = 
+                this.methodName = 
                     "private bool ValidateCubicSquareDepthYardNumeric()";
 
-                retVal = vd.ValidateDataIsNumericValue();
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxFeet1.Text);
                 if (!retVal)
                 {
                     this.errMsg = degb.DepthName +
                     " in feet entry not a valid numeric value."; 
-                    this.myMsg.BuildErrorString(
-                        ClassName, 
-                        this.methodName, 
-                        this.errMsg,
-                        ex.ToString());   
+                    this.myMsg.ShowErrMessage(this.errMsg);
 
                     return retVal;
                 }
@@ -1691,100 +1873,271 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
             }
         }
 
+        /// <summary>
+        /// Validates the cubic square depth inches numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square depth inches 
+        /// numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
         private bool ValidateCubicSquareDepthInchesNumeric()
         {
-            throw new NotImplementedException();
-        }
-
-
-        bool ValidateCubicSquareLengthYardsNumeric()
-        {
-            throw new NotImplementedException();
-        }
-
-        bool ValidateCubicSquareLengthFeetNumeric()
-        {
-            throw new NotImplementedException();
-        }
-
-        bool ValidateCubicSquareLengthInchesNumeric()
-        {
-            throw new NotImplementedException();
-        }
-
-        bool ValidateCubicSquareWidthYardsNumeric()
-        {
-            throw new NotImplementedException();
-        }
-
-        bool ValidateCubicSquardWidthFeetNumeric()
-        {
-            throw new NotImplementedException();
-        }
-
-        bool ValidateCubicSquareWidthInchesNumeric()
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion VALIDATE CUBIC AREA SQUARE RECTANGLE
-
-
-
-
-
-        /// <summary>
-        /// Validates the text box three yards string value.
-        /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1</returns>
-        private int ValidateTextBoxThreeYardsStringValue()
-        {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
-                this.methodName = "private void " +
-                "ValidateTextBoxThreeYardsStringValue()";
+                this.methodName = 
+                    "private bool ValidateCubicSquareDepthInchesNumeric()";
 
-                txtBoxYard3.Text = txtBoxYard3.Text.Trim();
-                if (this.vd.ValidateDataExists(txtBoxYard3.Text))
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxInches1.Text);
+                if (!retVal)
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxYard3.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
-                                txtBoxYard3.Text))
-                        {
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxYard3.Text);
-                            return retVal;
-                        }
-                        else
-                        {
-                            // Invalid return -1
-                            return retVal;
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.WidthName +
-                        " in yards is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
+                    this.errMsg = degb.DepthName +
+                    " in inches entry not a valid numeric value."; 
+                    this.myMsg.ShowErrMessage(this.errMsg);
 
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal;
                 }
                 else
                 {
-                    this.errMsg = degb.WidthName +
-                    " in yards has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
+                    // All ok.
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in inches entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in inches entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square length yards numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square length 
+        /// yards numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareLengthYardsNumeric()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateCubicSquareLengthYardsNumeric()";
+
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxYard2.Text);
+                if (!retVal)
+                {
+                    this.errMsg = degb.LengthName +
+                    " in yards entry not a valid numeric value."; 
+                    this.myMsg.ShowErrMessage(this.errMsg); 
+
+                    return retVal;
+                }
+                else
+                {
+                    // All ok.
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in yards entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in yards entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square length feet numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square length 
+        /// feet numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareLengthFeetNumeric()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateCubicSquareLengthFeetNumeric()";
+
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxFeet2.Text);
+                if (!retVal)
+                {
+                    this.errMsg = degb.LengthName +
+                    " in feet entry not a valid numeric value."; 
                     this.myMsg.ShowErrMessage(this.errMsg);
 
-                    // Error so return -1 not valid.
                     return retVal;
+                }
+                else
+                {
+                    // All ok.
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in feet entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in feet entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square length inches numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square length 
+        /// inches numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareLengthInchesNumeric()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateCubicSquareLengthInchesNumeric()";
+
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxInches2.Text);
+                if (!retVal)
+                {
+                    this.errMsg = degb.LengthName +
+                    " in inches entry not a valid numeric value."; 
+                    this.myMsg.ShowErrMessage(this.errMsg);
+
+                    return retVal;
+                }
+                else
+                {
+                    // All ok.
+                    return retVal = true;
+                }
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in inches entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in inches entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square width yards numeric.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square width yards 
+        /// numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareWidthYardsNumeric()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateCubicSquareWidthYardsNumeric()";
+
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxYard3.Text);
+                if (!retVal)
+                {
+                    this.errMsg = degb.WidthName +
+                    " in yards entry not a valid numeric value."; 
+                    this.myMsg.ShowErrMessage(this.errMsg); 
+
+                    return retVal;
+                }
+                else
+                {
+                    // All ok.
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1795,9 +2148,9 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
                     ClassName, 
                     this.methodName, 
                     this.errMsg,
-                    ex.ToString());
+                    ex.ToString());   
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1810,68 +2163,40 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box three feet string value.
-        /// If not ok exit with error message and return -1. 
-        /// If ok then return int value greater then -1;
+        /// Validates the cubic squard width feet numeric.
         /// </summary>
-        /// <returns>If all ok return int. If not return
-        /// -1</returns>
-        private int ValidateTextBoxThreeFeetStringValue()
+        /// <returns><c>true</c>, if cubic squard width feet 
+        /// numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquardWidthFeetNumeric()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxThreeFeetStringValue()";
+                    "private bool ValidateCubicSquardWidthFeetNumeric()";
 
-                txtBoxFeet3.Text = txtBoxFeet3.Text.Trim();
-                if (this.vd.ValidateDataExists(txtBoxFeet3.Text))
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxFeet3.Text);
+                if (!retVal)
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxFeet3.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
-                                txtBoxFeet3.Text))
-                        {   
-                            // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxFeet3.Text);
-                            return retVal;
-                        }
-                        else
-                        {
-                            // Invalid return -1
-                            return retVal;
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.WidthName +
-                        " in feet is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
+                    this.errMsg = degb.WidthName +
+                    " in feet entry not a valid numeric value."; 
+                    this.myMsg.ShowErrMessage(this.errMsg);
 
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal;
                 }
                 else
                 {
-                    this.errMsg = degb.WidthName +
-                    " in feet has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                    // All ok.
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1882,9 +2207,9 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
                     ClassName, 
                     this.methodName, 
                     this.errMsg,
-                    ex.ToString());  
+                    ex.ToString());   
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1897,67 +2222,40 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
 
         /// <summary>
-        /// Validates the text box three inches string value.
-        /// If not ok exit with error message and return -1. 
-        /// If ok then return int value greater then -1;
+        /// Validates the cubic square width inches numeric.
         /// </summary>
-        /// <returns>If all ok return int val. If not return
-        /// -1</returns>
-        private int ValidateTextBoxThreeInchesStringValue()
+        /// <returns><c>true</c>, if cubic square width inches 
+        /// numeric was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareWidthInchesNumeric()
         {
-            int retVal = -1;
+            bool retVal = false;
 
             try
             {
                 this.methodName = 
-                    "private void ValidateTextBoxThreeInchesStringValue()";
+                    "private bool ValidateCubicSquareWidthInchesNumeric()";
 
-                txtBoxInches3.Text = txtBoxInches3.Text.Trim();
-                if (this.vd.ValidateDataExists(txtBoxInches3.Text))
+                retVal = 
+                    this.vd.ValidateDataIsNumericValue(txtBoxInches3.Text);
+                if (!retVal)
                 {
-                    if (this.vd.ValidateDataIsNumericValue(txtBoxInches3.Text))
-                    {
-                        if (this.vd.ValidateDataIsGreaterThenMinusOne(
-                                txtBoxInches3.Text))
-                        {   // Valid int so return value.
-                            retVal = Convert.ToInt32(txtBoxInches3.Text);
-                            return retVal;
-                        }
-                        else
-                        {
-                            // Invalid return -1
-                            return retVal;
-                        }
-                    }
-                    else
-                    {
-                        this.errMsg = degb.WidthName +
-                        " in inches is not a numeric value.";
-                        this.myMsg.ShowErrMessage(this.errMsg);
+                    this.errMsg = degb.WidthName +
+                    " in inches entry not a valid numeric value."; 
+                    this.myMsg.ShowErrMessage(this.errMsg);
 
-                        // Error so return -1 not valid.
-                        return retVal;
-                    }
+                    return retVal;
                 }
                 else
                 {
-                    this.errMsg = degb.WidthName +
-                    " in inches has no value entered.\n" +
-                    " You must place a 0 or larger numeric value\n" +
-                    " in this box.";
-                    this.myMsg.ShowErrMessage(this.errMsg);
-
-                    // Error so return -1 not valid.
-                    return retVal;
+                    // All ok.
+                    return retVal = true;
                 }
             }
             catch (FormatException ex)
@@ -1968,9 +2266,9 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
                     ClassName, 
                     this.methodName, 
                     this.errMsg,
-                    ex.ToString());  
+                    ex.ToString());   
 
-                // Error so return -1 not valid.
+                // Error so return false.
                 return retVal;
             }
             catch (OverflowException ex)
@@ -1983,14 +2281,448 @@ ShowTextBoxesForCubicAreaPyramidRectangleSquareBaseDataEntry()
                     this.errMsg,
                     ex.ToString());
 
-                // Error so return -1 not valid
+                // Error so return false.
                 return retVal;
             }
-
-            // Should never get here but if I do return -1 as error
-            return retVal;
         }
 
-       
+        /// <summary>
+        /// Validates the cubic square depth yards greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square depth yards 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareDepthYardsGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool ValidateCubicSquareWidthYardsNumeric()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxYard1.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in yards entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in yards entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square depth feet greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square depth feet 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareDepthFeetGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool " +
+                "ValidateCubicSquareDepthFeetGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxFeet1.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in feet entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in feet entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic square depth inches greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic square depth inches 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicSquareDepthInchesGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = "private bool " +
+                "ValidateCubicSquareDepthInchesGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxInches1.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in inches entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.DepthName +
+                " in inches entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic area square lenght yards greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area square lenght yards 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaSquareLenghtYardsGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool " +
+                "ValidateCubicAreaSquareLenghtYardsGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxYard2.Text);
+               
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in yards entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in yards entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validaes the cubic area square length feet greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area square length feet 
+        /// greater then zero was validaed, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidaeCubicAreaSquareLengthFeetGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool " +
+                "ValidaeCubicAreaSquareLengthFeetGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxFeet2.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in feet entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in feet entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic area square length inches greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area square length inches 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaSquareLengthInchesGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = "private bool " +
+                "ValidateCubicAreaSquareLengthInchesGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxInches2.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in inches entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.LengthName +
+                " in inches entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic area square width yards greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area square width yards 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaSquareWidthYardsGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool " +
+                "ValidateCubicAreaSquareWidthYardsGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxYard3.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in yards entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in yards entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic area square width feet greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area square width feet 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaSquareWidthFeetGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = 
+                    "private bool " +
+                "ValidateCubicAreaSquareWidthFeetGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxFeet3.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in feet entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in feet entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Validates the cubic area square with inches greater then zero.
+        /// </summary>
+        /// <returns><c>true</c>, if cubic area square with inches 
+        /// greater then zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        private bool ValidateCubicAreaSquareWdithInchesGreaterThenZero()
+        {
+            bool retVal = false;
+
+            try
+            {
+                this.methodName = "private bool " +
+                "ValidateCubicAreaSquareWithInchesGreaterThenZero()";
+
+                retVal = 
+                    this.vd.ValidateDataIsGreaterThenZero(txtBoxInches3.Text);
+
+                return retVal;
+            }
+            catch (FormatException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in inches entry not a valid numeric value."; 
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());   
+
+                // Error so return false.
+                return retVal;
+            }
+            catch (OverflowException ex)
+            {
+                this.errMsg = degb.WidthName +
+                " in inches entry numeric value is to large.";
+                this.myMsg.BuildErrorString(
+                    ClassName, 
+                    this.methodName, 
+                    this.errMsg,
+                    ex.ToString());
+
+                // Error so return false.
+                return retVal;
+            }
+        }
+
+        #endregion VALIDATE CUBIC AREA SQUARE RECTANGLE
     }
 }

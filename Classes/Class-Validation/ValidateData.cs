@@ -27,15 +27,11 @@ namespace BuildingFormulas
     /// </summary>
     public class ValidateData
     {
-        /// <summary>
-        /// Create object of class MyMessages
-        /// </summary>
-        private MyMessages myMsg = new MyMessages();
 
         /// <summary>
         /// The name of the class.
         /// </summary>
-        private const string ClassName = "ValidateData";
+        private const string MyClassName = "ValidateData";
 
         /// <summary>
         /// Initializes a new instance of the <see cref=

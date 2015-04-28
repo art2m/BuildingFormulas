@@ -186,7 +186,7 @@ namespace BuildingFormulas
         /// 
         /// Builds the error string.
         /// </summary>
-        /// <param name='className'>
+        /// <param name='MyMyClassName'>
         /// String class.
         /// </param>
         /// <param name='methodName'>
@@ -198,12 +198,12 @@ namespace BuildingFormulas
         /// <param name='strException'>
         /// String exception.
         /// </param>
-        public void BuildErrorString(string className, string methodName,
+        public void BuildErrorString(string MyMyClassName, string methodName,
                                      string errMsg, string strException)
         {
             sbMsg = new StringBuilder();
 			
-            sbMsg.Append(className);
+            sbMsg.Append(MyMyClassName);
             sbMsg.AppendLine();
             sbMsg.Append(methodName);
             sbMsg.AppendLine();

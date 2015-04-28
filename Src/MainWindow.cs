@@ -21,6 +21,7 @@ namespace BuildingFormulas
     using Gtk;
     using degb = DataEntry_GlobalVariables;
 
+
     /// <summary>
     /// Main window.
     /// </summary>
@@ -29,17 +30,14 @@ namespace BuildingFormulas
         /// <summary>
         /// The name of the class.
         /// </summary>
-        private const string ClassName = "Class: MainWindow";
+        private const string MyMyClassName = "Class: MainWindow";
 
         /// <summary>
         /// Create object of MyMessages class
         /// </summary>
         private MyMessages myMsg = new MyMessages();
 
-        /// <summary>
-        /// The dew.
-        /// </summary>
-        private DataEntryWindow dew = new DataEntryWindow();
+        private Shapes shape = new Shapes();
 
         /// <summary>
         /// The error message.
@@ -109,20 +107,20 @@ namespace BuildingFormulas
 
             try
             {
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
                 
                 this.errMsg = "Not Implemented.";
                 
-                degb.ShapeToSolveFor = "circle";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.CircleShape;
+
                 
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaCircleDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelsForCubicAreaCircleDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());
@@ -144,20 +142,19 @@ namespace BuildingFormulas
 
             try
             {   
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
 
                 this.errMsg = "Not Implemented.";
 
-                degb.ShapeToSolveFor = "cone";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.ConeShape;
 
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaConeDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelsForCubicAreaConeDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());
@@ -179,20 +176,19 @@ namespace BuildingFormulas
 
             try
             { 
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
 
                 this.errMsg = "Not Implemented.";
 
-                degb.ShapeToSolveFor = "cylinder";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.CylinderShape;
 
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaCylinderDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelsForCubicAreaCylinderDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());
@@ -213,20 +209,19 @@ namespace BuildingFormulas
                                       "object sender, EventArgs e)";
             try
             {
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
 
                 this.errMsg = "Not Implemented.";
 
-                degb.ShapeToSolveFor = "hexagon";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.HexagonShape;
 
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaHexagonDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelsForCubicAreaHexagonDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());
@@ -248,15 +243,14 @@ namespace BuildingFormulas
 
             try
             { 
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
 
                 this.errMsg = "Not Implemented.";
 
-                degb.ShapeToSolveFor = "octagon";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.OctagonShape;
 
-                dew.ShowAll();
-                dew.ShowLabelForCubicAreaOctagonDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelForCubicAreaOctagonDataEntry();
             }
             catch (NotImplementedException ex)
             {
@@ -278,20 +272,19 @@ namespace BuildingFormulas
                                       " object sender, EventArgs e)";
             try
             {
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
 
                 this.errMsg = "Not Implemented.";
 
-                degb.ShapeToSolveFor = "pyramid-rectangle";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.PyramidRectangleShape;
 
-                dew.ShowAll();
-                dew.ShowLabelForCubicAreaPyramidRectangleSquareBaseDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelForCubicAreaPyramidRectangleSquareBaseDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());
@@ -312,20 +305,18 @@ namespace BuildingFormulas
 
             try
             {
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
                 
                 this.errMsg = "Not Implemented.";
                 
-                degb.ShapeToSolveFor = "pyramid-square";
-                degb.SolveForFormulas = "cubic";
-                
-                dew.ShowAll();
-                dew.ShowLabelForCubicAreaPyramidRectangleSquareBaseDataEntry();
+                degb.ShapeToSolveFor = shape.PyramidSquareShape;                
+//                dew.ShowAll();
+//                dew.ShowLabelForCubicAreaPyramidRectangleSquareBaseDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());  
@@ -347,20 +338,19 @@ namespace BuildingFormulas
            
             try
             {
-                DataEntryWindow dew = new DataEntryWindow();
+//                DataEntryWindow dew = new DataEntryWindow();
                 
                 this.errMsg = "Not Implemented.";
                 
-                degb.ShapeToSolveFor = "pyramid-triangle";
-                degb.SolveForFormulas = "cubic";
+                degb.ShapeToSolveFor = shape.PyramidTriangleShape;
                 
-                dew.ShowAll();
-                dew.ShowLabelForCubicAreaPyramidTriangleBaseDataEntry();
+//                dew.ShowAll();
+//                dew.ShowLabelForCubicAreaPyramidTriangleBaseDataEntry();
             }
             catch (NotImplementedException ex)
             {
                 this.myMsg.BuildErrorString(
-                    ClassName, 
+                    MyMyClassName, 
                     MethodName, 
                     this.errMsg,
                     ex.ToString());    
@@ -380,20 +370,12 @@ namespace BuildingFormulas
                                       "OnCubicArea" +
                                       "RectangleActionActivated(" +
                                       "object sender, EventArgs e)";
-            try
-            {
-                DataEntryWindow dew = new DataEntryWindow();
+            SquareRectangleCubicArea sqRecEntData = 
+                new SquareRectangleCubicArea();
 
-                degb.ShapeToSolveFor = "rectangle";
-                degb.SolveForFormulas = "cubic";
+            degb.ShapeToSolveFor = shape.RectangleShape;
 
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaRectangleSquareDataEntry();              
-            }
-            catch (NotImplementedException ex)
-            {
-                this.myMsg.ShowInformationMessage(ex.ToString()); 
-            }
+            sqRecEntData.ShowAll();     
         }
 
         /// <summary>
@@ -408,21 +390,13 @@ namespace BuildingFormulas
             const string MethodName = "protected void " +
                                       "OnCubicAreaSquareActionActivated(" +
                                       "object sender, EventArgs e)";
+           
+            SquareRectangleCubicArea sqRecEntData = 
+                new SquareRectangleCubicArea();
+          
+            degb.ShapeToSolveFor = shape.SquareShape;
 
-            try
-            {
-
-
-                degb.ShapeToSolveFor = "square";
-                degb.SolveForFormulas = "cubic";
-
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaRectangleSquareDataEntry();
-            }
-            catch (NotImplementedException ex)
-            {
-                this.myMsg.ShowInformationMessage(ex.ToString());
-            }
+            sqRecEntData.ShowAll();           
         }
 
         /// <summary>
@@ -437,14 +411,9 @@ namespace BuildingFormulas
                                       "OnBtnCubicAreaTriangleActionActivated(" +
                                       "object sender, EventArgs e)";
             try
-            {
-                DataEntryWindow dew = new DataEntryWindow();  
+            {               
+                degb.ShapeToSolveFor = shape.TriangleShape;
 
-                degb.ShapeToSolveFor = "triangle";
-                degb.SolveForFormulas = "cubic";
-
-                dew.ShowAll();
-                dew.ShowLabelsForCubicAreaTriangleDataEntry();
             }
             catch (NotImplementedException ex)
             {
@@ -453,5 +422,84 @@ namespace BuildingFormulas
         }
 
         #endregion END CUBIC SHAPES MENU ITEMS
+
+        #region SURFACE AREA MENU ITEMS
+
+        protected void OnMenuCircleSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            degb.ShapeToSolveFor = shape.CircleShape;
+        }
+
+        protected void OnMenuCylinderSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            degb.ShapeToSolveFor = shape.CylinderShape;
+        }
+
+
+        protected void OnMenuConeSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            degb.ShapeToSolveFor = shape.ConeShape;
+        }
+
+        protected void OnMenuPyramidSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+
+            throw new NotImplementedException();
+        }
+
+        protected void OnMenuTriangleSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            degb.ShapeToSolveFor = shape.TriangleShape; 
+        }
+
+        protected void OnMenuHexagonSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            degb.ShapeToSolveFor = shape.HexagonShape;
+        }
+
+        protected void OnMenuOctagonSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            degb.ShapeToSolveFor = shape.OctagonShape;
+        }
+
+        protected void OnMenuRectangleSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            SquareRectangleSurfaceArea sqrSA = 
+                new SquareRectangleSurfaceArea();
+
+            degb.ShapeToSolveFor = shape.RectangleShape;
+
+            sqrSA.ShowAll();
+        }
+
+        protected void OnMenuSquareSurfaceAreaActivated(
+            object sender, 
+            EventArgs e)
+        {
+            SquareRectangleSurfaceArea sqrSA = 
+                new SquareRectangleSurfaceArea();
+
+            degb.ShapeToSolveFor = shape.SquareShape;
+           
+            sqrSA.ShowAll();
+        }
+
+        #endregion SURFACE AREA MENU ITEMS
     }
 }

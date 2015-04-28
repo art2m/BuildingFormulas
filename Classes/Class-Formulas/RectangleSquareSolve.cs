@@ -25,235 +25,88 @@ namespace BuildingFormulas
     /// <summary>
     /// Rectangle square solve.
     /// </summary>
-    public static class RectangleSquareSolve
+    public class RectangleSquareSolve
     {
-        #region PROPERTY VARIABLES: USER ENTERED SIZE DATA
+        /// <summary>
+        /// The math object decleration.
+        /// </summary>
+        private MyMath math = new MyMath();
 
         /// <summary>
-        /// The depth yd.
+        /// Initializes a new instance of the 
+        /// <see cref="BuildingFormulas.RectangleSquareSolve"/> class.
         /// </summary>
-        private static int depthYd = 0;
-
-        /// <summary>
-        /// The length yd.
-        /// </summary>
-        private static int lengthYd = 0;
-
-        /// <summary>
-        /// The width yd.
-        /// </summary>
-        private static int widthYd = 0;
-
-        /// <summary>
-        /// The width ft.
-        /// </summary>
-        private static int widthFt = 0;
-
-        /// <summary>
-        /// The depth ft.
-        /// </summary>
-        private static int depthFt = 0;
-
-        /// <summary>
-        /// The length ft.
-        /// </summary>
-        private static int lengthFt = 0;
-
-        /// <summary>
-        /// The width in.
-        /// </summary>
-        private static int widthIn = 0;
-
-        /// <summary>
-        /// The depth in.
-        /// </summary>
-        private static int depthIn = 0;
-
-        /// <summary>
-        /// The length in.
-        /// </summary>
-        private static int lengthIn = 0;
-
-        /// <summary>
-        /// The depth total inches.
-        /// </summary>
-        private static int depthTotalInches;
-
-        /// <summary>
-        /// The length total inches.
-        /// </summary>
-        private static int lengthTotalInches;
-
-        #endregion PROPERTY VARIABLES: USER ENTERED SIZE DATA
-
-        /// <summary>
-        /// The width total inches.
-        /// </summary>
-        private static int widthTotalInches;
-
-        #region PROPERTIES VALUES FOR LENGTH, WIDTH, DEPTH
-
-        /// <summary>
-        /// Gets or sets the rectangle width in yards.
-        /// </summary>
-        /// <value>The rectangle width in yards.</value>
-        public static int RectangleWidthInYards
+        public RectangleSquareSolve()
         {
-            get { return widthYd; }
-            set { widthYd = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle depth in yards.
-        /// </summary>
-        /// <value>The rectangle depth in yards.</value>
-        public static int RectangleDepthInYards
-        {
-            get { return depthYd; }
-            set { depthYd = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle length in yards.
-        /// </summary>
-        /// <value>The rectangle length in yards.</value>
-        public static int RectangleLengthInYards
-        {
-            get { return lengthYd; }
-            set { lengthYd = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle width in feet.
-        /// </summary>
-        /// <value>The rectangle width in feet.</value>
-        public static int RectangleWidthInFeet
-        {
-            get { return widthFt; }
-            set { widthFt = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle depth in feet.
-        /// </summary>
-        /// <value>The rectangle depth in feet.</value>
-        public static int RectangleDepthInFeet
-        {
-            get { return depthFt; }
-            set { depthFt = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle length in feet.
-        /// </summary>
-        /// <value>The rectangle length in feet.</value>
-        public static int RectangleLengthInFeet
-        {
-            get { return lengthFt; }
-            set { lengthFt = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle width in inches.
-        /// </summary>
-        /// <value>The rectangle width in inches.</value>
-        public static int RectangleWidthInInches
-        {
-            get { return widthIn; }
-            set { widthIn = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle depth in inches.
-        /// </summary>
-        /// <value>The rectangle depth in inches.</value>
-        public static int RectangleDepthInInches
-        {
-            get { return depthIn; }
-            set { depthIn = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the rectangle length in inches.
-        /// </summary>
-        /// <value>The rectangle length in inches.</value>
-        public static int RectangleLengthInInches
-        {
-            get { return lengthIn; }
-            set { lengthIn = value; }
-        }
-
-        #endregion End PROPERTIES VALUES FOR LENGTH, WIDTH, DEPTH
-
-        #region PROPERTIES TOTAL INCHES IN DEPTH, LENGTH AND WIDTH
-
-        /// <summary>
-        /// Gets or sets the cubic inches in cubic rectangle.
-        /// </summary>
-        /// <value>The cubic inches in cubic rectangle.</value>
-        public static double CubicInchesInCubicRectangle
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Gets or sets the cubic feet in cubic rectangle.
-        /// </summary>
-        /// <value>The cubic feet in cubic rectangle.</value>
-        public static double CubicFeetInCubicRectangle
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Gets or sets the cubic yards in cubic rectangle.
-        /// </summary>
-        /// <value>The cubic yards in cubic rectangle.</value>
-        public static double CubicYardsInCubicRectangle
-        {
-            get;
-            set;
         }
 
         /// <summary>
         /// Gets the depth total inches.
         /// </summary>
-        public static void GetTheDepthTotalInches()
+        /// <returns>The the depth total inches.</returns>
+        /// <param name="depthInYards">Depth in yards.</param>
+        /// <param name="depthInFeet">Depth in feet.</param>
+        /// <param name="depthInInches">Depth in inches.</param>
+        public double GetTheDepthTotalInches(
+            double depthInYards,
+            double depthInFeet, 
+            double depthInInches)
         {
-            int inchesYd = 0;
-            int inchesFt = 0;
+            double inchesYd = 0;
+            double inchesFt = 0;
+            double retVal = 0;
 
-            inchesYd = RectangleDepthInYards * 36;
-            inchesFt = RectangleDepthInFeet * 12;
-            depthTotalInches = inchesYd + inchesFt + RectangleDepthInInches;
+            inchesYd = depthInYards * this.math.ConvertInchesToYards;
+            inchesFt = depthInFeet * this.math.ConvertInchesToFeet;
+            retVal = inchesYd + inchesFt + depthInInches;
+
+            return retVal;
         }
 
         /// <summary>
         /// Gets the length total inches.
         /// </summary>
-        public static void GetTheLengthTotalInches()
+        /// <returns>The the length total inches.</returns>
+        /// <param name="lengthInYards">Length in yards.</param>
+        /// <param name="lengthInFeet">Length in feet.</param>
+        /// <param name="lengthInInches">Length in inches.</param>
+        public double GetTheLengthTotalInches(
+            double lengthInYards, 
+            double lengthInFeet, 
+            double lengthInInches)
         {
-            int inchesYd = 0;
-            int inchesFt = 0;
+            double inchesYd = 0;
+            double inchesFt = 0;
+            double retVal = 0;
 
-            inchesYd = RectangleLengthInYards * 36;
-            inchesFt = RectangleLengthInFeet * 12;
-            lengthTotalInches = inchesYd + inchesFt + RectangleLengthInInches;
+            inchesYd = lengthInYards * this.math.ConvertInchesToYards;
+            inchesFt = lengthInFeet * this.math.ConvertInchesToFeet;
+            retVal = inchesYd + inchesFt + lengthInInches;
+
+            return retVal;
         }
 
         /// <summary>
         /// Gets the widths total inches.
         /// </summary>
-        public static void GetTheWidthsTotalInches()
+        /// <returns>The the widths total inches.</returns>
+        /// <param name="widthInYards">Width in yards.</param>
+        /// <param name="widthInFeet">Width in feet.</param>
+        /// <param name="widthInInches">Width in inches.</param>
+        public double GetTheWidthsTotalInches(
+            double widthInYards,
+            double widthInFeet,
+            double widthInInches)
         {
-            int inchesYd = 0;
-            int inchesFt = 0;
-            widthTotalInches = inchesYd + inchesFt + RectangleWidthInInches;
-        }
+            double inchesYd = 0;
+            double inchesFt = 0;
+            double retVal = 0;
 
-        #endregion PROPERTIES TOTAL INCHES IN DEPTH, LENGTH AND WIDTH
+            inchesYd = widthInYards * this.math.ConvertInchesToYards;
+            inchesFt = widthInFeet * this.math.ConvertInchesToFeet;
+            retVal = inchesYd + inchesFt + widthInInches;
+            return retVal;
+        }
 
         #region METHODS SOLVE FOR CUBIC YARDS, FEET, INCHES IN RECTANGLE, SQUARE
 
@@ -261,7 +114,13 @@ namespace BuildingFormulas
         /// Solves for cubic area yards.
         /// </summary>
         /// <returns>The for cubic area yards.</returns>
-        public static double SolveForCubicAreaYards()
+        /// <param name="depthTotalInches">Depth total inches.</param>
+        /// <param name="lengthTotalinches">Length totalinches.</param>
+        /// <param name="widthTotalInches">Width total inches.</param>
+        public double SolveForCubicAreaYards(
+            double depthTotalInches, 
+            double lengthTotalinches, 
+            double widthTotalInches)
         {
             Conversions conv = new Conversions();
 
@@ -269,13 +128,11 @@ namespace BuildingFormulas
             double cubicIn = 0;
             double cubicYd = 0;
 
-            cubicIn = depthTotalInches * lengthTotalInches * widthTotalInches;
+            cubicIn = depthTotalInches * lengthTotalinches * widthTotalInches;
 
             cubicYd = conv.ConvertCubicInchesToCubicYards(cubicIn);
 
             retVal = Math.Round(cubicYd, 2);
-
-            CubicYardsInCubicRectangle = retVal;
 
             return retVal;
         }
@@ -284,7 +141,13 @@ namespace BuildingFormulas
         /// Solves for cubic area feet.
         /// </summary>
         /// <returns>The for cubic area feet.</returns>
-        public static double SolveForCubicAreaFeet()
+        /// <param name="depthTotalInches">Depth total inches.</param>
+        /// <param name="lengthTotalInches">Length total inches.</param>
+        /// <param name="widthTotalInches">Width total inches.</param>
+        public double SolveForCubicAreaFeet(
+            double depthTotalInches,
+            double lengthTotalInches, 
+            double widthTotalInches)
         {
             Conversions conv = new Conversions();
 
@@ -297,8 +160,6 @@ namespace BuildingFormulas
             cubicFt = conv.ConvertCubicInchesToCubicFeet(cubicIn);
             retVal = Math.Round(cubicFt, 2);
 
-            CubicFeetInCubicRectangle = retVal;            
-
             return retVal;
         }
 
@@ -306,16 +167,93 @@ namespace BuildingFormulas
         /// Solves for cubic area inches.
         /// </summary>
         /// <returns>The for cubic area inches.</returns>
-        public static double SolveForCubicAreaInches()
+        /// <param name="depthTotalInches">Depth total inches.</param>
+        /// <param name="lengthTotalInches">Length total inches.</param>
+        /// <param name="widthTotalInches">Width total inches.</param>
+        public double SolveForCubicAreaInches(
+            double depthTotalInches,
+            double lengthTotalInches,
+            double widthTotalInches)
         {
             double retVal = 0;
 
             retVal = depthTotalInches * lengthTotalInches * widthTotalInches;
 
-            CubicInchesInCubicRectangle = retVal;
             return retVal;
         }
 
         #endregion METHODS SOLVE FOR CUBIC YARDS, FEET, INCHES IN RECTANGLE
+
+        #region METHODS SOLVE FOR SURFACE AREA YARDS, FEET INCHES
+
+        /// <summary>
+        /// Solves for surface area square yards.
+        /// </summary>
+        /// <returns>The for surface area square yards.</returns>
+        /// <param name="lengthTotalInches">Length total inches.</param>
+        /// <param name="widthTotalInches">Width total inches.</param>
+        public double SolveForSurfaceAreaSquareYards(
+            double lengthTotalInches, 
+            double widthTotalInches)
+        {
+            Conversions conv = new Conversions();
+
+            double retVal = 0;
+            double sum = 0;
+
+            sum = lengthTotalInches + widthTotalInches;
+
+            retVal = sum * this.math.CubeNumberOfSides;
+
+            retVal = conv.ConvertInchesToYards(retVal);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Solves for surface area square feet.
+        /// </summary>
+        /// <returns>The for surface area square feet.</returns>
+        /// <param name="lengthTotalInches">Length total inches.</param>
+        /// <param name="widthTotalInches">Width total inches.</param>
+        public double SolveForSurfaceAreaSquareFeet(
+            double lengthTotalInches,
+            double widthTotalInches)
+        {
+            Conversions conv = new Conversions();
+
+            double retVal = 0;
+            double sum = 0;  
+
+            sum = lengthTotalInches + widthTotalInches;
+
+            retVal = sum * this.math.CubeNumberOfSides;
+
+            retVal = conv.ConvertInchesToFeet(retVal);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Solves for surface area square inches.
+        /// </summary>
+        /// <returns>The for surface area square inches.</returns>
+        /// <param name="lengthTotalInches">Length total inches.</param>
+        /// <param name="widthTotalInches">Width total inches.</param>
+        public double SolveForSurfaceAreaSquareInches(
+            double lengthTotalInches,
+            double widthTotalInches)
+        {
+            double retVal = 0;
+            double sum = 0;     
+           
+            sum = lengthTotalInches + widthTotalInches;
+
+            retVal = sum * this.math.CubeNumberOfSides;
+
+            return retVal;
+        }
+
+        #endregion METHODS SOLVE FOR SURFACE AREA YARDS, FEET INCHES
     }
 }

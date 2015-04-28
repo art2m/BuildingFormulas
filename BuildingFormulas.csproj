@@ -66,15 +66,23 @@
     <Compile Include="Classes\Class-Conversions\Conversions.cs" />
     <Compile Include="Classes\Class-Formulas\RectangleSquareSolve.cs" />
     <Compile Include="Classes\Class-Messages\MyMessages.cs" />
-    <Compile Include="Src\DataEntryWindow.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.DataEntryWindow.cs" />
     <Compile Include="Classes\Class-Properties\RectangleSquareStorage.cs" />
     <Compile Include="Classes\Class-Validation\ValidateData.cs" />
     <Compile Include="Classes\Class-Messages\MessageStrings.cs" />
     <Compile Include="Classes\Class-Properties\CylinderData.cs" />
     <Compile Include="Classes\Class-Properties\CylinderStorage.cs" />
     <Compile Include="Classes\Class-Formulas\ConeSolve.cs" />
+    <Compile Include="Classes\Global-Properties\LabelCaptions.cs" />
     <Compile Include="Classes\Global-Properties\DataEntry_GlobalVariables.cs" />
+    <Compile Include="Src\SquareRectangleSurfaceArea.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.SquareRectangleSurfaceArea.cs" />
+    <Compile Include="Src\SquareRectangleCubic.cs" />
+    <Compile Include="Classes\Class-Properties\Shapes.cs" />
+    <Compile Include="Classes\Class-Properties\MyMath.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.SquareRectangleCubicArea.cs" />
+    <Compile Include="Classes\Class-Collections\StoreCubicStandardCollection.cs" />
+    <Compile Include="Src\dlgDisplayStoredData.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.dlgDisplayStoredData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -98,5 +106,6 @@
     <Folder Include="Classes\Class-Validation\" />
     <Folder Include="Classes\Class-Properties\" />
     <Folder Include="Classes\Global-Properties\" />
+    <Folder Include="Classes\Class-Collections\" />
   </ItemGroup>
 </Project>
