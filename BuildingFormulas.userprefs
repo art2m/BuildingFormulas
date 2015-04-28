@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Src/SquareRectangleCubic.cs">
     <Files>
-      <File FileName="Src/SquareRectangleCubic.cs" Line="49" Column="49" />
+      <File FileName="Src/SquareRectangleCubic.cs" Line="23" Column="23" />
       <File FileName="Src/dlgDisplayStoredData.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
