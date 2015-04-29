@@ -10,7 +10,7 @@ namespace BuildingFormulas
 		
 		private global::Gtk.Table tblData;
 		
-		private global::Gtk.Label lblCircumference;
+		private global::Gtk.Label lblDiameter;
 		
 		private global::Gtk.Label lblEmpty;
 		
@@ -22,17 +22,17 @@ namespace BuildingFormulas
 		
 		private global::Gtk.Label lblYards;
 		
-		private global::Gtk.Entry txtDepthFeet;
+		private global::Gtk.Entry txtDiameterFeet;
 		
-		private global::Gtk.Entry txtDepthInches;
+		private global::Gtk.Entry txtDiameterInches;
 		
-		private global::Gtk.Entry txtDepthYard;
+		private global::Gtk.Entry txtDiameterYard;
 		
-		private global::Gtk.Entry txtLengthFeet;
+		private global::Gtk.Entry txtHeightFeet;
 		
-		private global::Gtk.Entry txtLengthInches;
+		private global::Gtk.Entry txtHeightInches;
 		
-		private global::Gtk.Entry txtLengthYard;
+		private global::Gtk.Entry txtHeightYard;
 		
 		private global::Gtk.Table tblCubicTotals;
 		
@@ -123,13 +123,13 @@ namespace BuildingFormulas
 			this.tblData.ColumnSpacing = ((uint)(10));
 			this.tblData.BorderWidth = ((uint)(8));
 			// Container child tblData.Gtk.Table+TableChild
-			this.lblCircumference = new global::Gtk.Label ();
-			this.lblCircumference.WidthRequest = 142;
-			this.lblCircumference.HeightRequest = 30;
-			this.lblCircumference.Name = "lblCircumference";
-			this.lblCircumference.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter circumference:");
-			this.tblData.Add (this.lblCircumference);
-			global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblCircumference]));
+			this.lblDiameter = new global::Gtk.Label ();
+			this.lblDiameter.WidthRequest = 142;
+			this.lblDiameter.HeightRequest = 30;
+			this.lblDiameter.Name = "lblDiameter";
+			this.lblDiameter.LabelProp = global::Mono.Unix.Catalog.GetString ("Enter diameter:");
+			this.tblData.Add (this.lblDiameter);
+			global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.tblData [this.lblDiameter]));
 			w1.TopAttach = ((uint)(1));
 			w1.BottomAttach = ((uint)(2));
 			w1.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -196,17 +196,17 @@ namespace BuildingFormulas
 			w6.XOptions = ((global::Gtk.AttachOptions)(4));
 			w6.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
-			this.txtDepthFeet = new global::Gtk.Entry ();
-			this.txtDepthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtDepthFeet.WidthRequest = 159;
-			this.txtDepthFeet.HeightRequest = 30;
-			this.txtDepthFeet.CanFocus = true;
-			this.txtDepthFeet.Name = "txtDepthFeet";
-			this.txtDepthFeet.IsEditable = true;
-			this.txtDepthFeet.MaxLength = 4;
-			this.txtDepthFeet.InvisibleChar = '•';
-			this.tblData.Add (this.txtDepthFeet);
-			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthFeet]));
+			this.txtDiameterFeet = new global::Gtk.Entry ();
+			this.txtDiameterFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtDiameterFeet.WidthRequest = 159;
+			this.txtDiameterFeet.HeightRequest = 30;
+			this.txtDiameterFeet.CanFocus = true;
+			this.txtDiameterFeet.Name = "txtDiameterFeet";
+			this.txtDiameterFeet.IsEditable = true;
+			this.txtDiameterFeet.MaxLength = 4;
+			this.txtDiameterFeet.InvisibleChar = '•';
+			this.tblData.Add (this.txtDiameterFeet);
+			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDiameterFeet]));
 			w7.TopAttach = ((uint)(1));
 			w7.BottomAttach = ((uint)(2));
 			w7.LeftAttach = ((uint)(2));
@@ -214,17 +214,17 @@ namespace BuildingFormulas
 			w7.XOptions = ((global::Gtk.AttachOptions)(4));
 			w7.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
-			this.txtDepthInches = new global::Gtk.Entry ();
-			this.txtDepthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtDepthInches.WidthRequest = 159;
-			this.txtDepthInches.HeightRequest = 30;
-			this.txtDepthInches.CanFocus = true;
-			this.txtDepthInches.Name = "txtDepthInches";
-			this.txtDepthInches.IsEditable = true;
-			this.txtDepthInches.MaxLength = 4;
-			this.txtDepthInches.InvisibleChar = '•';
-			this.tblData.Add (this.txtDepthInches);
-			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthInches]));
+			this.txtDiameterInches = new global::Gtk.Entry ();
+			this.txtDiameterInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtDiameterInches.WidthRequest = 159;
+			this.txtDiameterInches.HeightRequest = 30;
+			this.txtDiameterInches.CanFocus = true;
+			this.txtDiameterInches.Name = "txtDiameterInches";
+			this.txtDiameterInches.IsEditable = true;
+			this.txtDiameterInches.MaxLength = 4;
+			this.txtDiameterInches.InvisibleChar = '•';
+			this.tblData.Add (this.txtDiameterInches);
+			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDiameterInches]));
 			w8.TopAttach = ((uint)(1));
 			w8.BottomAttach = ((uint)(2));
 			w8.LeftAttach = ((uint)(3));
@@ -232,17 +232,17 @@ namespace BuildingFormulas
 			w8.XOptions = ((global::Gtk.AttachOptions)(4));
 			w8.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
-			this.txtDepthYard = new global::Gtk.Entry ();
-			this.txtDepthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtDepthYard.WidthRequest = 159;
-			this.txtDepthYard.HeightRequest = 30;
-			this.txtDepthYard.CanFocus = true;
-			this.txtDepthYard.Name = "txtDepthYard";
-			this.txtDepthYard.IsEditable = true;
-			this.txtDepthYard.MaxLength = 4;
-			this.txtDepthYard.InvisibleChar = '•';
-			this.tblData.Add (this.txtDepthYard);
-			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDepthYard]));
+			this.txtDiameterYard = new global::Gtk.Entry ();
+			this.txtDiameterYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtDiameterYard.WidthRequest = 159;
+			this.txtDiameterYard.HeightRequest = 30;
+			this.txtDiameterYard.CanFocus = true;
+			this.txtDiameterYard.Name = "txtDiameterYard";
+			this.txtDiameterYard.IsEditable = true;
+			this.txtDiameterYard.MaxLength = 4;
+			this.txtDiameterYard.InvisibleChar = '•';
+			this.tblData.Add (this.txtDiameterYard);
+			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtDiameterYard]));
 			w9.TopAttach = ((uint)(1));
 			w9.BottomAttach = ((uint)(2));
 			w9.LeftAttach = ((uint)(1));
@@ -250,17 +250,17 @@ namespace BuildingFormulas
 			w9.XOptions = ((global::Gtk.AttachOptions)(4));
 			w9.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
-			this.txtLengthFeet = new global::Gtk.Entry ();
-			this.txtLengthFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtLengthFeet.WidthRequest = 124;
-			this.txtLengthFeet.HeightRequest = 30;
-			this.txtLengthFeet.CanFocus = true;
-			this.txtLengthFeet.Name = "txtLengthFeet";
-			this.txtLengthFeet.IsEditable = true;
-			this.txtLengthFeet.MaxLength = 4;
-			this.txtLengthFeet.InvisibleChar = '•';
-			this.tblData.Add (this.txtLengthFeet);
-			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthFeet]));
+			this.txtHeightFeet = new global::Gtk.Entry ();
+			this.txtHeightFeet.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtHeightFeet.WidthRequest = 124;
+			this.txtHeightFeet.HeightRequest = 30;
+			this.txtHeightFeet.CanFocus = true;
+			this.txtHeightFeet.Name = "txtHeightFeet";
+			this.txtHeightFeet.IsEditable = true;
+			this.txtHeightFeet.MaxLength = 4;
+			this.txtHeightFeet.InvisibleChar = '•';
+			this.tblData.Add (this.txtHeightFeet);
+			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtHeightFeet]));
 			w10.TopAttach = ((uint)(2));
 			w10.BottomAttach = ((uint)(3));
 			w10.LeftAttach = ((uint)(2));
@@ -268,17 +268,17 @@ namespace BuildingFormulas
 			w10.XOptions = ((global::Gtk.AttachOptions)(4));
 			w10.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
-			this.txtLengthInches = new global::Gtk.Entry ();
-			this.txtLengthInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtLengthInches.WidthRequest = 124;
-			this.txtLengthInches.HeightRequest = 30;
-			this.txtLengthInches.CanFocus = true;
-			this.txtLengthInches.Name = "txtLengthInches";
-			this.txtLengthInches.IsEditable = true;
-			this.txtLengthInches.MaxLength = 4;
-			this.txtLengthInches.InvisibleChar = '•';
-			this.tblData.Add (this.txtLengthInches);
-			global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthInches]));
+			this.txtHeightInches = new global::Gtk.Entry ();
+			this.txtHeightInches.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtHeightInches.WidthRequest = 124;
+			this.txtHeightInches.HeightRequest = 30;
+			this.txtHeightInches.CanFocus = true;
+			this.txtHeightInches.Name = "txtHeightInches";
+			this.txtHeightInches.IsEditable = true;
+			this.txtHeightInches.MaxLength = 4;
+			this.txtHeightInches.InvisibleChar = '•';
+			this.tblData.Add (this.txtHeightInches);
+			global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtHeightInches]));
 			w11.TopAttach = ((uint)(2));
 			w11.BottomAttach = ((uint)(3));
 			w11.LeftAttach = ((uint)(3));
@@ -286,17 +286,17 @@ namespace BuildingFormulas
 			w11.XOptions = ((global::Gtk.AttachOptions)(4));
 			w11.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tblData.Gtk.Table+TableChild
-			this.txtLengthYard = new global::Gtk.Entry ();
-			this.txtLengthYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
-			this.txtLengthYard.WidthRequest = 124;
-			this.txtLengthYard.HeightRequest = 30;
-			this.txtLengthYard.CanFocus = true;
-			this.txtLengthYard.Name = "txtLengthYard";
-			this.txtLengthYard.IsEditable = true;
-			this.txtLengthYard.MaxLength = 4;
-			this.txtLengthYard.InvisibleChar = '•';
-			this.tblData.Add (this.txtLengthYard);
-			global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtLengthYard]));
+			this.txtHeightYard = new global::Gtk.Entry ();
+			this.txtHeightYard.TooltipMarkup = "Enter integers only no decimals. Can be zero if not used.";
+			this.txtHeightYard.WidthRequest = 124;
+			this.txtHeightYard.HeightRequest = 30;
+			this.txtHeightYard.CanFocus = true;
+			this.txtHeightYard.Name = "txtHeightYard";
+			this.txtHeightYard.IsEditable = true;
+			this.txtHeightYard.MaxLength = 4;
+			this.txtHeightYard.InvisibleChar = '•';
+			this.tblData.Add (this.txtHeightYard);
+			global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.tblData [this.txtHeightYard]));
 			w12.TopAttach = ((uint)(2));
 			w12.BottomAttach = ((uint)(3));
 			w12.LeftAttach = ((uint)(1));

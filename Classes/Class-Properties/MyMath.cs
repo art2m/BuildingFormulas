@@ -368,6 +368,16 @@ namespace BuildingFormulas
         private double widthYard = 0;
 
         /// <summary>
+        /// The diameter yard.
+        /// </summary>
+        private double diameterYard = 0;
+
+        /// <summary>
+        /// The height yard.
+        /// </summary>
+        private double heightYard = 0;
+
+        /// <summary>
         /// The width in feet.
         /// </summary>
         private double widthFeet = 0;
@@ -381,6 +391,16 @@ namespace BuildingFormulas
         /// The length in feet.
         /// </summary>
         private double lengthFeet = 0;
+
+        /// <summary>
+        /// The diameter feet.
+        /// </summary>
+        private double diameterFeet = 0;
+
+        /// <summary>
+        /// The height feet.
+        /// </summary>
+        private double heightFeet = 0;
 
         /// <summary>
         /// The width in inches.
@@ -398,6 +418,16 @@ namespace BuildingFormulas
         private double lengthInches = 0;
 
         /// <summary>
+        /// The diameter inches.
+        /// </summary>
+        private double diameterInches = 0;
+
+        /// <summary>
+        /// The height inches.
+        /// </summary>
+        private double heightInches = 0;
+
+        /// <summary>
         /// The depth total inches.
         /// </summary>
         private double depthTotalInches = 0;
@@ -411,6 +441,16 @@ namespace BuildingFormulas
         /// The width total inches.
         /// </summary>
         private double widthTotalInches = 0;
+
+        /// <summary>
+        /// The height total inches.
+        /// </summary>
+        private double heightTotalInches = 0;
+
+        /// <summary>
+        /// The diameter total inches.
+        /// </summary>
+        private double diameterTotalInches = 0;
 
         /// <summary>
         /// The total cubic yards.
@@ -430,11 +470,28 @@ namespace BuildingFormulas
         #endregion PROPERTY VARIABLES: USER ENTERED SIZE DATA
 
         /// <summary>
+        /// The pi.
+        /// </summary>
+        private const double pi = 3.141592;
+
+        /// <summary>
         /// Initializes a new instance of the 
         /// <see cref="BuildingFormulas.MyMath"/> class.
         /// </summary>
         public MyMath()
         {
+        }
+
+        /// <summary>
+        /// Gets the pi value.
+        /// </summary>
+        /// <value>The pi value.</value>
+        public double PiValue
+        {
+            get
+            {
+                return pi;
+            }
         }
 
         #region PROPERTIES STANDARD UNITS TO STANDARD UNITS
@@ -1227,6 +1284,40 @@ namespace BuildingFormulas
         }
 
         /// <summary>
+        /// Gets or sets the diameter yard.
+        /// </summary>
+        /// <value>The diameter yard.</value>
+        public double DiameterYard
+        {
+            get
+            {
+                return this.diameterYard;
+            }
+
+            set
+            {
+                this.diameterYard = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the height yard.
+        /// </summary>
+        /// <value>The height yard.</value>
+        public double HeightYard
+        {
+            get
+            {
+                return this.heightYard;
+            }
+
+            set
+            {
+                this.heightYard = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the width feet.
         /// </summary>
         /// <value>The width feet.</value>
@@ -1274,6 +1365,40 @@ namespace BuildingFormulas
             set
             {
                 this.lengthFeet = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the diameter feet.
+        /// </summary>
+        /// <value>The diameter feet.</value>
+        public double DiameterFeet
+        {
+            get
+            {
+                return this.diameterFeet;
+            }
+
+            set
+            {
+                this.diameterFeet = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the height feet.
+        /// </summary>
+        /// <value>The height feet.</value>
+        public double HeightFeet
+        {
+            get
+            {
+                return this.heightFeet;
+            }
+
+            set
+            {
+                this.heightFeet = value;
             }
         }
 
@@ -1329,6 +1454,40 @@ namespace BuildingFormulas
         }
 
         /// <summary>
+        /// Gets or sets the diameter inches.
+        /// </summary>
+        /// <value>The diameter inches.</value>
+        public double DiameterInches
+        {
+            get
+            {
+                return this.diameterInches;
+            }
+
+            set
+            {
+                this.diameterInches = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the height inches.
+        /// </summary>
+        /// <value>The height inches.</value>
+        public double HeightInches
+        {
+            get
+            {
+                return this.heightInches;
+            }
+
+            set
+            {
+                this.heightInches = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the depth total inches.
         /// </summary>
         /// <value>The depth total inches.</value>
@@ -1376,6 +1535,40 @@ namespace BuildingFormulas
             set
             {
                 this.widthTotalInches = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the diameter total inches.
+        /// </summary>
+        /// <value>The diameter total inches.</value>
+        public double DiameterTotalInches
+        {
+            get
+            {
+                return this.diameterTotalInches;
+            }
+
+            set
+            {
+                this.diameterTotalInches = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the height total inches.
+        /// </summary>
+        /// <value>The height total inches.</value>
+        public double HeightTotalInches
+        {
+            get
+            {
+                return this.heightTotalInches;
+            }
+
+            set
+            {
+                this.heightTotalInches = value;
             }
         }
 

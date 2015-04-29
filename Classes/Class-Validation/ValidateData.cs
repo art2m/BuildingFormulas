@@ -21,6 +21,7 @@
 namespace BuildingFormulas
 {
     using System;
+    using System.Text;
 
     /// <summary>
     /// Validate data.
@@ -28,16 +29,14 @@ namespace BuildingFormulas
     public class ValidateData
     {
         /// <summary>
-        /// My message.
-        /// </summary>
-        private MyMessages myMsg = new MyMessages();
-
-        /// <summary>
         /// The name of the class.
         /// </summary>
         private const string ThisClassName = "ValidateData";
 
-        private string errMsg = null;
+        /// <summary>
+        /// My message.
+        /// </summary>
+        private MyMessages myMsg = new MyMessages();
 
         /// <summary>
         /// Initializes a new instance of the <see cref=
@@ -45,92 +44,40 @@ namespace BuildingFormulas
         /// </summary>
         public ValidateData()
         {
-
         }
 
         /// <summary>
-        /// Validates data exists or not.
-        /// CheckTo see if data exists or not. Can be
-        /// null as not all fields are needed for specific
-        /// data.
+        /// Validates the total sum is greater then zero.
         /// </summary>
-        /// <returns><c>true</c>, if data in text box 
-        /// was validated, 
-        /// <c>false</c> otherwise return false.</returns>
-        /// <param name="data">String to be validated data.</param>
-        public bool ValidateDataExists(string data)
+        /// <returns><c>true</c>, if total sum is greater then 
+        /// zero was validated, <c>false</c> 
+        /// otherwise.</returns>
+        /// <param name="totalVal">Total value.</param>
+        /// <param name="typeUnits">The typeUnits contains width
+        /// height length etc...</param>
+        public bool ValidateTotalSumIsGreaterThenZero(
+            double totalVal, 
+            string typeUnits)
         {
             bool retVal = false;
-            const string MethodName = "public bool ValidateDataExists(" +
-                                      " string data)";
-
-            errMsg = "All data entry boxes must have a numeric value.\n " +
-            "Enter 0 for no data.";
-
-            if (string.IsNullOrEmpty(data))
-            {
-                myMsg.BuildErrorString(ThisClassName, MethodName, errMsg, "");
-
-                return retVal;
-            }
-            else if (string.IsNullOrWhiteSpace(data))
-            {
-                myMsg.BuildErrorString(ThisClassName, MethodName, errMsg, "");
-                return retVal;
-            }
-
-            retVal = true;
-            return retVal;
-        }
-
-        /// <summary>
-        /// Validates the data is a numeric value.
-        /// </summary>
-        /// <returns><c>true</c>, if data is numeric value was validated, 
-        /// <c>false</c> otherwise.</returns>
-        /// <param name="data">String to be validated data</param>
-        public bool ValidateDataIsNumericValue(string data)
-        {
-            bool retVal;
-            int num;
+            string errMsg = null;
             const string MethodName = 
-                "public bool ValidateDataIsNumericValue(string data)";
-
-            retVal = int.TryParse(data, out num);
-            if (!retVal)
+                "public bool ValidateTotalSumIsGreaterThenZero(" +
+                "double totalVal, string Dimension)";
+            if (totalVal <= 0)
             {
+                errMsg = "One of the " + typeUnits + " values must be " +
+                "greater then zero.";
+                this.myMsg.BuildErrorString(
+                    ThisClassName, 
+                    MethodName, 
+                    errMsg, 
+                    string.Empty);
+
                 return retVal;
             }
 
-            retVal = true;
-            return retVal;
-        }
-
-        /// <summary>
-        /// Validates the data is greater then zero.
-        /// </summary>
-        /// <returns><c>true</c>, if data is greater then zero was validated, 
-        /// <c>false</c> otherwise.</returns>
-        /// <param name="data">String to be validated data.</param>
-        public bool ValidateDataIsGreaterThenZero(string data)
-        {
-            bool retVal = false;
-            bool val;
-            int num;
-
-            val = int.TryParse(data, out num);
-            if (!val)
-            {
-                return retVal;
-            }
-
-            if (num < 1)
-            {
-                return retVal;
-            }
-
-            retVal = true;
-            return retVal;
+            return retVal = true;
         }
 
         /// <summary>
@@ -140,22 +87,59 @@ namespace BuildingFormulas
         /// empty was validated, <c>false</c> otherwise.</returns>
         /// <param name="values">The values array of strings.</param>
         /// <param name="cnt">The count of items in array.</param>
-        public bool ValidateTextBoxesNotEmpty(string[] values, int cnt)
+        public bool ValidateUserDataNotNullNotEmpty(string[] values, int cnt)
         {
             bool retVal = true;
-            string val = null;
+            const string MethodName = "public bool " +
+                                      "ValidateUserDataNotNullNotEmpty(" +
+                                      "string[] values, int cnt)";
 
-            for (int i = 0; i < cnt; i++)
+            string errMsg = 
+                "All data entry boxes must have a numeric value. " +
+                Environment.NewLine + "Enter 0 for no data.";
+               
+            try
             {
-                val = values[cnt].Trim();
-                retVal = ValidateDataExists(val);
-                if (!retVal)
+                for (int i = 0; i < cnt; i++)
                 {
-                    break;
-                }
-            }
+                    if (string.IsNullOrEmpty(values[i]))
+                    {
+                        this.myMsg.BuildErrorString(
+                            ThisClassName, 
+                            MethodName,
+                            errMsg, 
+                            string.Empty);
 
-            return retVal;
+                        retVal = false;
+                        break;
+                    }
+                    else if (string.IsNullOrWhiteSpace(values[i]))
+                    {
+                        this.myMsg.BuildErrorString(
+                            ThisClassName, 
+                            MethodName,
+                            errMsg, 
+                            string.Empty);
+                        retVal = false;  
+                        break;
+                    }
+                    else
+                    {
+                        retVal = true;
+                    }
+                }
+                        
+                return retVal;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                this.myMsg.BuildErrorString(
+                    ThisClassName, 
+                    MethodName, 
+                    errMsg,
+                    string.Empty);  
+                return retVal = false;
+            }
         }
 
         /// <summary>
@@ -166,22 +150,52 @@ namespace BuildingFormulas
         /// <c>false</c> otherwise.</returns>
         /// <param name="values">The values array of strings.</param>
         /// <param name="cnt">The count of items in array.</param>
-        public bool ValidateTextBoxesHaveNumericValue(string[] values, int cnt)
+        public bool ValidateUserDataHasNumericValue(string[] values, int cnt)
         {
             bool retVal = true;
-            string val = null;
+            int num = 0;
+            string data = null;
+            const string MethodName = "public bool " +
+                                      "ValidateUserDataHasNumericValue(" +
+                                      "string[] values, int cnt)";
 
-            for (int i = 0; i < cnt; i++)
+            string errMsg = 
+                "All data entry boxes must have a numeric value. " +
+                Environment.NewLine + "Enter 0 for no data.";
+           
+            try
             {
-                val = values[cnt].Trim();
-                retVal = ValidateDataIsNumericValue(val);
-                if (!retVal)
+                for (int i = 0; i < cnt; i++)
                 {
-                    break;
+                    data = values[i];
+                    retVal = int.TryParse(data, out num);
+                    if (!retVal)
+                    {
+                        this.myMsg.BuildErrorString(
+                            ThisClassName, 
+                            MethodName, 
+                            errMsg, 
+                            string.Empty);
+                        retVal = false;
+                        break;
+                    }
+                    else
+                    {
+                        retVal = true;
+                    }
                 }
-            }
 
-            return retVal;
+                return retVal;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                this.myMsg.BuildErrorString(
+                    ThisClassName, 
+                    MethodName, 
+                    errMsg,
+                    string.Empty);
+                return retVal = false;
+            }                    
         }
 
         /// <summary>
@@ -192,23 +206,52 @@ namespace BuildingFormulas
         /// <c>false</c> otherwise.</returns>
         /// <param name="values">The values array of strings.</param>
         /// <param name="cnt">The count of items in the array.</param>
-        public bool ValidateTextBoxesHaveValueGreaterThenZero(
+        public bool ValidateUserDataHasValueGreaterThenZero(
             string[] values, int cnt)
         {
             bool retVal = true;
-            string val = null;
+            string data = null;
+            int num = 0;
+            const string MethodName = "public bool " +
+                                      "ValidateUserDataHasValue" +
+                                      "GreaterThenZero(" +
+                                      "string[] values, int cnt)";
+            string errMsg = 
+                "At least one dimension box in each row must have a" +
+                Environment.NewLine + "value greater then zero.";
+
             for (int i = 0; i < cnt; i++)
             {
-                val = values[cnt].Trim();
-                retVal = ValidateDataIsGreaterThenZero(val);
+                data = values[i];
+                retVal = int.TryParse(data, out num);
                 if (!retVal)
                 {
+                    this.myMsg.BuildErrorString(
+                        ThisClassName, 
+                        MethodName, 
+                        errMsg, 
+                        string.Empty);
+                    retVal = false;
                     break;
+                }
+
+                if (num < 1)
+                {
+                    this.myMsg.BuildErrorString(
+                        ThisClassName, 
+                        MethodName, 
+                        errMsg, 
+                        string.Empty);
+                    retVal = false;
+                    break;
+                }
+                else
+                {
+                    retVal = true;
                 }
             }
 
             return retVal;
         }
-
     }
 }
