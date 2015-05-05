@@ -4,3 +4,9 @@
 /home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/bin/Debug/BuildingFormulas.exe
 /home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/obj/x86/Debug/BuildingFormulas.exe
 /home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/obj/x86/Debug/BuildingFormulas.exe.mdb
+/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/BuildingFormulas.git/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/BuildingFormulas.git/obj/x86/Debug/BuildingFormulas.gtk-gui.gui.stetic
+/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/BuildingFormulas.git/obj/x86/Debug/BuildingFormulas.exe
+/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/BuildingFormulas.git/obj/x86/Debug/BuildingFormulas.exe.mdb
+/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/BuildingFormulas.git/bin/Debug/BuildingFormulas.exe.mdb
+/home/art2m/Projects/CSharp-Programs/BuildingFormulas/BuildingFormulas/BuildingFormulas.git/bin/Debug/BuildingFormulas.exe
