@@ -2800,7 +2800,7 @@
     <property name="WidthRequest">800</property>
     <property name="HeightRequest">600</property>
     <property name="Title" translatable="yes">CylinderCubic</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">CenterAlways</property>
     <property name="BorderWidth">8</property>
     <child>
       <widget class="Gtk.VBox" id="dialog1_VBox">
@@ -2824,11 +2824,11 @@
                 <property name="ColumnSpacing">10</property>
                 <property name="BorderWidth">8</property>
                 <child>
-                  <widget class="Gtk.Label" id="lblCircumference">
+                  <widget class="Gtk.Label" id="lblDiameter">
                     <property name="MemberName" />
                     <property name="WidthRequest">142</property>
                     <property name="HeightRequest">30</property>
-                    <property name="LabelProp" translatable="yes">Enter circumference:</property>
+                    <property name="LabelProp" translatable="yes">Enter diameter:</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -2951,7 +2951,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="txtDepthFeet">
+                  <widget class="Gtk.Entry" id="txtDiameterFeet">
                     <property name="MemberName" />
                     <property name="WidthRequest">159</property>
                     <property name="HeightRequest">30</property>
@@ -2978,7 +2978,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="txtDepthInches">
+                  <widget class="Gtk.Entry" id="txtDiameterInches">
                     <property name="MemberName" />
                     <property name="WidthRequest">159</property>
                     <property name="HeightRequest">30</property>
@@ -3005,7 +3005,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="txtDepthYard">
+                  <widget class="Gtk.Entry" id="txtDiameterYard">
                     <property name="MemberName" />
                     <property name="WidthRequest">159</property>
                     <property name="HeightRequest">30</property>
@@ -3032,7 +3032,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="txtLengthFeet">
+                  <widget class="Gtk.Entry" id="txtHeightFeet">
                     <property name="MemberName" />
                     <property name="WidthRequest">124</property>
                     <property name="HeightRequest">30</property>
@@ -3059,7 +3059,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="txtLengthInches">
+                  <widget class="Gtk.Entry" id="txtHeightInches">
                     <property name="MemberName" />
                     <property name="WidthRequest">124</property>
                     <property name="HeightRequest">30</property>
@@ -3086,7 +3086,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="txtLengthYard">
+                  <widget class="Gtk.Entry" id="txtHeightYard">
                     <property name="MemberName" />
                     <property name="WidthRequest">124</property>
                     <property name="HeightRequest">30</property>

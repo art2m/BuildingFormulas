@@ -104,7 +104,7 @@ namespace BuildingFormulas
 			this.HeightRequest = 600;
 			this.Name = "BuildingFormulas.CylinderCubic";
 			this.Title = global::Mono.Unix.Catalog.GetString ("CylinderCubic");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(3));
 			this.BorderWidth = ((uint)(8));
 			// Container child BuildingFormulas.CylinderCubic.Gtk.Container+ContainerChild
 			this.dialog1_VBox = new global::Gtk.VBox ();

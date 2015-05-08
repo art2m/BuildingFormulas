@@ -78,6 +78,14 @@ namespace BuildingFormulas
             : base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+
+            this.ClearData();
+            this.metricUnits = false;
+            this.standardUnits = true;
+            btnStandard.Label = "Sandard On:";
+            btnMetric.Label = "Metric Off:";
+            this.SetCubicAreaLabelsStandardUnits();
+            this.ShowUnitsCurrentlyBeingUsed();
         }
 
         #region BUTTON CLICKED EVENTS
@@ -99,7 +107,7 @@ namespace BuildingFormulas
         /// <param name="e">Instance containing the event data.</param>
         protected void OnBtnCloseClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.Destroy();
         }
 
         /// <summary>
@@ -159,7 +167,7 @@ namespace BuildingFormulas
         /// <param name="e">Instance containing the event data.</param>
         protected void OnBtnSolveClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.SolveForMetricUnitsStandardUnits();
         }
 
         /// <summary>
@@ -194,6 +202,10 @@ namespace BuildingFormulas
             txtDiameterYard.Text = "0";
             txtDiameterFeet.Text = "0";
             txtDiameterInches.Text = "0";
+
+            txtHeightYard.Text = "0";
+            txtHeightFeet.Text = "0";
+            txtHeightInches.Text = "0";
 
             txtCubicYards.Text = "0";
             txtCubicFeet.Text = "0";
@@ -380,7 +392,40 @@ namespace BuildingFormulas
         /// </summary>
         private void SolveForMetricUnitsStandardUnits()
         {
-            throw new NotImplementedException();
+            bool retVal = false;
+
+            if (this.metricUnits)
+            {
+                retVal = this.ValidateCubicAreaCylinderData();
+                if (!retVal)
+                {
+                    return;
+                }
+
+                throw new NotImplementedException();
+            }
+            else if (this.standardUnits)
+            {
+                retVal = this.ValidateCubicAreaCylinderData();
+                if (!retVal)
+                {
+                    return;
+                }
+
+                retVal = this.FillValuesWithDataFromTextBoxes();
+                if (!retVal)
+                {
+                    return;
+                }
+
+                retVal = this.ConvertDataToInches();
+                if (!retVal)
+                {
+                    return;
+                }
+
+                this.SolveForCubicStandard();
+            }
         }
 
         /// <summary>
@@ -388,7 +433,27 @@ namespace BuildingFormulas
         /// </summary>
         private void SolveForCubicStandard()
         {
-            throw new NotImplementedException();
+            double val = 0;
+            const string MethodName = 
+                "private void SolveForCubicStandard()";
+           
+            val = this.cys.SolveForCubicAreaYards(
+                this.math.DiameterTotalInches, 
+                this.math.HeightTotalInches);
+
+            txtCubicYards.Text = val.ToString();
+
+            val = this.cys.SolveForCubicAreaFeet(
+                this.math.DiameterTotalInches,
+                this.math.HeightTotalInches);
+
+            txtCubicFeet.Text = val.ToString();
+
+            val = this.cys.SolveForCubicAreaInches(
+                this.math.DiameterTotalInches,
+                this.math.HeightTotalInches);
+
+            txtCubicInches.Text = val.ToString();
         }
 
         /// <summary>
@@ -404,7 +469,20 @@ namespace BuildingFormulas
         /// </summary>
         private void ShowUnitsCurrentlyBeingUsed()
         {
-            throw new NotImplementedException();
+            if (this.standardUnits)
+            {
+                lblInfo.Text = "Using standard units.";
+            }
+            else if (this.metricUnits)
+            {
+                lblInfo.Text = "Using metric units.";
+            }
+            else
+            {
+                this.standardUnits = true;
+                this.metricUnits = false;
+                lblInfo.Text = "Using standard units.";
+            }
         }
 
         /// <summary>
@@ -412,7 +490,9 @@ namespace BuildingFormulas
         /// </summary>
         private void SetCubicAreaLabelsStandardUnits()
         {
-            throw new NotImplementedException();
+            lblCubicYards.Text = "Total Cubic Area In Yards:";
+            lblCubicFeet.Text = "Total Cubic Area In Feet:";
+            lblCubicInches.Text = "Total Cubic Area In Inches:";
         }
 
         /// <summary>
@@ -420,7 +500,9 @@ namespace BuildingFormulas
         /// </summary>
         private void SetCubicAreaLabelsMetricUnits()
         {
-            throw new NotImplementedException();
+            lblCubicYards.Text = "Total Cubic Area In Meters:";
+            lblCubicFeet.Text = "Total Cubic Area In Centimeters:";
+            lblCubicInches.Text = "Total Cubic Area In Millimeters:";
         }
 
         #endregion

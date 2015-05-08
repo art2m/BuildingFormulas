@@ -203,7 +203,7 @@ namespace BuildingFormulas
         /// <param name="e">Instance containing the event data.</param>
         protected void OnBtnSolveClicked(object sender, EventArgs e)
         {
-            btnSolve.Sensitive = false;
+            //btnSolve.Sensitive = false;
             this.SolveForMetricUnitsStandardUnits();
         }
 

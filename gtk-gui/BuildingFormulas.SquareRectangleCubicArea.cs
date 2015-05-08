@@ -535,7 +535,7 @@ namespace BuildingFormulas
 			this.btnNewItem.Name = "btnNewItem";
 			this.btnNewItem.UseUnderline = true;
 			this.btnNewItem.BorderWidth = ((uint)(4));
-			this.btnNewItem.Label = global::Mono.Unix.Catalog.GetString ("New Rectangle");
+			this.btnNewItem.Label = global::Mono.Unix.Catalog.GetString ("Enter New Item");
 			this.vbtnLeft.Add (this.btnNewItem);
 			global::Gtk.ButtonBox.ButtonBoxChild w28 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnNewItem]));
 			w28.Expand = false;
