@@ -1,5 +1,5 @@
 ﻿//
-//  HexagonCubic.cs
+//  OctagonCubic.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,13 +22,13 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class HexagonCubic : Gtk.Window
-    {
-        public HexagonCubic()
-            : base(Gtk.WindowType.Toplevel)
-        {
-            this.Build();
-        }
-    }
+	public partial class OctagonPrisimVolume : Gtk.Window
+	{
+		public OctagonPrisimVolume()
+			: base(Gtk.WindowType.Toplevel)
+		{
+			this.Build();
+		}
+	}
 }
 

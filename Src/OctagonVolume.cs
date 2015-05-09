@@ -1,5 +1,5 @@
 ﻿//
-//  OctagonCubic.cs
+//  OctagonVolume.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,9 +22,9 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class OctagonCubic : Gtk.Window
+    public partial class OctagonVolume : Gtk.Window
     {
-        public OctagonCubic()
+        public OctagonVolume()
             : base(Gtk.WindowType.Toplevel)
         {
             this.Build();

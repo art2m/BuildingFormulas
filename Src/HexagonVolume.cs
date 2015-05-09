@@ -1,5 +1,5 @@
 ﻿//
-//  TriangleCubic.cs
+//  HexagonVolume.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,9 +22,9 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class TriangleCubic : Gtk.Window
+    public partial class HexagonVolume : Gtk.Window
     {
-        public TriangleCubic()
+        public HexagonVolume()
             : base(Gtk.WindowType.Toplevel)
         {
             this.Build();

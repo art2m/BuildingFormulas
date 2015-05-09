@@ -1,5 +1,5 @@
 ﻿//
-//  PyramidSquareBaseCubic.cs
+//  HexagonCubic.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,13 +22,13 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class PyramidSquareBaseCubic : Gtk.Window
-    {
-        public PyramidSquareBaseCubic()
-            : base(Gtk.WindowType.Toplevel)
-        {
-            this.Build();
-        }
-    }
+	public partial class HexagonPrisimVolume : Gtk.Window
+	{
+		public HexagonPrisimVolume()
+			: base(Gtk.WindowType.Toplevel)
+		{
+			this.Build();
+		}
+	}
 }
 

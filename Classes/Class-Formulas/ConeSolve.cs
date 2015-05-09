@@ -20,13 +20,153 @@
 
 namespace BuildingFormulas
 {
-    using System;
+	using System;
 
-    /// <summary>
-    /// Cone solve.
-    /// </summary>
-    public static class ConeSolve
-    {
+	/// <summary>
+	/// Cone solve.
+	/// </summary>
+	public class ConeSolve
+	{
+		/// <summary>
+		/// The math.
+		/// </summary>
+		private MyMath math = new MyMath();
 
-    }
+		/// <summary>
+		/// Initializes a new instance of the 
+		/// <see cref="BuildingFormulas.ConeSolve"/> class.
+		/// </summary>
+		public ConeSolve()
+		{
+		}
+
+		/// <summary>
+		/// Gets the diameter total inches.
+		/// </summary>
+		/// <returns>The the diameter total inches.</returns>
+		/// <param name="diameterYards">diameter yards.</param>
+		/// <param name="diameterFeet">diameter feet.</param>
+		/// <param name="diameterInches">diameter inches.</param>
+		public double GetTheDiameterTotalInches(
+			double diameterYards,
+			double diameterFeet,
+			double diameterInches)
+		{
+			double inchesYd = 0;
+			double inchesFt = 0;
+			double retVal = 0;
+
+			inchesYd = diameterYards * this.math.ConvertInchesToYards;
+			inchesFt = diameterFeet * this.math.ConvertInchesToFeet;
+			retVal = inchesYd + inchesFt + diameterInches;
+
+			return retVal;
+
+		}
+
+		/// <summary>
+		/// Gets the height total inches.
+		/// </summary>
+		/// <returns>The the height total inches.</returns>
+		/// <param name="heightYards">Height yards.</param>
+		/// <param name="heightFeet">Height feet.</param>
+		/// <param name="heightInches">Height inches.</param>
+		public double GetTheHeightTotalInches(
+			double heightYards,
+			double heightFeet,
+			double heightInches)
+		{
+			double inchesYd = 0;
+			double inchesFt = 0;
+			double retVal = 0;
+
+			inchesYd = heightYards * this.math.ConvertInchesToYards;
+			inchesFt = heightFeet * this.math.ConvertInchesToFeet;
+			retVal = inchesYd + inchesFt + heightInches;
+
+			return retVal;
+		}
+
+		/// <summary>
+		/// Solves for cubic area yards.
+		/// </summary>
+		/// <returns>The for cubic area yards.</returns>
+		/// <param name="diameterTotalInches">Diameter total inches.</param>
+		/// <param name="heightTotalInches">Height total inches.</param>
+		public double SolveForCubicAreaYards(
+			double diameterTotalInches, 
+			double heightTotalInches)
+		{
+			Conversions conv = new Conversions();
+
+			double retVal = 0;
+			double cubicIn = 0;
+			double cubicYd = 0;  
+			double radius = 0;
+			const double oneThird = .333333333;
+
+			radius = diameterTotalInches / 2;
+
+			cubicIn = (math.PiValue * radius * radius * heightTotalInches)
+			/ oneThird;
+
+
+			cubicYd = conv.ConvertCubicInchesToCubicYards(cubicIn);
+
+			retVal = Math.Round(cubicYd, 2);
+
+			return retVal;
+		}
+
+		/// <summary>
+		/// Solves for cubic area feet.
+		/// </summary>
+		/// <returns>The for cubic area feet.</returns>
+		/// <param name="diameterTotalInches">Diameter total inches.</param>
+		/// <param name="heightTotalInches">Height total inches.</param>
+		public double SolveForCubicAreaFeet(
+			double diameterTotalInches, 
+			double heightTotalInches)
+		{
+			Conversions conv = new Conversions();
+
+			double retVal = 0;
+			double cubicFt = 0;
+			double cubicIn = 0;
+			double radius = 0;
+			const double oneThird = .333333333;
+
+			radius = diameterTotalInches / 2;
+
+			cubicIn = (math.PiValue * radius * radius * heightTotalInches)
+			/ oneThird;
+
+			cubicFt = conv.ConvertCubicInchesToCubicFeet(cubicIn);
+			retVal = Math.Round(cubicFt, 2);
+
+			return retVal;
+		}
+
+		/// <summary>
+		/// Solves for cubic area inches.
+		/// </summary>
+		/// <returns>The for cubic area inches.</returns>
+		/// <param name="diameterTotalInches">Diameter total inches.</param>
+		/// <param name="heightTotalInches">Height total inches.</param>
+		public double SolveForCubicAreaInches(
+			double diameterTotalInches, 
+			double heightTotalInches)
+		{
+			double retVal = 0;
+			double radius = 0;
+			const double oneThird = .333333333;
+
+			radius = diameterTotalInches / 2;
+
+			retVal = (math.PiValue * radius * radius * heightTotalInches)
+			/ oneThird;
+
+			return retVal;
+		}
+	}
 }

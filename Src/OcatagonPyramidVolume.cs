@@ -1,5 +1,5 @@
 ﻿//
-//  PyramidTriangleBaseCubic.cs
+//  OcatagonPyramidVolume.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,9 +22,9 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class PyramidTriangleBaseCubic : Gtk.Window
+    public partial class OcatagonPyramidVolume : Gtk.Window
     {
-        public PyramidTriangleBaseCubic()
+        public OcatagonPyramidVolume()
             : base(Gtk.WindowType.Toplevel)
         {
             this.Build();

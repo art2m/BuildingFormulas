@@ -1,5 +1,5 @@
 ﻿//
-//  PyramidRectangleBaseCubic.cs
+//  PyramidTriangleBaseCubic.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,13 +22,13 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class PyramidRectangleBaseCubic : Gtk.Window
-    {
-        public PyramidRectangleBaseCubic()
-            : base(Gtk.WindowType.Toplevel)
-        {
-            this.Build();
-        }
-    }
+	public partial class PyramidTriangleBaseVolume : Gtk.Window
+	{
+		public PyramidTriangleBaseVolume()
+			: base(Gtk.WindowType.Toplevel)
+		{
+			this.Build();
+		}
+	}
 }
 

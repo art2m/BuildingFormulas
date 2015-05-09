@@ -1,5 +1,5 @@
 ﻿//
-//  ConeCubic.cs
+//  PyramidSquareBaseCubic.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -22,13 +22,13 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class ConeCubic : Gtk.Window
-    {
-        public ConeCubic()
-            : base(Gtk.WindowType.Toplevel)
-        {
-            this.Build();
-        }
-    }
+	public partial class PyramidSquareBaseVolume : Gtk.Window
+	{
+		public PyramidSquareBaseVolume()
+			: base(Gtk.WindowType.Toplevel)
+		{
+			this.Build();
+		}
+	}
 }
 

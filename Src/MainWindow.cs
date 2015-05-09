@@ -140,7 +140,7 @@ namespace BuildingFormulas
 				"protected void OnCubicAreaConeActionActivated(" +
 				"object sender, EventArgs e)";
 
-			ConeCubic cc = new ConeCubic();
+			ConeVolume cc = new ConeVolume();
 
 			try
 			{   
@@ -178,7 +178,7 @@ namespace BuildingFormulas
 
 			try
 			{ 
-				CylinderCubic cyc = new CylinderCubic();
+				CylinderVolume cyc = new CylinderVolume();
 
 				this.errMsg = "Not Implemented.";
 
@@ -372,8 +372,8 @@ namespace BuildingFormulas
 			                                   "OnCubicArea" +
 			                                   "RectangleActionActivated(" +
 			                                   "object sender, EventArgs e)";
-			SquareRectangleCubicArea sqRecEntData = 
-				new SquareRectangleCubicArea();
+			SquareRectangleVolume sqRecEntData = 
+				new SquareRectangleVolume();
 
 			degb.ShapeToSolveFor = shape.RectangleShape;
 
@@ -393,8 +393,8 @@ namespace BuildingFormulas
 			                                   "OnCubicAreaSquareActionActivated(" +
 			                                   "object sender, EventArgs e)";
            
-			SquareRectangleCubicArea sqRecEntData = 
-				new SquareRectangleCubicArea();
+			SquareRectangleVolume sqRecEntData = 
+				new SquareRectangleVolume();
           
 			degb.ShapeToSolveFor = shape.SquareShape;
 
