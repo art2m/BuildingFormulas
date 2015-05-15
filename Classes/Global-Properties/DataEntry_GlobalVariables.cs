@@ -20,22 +20,40 @@
 
 namespace BuildingFormulas
 {
-    /// <summary>
-    /// Data entry global variables.
-    /// </summary>
-    public static class DataEntry_GlobalVariables
-    {
+	/// <summary>
+	/// Data entry global variables.
+	/// </summary>
+	public static class DataEntry_GlobalVariables
+	{
+		private static string inputFileName = string.Empty;
 
-        /// <summary>
-        /// Gets or sets the shape to solve for.
-        /// This is by Main Window when the user 
-        /// selects Button for shape to solve for.
-        /// </summary>
-        /// <value>The shape to solve for.</value>
-        public static string ShapeToSolveFor
-        {
-            get;
-            set;
-        }
-    }
+		/// <summary>
+		/// Gets or sets the shape to solve for.
+		/// This is by Main Window when the user 
+		/// selects Button for shape to solve for.
+		/// </summary>
+		/// <value>The shape to solve for.</value>
+		public static string ShapeToSolveFor
+		{
+			get;
+			set;
+		}
+
+		/// <summary>
+		/// Gets or sets the input file name user entered.
+		/// </summary>
+		/// <value>The input file name user entered.</value>
+		public static string InputFileNameUserEntered
+		{
+			get
+			{
+				return inputFileName;
+			}
+
+			set
+			{
+				InputFileNameUserEntered = value;
+			}
+		}
+	}
 }

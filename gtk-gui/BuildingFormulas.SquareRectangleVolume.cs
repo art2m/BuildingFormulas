@@ -100,9 +100,9 @@ namespace BuildingFormulas
 		
 		private global::Gtk.VButtonBox vbtnRight;
 		
-		private global::Gtk.Button btnPrintForm;
+		private global::Gtk.Button btnSaveForm;
 		
-		private global::Gtk.Button btnPrintStored;
+		private global::Gtk.Button btnSaveStored;
 		
 		private global::Gtk.Button btnClose;
 		
@@ -722,31 +722,31 @@ namespace BuildingFormulas
 			this.vbtnRight.BorderWidth = ((uint)(8));
 			this.vbtnRight.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(1));
 			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
-			this.btnPrintForm = new global::Gtk.Button ();
-			this.btnPrintForm.TooltipMarkup = "Print the information on this form.";
-			this.btnPrintForm.WidthRequest = 118;
-			this.btnPrintForm.HeightRequest = 40;
-			this.btnPrintForm.CanFocus = true;
-			this.btnPrintForm.Name = "btnPrintForm";
-			this.btnPrintForm.UseUnderline = true;
-			this.btnPrintForm.BorderWidth = ((uint)(4));
-			this.btnPrintForm.Label = global::Mono.Unix.Catalog.GetString ("Print Form");
-			this.vbtnRight.Add (this.btnPrintForm);
-			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintForm]));
+			this.btnSaveForm = new global::Gtk.Button ();
+			this.btnSaveForm.TooltipMarkup = "Print the information on this form.";
+			this.btnSaveForm.WidthRequest = 118;
+			this.btnSaveForm.HeightRequest = 40;
+			this.btnSaveForm.CanFocus = true;
+			this.btnSaveForm.Name = "btnSaveForm";
+			this.btnSaveForm.UseUnderline = true;
+			this.btnSaveForm.BorderWidth = ((uint)(4));
+			this.btnSaveForm.Label = global::Mono.Unix.Catalog.GetString ("Save Form");
+			this.vbtnRight.Add (this.btnSaveForm);
+			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnSaveForm]));
 			w45.Expand = false;
 			w45.Fill = false;
 			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
-			this.btnPrintStored = new global::Gtk.Button ();
-			this.btnPrintStored.TooltipMarkup = "Print the data that is contained in store.";
-			this.btnPrintStored.WidthRequest = 118;
-			this.btnPrintStored.HeightRequest = 40;
-			this.btnPrintStored.CanFocus = true;
-			this.btnPrintStored.Name = "btnPrintStored";
-			this.btnPrintStored.UseUnderline = true;
-			this.btnPrintStored.BorderWidth = ((uint)(4));
-			this.btnPrintStored.Label = global::Mono.Unix.Catalog.GetString ("Print Stored");
-			this.vbtnRight.Add (this.btnPrintStored);
-			global::Gtk.ButtonBox.ButtonBoxChild w46 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnPrintStored]));
+			this.btnSaveStored = new global::Gtk.Button ();
+			this.btnSaveStored.TooltipMarkup = "Print the data that is contained in store.";
+			this.btnSaveStored.WidthRequest = 118;
+			this.btnSaveStored.HeightRequest = 40;
+			this.btnSaveStored.CanFocus = true;
+			this.btnSaveStored.Name = "btnSaveStored";
+			this.btnSaveStored.UseUnderline = true;
+			this.btnSaveStored.BorderWidth = ((uint)(4));
+			this.btnSaveStored.Label = global::Mono.Unix.Catalog.GetString ("Save Stored");
+			this.vbtnRight.Add (this.btnSaveStored);
+			global::Gtk.ButtonBox.ButtonBoxChild w46 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnSaveStored]));
 			w46.Position = 1;
 			w46.Expand = false;
 			w46.Fill = false;
@@ -796,8 +796,8 @@ namespace BuildingFormulas
 			this.btnStore.Clicked += new global::System.EventHandler (this.OnBtnStoreResultsClicked);
 			this.btnDisplayStore.Clicked += new global::System.EventHandler (this.OnBtnDisplayStoreClicked);
 			this.btnClearStore.Clicked += new global::System.EventHandler (this.OnBtnClearStoreClicked);
-			this.btnPrintForm.Clicked += new global::System.EventHandler (this.OnBtnPrintFormClicked);
-			this.btnPrintStored.Clicked += new global::System.EventHandler (this.OnBtnPrintStoredClicked);
+			this.btnSaveForm.Clicked += new global::System.EventHandler (this.OnBtnSaveFormToFileClicked);
+			this.btnSaveStored.Clicked += new global::System.EventHandler (this.OnBtnSaveStoredToFileClicked);
 			this.btnClose.Clicked += new global::System.EventHandler (this.OnBtnCloseClicked);
 		}
 	}

@@ -21,8 +21,11 @@
 namespace BuildingFormulas
 {
 	using System;
+	using System.IO;
 	using System.Text;
+	using Gtk;
 	using degb = DataEntry_GlobalVariables;
+
 
 	/// <summary>
 	/// Square rectangle cubic area.
@@ -177,23 +180,23 @@ namespace BuildingFormulas
 		}
 
 		/// <summary>
-		/// Raises the button print form clicked event.
+		/// Raises the button save form to file clicked event.
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">Instance containing the event data.</param>
-		protected void OnBtnPrintFormClicked(object sender, EventArgs e)
+		protected void OnBtnSaveFormToFileClicked(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			SaveDataFromForm();
 		}
 
 		/// <summary>
-		/// Raises the button print stored clicked event.
+		/// Raises the button save stored to file clicked event.
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">Instance containing the event data.</param>
-		protected void OnBtnPrintStoredClicked(object sender, EventArgs e)
+		/// <param name="e">Instance containing the event datea.</param>
+		protected void OnBtnSaveStoredToFileClicked(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			SaveDataFromStore();
 		}
 
 		/// <summary>
@@ -229,10 +232,10 @@ namespace BuildingFormulas
 		/// <param name="e">Instance containing the event data.</param>
 		protected void OnBtnStoreResultsClicked(object sender, EventArgs e)
 		{
-			SquareRectangleVolumeStruct structRecSqCubic = new 
-                SquareRectangleVolumeStruct();
-
-			structRecSqCubic.StoreVolumeStandard(
+			SquareRectangleStruct strctRecSqVol = new 
+                SquareRectangleStruct();
+			
+			strctRecSqVol.StoreVolumeStandard(
 				degb.ShapeToSolveFor, 
 				txtDepthYard.Text,
 				txtDepthFeet.Text,
@@ -246,8 +249,9 @@ namespace BuildingFormulas
 				txtCubicYards.Text,
 				txtCubicFeet.Text,
 				txtCubicInches.Text);
-
-			StoreRectangleSquareVolumeStandardCollection.AddNewItem(structRecSqCubic);
+			StoreRectangleSquareVolumeStandardCollection.AddNewItem(
+				strctRecSqVol);
+			
 		}
 
 		#endregion BUTTON CLICKED EVENTS
@@ -259,17 +263,17 @@ namespace BuildingFormulas
 		/// </summary>
 		private void ClearData()
 		{
-			txtDepthYard.Text = "0";
-			txtDepthFeet.Text = "0";
-			txtDepthInches.Text = "0";
+			txtDepthYard.Text = "12"; //"0";
+			txtDepthFeet.Text = "12"; //"0";
+			txtDepthInches.Text = "12"; //"0";
 
-			txtLengthYard.Text = "0";
-			txtLengthFeet.Text = "0";
-			txtLengthInches.Text = "0";
+			txtLengthYard.Text = "12"; //"0";
+			txtLengthFeet.Text = "12"; //"0";
+			txtLengthInches.Text = "12"; //"0";
 
-			txtWidthYard.Text = "0";
-			txtWidthFeet.Text = "0";
-			txtWidthInches.Text = "0";
+			txtWidthYard.Text = "12"; //"0";
+			txtWidthFeet.Text = "12"; //"0";
+			txtWidthInches.Text = "12"; //"0";
 
 			txtCubicYards.Text = "0";
 			txtCubicFeet.Text = "0";
@@ -642,5 +646,309 @@ namespace BuildingFormulas
 		}
 
 		#endregion SET UNITS CURENTLY BEING USED
+
+		#region SAVEING USER DATA
+
+		/// <summary>
+		/// Prints the data from form.
+		/// </summary>
+		private void SaveDataFromForm()
+		{
+			SaveUserData sud = new SaveUserData();
+			string retVal = string.Empty;
+			const int sizeElements = 12;
+			string[] dataArray = new string[sizeElements];
+			string errMsg = string.Empty;
+			FileStream fs = null;
+
+			try
+			{
+				retVal = sud.SaveUsersFormData(
+					"Save file name. If file with same name exists will " +
+					"overwrite. Create new file if name does not exist.");
+                
+				if (string.IsNullOrEmpty(retVal))
+				{
+					return;
+				}
+				else if (!File.Exists(retVal))
+				{
+					return;  
+				}
+                
+				fs = File.Create(retVal);
+				fs.Dispose();
+                      
+				dataArray = GetFormData();		
+
+				if (dataArray == null || dataArray.Length < 1)
+				{
+					errMsg = "Fond no data to save. Exiting.";
+					myMsg.ShowErrMessage(errMsg);
+					return;
+				}
+
+				File.WriteAllLines(retVal, dataArray);
+
+			}
+			catch (IndexOutOfRangeException ex)
+			{
+				errMsg = "Encountered error dataArray out of bounds.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			catch (ArgumentNullException ex)
+			{
+				errMsg = "Encountered error: found no data to save.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			catch (ArgumentOutOfRangeException ex)
+			{
+				errMsg = "Encountered error: found no data to save.";
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+			}
+			catch (NotSupportedException ex)
+			{
+				errMsg = "Encountered error: unable to write data to file.";
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+			}
+			catch (IOException ex)
+			{
+				errMsg = "Encountered error: unable to write data to file.";
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+			}
+			catch (ArgumentException ex)
+			{
+				errMsg = "Encountered error: unable to write data to file.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			catch (ObjectDisposedException ex)
+			{
+				errMsg = "Encountered error: invalid opertation.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			finally
+			{
+				if (fs != null)
+				{
+					fs.Dispose();
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets the form data.
+		/// </summary>
+		/// <returns>The form data.</returns>
+		private string[] GetFormData()
+		{
+			string[] dataArray = null;
+			string errMsg = string.Empty;
+			const string MethodName = "private string[] GetFormData()";
+
+			try
+			{
+				dataArray = new string[12];
+                
+				dataArray[0] = "Depth in yards: " + txtDepthYard.Text.Trim();
+				dataArray[1] = "Depth in feet: " + txtDepthFeet.Text.Trim();
+				dataArray[2] = 
+                    "Depth in inches: " + txtDepthInches.Text.Trim();
+                
+				dataArray[3] = "Length in yards: " + txtLengthYard.Text.Trim();
+				dataArray[4] = "Length in feet: " + txtLengthFeet.Text.Trim();
+				dataArray[5] = 
+                    "Length in inches: " + txtLengthInches.Text.Trim();
+                
+				dataArray[6] = "Width in yards: " + txtWidthYard.Text.Trim();
+				dataArray[7] = "Width in feet: " + txtWidthFeet.Text.Trim();
+				dataArray[8] = "Width in inches: " + txtWidthInches.Text.Trim();
+                
+				dataArray[9] = "Total volume in yards: " + txtCubicYards.Text;
+				dataArray[10] = "Total volume in feet: " + txtCubicFeet.Text;
+				dataArray[11] = 
+                    "Total volume in inches: " + txtCubicInches.Text;
+                
+				return dataArray;
+			}
+			catch (IndexOutOfRangeException ex)
+			{
+				errMsg = "Encountered error while collecting data from form." +
+				" Exiting printing."; 
+				myMsg.BuildErrorString(ThisClassName, MethodName, errMsg,
+					ex.ToString());
+				return dataArray;
+			}   
+		}
+
+		/// <summary>
+		/// Prints the data from store.
+		/// </summary>
+		private void SaveDataFromStore()
+		{
+			SaveUserData sud = new SaveUserData();
+			string retVal = string.Empty;
+			const int sizeElements = 12;
+			string errMsg = string.Empty;
+			StreamWriter fileWriter = null;
+			
+
+			try
+			{
+				int cnt = 
+					StoreRectangleSquareVolumeStandardCollection.GetItemCount();
+                         
+				if (cnt < 1)
+				{
+					errMsg = "Unable to save stored items as there are no " +
+					"items stored.";
+					myMsg.ShowInformationMessage(errMsg);
+					return;
+				}
+                
+				string[,] dataArray = new string[cnt, sizeElements];
+                
+				dataArray = GetStoredData();
+
+			    
+                
+				if (dataArray == null || dataArray.Length < 1)
+				{
+					errMsg = "Fond no stored data to save. Exiting.";
+					myMsg.ShowErrMessage(errMsg);
+					return;
+				}
+
+				retVal = sud.SaveUsersFormData(
+					"Save file name. If file with same name exists will " +
+					"overwrite. Create new file if name does not exist.");
+
+				if (string.IsNullOrEmpty(retVal))
+				{
+					return;
+				}
+				
+
+				FileStream fs = File.Create(retVal);
+				fs.Dispose();	
+				
+				fileWriter = new StreamWriter(retVal);
+
+				for (int i = 0; i < cnt; i++)
+				{
+					fileWriter.WriteLine(dataArray[i, 0]);
+					fileWriter.WriteLine(dataArray[i, 1]);
+					fileWriter.WriteLine(dataArray[i, 2]);
+					fileWriter.WriteLine(dataArray[i, 3]);
+					fileWriter.WriteLine(dataArray[i, 4]);
+					fileWriter.WriteLine(dataArray[i, 5]);
+					fileWriter.WriteLine(dataArray[i, 6]);
+					fileWriter.WriteLine(dataArray[i, 7]);
+					fileWriter.WriteLine(dataArray[i, 8]);
+					fileWriter.WriteLine(dataArray[i, 9]);
+					fileWriter.WriteLine(dataArray[i, 10]);
+					fileWriter.WriteLine(dataArray[i, 11]);
+					fileWriter.WriteLine(Environment.NewLine);
+				}
+
+				fileWriter.Dispose();				
+			}
+			catch (IndexOutOfRangeException ex)
+			{
+				errMsg = "Encountered error while collecting data from store." +
+				" Exiting printing."; 
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			finally
+			{
+				if (fileWriter.BaseStream != null)
+				{
+					fileWriter.Dispose();
+				}
+			}
+
+		}
+
+		/// <summary>
+		/// Gets the stored data.
+		/// </summary>
+		/// <returns>The stored data.</returns>
+		private string[,] GetStoredData()
+		{
+			int cnt = 
+				StoreRectangleSquareVolumeStandardCollection.GetItemCount();
+			SquareRectangleStruct srvs = new 
+                SquareRectangleStruct();
+
+			string[,] dataArray = new string[cnt, 12];
+
+			for (int i = 0; i < cnt; i++)
+			{
+				srvs = 
+                    StoreRectangleSquareVolumeStandardCollection.GetItemAt(i);
+				dataArray[i, 0] = "Depth in yards: " + srvs.DepthYards;
+				dataArray[i, 1] = "Depth in feet: " + srvs.DepthFeet;
+				dataArray[i, 2] = "Depth in inches: " + srvs.DepthInches;
+				dataArray[i, 3] = "Length in yards: " + srvs.LengthYards;
+				dataArray[i, 4] = "Length in feet: " + srvs.LengthFeet;
+				dataArray[i, 5] = "Length in inches: " + srvs.LengthInches;
+				dataArray[i, 6] = "Width in yards: " + srvs.WidthYards;
+				dataArray[i, 7] = "Width in feet: " + srvs.WidthFeet;
+				dataArray[i, 8] = "Width in inches: " + srvs.WidthInches;
+				dataArray[i, 9] = "Total volume yards: " + srvs.TotalYards;
+				dataArray[i, 10] = "Total volume feet: " + srvs.TotalFeet;
+				dataArray[i, 11] = "Total volume inches: " + srvs.TotalInches; 				
+			}
+
+			return dataArray;
+		}
+
+		/// <summary>
+		/// Creates the temp file.
+		/// </summary>
+		/// <returns>The temp file.</returns>
+		private string CreateTempFile()
+		{
+			string tmpPath = string.Empty;
+			string errMsg = string.Empty;
+			string dat = string.Empty;
+
+			const string MethodName = "private string CreateTempFile()";
+
+			try
+			{
+				tmpPath = System.IO.Path.GetTempFileName();
+                      
+				if (string.IsNullOrEmpty(tmpPath))
+				{
+					errMsg = "Unable to create temporary file for printing";
+
+					myMsg.BuildErrorString(ThisClassName, MethodName, errMsg,
+						dat);
+					return tmpPath;
+				}
+                      
+				if (!File.Exists(tmpPath))
+				{
+					errMsg = "Unable to create temporary file for printing";
+
+					myMsg.BuildErrorString(ThisClassName, MethodName, errMsg,
+						dat);
+					return tmpPath;
+				}
+
+				// all ok.
+				return tmpPath;
+			}
+			catch (IOException ex)
+			{
+				errMsg = "Unable to create temporary file for printing";
+
+				myMsg.BuildErrorString(ThisClassName, MethodName, errMsg,
+					ex.ToString());
+				return tmpPath; 
+			}
+		}
+
+		#endregion SAVEING USER DATA
 	}
 }

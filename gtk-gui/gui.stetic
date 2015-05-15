@@ -2177,17 +2177,17 @@
                     <property name="Size">3</property>
                     <property name="LayoutStyle">Spread</property>
                     <child>
-                      <widget class="Gtk.Button" id="btnPrintForm">
+                      <widget class="Gtk.Button" id="btnSaveForm">
                         <property name="MemberName" />
                         <property name="WidthRequest">118</property>
                         <property name="HeightRequest">40</property>
                         <property name="Tooltip" translatable="yes">Print the information on this form.</property>
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Print Form</property>
+                        <property name="Label" translatable="yes">Save Form</property>
                         <property name="UseUnderline">True</property>
                         <property name="BorderWidth">4</property>
-                        <signal name="Clicked" handler="OnBtnPrintFormClicked" />
+                        <signal name="Clicked" handler="OnBtnSaveFormToFileClicked" />
                       </widget>
                       <packing>
                         <property name="Expand">False</property>
@@ -2195,17 +2195,17 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Button" id="btnPrintStored">
+                      <widget class="Gtk.Button" id="btnSaveStored">
                         <property name="MemberName" />
                         <property name="WidthRequest">118</property>
                         <property name="HeightRequest">40</property>
                         <property name="Tooltip" translatable="yes">Print the data that is contained in store.</property>
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Print Stored</property>
+                        <property name="Label" translatable="yes">Save Stored</property>
                         <property name="UseUnderline">True</property>
                         <property name="BorderWidth">4</property>
-                        <signal name="Clicked" handler="OnBtnPrintStoredClicked" />
+                        <signal name="Clicked" handler="OnBtnSaveStoredToFileClicked" />
                       </widget>
                       <packing>
                         <property name="Position">1</property>
@@ -2785,14 +2785,6 @@
           </packing>
         </child>
       </widget>
-    </child>
-  </widget>
-  <widget class="Gtk.Window" id="BuildingFormulas.CircleCubic" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">CircleCubic</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
     </child>
   </widget>
   <widget class="Gtk.Window" id="BuildingFormulas.CylinderVolume" design-size="800 600">
@@ -4577,25 +4569,9 @@
       <placeholder />
     </child>
   </widget>
-  <widget class="Gtk.Window" id="BuildingFormulas.HexagonPrisimVolume" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">HexagonCubic</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
-    </child>
-  </widget>
   <widget class="Gtk.Window" id="BuildingFormulas.OctagonPrisimVolume" design-size="400 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">OctagonCubic</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
-    </child>
-  </widget>
-  <widget class="Gtk.Window" id="BuildingFormulas.Right hexagonal pyramid" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">Right hexagonal pyramid</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
       <placeholder />
@@ -4617,20 +4593,112 @@
       <placeholder />
     </child>
   </widget>
-  <widget class="Gtk.Window" id="BuildingFormulas.HexagonVolume" design-size="400 300">
+  <widget class="Gtk.Dialog" id="BuildingFormulas.InputDialog" design-size="600 200">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">HexagonVolume</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
+    <property name="WidthRequest">600</property>
+    <property name="HeightRequest">200</property>
+    <property name="Title" translatable="yes">Enter a name for the file.</property>
+    <property name="WindowPosition">Center</property>
+    <property name="Modal">True</property>
+    <property name="BorderWidth">8</property>
+    <property name="Resizable">False</property>
+    <property name="AllowGrow">False</property>
+    <property name="DefaultWidth">400</property>
+    <property name="DefaultHeight">200</property>
+    <property name="Buttons">2</property>
+    <property name="HelpButton">False</property>
+    <child internal-child="VBox">
+      <widget class="Gtk.VBox" id="dlgInputBox">
+        <property name="MemberName" />
+        <property name="WidthRequest">400</property>
+        <property name="BorderWidth">2</property>
+        <child>
+          <widget class="Gtk.VBox" id="vbox3">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Label" id="lblInfo">
+                <property name="MemberName" />
+                <property name="HeightRequest">35</property>
+                <property name="LabelProp" translatable="yes">Enter a name to save this file as.</property>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Entry" id="txtFileName">
+                <property name="MemberName" />
+                <property name="HeightRequest">50</property>
+                <property name="CanFocus">True</property>
+                <property name="IsEditable">True</property>
+                <property name="MaxLength">100</property>
+                <property name="InvisibleChar">●</property>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder />
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
     </child>
-  </widget>
-  <widget class="Gtk.Window" id="BuildingFormulas.HexagonCylinderVolume" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">HexagonCylinderVolume</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
+    <child internal-child="ActionArea">
+      <widget class="Gtk.HButtonBox" id="dialog1_ActionArea">
+        <property name="MemberName" />
+        <property name="Spacing">10</property>
+        <property name="BorderWidth">5</property>
+        <property name="Size">2</property>
+        <property name="LayoutStyle">End</property>
+        <child>
+          <widget class="Gtk.Button" id="buttonCancel">
+            <property name="MemberName" />
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-cancel</property>
+            <property name="ResponseId">-6</property>
+            <signal name="Clicked" handler="OnBtnCancelClicked" />
+            <property name="label">gtk-cancel</property>
+          </widget>
+          <packing>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="buttonOk">
+            <property name="MemberName" />
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-ok</property>
+            <property name="ResponseId">-5</property>
+            <signal name="Clicked" handler="OnBtnOkClicked" />
+            <property name="label">gtk-ok</property>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
     </child>
   </widget>
 </stetic-interface>
