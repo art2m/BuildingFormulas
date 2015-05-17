@@ -9,6 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>BuildingFormulas</RootNamespace>
     <AssemblyName>BuildingFormulas</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +58,7 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="Mono.Cairo" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -70,7 +72,6 @@
     <Compile Include="Src\Main.cs" />
     <Compile Include="Src\MainWindow.cs" />
     <Compile Include="Classes\Class-Conversions\Conversions.cs" />
-    <Compile Include="Classes\Class-Formulas\RectangleSquareSolve.cs" />
     <Compile Include="Classes\Class-Messages\MyMessages.cs" />
     <Compile Include="Classes\Class-Properties\RectangleSquareStorage.cs" />
     <Compile Include="Classes\Class-Validation\ValidateData.cs" />
@@ -82,34 +83,40 @@
     <Compile Include="Classes\Global-Properties\DataEntry_GlobalVariables.cs" />
     <Compile Include="Src\SquareRectangleSurfaceArea.cs" />
     <Compile Include="gtk-gui\BuildingFormulas.SquareRectangleSurfaceArea.cs" />
-    <Compile Include="Src\SquareRectangleCubic.cs" />
     <Compile Include="Classes\Class-Properties\Shapes.cs" />
     <Compile Include="Classes\Class-Properties\MyMath.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.SquareRectangleCubicArea.cs" />
-    <Compile Include="Classes\Class-Collections\StoreCubicStandardCollection.cs" />
     <Compile Include="Src\dlgDisplayStoredData.cs" />
     <Compile Include="gtk-gui\BuildingFormulas.dlgDisplayStoredData.cs" />
-    <Compile Include="Src\CircleCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.CircleCubic.cs" />
-    <Compile Include="Src\CylinderCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.CylinderCubic.cs" />
-    <Compile Include="Src\ConeCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.ConeCubic.cs" />
-    <Compile Include="Src\TriangleCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.TriangleCubic.cs" />
-    <Compile Include="Src\PyramidRectangleBaseCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.PyramidRectangleBaseCubic.cs" />
-    <Compile Include="Src\PyramidTriangleBaseCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.PyramidTriangleBaseCubic.cs" />
-    <Compile Include="Src\PyramidSquareBaseCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.PyramidSquareBaseCubic.cs" />
-    <Compile Include="Src\HexagonCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.HexagonCubic.cs" />
-    <Compile Include="Src\OctagonCubic.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.OctagonCubic.cs" />
-    <Compile Include="Classes\Class-Collections\StoreConeCubicStandardCollection.cs" />
-    <Compile Include="Classes\Class-Collections\StoreCylinderCubicStandardCollection.cs" />
     <Compile Include="Classes\Class-Formulas\CylinderSolve.cs" />
+    <Compile Include="Src\ConeVolume.cs" />
+    <Compile Include="Src\CylinderVolume.cs" />
+    <Compile Include="Src\OcatagonPyramidVolume.cs" />
+    <Compile Include="Src\OctagonPrisimVolume.cs" />
+    <Compile Include="Src\OctagonVolume.cs" />
+    <Compile Include="Src\PyramidRectangleBaseVolume.cs" />
+    <Compile Include="Src\PyramidSquareBaseVolume.cs" />
+    <Compile Include="Src\PyramidTriangleBaseVolume.cs" />
+    <Compile Include="Src\SquareRectangleVolume.cs" />
+    <Compile Include="Src\TrianglePrisimVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.SquareRectangleVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.CylinderVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.ConeVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.TrianglePrisimVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.PyramidRectangleBaseVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.PyramidTriangleBaseVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.PyramidSquareBaseVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.OctagonPrisimVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.OctagonVolume.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.OcatagonPyramidVolume.cs" />
+    <Compile Include="Classes\Class-Collections\StoreConeVolumeStandardCollection.cs" />
+    <Compile Include="Classes\Class-Collections\StoreCylinderVolumeStandardCollection.cs" />
+    <Compile Include="Classes\Class-Collections\StoreRectangleSquareVolumeStandardCollection.cs" />
+    <Compile Include="Classes\Class-Print\Printing.cs" />
+    <Compile Include="Classes\Class-Save\SaveUserData.cs" />
+    <Compile Include="Src\InputDialog.cs" />
+    <Compile Include="gtk-gui\BuildingFormulas.InputDialog.cs" />
+    <Compile Include="Classes\Class-Formulas\RectangleSquareSolveStandard.cs" />
+    <Compile Include="Classes\Class-Formulas\RectangleSquareSolveMetric.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -134,5 +141,7 @@
     <Folder Include="Classes\Class-Properties\" />
     <Folder Include="Classes\Global-Properties\" />
     <Folder Include="Classes\Class-Collections\" />
+    <Folder Include="Classes\Class-Print\" />
+    <Folder Include="Classes\Class-Save\" />
   </ItemGroup>
 </Project>

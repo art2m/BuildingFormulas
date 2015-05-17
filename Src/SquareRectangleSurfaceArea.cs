@@ -53,7 +53,7 @@ namespace BuildingFormulas
 		/// <summary>
 		/// The rss object decleration.
 		/// </summary>
-		private RectangleSquareSolve rss = new RectangleSquareSolve();
+		private RectangleSquareSolveStandard rss = new RectangleSquareSolveStandard();
 
 		/// <summary>
 		/// The conv object decleration.

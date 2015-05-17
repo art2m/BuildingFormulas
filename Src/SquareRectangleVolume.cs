@@ -66,7 +66,14 @@ namespace BuildingFormulas
 		/// <summary>
 		/// The rss object decleration.
 		/// </summary>
-		private RectangleSquareSolve rss = new RectangleSquareSolve();
+		private RectangleSquareSolveStandard rss = new 
+            RectangleSquareSolveStandard();
+
+		/// <summary>
+		/// The rsm.
+		/// </summary>
+		private RectangleSquareSolveMetric rsm = new 
+            RectangleSquareSolveMetric();
 
 		/// <summary>
 		/// The standard units of meassurement.
@@ -446,6 +453,62 @@ namespace BuildingFormulas
 			return retVal = true;
 		}
 
+		private bool ConvertDataToMillimeters()
+		{
+			bool retVal = false;
+			double val = 0;
+			const string Length = "length";
+			const string Width = "width";
+			const string Depth = "depth";
+
+			const string MethodName = "private bool ConvertDataToMillimeters()";
+
+			val = this.rsm.GetDepthTotalMillimeters(
+				this.math.DepthMeters,
+				this.math.DepthCentimeters, 
+				this.math.DepthMillimeter);
+            
+			retVal = this.vd.ValidateTotalSumIsGreaterThenZero(val, "Depth");
+			if (!retVal)
+			{
+				return retVal;
+			}
+			else
+			{
+				this.math.DepthTotalMillimeters = val;
+			}
+
+			val = this.rsm.GetLengthTotalMillimeters(
+				this.math.LengthMeters,
+				this.math.LengthCentimeters, 
+				this.math.LengthMillimeters);
+			retVal = this.vd.ValidateTotalSumIsGreaterThenZero(val, "Length");
+			if (val <= 0)
+			{               
+				return retVal;
+			}
+			else
+			{
+				this.math.LengthTotalMillimeters = val;
+			}
+
+			val = this.rsm.GetWidthsTotalMillimeters(
+				this.math.WidthMeters,
+				this.math.WidthCentimeters, 
+				this.math.WidthMillimeters);
+			retVal = this.vd.ValidateTotalSumIsGreaterThenZero(val, Width);
+			if (val <= 0)
+			{               
+				return retVal;
+			}
+			else
+			{
+				this.math.WidthTotalMillimeters = val;
+			}
+
+			return retVal = true;
+		}
+
 		/// <summary>
 		/// Converts the standard units data to metric units.
 		/// </summary>
@@ -516,13 +579,19 @@ namespace BuildingFormulas
 
 			if (this.metricUnits)
 			{
+				retVal = this.FillValuesWithDataFromTextBoxes();
+				if (!retVal)
+				{
+					return;
+				}
+
 				retVal = this.ValidateCubicAreaRectangleSquareData();
 				if (!retVal)
 				{
 					return;
 				}
 
-				throw new NotImplementedException();
+				retVal = this.ConvertDataToMillimeters();
 			}
 			else if (this.standardUnits)
 			{
@@ -570,21 +639,21 @@ namespace BuildingFormulas
 				return;
 			}
 
-			val = this.rss.SolveForCubicAreaYards(
+			val = this.rss.SolveForVolumeYards(
 				this.math.DepthTotalInches, 
 				this.math.LengthTotalInches, 
 				this.math.WidthTotalInches);
 
 			txtCubicYards.Text = val.ToString();
 
-			val = this.rss.SolveForCubicAreaFeet(
+			val = this.rss.SolveForVolumeFeet(
 				this.math.DepthTotalInches,
 				this.math.LengthTotalInches,
 				this.math.WidthTotalInches);
 
 			txtCubicFeet.Text = val.ToString();
 
-			val = this.rss.SolveForCubicAreaInches(
+			val = this.rss.SolveForVolumeInches(
 				this.math.DepthTotalInches,
 				this.math.LengthTotalInches,
 				this.math.WidthTotalInches);
@@ -854,8 +923,37 @@ namespace BuildingFormulas
 			}
 			catch (IndexOutOfRangeException ex)
 			{
-				errMsg = "Encountered error while collecting data from store." +
-				" Exiting printing."; 
+				errMsg = "Encountered error dataArray out of bounds.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			catch (ArgumentNullException ex)
+			{
+				errMsg = "Encountered error: found no data to save.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			catch (ArgumentOutOfRangeException ex)
+			{
+				errMsg = "Encountered error: found no data to save.";
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+			}
+			catch (NotSupportedException ex)
+			{
+				errMsg = "Encountered error: unable to write data to file.";
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+			}
+			catch (IOException ex)
+			{
+				errMsg = "Encountered error: unable to write data to file.";
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+			}
+			catch (ArgumentException ex)
+			{
+				errMsg = "Encountered error: unable to write data to file.";
+				myMsg.BuildErrorString(errMsg, ex.ToString());
+			}
+			catch (ObjectDisposedException ex)
+			{
+				errMsg = "Encountered error: invalid opertation.";
 				myMsg.BuildErrorString(errMsg, ex.ToString());
 			}
 			finally
