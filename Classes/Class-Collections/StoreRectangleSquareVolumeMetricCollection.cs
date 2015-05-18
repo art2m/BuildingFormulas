@@ -1,5 +1,5 @@
 ﻿//
-//  StoreStadard.cs
+//  StoreRectangleSquareVolumeMetricCollection.cs
 //
 //  Author:
 //       art2m <art2m@live.com>
@@ -29,7 +29,7 @@ namespace BuildingFormulas
 	/// <summary>
 	/// Cubic area square rectangle.
 	/// </summary>
-	public struct SquareRectangleStruct
+	public struct SquareRectangleMetricStruct
 	{
 		/// <summary>
 		/// The type of the solve.
@@ -39,132 +39,135 @@ namespace BuildingFormulas
 		/// <summary>
 		/// The length.
 		/// </summary>
-		public string LengthYards;
+		public string LengthMeters;
 
 		/// <summary>
 		/// The length feet.
 		/// </summary>
-		public string LengthFeet;
+		public string LengthCentimeters;
 
 		/// <summary>
 		/// The length inches.
 		/// </summary>
-		public string LengthInches;
+		public string LengthMillimeters;
 
 		/// <summary>
 		/// The width.
 		/// </summary>
-		public string WidthYards;
+		public string WidthMeters;
 
 		/// <summary>
 		/// The width feet.
 		/// </summary>
-		public string WidthFeet;
+		public string WidthCentimeters;
 
 		/// <summary>
 		/// The width inches.
 		/// </summary>
-		public string WidthInches;
+		public string WidthMillimeters;
 
 		/// <summary>
 		/// The depth.
 		/// </summary>
-		public string DepthYards;
+		public string DepthMeters;
 
 		/// <summary>
 		/// The depth feet.
 		/// </summary>
-		public string DepthFeet;
+		public string DepthCentimeters;
 
 		/// <summary>
 		/// The depth inches.
 		/// </summary>
-		public string DepthInches;
+		public string DepthMillimeters;
 
 		/// <summary>
 		/// The total yards.
 		/// </summary>
-		public string TotalYards;
+		public string TotalMeters;
 
 		/// <summary>
 		/// The total feet.
 		/// </summary>
-		public string TotalFeet;
+		public string TotalCentimeters;
 
 		/// <summary>
 		/// The total inches.
 		/// </summary>
-		public string TotalInches;
+		public string TotalMillimeters;
 
 		/// <summary>
-		/// Stores the cubic standard.
+		/// Stores the volume standard.
 		/// </summary>
 		/// <param name="solveType">Solve type.</param>
-		/// <param name="lengthYards">Length yards.</param>
-		/// <param name="lengthFeet">Length feet.</param>
-		/// <param name="lengthInches">Length inches.</param>
-		/// <param name="widthYards">Width yards.</param>
-		/// <param name="widthFeet">Width feet.</param>
-		/// <param name="widthInches">Width inches.</param>
-		/// <param name="depthYards">Depth yards.</param>
-		/// <param name="depthFeet">Depth feet.</param>
-		/// <param name="depthInches">Depth inches.</param>
-		/// <param name="totalYards">Total yards.</param>
-		/// <param name="totalFeet">Total feet.</param>
-		/// <param name="totalInches">Total inches.</param>
-		public void StoreVolumeStandard(
+		/// <param name="DepthMeters">Depth meters.</param>
+		/// <param name="DepthCentimeters">Depth centimeters.</param>
+		/// <param name="DepthMillimeters">Depth millimeters.</param>
+		/// <param name="LengthMeters">Length meters.</param>
+		/// <param name="LengthCentimeters">Length centimeters.</param>
+		/// <param name="LengthMillimeters">Length millimeters.</param>
+		/// <param name="WidthMeters">Width meters.</param>
+		/// <param name="WidthCentimeters">Width centimeters.</param>
+		/// <param name="WidthMillimeters">Width millimeters.</param>
+		/// <param name="TotalMeters">Total meters.</param>
+		/// <param name="TotalCentimeters">Total centimeters.</param>
+		/// <param name="TotalMillimeters">Total millimeters.</param>
+		public void StoreVolumeMetric(
 			string solveType,
-			string depthYards,
-			string depthFeet,
-			string depthInches,
-			string lengthYards,
-			string lengthFeet,
-			string lengthInches,
-			string widthYards,
-			string widthFeet,
-			string widthInches,
-			string totalYards,
-			string totalFeet,
-			string totalInches)
+			string DepthMeters,
+			string DepthCentimeters,
+			string DepthMillimeters,
+			string LengthMeters,
+			string LengthCentimeters,
+			string LengthMillimeters,
+			string WidthMeters,
+			string WidthCentimeters,
+			string WidthMillimeters,
+			string TotalMeters,
+			string TotalCentimeters,
+			string TotalMillimeters)
 		{
 			this.SolveType = solveType;
-			this.LengthYards = lengthYards;
-			this.LengthFeet = lengthFeet;
-			this.LengthInches = lengthInches;
-			this.WidthYards = widthYards;
-			this.WidthFeet = widthFeet;
-			this.WidthInches = widthInches;
-			this.DepthYards = depthYards;
-			this.DepthFeet = depthFeet;
-			this.DepthInches = depthInches;
-			this.TotalYards = totalYards;
-			this.TotalFeet = totalFeet;
-			this.TotalInches = totalInches;
+			this.LengthMeters = LengthMeters;
+			this.LengthCentimeters = LengthCentimeters;
+			this.LengthMillimeters = LengthMillimeters;
+			this.WidthMeters = WidthMeters;
+			this.WidthCentimeters = WidthCentimeters;
+			this.WidthMillimeters = WidthMillimeters;
+			this.DepthMeters = DepthMeters;
+			this.DepthCentimeters = DepthCentimeters;
+			this.DepthMillimeters = DepthMillimeters;
+			this.TotalMeters = TotalMeters;
+			this.TotalCentimeters = TotalCentimeters;
+			this.TotalMillimeters = TotalMillimeters;
 		}
 	}
 	#endregion STRUCTURE DECLERATION
 
 	/// <summary>
-	/// Store cubic standard collection.
+	/// Store rectangle square volume metric collection.
 	/// </summary>
-	public static class StoreRectangleSquareVolumeStandardCollection
+	public class StoreRectangleSquareVolumeMetricCollection
 	{
 		/// <summary>
-		/// The name of the class.
+		/// Initializes a new instance of the <see 
+		/// cref="BuildingFormulas.StoreRectangleSquareVolumeMetricCollection"
+		/// /> class.
 		/// </summary>
-		private const string MyClassName = 
-			"public static class StoreCubicStandardCollection";
+		public StoreRectangleSquareVolumeMetricCollection()
+		{
+		}
 
 		/// <summary>
 		/// My message class creates and displays messages.
 		/// </summary>
 		private static MyMessages myMsg = new MyMessages();
-       
+
 		/// <summary>
 		/// The cubic list.
 		/// </summary>
-		private static List<SquareRectangleStruct> dataList = new 
-            List<SquareRectangleStruct>();
+		private static List<SquareRectangleMetricStruct> dataList = new 
+            List<SquareRectangleMetricStruct>();
 
 		/// <summary>
 		/// Adds the new item.
@@ -172,20 +175,20 @@ namespace BuildingFormulas
 		/// <returns><c>true</c>, if new item was added, 
 		/// <c>false</c> otherwise.</returns>
 		/// <param name="dataStruct">Data struct.</param>
-		public static bool AddNewItem(SquareRectangleStruct dataStruct)
+		public static bool AddNewItem(SquareRectangleMetricStruct dataStruct)
 		{
 			bool retVal = false;
 
 			const string ErrMsg = "Invalid argument passed.";
-			
+
 
 			try
 			{
 				dataList.Add(dataStruct);
-                
+
 				// All ok return true. 
 				retVal = true;
-               
+
 				return retVal;
 			}
 			catch (ArgumentException ex)
@@ -238,10 +241,10 @@ namespace BuildingFormulas
 			try
 			{                
 				dataList.RemoveAt(index);
-                
+
 				// All ok return true
 				retVal = true;
-                
+
 				return retVal;
 			}
 			catch (IndexOutOfRangeException ex)
@@ -249,8 +252,6 @@ namespace BuildingFormulas
 				string errMsg = 
 					"Encountered error while removing item at: " + index;
 				myMsg.BuildErrorString(
-					MyClassName, 
-					MethodName, 
 					errMsg,
 					ex.ToString());
 				return retVal;
@@ -259,8 +260,6 @@ namespace BuildingFormulas
 			{
 				const string ErrMsg = "Encountered error with argument.";
 				myMsg.BuildErrorString(
-					MyClassName, 
-					MethodName, 
 					ErrMsg,
 					ex.ToString());
 				return retVal;
@@ -273,9 +272,10 @@ namespace BuildingFormulas
 		/// <returns>The 
 		/// <see cref="BuildingFormulas.CubicAreaSquareRectangle"/>.</returns>
 		/// <param name="index">Index of item to get.</param>
-		public static SquareRectangleStruct GetItemAt(int index)
+		public static SquareRectangleMetricStruct GetItemAt(int index)
 		{
-			SquareRectangleStruct dataStruct = new SquareRectangleStruct();
+			SquareRectangleMetricStruct dataStruct = new 
+                SquareRectangleMetricStruct();
 
 			const string MethodName =
 				"public static CubicAreaSquareRectangle GetItemAt(int index)";
@@ -283,7 +283,7 @@ namespace BuildingFormulas
 			try
 			{ 
 				dataStruct = dataList[index];
-                
+
 				return dataStruct;
 			}
 			catch (IndexOutOfRangeException ex)
@@ -291,8 +291,6 @@ namespace BuildingFormulas
 				string errMsg =
 					"Encountered error while removing item at: " + index;
 				myMsg.BuildErrorString(
-					MyClassName, 
-					MethodName, 
 					errMsg,
 					ex.ToString());
 
@@ -302,8 +300,6 @@ namespace BuildingFormulas
 			{
 				const string ErrMsg = "Encountered error with argument.";
 				myMsg.BuildErrorString(
-					MyClassName, 
-					MethodName, 
 					ErrMsg,
 					ex.ToString());
 
@@ -312,3 +308,4 @@ namespace BuildingFormulas
 		}
 	}
 }
+

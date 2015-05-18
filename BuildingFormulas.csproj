@@ -81,8 +81,6 @@
     <Compile Include="Classes\Class-Formulas\ConeSolve.cs" />
     <Compile Include="Classes\Global-Properties\LabelCaptions.cs" />
     <Compile Include="Classes\Global-Properties\DataEntry_GlobalVariables.cs" />
-    <Compile Include="Src\SquareRectangleSurfaceArea.cs" />
-    <Compile Include="gtk-gui\BuildingFormulas.SquareRectangleSurfaceArea.cs" />
     <Compile Include="Classes\Class-Properties\Shapes.cs" />
     <Compile Include="Classes\Class-Properties\MyMath.cs" />
     <Compile Include="Src\dlgDisplayStoredData.cs" />
@@ -117,6 +115,7 @@
     <Compile Include="gtk-gui\BuildingFormulas.InputDialog.cs" />
     <Compile Include="Classes\Class-Formulas\RectangleSquareSolveStandard.cs" />
     <Compile Include="Classes\Class-Formulas\RectangleSquareSolveMetric.cs" />
+    <Compile Include="Classes\Class-Collections\StoreRectangleSquareVolumeMetricCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

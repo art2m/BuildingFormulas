@@ -482,24 +482,24 @@ namespace BuildingFormulas
 			object sender, 
 			EventArgs e)
 		{
-			SquareRectangleSurfaceArea sqrSA = 
-				new SquareRectangleSurfaceArea();
-
-			degb.ShapeToSolveFor = shape.RectangleShape;
-
-			sqrSA.ShowAll();
+//			SquareRectangleSurfaceArea sqrSA = 
+//				new SquareRectangleSurfaceArea();
+//
+//			degb.ShapeToSolveFor = shape.RectangleShape;
+//
+//			sqrSA.ShowAll();
 		}
 
 		protected void OnMenuSquareSurfaceAreaActivated(
 			object sender, 
 			EventArgs e)
 		{
-			SquareRectangleSurfaceArea sqrSA = 
-				new SquareRectangleSurfaceArea();
-
-			degb.ShapeToSolveFor = shape.SquareShape;
-           
-			sqrSA.ShowAll();
+//			SquareRectangleSurfaceArea sqrSA = 
+//				new SquareRectangleSurfaceArea();
+//
+//			degb.ShapeToSolveFor = shape.SquareShape;
+//           
+//			sqrSA.ShowAll();
 		}
 
 		#endregion SURFACE AREA MENU ITEMS

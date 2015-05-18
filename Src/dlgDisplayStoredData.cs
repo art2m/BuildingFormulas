@@ -22,12 +22,12 @@ using System;
 
 namespace BuildingFormulas
 {
-    public partial class dlgDisplayStoredData : Gtk.Dialog
-    {
-        public dlgDisplayStoredData()
-        {
-            this.Build();
-        }
-    }
+	public partial class dlgDisplayStoredData : Gtk.Dialog
+	{
+		public dlgDisplayStoredData()
+		{
+			this.Build();
+		}
+	}
 }
 

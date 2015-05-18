@@ -247,18 +247,18 @@ namespace BuildingFormulas
 			this.ConvertDataToInches();
 
 			val = this.rss.SolveForSurfaceAreaSquareYards(
-				this.math.LengthTotalInches,
-				this.math.WidthTotalInches);
+				this.math.LengthTotalMIllimeters,
+				this.math.WidthTotalMillimeters);
 			txtSurfaceYards.Text = val.ToString();
 
 			val = this.rss.SolveForSurfaceAreaSquareFeet(
-				this.math.LengthTotalInches,
-				this.math.WidthTotalInches);
+				this.math.LengthTotalMIllimeters,
+				this.math.WidthTotalMillimeters);
 			txtSurfaceFeet.Text = val.ToString();
 
 			val = this.rss.SolveForSurfaceAreaSquareInches(
-				this.math.LengthTotalInches,
-				this.math.WidthTotalInches);
+				this.math.LengthTotalMIllimeters,
+				this.math.WidthTotalMillimeters);
 			txtSurfaceInches.Text = val.ToString();            
 		}
 
@@ -327,7 +327,7 @@ namespace BuildingFormulas
 			}
 			else
 			{
-				this.math.LengthTotalInches = val;
+				this.math.LengthTotalMIllimeters = val;
 			}
 
 			val = this.rss.GetTheWidthsTotalInches(
@@ -341,7 +341,7 @@ namespace BuildingFormulas
 			}
 			else
 			{
-				this.math.WidthTotalInches = val;
+				this.math.WidthTotalMillimeters = val;
 			}
 
 			return retVal = true;

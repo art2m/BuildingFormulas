@@ -58,6 +58,26 @@ namespace BuildingFormulas
 		
 		private global::Gtk.Entry txtCubicYards;
 		
+		private global::Gtk.HButtonBox hbtnboxEditStore;
+		
+		private global::Gtk.Button btnFirst;
+		
+		private global::Gtk.Button btnNext;
+		
+		private global::Gtk.Button btnPrevious;
+		
+		private global::Gtk.Button btnLast;
+		
+		private global::Gtk.Button btnEdit;
+		
+		private global::Gtk.Button btnUpdate;
+		
+		private global::Gtk.Button btnDelete;
+		
+		private global::Gtk.Button btnCancel;
+		
+		private global::Gtk.Button btnDone;
+		
 		private global::Gtk.HBox hbox7;
 		
 		private global::Gtk.HBox hbox8;
@@ -68,13 +88,9 @@ namespace BuildingFormulas
 		
 		private global::Gtk.Button btnNewItem;
 		
-		private global::Gtk.Button btnClear;
-		
 		private global::Gtk.Button btnStandard;
 		
 		private global::Gtk.Button btnMetric;
-		
-		private global::Gtk.Button btnConvert;
 		
 		private global::Gtk.Alignment alignment6;
 		
@@ -112,7 +128,7 @@ namespace BuildingFormulas
 		{
 			global::Stetic.Gui.Initialize (this);
 			// Widget BuildingFormulas.SquareRectangleVolume
-			this.WidthRequest = 800;
+			this.WidthRequest = 900;
 			this.HeightRequest = 700;
 			this.Name = "BuildingFormulas.SquareRectangleVolume";
 			this.Title = global::Mono.Unix.Catalog.GetString ("SquareRectangleCubicArea");
@@ -504,6 +520,127 @@ namespace BuildingFormulas
 			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.tblCubicTotals]));
 			w26.Position = 1;
 			w26.Expand = false;
+			w26.Fill = false;
+			// Container child dialog1_VBox.Gtk.Box+BoxChild
+			this.hbtnboxEditStore = new global::Gtk.HButtonBox ();
+			this.hbtnboxEditStore.HeightRequest = 54;
+			this.hbtnboxEditStore.Name = "hbtnboxEditStore";
+			this.hbtnboxEditStore.BorderWidth = ((uint)(4));
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnFirst = new global::Gtk.Button ();
+			this.btnFirst.CanFocus = true;
+			this.btnFirst.Name = "btnFirst";
+			this.btnFirst.UseUnderline = true;
+			this.btnFirst.BorderWidth = ((uint)(4));
+			this.btnFirst.Label = global::Mono.Unix.Catalog.GetString ("First");
+			this.hbtnboxEditStore.Add (this.btnFirst);
+			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnFirst]));
+			w27.Expand = false;
+			w27.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnNext = new global::Gtk.Button ();
+			this.btnNext.CanFocus = true;
+			this.btnNext.Name = "btnNext";
+			this.btnNext.UseUnderline = true;
+			this.btnNext.BorderWidth = ((uint)(4));
+			this.btnNext.Label = global::Mono.Unix.Catalog.GetString ("Next");
+			this.hbtnboxEditStore.Add (this.btnNext);
+			global::Gtk.ButtonBox.ButtonBoxChild w28 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnNext]));
+			w28.Position = 1;
+			w28.Expand = false;
+			w28.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnPrevious = new global::Gtk.Button ();
+			this.btnPrevious.CanFocus = true;
+			this.btnPrevious.Name = "btnPrevious";
+			this.btnPrevious.UseUnderline = true;
+			this.btnPrevious.BorderWidth = ((uint)(4));
+			this.btnPrevious.Label = global::Mono.Unix.Catalog.GetString ("Previous");
+			this.hbtnboxEditStore.Add (this.btnPrevious);
+			global::Gtk.ButtonBox.ButtonBoxChild w29 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnPrevious]));
+			w29.Position = 2;
+			w29.Expand = false;
+			w29.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnLast = new global::Gtk.Button ();
+			this.btnLast.CanFocus = true;
+			this.btnLast.Name = "btnLast";
+			this.btnLast.UseUnderline = true;
+			this.btnLast.BorderWidth = ((uint)(4));
+			this.btnLast.Label = global::Mono.Unix.Catalog.GetString ("Last");
+			this.hbtnboxEditStore.Add (this.btnLast);
+			global::Gtk.ButtonBox.ButtonBoxChild w30 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnLast]));
+			w30.Position = 3;
+			w30.Expand = false;
+			w30.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnEdit = new global::Gtk.Button ();
+			this.btnEdit.CanFocus = true;
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.UseStock = true;
+			this.btnEdit.UseUnderline = true;
+			this.btnEdit.BorderWidth = ((uint)(4));
+			this.btnEdit.Label = "gtk-edit";
+			this.hbtnboxEditStore.Add (this.btnEdit);
+			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnEdit]));
+			w31.Position = 4;
+			w31.Expand = false;
+			w31.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnUpdate = new global::Gtk.Button ();
+			this.btnUpdate.CanFocus = true;
+			this.btnUpdate.Name = "btnUpdate";
+			this.btnUpdate.UseUnderline = true;
+			this.btnUpdate.BorderWidth = ((uint)(4));
+			this.btnUpdate.Label = global::Mono.Unix.Catalog.GetString ("Update");
+			this.hbtnboxEditStore.Add (this.btnUpdate);
+			global::Gtk.ButtonBox.ButtonBoxChild w32 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnUpdate]));
+			w32.Position = 5;
+			w32.Expand = false;
+			w32.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnDelete = new global::Gtk.Button ();
+			this.btnDelete.CanFocus = true;
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.UseStock = true;
+			this.btnDelete.UseUnderline = true;
+			this.btnDelete.BorderWidth = ((uint)(4));
+			this.btnDelete.Label = "gtk-delete";
+			this.hbtnboxEditStore.Add (this.btnDelete);
+			global::Gtk.ButtonBox.ButtonBoxChild w33 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnDelete]));
+			w33.Position = 6;
+			w33.Expand = false;
+			w33.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnCancel = new global::Gtk.Button ();
+			this.btnCancel.CanFocus = true;
+			this.btnCancel.Name = "btnCancel";
+			this.btnCancel.UseStock = true;
+			this.btnCancel.UseUnderline = true;
+			this.btnCancel.BorderWidth = ((uint)(4));
+			this.btnCancel.Label = "gtk-cancel";
+			this.hbtnboxEditStore.Add (this.btnCancel);
+			global::Gtk.ButtonBox.ButtonBoxChild w34 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnCancel]));
+			w34.Position = 7;
+			w34.Expand = false;
+			w34.Fill = false;
+			// Container child hbtnboxEditStore.Gtk.ButtonBox+ButtonBoxChild
+			this.btnDone = new global::Gtk.Button ();
+			this.btnDone.CanFocus = true;
+			this.btnDone.Name = "btnDone";
+			this.btnDone.UseUnderline = true;
+			this.btnDone.BorderWidth = ((uint)(4));
+			this.btnDone.Label = global::Mono.Unix.Catalog.GetString ("Done");
+			this.hbtnboxEditStore.Add (this.btnDone);
+			global::Gtk.ButtonBox.ButtonBoxChild w35 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbtnboxEditStore [this.btnDone]));
+			w35.Position = 8;
+			w35.Expand = false;
+			w35.Fill = false;
+			this.dialog1_VBox.Add (this.hbtnboxEditStore);
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbtnboxEditStore]));
+			w36.Position = 2;
+			w36.Expand = false;
+			w36.Fill = false;
 			// Container child dialog1_VBox.Gtk.Box+BoxChild
 			this.hbox7 = new global::Gtk.HBox ();
 			this.hbox7.Name = "hbox7";
@@ -517,8 +654,8 @@ namespace BuildingFormulas
 			this.alignment5 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment5.Name = "alignment5";
 			this.hbox8.Add (this.alignment5);
-			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment5]));
-			w27.Position = 0;
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment5]));
+			w37.Position = 0;
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.vbtnLeft = new global::Gtk.VButtonBox ();
 			this.vbtnLeft.WidthRequest = 142;
@@ -537,24 +674,9 @@ namespace BuildingFormulas
 			this.btnNewItem.BorderWidth = ((uint)(4));
 			this.btnNewItem.Label = global::Mono.Unix.Catalog.GetString ("Enter New Item");
 			this.vbtnLeft.Add (this.btnNewItem);
-			global::Gtk.ButtonBox.ButtonBoxChild w28 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnNewItem]));
-			w28.Expand = false;
-			w28.Fill = false;
-			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
-			this.btnClear = new global::Gtk.Button ();
-			this.btnClear.TooltipMarkup = "Reset all boxes to zero.";
-			this.btnClear.WidthRequest = 118;
-			this.btnClear.HeightRequest = 40;
-			this.btnClear.CanFocus = true;
-			this.btnClear.Name = "btnClear";
-			this.btnClear.UseUnderline = true;
-			this.btnClear.BorderWidth = ((uint)(4));
-			this.btnClear.Label = global::Mono.Unix.Catalog.GetString ("Clear Form");
-			this.vbtnLeft.Add (this.btnClear);
-			global::Gtk.ButtonBox.ButtonBoxChild w29 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnClear]));
-			w29.Position = 1;
-			w29.Expand = false;
-			w29.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w38 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnNewItem]));
+			w38.Expand = false;
+			w38.Fill = false;
 			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
 			this.btnStandard = new global::Gtk.Button ();
 			this.btnStandard.TooltipMarkup = "Use standard messaurement units.";
@@ -566,10 +688,10 @@ namespace BuildingFormulas
 			this.btnStandard.BorderWidth = ((uint)(4));
 			this.btnStandard.Label = global::Mono.Unix.Catalog.GetString ("Standard");
 			this.vbtnLeft.Add (this.btnStandard);
-			global::Gtk.ButtonBox.ButtonBoxChild w30 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnStandard]));
-			w30.Position = 2;
-			w30.Expand = false;
-			w30.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w39 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnStandard]));
+			w39.Position = 1;
+			w39.Expand = false;
+			w39.Fill = false;
 			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
 			this.btnMetric = new global::Gtk.Button ();
 			this.btnMetric.TooltipMarkup = "Use metric messaurement units.";
@@ -581,39 +703,24 @@ namespace BuildingFormulas
 			this.btnMetric.BorderWidth = ((uint)(4));
 			this.btnMetric.Label = global::Mono.Unix.Catalog.GetString ("Metric");
 			this.vbtnLeft.Add (this.btnMetric);
-			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnMetric]));
-			w31.Position = 3;
-			w31.Expand = false;
-			w31.Fill = false;
-			// Container child vbtnLeft.Gtk.ButtonBox+ButtonBoxChild
-			this.btnConvert = new global::Gtk.Button ();
-			this.btnConvert.TooltipMarkup = "Convert from stadard units to metric units or metric units to standard units.";
-			this.btnConvert.WidthRequest = 118;
-			this.btnConvert.HeightRequest = 40;
-			this.btnConvert.CanFocus = true;
-			this.btnConvert.Name = "btnConvert";
-			this.btnConvert.UseUnderline = true;
-			this.btnConvert.BorderWidth = ((uint)(4));
-			this.btnConvert.Label = global::Mono.Unix.Catalog.GetString ("Convert");
-			this.vbtnLeft.Add (this.btnConvert);
-			global::Gtk.ButtonBox.ButtonBoxChild w32 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnConvert]));
-			w32.Position = 4;
-			w32.Expand = false;
-			w32.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w40 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnLeft [this.btnMetric]));
+			w40.Position = 2;
+			w40.Expand = false;
+			w40.Fill = false;
 			this.hbox8.Add (this.vbtnLeft);
-			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.vbtnLeft]));
-			w33.Position = 1;
-			w33.Expand = false;
-			w33.Fill = false;
+			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.vbtnLeft]));
+			w41.Position = 1;
+			w41.Expand = false;
+			w41.Fill = false;
 			// Container child hbox8.Gtk.Box+BoxChild
 			this.alignment6 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment6.Name = "alignment6";
 			this.hbox8.Add (this.alignment6);
-			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment6]));
-			w34.Position = 2;
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox8 [this.alignment6]));
+			w42.Position = 2;
 			this.hbox7.Add (this.hbox8);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox8]));
-			w35.Position = 0;
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox8]));
+			w43.Position = 0;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.hbox9 = new global::Gtk.HBox ();
 			this.hbox9.Name = "hbox9";
@@ -622,8 +729,8 @@ namespace BuildingFormulas
 			this.alignment7 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment7.Name = "alignment7";
 			this.hbox9.Add (this.alignment7);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment7]));
-			w36.Position = 0;
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment7]));
+			w44.Position = 0;
 			// Container child hbox9.Gtk.Box+BoxChild
 			this.vbtnCenter = new global::Gtk.VButtonBox ();
 			this.vbtnCenter.WidthRequest = 142;
@@ -642,9 +749,9 @@ namespace BuildingFormulas
 			this.btnSolve.BorderWidth = ((uint)(4));
 			this.btnSolve.Label = global::Mono.Unix.Catalog.GetString ("Solve");
 			this.vbtnCenter.Add (this.btnSolve);
-			global::Gtk.ButtonBox.ButtonBoxChild w37 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnSolve]));
-			w37.Expand = false;
-			w37.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnSolve]));
+			w45.Expand = false;
+			w45.Fill = false;
 			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
 			this.btnStore = new global::Gtk.Button ();
 			this.btnStore.TooltipMarkup = "Save the cubic area result for this shape.";
@@ -656,10 +763,10 @@ namespace BuildingFormulas
 			this.btnStore.BorderWidth = ((uint)(4));
 			this.btnStore.Label = global::Mono.Unix.Catalog.GetString ("Store Result");
 			this.vbtnCenter.Add (this.btnStore);
-			global::Gtk.ButtonBox.ButtonBoxChild w38 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnStore]));
-			w38.Position = 1;
-			w38.Expand = false;
-			w38.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w46 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnStore]));
+			w46.Position = 1;
+			w46.Expand = false;
+			w46.Fill = false;
 			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
 			this.btnDisplayStore = new global::Gtk.Button ();
 			this.btnDisplayStore.TooltipMarkup = "Display the cubic area for items stored.";
@@ -671,10 +778,10 @@ namespace BuildingFormulas
 			this.btnDisplayStore.BorderWidth = ((uint)(4));
 			this.btnDisplayStore.Label = global::Mono.Unix.Catalog.GetString ("Display Store");
 			this.vbtnCenter.Add (this.btnDisplayStore);
-			global::Gtk.ButtonBox.ButtonBoxChild w39 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnDisplayStore]));
-			w39.Position = 2;
-			w39.Expand = false;
-			w39.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w47 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnDisplayStore]));
+			w47.Position = 2;
+			w47.Expand = false;
+			w47.Fill = false;
 			// Container child vbtnCenter.Gtk.ButtonBox+ButtonBoxChild
 			this.btnClearStore = new global::Gtk.Button ();
 			this.btnClearStore.TooltipMarkup = "Clear the items that are currently in store.";
@@ -686,24 +793,24 @@ namespace BuildingFormulas
 			this.btnClearStore.BorderWidth = ((uint)(4));
 			this.btnClearStore.Label = global::Mono.Unix.Catalog.GetString ("Clear Store");
 			this.vbtnCenter.Add (this.btnClearStore);
-			global::Gtk.ButtonBox.ButtonBoxChild w40 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnClearStore]));
-			w40.Position = 3;
-			w40.Expand = false;
-			w40.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w48 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnCenter [this.btnClearStore]));
+			w48.Position = 3;
+			w48.Expand = false;
+			w48.Fill = false;
 			this.hbox9.Add (this.vbtnCenter);
-			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.vbtnCenter]));
-			w41.Position = 1;
-			w41.Expand = false;
-			w41.Fill = false;
+			global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.vbtnCenter]));
+			w49.Position = 1;
+			w49.Expand = false;
+			w49.Fill = false;
 			// Container child hbox9.Gtk.Box+BoxChild
 			this.alignment8 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment8.Name = "alignment8";
 			this.hbox9.Add (this.alignment8);
-			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment8]));
-			w42.Position = 2;
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox9 [this.alignment8]));
+			w50.Position = 2;
 			this.hbox7.Add (this.hbox9);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox9]));
-			w43.Position = 1;
+			global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox9]));
+			w51.Position = 1;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.hbox10 = new global::Gtk.HBox ();
 			this.hbox10.Name = "hbox10";
@@ -712,8 +819,8 @@ namespace BuildingFormulas
 			this.alignment9 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment9.Name = "alignment9";
 			this.hbox10.Add (this.alignment9);
-			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment9]));
-			w44.Position = 0;
+			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment9]));
+			w52.Position = 0;
 			// Container child hbox10.Gtk.Box+BoxChild
 			this.vbtnRight = new global::Gtk.VButtonBox ();
 			this.vbtnRight.WidthRequest = 142;
@@ -732,9 +839,9 @@ namespace BuildingFormulas
 			this.btnSaveForm.BorderWidth = ((uint)(4));
 			this.btnSaveForm.Label = global::Mono.Unix.Catalog.GetString ("Save Form");
 			this.vbtnRight.Add (this.btnSaveForm);
-			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnSaveForm]));
-			w45.Expand = false;
-			w45.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w53 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnSaveForm]));
+			w53.Expand = false;
+			w53.Fill = false;
 			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
 			this.btnSaveStored = new global::Gtk.Button ();
 			this.btnSaveStored.TooltipMarkup = "Print the data that is contained in store.";
@@ -746,10 +853,10 @@ namespace BuildingFormulas
 			this.btnSaveStored.BorderWidth = ((uint)(4));
 			this.btnSaveStored.Label = global::Mono.Unix.Catalog.GetString ("Save Stored");
 			this.vbtnRight.Add (this.btnSaveStored);
-			global::Gtk.ButtonBox.ButtonBoxChild w46 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnSaveStored]));
-			w46.Position = 1;
-			w46.Expand = false;
-			w46.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w54 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnSaveStored]));
+			w54.Position = 1;
+			w54.Expand = false;
+			w54.Fill = false;
 			// Container child vbtnRight.Gtk.ButtonBox+ButtonBoxChild
 			this.btnClose = new global::Gtk.Button ();
 			this.btnClose.TooltipMarkup = "Exit from this form. ";
@@ -762,36 +869,44 @@ namespace BuildingFormulas
 			this.btnClose.BorderWidth = ((uint)(4));
 			this.btnClose.Label = "gtk-close";
 			this.vbtnRight.Add (this.btnClose);
-			global::Gtk.ButtonBox.ButtonBoxChild w47 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnClose]));
-			w47.Position = 2;
-			w47.Expand = false;
-			w47.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w55 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbtnRight [this.btnClose]));
+			w55.Position = 2;
+			w55.Expand = false;
+			w55.Fill = false;
 			this.hbox10.Add (this.vbtnRight);
-			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.vbtnRight]));
-			w48.Position = 1;
-			w48.Expand = false;
-			w48.Fill = false;
+			global::Gtk.Box.BoxChild w56 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.vbtnRight]));
+			w56.Position = 1;
+			w56.Expand = false;
+			w56.Fill = false;
 			// Container child hbox10.Gtk.Box+BoxChild
 			this.alignment10 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment10.Name = "alignment10";
 			this.hbox10.Add (this.alignment10);
-			global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment10]));
-			w49.Position = 2;
+			global::Gtk.Box.BoxChild w57 = ((global::Gtk.Box.BoxChild)(this.hbox10 [this.alignment10]));
+			w57.Position = 2;
 			this.hbox7.Add (this.hbox10);
-			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox10]));
-			w50.Position = 2;
+			global::Gtk.Box.BoxChild w58 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.hbox10]));
+			w58.Position = 2;
 			this.dialog1_VBox.Add (this.hbox7);
-			global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox7]));
-			w51.Position = 2;
+			global::Gtk.Box.BoxChild w59 = ((global::Gtk.Box.BoxChild)(this.dialog1_VBox [this.hbox7]));
+			w59.Position = 3;
 			this.Add (this.dialog1_VBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.Show ();
-			this.btnClear.Clicked += new global::System.EventHandler (this.OnBtnClearFormClicked);
+			this.btnFirst.Clicked += new global::System.EventHandler (this.OnBtnMoveFirstClicked);
+			this.btnNext.Clicked += new global::System.EventHandler (this.OnbtnMoveNextClicked);
+			this.btnPrevious.Clicked += new global::System.EventHandler (this.OnBtnMovePreviousClicked);
+			this.btnLast.Clicked += new global::System.EventHandler (this.OnBtnMoveLastClicked);
+			this.btnEdit.Clicked += new global::System.EventHandler (this.OnBtnEditClicked);
+			this.btnUpdate.Clicked += new global::System.EventHandler (this.OnBtnUpdateClicked);
+			this.btnDelete.Clicked += new global::System.EventHandler (this.OnBtnDeleteClicked);
+			this.btnCancel.Clicked += new global::System.EventHandler (this.OnBtnCancelClicked);
+			this.btnDone.Clicked += new global::System.EventHandler (this.OnBtnDoneClicked);
+			this.btnNewItem.Clicked += new global::System.EventHandler (this.OnBtnNewItemClicked);
 			this.btnStandard.Clicked += new global::System.EventHandler (this.OnBtnStandardClicked);
 			this.btnMetric.Clicked += new global::System.EventHandler (this.OnBtnMetricClicked);
-			this.btnConvert.Clicked += new global::System.EventHandler (this.OnBtnConvertClicked);
 			this.btnSolve.Clicked += new global::System.EventHandler (this.OnBtnSolveClicked);
 			this.btnStore.Clicked += new global::System.EventHandler (this.OnBtnStoreResultsClicked);
 			this.btnDisplayStore.Clicked += new global::System.EventHandler (this.OnBtnDisplayStoreClicked);
