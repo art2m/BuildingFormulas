@@ -97,6 +97,8 @@ namespace BuildingFormulas
 		/// </summary>
 		private int recPos = 0;
 
+		SqRecVolNunit srvn = new SqRecVolNunit();
+
 		/// <summary>
 		/// Initializes a new instance of the 
 		/// <see cref="BuildingFormulas.SquareRectangleCubicArea"/> class.
@@ -115,7 +117,10 @@ namespace BuildingFormulas
 			this.SetCubicAreaLabelsStandardUnits();
 			this.ShowUnitsCurrentlyBeingUsed();
 			hbtnboxEditStore.Sensitive = false;
-
+			this.SetStoreButtonsState(false);
+			this.SetSaveFormStoreResultButtons(false);
+			this.SetTextEntryTextBoxesSensitive(false);
+			this.SetMetricStandardSolveButtonState(false);
 		}
 
 		#region BUTTON CLICKED EVENTS
@@ -127,7 +132,20 @@ namespace BuildingFormulas
 		/// <param name="e">Instance containing the event data.</param>
 		protected void OnBtnNewItemClicked(object sender, EventArgs e)
 		{
-			this.ClearData();
+			/*Uncomment to test square rectangle volume.*/
+			TestWithValidData();
+			// TestDataWithAllZeros();
+			// TestDataWithOneZeroInEachRow();
+			// TestDataWithOneEmptyStringInEachRow();
+			// TestSolveForVolumeCube();
+			// TestSolveForRectangleVolume();
+
+			// To run the tests above comment out ClearData();
+//			this.ClearData();
+			this.SetTextEntryTextBoxesSensitive(true);			
+			this.SetSaveFormStoreResultButtons(false);
+			this.SetMetricStandardSolveButtonState(true);
+			this.SetStoreButtonsState(false);
 		}
 
 		/// <summary>
@@ -157,13 +175,20 @@ namespace BuildingFormulas
 		/// <param name="e">Instance containing the event data.</param>
 		protected void OnBtnDisplayStoreClicked(object sender, EventArgs e)
 		{
-			int stdCnt = StdStore.GetItemCount();
+			const string errMsg = "Unable to Select Type of units to use.";
+			const string ex = "";
+			const string MethodName = "protected void " +
+			                                   "OnBtnDisplayStoreClicked(" +
+			                                   "object sender, EventArgs e)";
+            
 			if (standardUnits == true)
 			{
 				if (StdStore.GetItemCount() > 0)
 				{					 
 					btnClearStore.Sensitive = false;
 					btnDisplayStore.Sensitive = false;
+					SetTextEntryTextBoxesSensitive(false);
+					SetEditableButtonControls(false);
 					btnMetric.Sensitive = false;
 					btnNewItem.Sensitive = false;
 					btnSaveForm.Sensitive = false;
@@ -195,6 +220,11 @@ namespace BuildingFormulas
 
 					btnFirst.Click();
 				}
+				else
+				{
+					myMsg.BuildErrorString(ThisClassName, MethodName, errMsg,
+						ex);
+				}
 			}
 		}
 
@@ -211,7 +241,8 @@ namespace BuildingFormulas
 			btnMetric.Label = "Metric On:";
 			this.SetCubicAreaLabelsMetricUnits();
 			this.ShowUnitsCurrentlyBeingUsed();
-			this.SolveForMetricUnitsStandardUnits();
+			this.ClearTextBoxesCubicArea();
+			this.SetSaveFormStoreResultButtons(false);	
 		}
 
 		/// <summary>
@@ -230,7 +261,7 @@ namespace BuildingFormulas
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">Instance containing the event datea.</param>
 		protected void OnBtnSaveStoredToFileClicked(object sender, EventArgs e)
-		{
+		{	
 			SaveDataFromStore();
 		}
 
@@ -258,7 +289,8 @@ namespace BuildingFormulas
 			btnMetric.Label = "Metric Off:";
 			this.SetCubicAreaLabelsStandardUnits();
 			this.ShowUnitsCurrentlyBeingUsed();
-			this.SolveForMetricUnitsStandardUnits();
+			this.ClearTextBoxesCubicArea();
+			this.SetSaveFormStoreResultButtons(false);
 		}
 
 		/// <summary>
@@ -312,9 +344,15 @@ namespace BuildingFormulas
 				MetricStore.AddNewItem(
 					strctRecSqMetricVol);
 			}
-			
+			    
+			SetStoreButtonsState(true);
 		}
 
+		/// <summary>
+		/// Raises the button move first clicked event.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		protected void OnBtnMoveFirstClicked(object sender, EventArgs e)
 		{
 			bool retVal = false;
@@ -356,6 +394,11 @@ namespace BuildingFormulas
 			}
 		}
 
+		/// <summary>
+		/// Raises the move next clicked event.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		protected void OnbtnMoveNextClicked(object sender, EventArgs e)
 		{ 
 			bool retVal = false;
@@ -402,6 +445,11 @@ namespace BuildingFormulas
 			}
 		}
 
+		/// <summary>
+		/// Raises the button move previous clicked event.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		protected void OnBtnMovePreviousClicked(object sender, EventArgs e)
 		{
 			bool retVal = false;
@@ -446,6 +494,11 @@ namespace BuildingFormulas
 
 		}
 
+		/// <summary>
+		/// Raises the button move last clicked event.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		protected void OnBtnMoveLastClicked(object sender, EventArgs e)
 		{  
 			bool retVal = false;
@@ -491,7 +544,7 @@ namespace BuildingFormulas
 
 		protected void OnBtnEditClicked(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			SetTextEntryTextBoxesSensitive(true);
 		}
 
 		protected void OnBtnUpdateClicked(object sender, EventArgs e)
@@ -517,6 +570,24 @@ namespace BuildingFormulas
 
 		#endregion BUTTON CLICKED EVENTS
 
+		/// <summary>
+		/// Sets the text entry text boxes sensitive.
+		/// </summary>
+		/// <param name="val">If set to <c>true</c> value.</param>
+		private void SetTextEntryTextBoxesSensitive(bool val)
+		{
+			txtDepthYard.Sensitive = val;
+			txtDepthFeet.Sensitive = val;
+			txtDepthInches.Sensitive = val;
+			txtLengthYard.Sensitive = val;
+			txtLengthFeet.Sensitive = val;
+			txtLengthInches.Sensitive = val;
+			txtWidthYard.Sensitive = val;
+			txtWidthFeet.Sensitive = val;
+			txtWidthInches.Sensitive = val;
+
+		}
+
 		#region CLEAR ALL DATA
 
 		/// <summary>
@@ -524,17 +595,17 @@ namespace BuildingFormulas
 		/// </summary>
 		private void ClearData()
 		{
-			txtDepthYard.Text = "12"; //"0";
-			txtDepthFeet.Text = "12"; //"0";
-			txtDepthInches.Text = "12"; //"0";
+			txtDepthYard.Text = "0";
+			txtDepthFeet.Text = "0";
+			txtDepthInches.Text = "0";
 
-			txtLengthYard.Text = "12"; //"0";
-			txtLengthFeet.Text = "12"; //"0";
-			txtLengthInches.Text = "12"; //"0";
+			txtLengthYard.Text = "0";
+			txtLengthFeet.Text = "0";
+			txtLengthInches.Text = "0";
 
-			txtWidthYard.Text = "12"; //"0";
-			txtWidthFeet.Text = "12"; //"0";
-			txtWidthInches.Text = "12"; //"0";
+			txtWidthYard.Text = "0";
+			txtWidthFeet.Text = "0";
+			txtWidthInches.Text = "0";
 
 			txtCubicYards.Text = "0";
 			txtCubicFeet.Text = "0";
@@ -781,6 +852,11 @@ namespace BuildingFormulas
 			return retVal = true;
 		}
 
+		/// <summary>
+		/// Converts the data to millimeters.
+		/// </summary>
+		/// <returns><c>true</c>, if data to millimeters 
+		/// was converted, <c>false</c> otherwise.</returns>
 		private bool ConvertDataToMillimeters()
 		{
 			bool retVal = false;
@@ -835,22 +911,6 @@ namespace BuildingFormulas
 			}
 
 			return retVal = true;
-		}
-
-		/// <summary>
-		/// Converts the standard units data to metric units.
-		/// </summary>
-		private void ConvertStandardUnitsDataToMetricUnits()
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		/// Converts the metric units data to standard units.
-		/// </summary>
-		private void ConvertMetricUnitsDataToStandardUnits()
-		{
-			throw new NotImplementedException();
 		}
 
 		#endregion CONVERT DATA
@@ -948,7 +1008,9 @@ namespace BuildingFormulas
 				}
 
 				this.SolveForCubicRectangleSquareStandard();
-			}          
+			} 
+
+			SetSaveFormStoreResultButtons(true);
 		}
 
 		/// <summary>
@@ -1247,7 +1309,7 @@ namespace BuildingFormulas
 		private void SaveDataFromStore()
 		{
 			SaveUserData sud = new SaveUserData();
-			string retVal = string.Empty;
+			string val = string.Empty;
 			const int sizeElements = 12;
 			string errMsg = string.Empty;
 			StreamWriter fileWriter = null;
@@ -1279,20 +1341,20 @@ namespace BuildingFormulas
 					return;
 				}
 
-				retVal = sud.SaveUsersFormData(
+				val = sud.SaveUsersFormData(
 					"Save file name. If file with same name exists will " +
 					"overwrite. Create new file if name does not exist.");
 
-				if (string.IsNullOrEmpty(retVal))
+				if (string.IsNullOrEmpty(val))
 				{
 					return;
 				}
 				
 
-				FileStream fs = File.Create(retVal);
+				FileStream fs = File.Create(val);
 				fs.Dispose();	
 				
-				fileWriter = new StreamWriter(retVal);
+				fileWriter = new StreamWriter(val);
 
 				for (int i = 0; i < cnt; i++)
 				{
@@ -1311,7 +1373,8 @@ namespace BuildingFormulas
 					fileWriter.WriteLine(Environment.NewLine);
 				}
 
-				fileWriter.Dispose();				
+				fileWriter.Dispose();					
+
 			}
 			catch (IndexOutOfRangeException ex)
 			{
@@ -1336,7 +1399,7 @@ namespace BuildingFormulas
 			catch (IOException ex)
 			{
 				errMsg = "Encountered error: unable to write data to file.";
-				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+				myMsg.BuildErrorString(errMsg, ex.ToString());
 			}
 			catch (ArgumentException ex)
 			{
@@ -1346,16 +1409,8 @@ namespace BuildingFormulas
 			catch (ObjectDisposedException ex)
 			{
 				errMsg = "Encountered error: invalid opertation.";
-				myMsg.BuildErrorString(errMsg, ex.ToString());
+				myMsg.BuildErrorString(errMsg, ex.ToString());				
 			}
-			finally
-			{
-				if (fileWriter.BaseStream != null)
-				{
-					fileWriter.Dispose();
-				}
-			}
-
 		}
 
 		/// <summary>
@@ -1451,25 +1506,35 @@ namespace BuildingFormulas
 		/// otherwise.</returns>
 		private bool FillStandardTextBoxesWithDataFromStore()
 		{
-			SquareRectangleStruct srsv = new SquareRectangleStruct();            
+			SquareRectangleStruct srsv;            
 			
+			string errMsg = "recPos is out of bounds for the collection.";
 			bool retVal = false;
 
-			srsv = StdStore.GetItemAt(recPos);
-			txtDepthYard.Text = srsv.DepthYards.ToString();
-			txtDepthFeet.Text = srsv.DepthFeet.ToString();
-			txtDepthInches.Text = srsv.DepthInches.ToString();
-			txtLengthYard.Text = srsv.LengthYards.ToString();
-			txtLengthFeet.Text = srsv.LengthFeet.ToString();
-			txtLengthInches.Text = srsv.LengthInches.ToString();
-			txtWidthYard.Text = srsv.WidthYards.ToString();
-			txtWidthFeet.Text = srsv.WidthFeet.ToString();
-			txtWidthInches.Text = srsv.WidthInches.ToString();
-			txtCubicYards.Text = srsv.TotalYards.ToString();
-			txtCubicFeet.Text = srsv.TotalFeet.ToString();
-			txtCubicInches.Text = srsv.TotalInches.ToString(); 
-
-			return retVal = true;
+			try
+			{
+				srsv = new SquareRectangleStruct(); 
+				srsv = StdStore.GetItemAt(recPos);
+				txtDepthYard.Text = srsv.DepthYards.ToString();
+				txtDepthFeet.Text = srsv.DepthFeet.ToString();
+				txtDepthInches.Text = srsv.DepthInches.ToString();
+				txtLengthYard.Text = srsv.LengthYards.ToString();
+				txtLengthFeet.Text = srsv.LengthFeet.ToString();
+				txtLengthInches.Text = srsv.LengthInches.ToString();
+				txtWidthYard.Text = srsv.WidthYards.ToString();
+				txtWidthFeet.Text = srsv.WidthFeet.ToString();
+				txtWidthInches.Text = srsv.WidthInches.ToString();
+				txtCubicYards.Text = srsv.TotalYards.ToString();
+				txtCubicFeet.Text = srsv.TotalFeet.ToString();
+				txtCubicInches.Text = srsv.TotalInches.ToString(); 
+                
+				return retVal = true;
+			}
+			catch (IndexOutOfRangeException ex)
+			{
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+				return retVal;
+			}
 		}
 
 		/// <summary>
@@ -1480,26 +1545,36 @@ namespace BuildingFormulas
 		/// otherwise.</returns>
 		private bool FillMetricTextBoxesWithDataFromStroe()
 		{
-			SquareRectangleMetricStruct srsmv = new 
-                SquareRectangleMetricStruct();
+			SquareRectangleMetricStruct srsmv;
             
 			bool retVal = false;
+			string errMsg = "recPos is out of bounds for the collection.";
 
-			srsmv = MetricStore.GetItemAt(recPos);
-			txtDepthYard.Text = srsmv.DepthMeters.ToString();
-			txtDepthFeet.Text = srsmv.DepthCentimeters.ToString();
-			txtDepthInches.Text = srsmv.DepthMillimeters.ToString();
-			txtLengthYard.Text = srsmv.LengthMeters.ToString();
-			txtLengthFeet.Text = srsmv.LengthCentimeters.ToString();
-			txtLengthInches.Text = srsmv.LengthMillimeters.ToString();
-			txtWidthYard.Text = srsmv.WidthMeters.ToString();
-			txtWidthFeet.Text = srsmv.WidthCentimeters.ToString();
-			txtWidthInches.Text = srsmv.WidthMillimeters.ToString();
-			txtCubicYards.Text = srsmv.TotalMeters.ToString();
-			txtCubicFeet.Text = srsmv.TotalCentimeters.ToString();
-			txtCubicInches.Text = srsmv.TotalMillimeters.ToString();
-
-			return retVal = true;
+			try
+			{
+				srsmv = new SquareRectangleMetricStruct();
+                
+				srsmv = MetricStore.GetItemAt(recPos);
+				txtDepthYard.Text = srsmv.DepthMeters.ToString();
+				txtDepthFeet.Text = srsmv.DepthCentimeters.ToString();
+				txtDepthInches.Text = srsmv.DepthMillimeters.ToString();
+				txtLengthYard.Text = srsmv.LengthMeters.ToString();
+				txtLengthFeet.Text = srsmv.LengthCentimeters.ToString();
+				txtLengthInches.Text = srsmv.LengthMillimeters.ToString();
+				txtWidthYard.Text = srsmv.WidthMeters.ToString();
+				txtWidthFeet.Text = srsmv.WidthCentimeters.ToString();
+				txtWidthInches.Text = srsmv.WidthMillimeters.ToString();
+				txtCubicYards.Text = srsmv.TotalMeters.ToString();
+				txtCubicFeet.Text = srsmv.TotalCentimeters.ToString();
+				txtCubicInches.Text = srsmv.TotalMillimeters.ToString();
+                
+				return retVal = true;
+			}
+			catch (IndexOutOfRangeException ex)
+			{
+				myMsg.BuildErrorString(errMsg, ex.ToString()); 
+				return retVal;
+			}
 		}
 
 		/// <summary>
@@ -1592,16 +1667,264 @@ namespace BuildingFormulas
 					btnLast.Sensitive = true;
 				}
 
-//                if (recPos == (cnt - 1) && cnt == 0)
-//				{
-//					btnFirst.Sensitive = false;
-//					btnPrevious.Sensitive = false;
-//					btnNext.Sensitive = false;
-//					btnLast.Sensitive = false;
-//				}
 			}
 		}
 
 		#endregion DISPLAY STORE DATA
+
+		#region SET FORM BUTTON STATES
+
+		/// <summary>
+		/// Sets the state of the store buttons.
+		/// Set false until there is something to
+		/// save.
+		/// </summary>
+		/// <param name="val">If set to <c>true</c> value.</param>
+		private void SetStoreButtonsState(bool val)
+		{
+			btnDisplayStore.Sensitive = val;
+			btnClearStore.Sensitive = val;
+			btnSaveStored.Sensitive = val;
+		}
+
+		/// <summary>
+		/// Sets the state of the metric standard solve button.
+		/// </summary>
+		/// <param name="val">If set to <c>true</c> value.</param>
+		private void SetMetricStandardSolveButtonState(bool val)
+		{
+			btnSolve.Sensitive = val;
+			btnMetric.Sensitive = val;
+			btnStandard.Sensitive = val;
+		}
+
+		/// <summary>
+		/// Sets the save form and store result buttons.
+		/// false until solve pressed and have result to
+		/// save. set true then. Set false when new item
+		/// button is pressed.
+		/// </summary>
+		/// <param name="val">If set to <c>true</c> value.</param>
+		private void SetSaveFormStoreResultButtons(bool val)
+		{
+			btnSaveForm.Sensitive = val;
+			btnStore.Sensitive = val;
+		}
+
+		#endregion SET FORM BUTTON STATES
+
+
+		#region SET EDITABLE BUTTON STATES
+
+		/// <summary>
+		/// Sets the update delete cancel button.
+		/// </summary>
+		/// <param name="val">If set to <c>true</c> value.</param>
+		private void SetEditableButtonControls(bool val, string[] arrayBtn)
+		{
+            
+			btnUpdate.Sensitive = val;
+			btnDelete.Sensitive = val;
+			btnCancel.Sensitive = val;
+			btnEdit.Sensitive = val;
+           
+		}
+
+		#endregion SET EDITALBE BUTTON STATES
+
+		#region TESTING ROUTINE REMOVE OR DISABLE BEFORE RELEASE
+
+		/// <summary>
+		/// To use this test uncomment the method. Then in OnBtnNewItemClicked
+		/// comment out ClearData(); and uncomment what ever test you wish to
+		/// use. Only one test can be uncommented at a time.
+		/// Tests Square Rectangle with valid data in all
+		/// text boxes.
+		/// </summary>
+		private void TestWithValidData()
+		{
+			//SqRecVolNunit srvn = new SqRecVolNunit();
+			string[] testArray = new string[9];
+
+			testArray = srvn.TestValidData();
+			Debug.Assert(testArray == null, "TestSquareRec", "Array null");
+			Debug.Assert(testArray.Length < 1, "TestSquareRec", "Array empty");
+
+			txtDepthYard.Text = testArray[0];
+			txtDepthFeet.Text = testArray[1];
+			txtDepthInches.Text = testArray[2];
+			txtLengthYard.Text = testArray[3];
+			txtLengthFeet.Text = testArray[4];
+			txtLengthInches.Text = testArray[5];
+			txtWidthYard.Text = testArray[6];
+			txtWidthFeet.Text = testArray[7];
+			txtWidthInches.Text = testArray[8];
+		}
+
+		/// <summary>
+		/// To use this test uncomment the method. Then in OnBtnNewItemClicked
+		/// comment out ClearData(); and uncomment what ever test you wish to
+		/// use. Only one test can be uncommented at a time.
+		/// Tests the data with all boxes containinge zero.
+		/// </summary>
+		/* private void TestDataWithAllZeros()
+		{
+			string[] testArray = new string[9];
+
+			testArray = srvn.TestZeros();
+			txtDepthYard.Text = testArray[0];
+			txtDepthFeet.Text = testArray[1];
+			txtDepthInches.Text = testArray[2];
+			txtLengthYard.Text = testArray[3];
+			txtLengthFeet.Text = testArray[4];
+			txtLengthInches.Text = testArray[5];
+			txtWidthYard.Text = testArray[6];
+			txtWidthFeet.Text = testArray[7];
+			txtWidthInches.Text = testArray[8];
+
+			return;
+		} */
+
+		/// <summary>
+		/// To use this test uncomment the method.
+		/// Test the data with one zero in one box in each row.
+		/// then step threw until every box has been tested with
+		/// a zero for a vaule.
+		/// </summary>
+		/* private void TestDataWithOneZeroInEachRow()
+		{
+			string[] testArray = new string[9]; 
+
+			testArray = srvn.TestRandomZeroDepthBoxes();
+
+			foreach (string test in testArray)
+			{
+				if (string.IsNullOrEmpty(test))
+				{
+					myMsg.ShowInformationMessage("Done");
+					return;
+				}
+
+				txtDepthYard.Text = testArray[0];
+				txtDepthFeet.Text = testArray[1];
+				txtDepthInches.Text = testArray[2];
+				txtLengthYard.Text = testArray[3];
+				txtLengthFeet.Text = testArray[4];
+				txtLengthInches.Text = testArray[5];
+				txtWidthYard.Text = testArray[6];
+				txtWidthFeet.Text = testArray[7];
+				txtWidthInches.Text = testArray[8];
+
+			}
+		} */
+
+		/// <summary>
+		/// To use this test uncomment the method. Then in OnBtnNewItemClicked
+		/// comment out ClearData(); and uncomment what ever test you wish to
+		/// use. Only one test can be uncommented at a time.
+		/// Tests the data with one empty string in each row.
+		/// </summary>
+		/* private void TestDataWithOneEmptyStringInEachRow()
+		{
+			string[] testArray = new string[9]; 
+			int cnt = 0;
+
+			testArray = srvn.TestWithOneEmptyValueInEachRow();
+
+			foreach (string test in testArray)
+			{
+				if (string.IsNullOrEmpty(test))
+				{
+					cnt++;
+				}
+			}
+
+			if (cnt > 7)
+			{
+				myMsg.ShowInformationMessage("Done");
+				return;
+			}
+
+			txtDepthYard.Text = testArray[0];
+			txtDepthFeet.Text = testArray[1];
+			txtDepthInches.Text = testArray[2];
+			txtLengthYard.Text = testArray[3];
+			txtLengthFeet.Text = testArray[4];
+			txtLengthInches.Text = testArray[5];
+			txtWidthYard.Text = testArray[6];
+			txtWidthFeet.Text = testArray[7];
+			txtWidthInches.Text = testArray[8];
+		} */
+
+		/// <summary>
+		/// To use this test uncomment the method. Then in OnBtnNewItemClicked
+		/// comment out ClearData(); and uncomment what ever test you wish to
+		/// use. Only one test can be uncommented at a time.
+		/// Tests the solve for volume cube.
+		/// </summary>
+		/* private void TestSolveForVolumeCube()
+		{			
+			string msg = null;
+			string[] testArray = new string[9]; 
+
+			testArray = srvn.TestSolveForUnitsSquare();
+			msg = "Done. To solve for metric close and start agian.\n" +
+			" Then select metric button and solve.";
+			foreach (string test in testArray)
+			{
+				if (string.IsNullOrEmpty(test))
+				{
+					myMsg.ShowInformationMessage(msg);
+					return;
+				}
+			}
+
+			txtDepthYard.Text = testArray[0];
+			txtDepthFeet.Text = testArray[1];
+			txtDepthInches.Text = testArray[2];
+			txtLengthYard.Text = testArray[3];
+			txtLengthFeet.Text = testArray[4];
+			txtLengthInches.Text = testArray[5];
+			txtWidthYard.Text = testArray[6];
+			txtWidthFeet.Text = testArray[7];
+			txtWidthInches.Text = testArray[8];
+		} */
+
+		/// <summary>
+		/// To use this test uncomment the method. Then in OnBtnNewItemClicked
+		/// comment out ClearData(); and uncomment what ever test you wish to
+		/// use. Only one test can be uncommented at a time.
+		/// Tests the solve for rectangle volume.
+		/// </summary>
+		/// <returns>The solve for rectangle volume.</returns>
+		/* private void TestSolveForRectangleVolume()
+		{
+			string msg = null;
+			string[] testArray = new string[9]; 
+
+			testArray = srvn.TestSolveForUnitsSquare();
+			msg = "Done. To solve for metric close and start agian.\n" +
+			" Then select metric button and solve.";
+			foreach (string test in testArray)
+			{
+				if (string.IsNullOrEmpty(test))
+				{
+					myMsg.ShowInformationMessage(msg);
+					return;
+				}
+			}
+
+			txtDepthYard.Text = testArray[0];
+			txtDepthFeet.Text = testArray[1];
+			txtDepthInches.Text = testArray[2];
+			txtLengthYard.Text = testArray[3];
+			txtLengthFeet.Text = testArray[4];
+			txtLengthInches.Text = testArray[5];
+			txtWidthYard.Text = testArray[6];
+			txtWidthFeet.Text = testArray[7];
+			txtWidthInches.Text = testArray[8];
+		} */
+
+		#endregion TESTING ROUTINE REMOVE OR DISABLE BEFORE RELEASE
 	}
 }
